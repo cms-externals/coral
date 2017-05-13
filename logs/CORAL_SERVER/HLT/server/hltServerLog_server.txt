@@ -1,0 +1,123 @@
+Fri Jan 13 14:23:00.385661000 CET 2012
+Kill any running instance of coralServer and sleep 1s
+Setup CMT environment using CMT_env.sh
+Configure CMT using AFS
+CMTCONFIG set to 'i686-slc5-gcc43-dbg'
+CMTROOT set to '/afs/cern.ch/sw/contrib/CMT/v1r20p20090520'
+CMTPATH set to ''
+CMTPROJECTPATH set to '/afs/cern.ch/sw/lcg/app/releases'
+CMTUSERCONTEXT set to '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_20/src/config/cmt/USERCONTEXT/avalassi'
+CMTINSTALLAREA set to ''
+CMTSITE set to ''
+LD_LIBRARY_PATH set to ''
+CORAL_DBLOOKUP_PATH=/home/avalassi/CORAL/CORAL_2_3_20/src/Tests/CORAL_SERVER/HLT/dblookup/local
+CORAL_AUTH_PATH=/afs/cern.ch/sw/lcg/app/pool/db/athenaMT
+Fri Jan 13 14:23:02.770093000 CET 2012
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    62
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_62
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.48.0_python2.6/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_20/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Starting CoralServer built on Dec 12 2011
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_MSGFORMAT = 'ATLAS'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_MSGLEVEL = '4'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_AUTH_PATH = '/afs/cern.ch/sw/lcg/app/pool/db/athenaMT'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_DBLOOKUP_PATH = '/home/avalassi/CORAL/CORAL_2_3_20/src/Tests/CORAL_SERVER/HLT/dblookup/local'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService2 component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService2 component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Creating a ConnectionPool
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Create the server on 0.0.0.0:40007
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Create SocketServer on host 0.0.0.0 and port 40007
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Activate Monitoring ( period: 10s, log rotate: deactivated, filename: '/home/avalassi/CORAL/CORAL_2_3_20/src/logs/CORAL_SERVER/HLT/server/hltServerLog_server.csv' )
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Start the server (timeout = -1s)
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Open listening  socket on host 0.0.0.0 and port 40007
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'listenOn: 0.0.0.0:40007'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+CORAL Server timings enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/oracle factory from OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLAuthenticationService factory from XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/XMLAuthenticationService} Authentication using /afs/cern.ch/sw/lcg/app/pool/db/athenaMT/authentication.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "ATLAS_COOLPROD" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "ATLAS_COOLPROD" for user "ATLAS_COOL_READER_U" in read-only mode
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Close the server socket
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Waiting for client connections to terminate:
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGINT (#2) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} All client connections are closed
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Shutdown the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'listenOn: 0.0.0.0:40007'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'listenOn: 0.0.0.0:40007' rec: 0MB  send: 0MB 
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} The server has been stopped
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Delete the StatsCSVPlotter
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Delete the server
+Delete SocketServer
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 18 packets send : 18 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.00706291MB  send: 0.00892353MB 
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CoralServer::ObjectStoreMgr} Deleting unreleased object #1
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "ATLAS_COOLPROD" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Exiting main
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Deleting the ConnectionPool
+=== TIMER (SERVER) 0.13user 0.08system 422.95elapsed 0%CPU
+*******************************************************************
+Fri Jan 13 14:30:08.323371000 CET 2012

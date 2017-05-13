@@ -1,0 +1,26 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_CoralBase_AtLiFunctionality
+[oval run] =================================================
+
+[x (double) : 1], [y (float) : 2], [z (int) : 3]
+[x (double) : 1], [y (float) : 2], [z (int) : 3]
+[x (double) : 10], [y (float) : 20], [z (int) : 30], [i (unsigned int) : 40]
+[x (double) : 1], [y (float) : 2], [z (int) : 3]
+[x (double) : 10], [y (float) : 20], [z (int) : 30], [i (unsigned int) : 40]
+[x (double) : 1], [y (float) : 2], [z (long) : 3], [b (bool) : TRUE], [unchanged (string) : data]
+[x (double) : 123], [y (float) : 231], [z (long) : 312], [b (bool) : FALSE], [unchanged (string) : data]
+Object.x = 0.123
+[x (double) : 1], [y (float) : 2], [z (int) : 3]
+[XX (double) : 10], [YY (float) : 2]
+[XX (double) : 10], [YY (float) : 123]
+[x (double) : 1], [y (float) : 123], [z (int) : 3]
+[OVAL] : Test successful
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

@@ -1,0 +1,12 @@
+#============================================================================
+# Package CMTUSERCONTEXT - private CMT config for user avalassi
+#============================================================================
+
+# Workaround for MySQL not fully available on any cvmfs
+# On /opt/sw/lcg/external/mysql:
+# --> 5.1.45/i686-slc5-gcc43-opt is a link to /cvmfs/atlas.cern.ch (17.0.0)
+# --> 5.1.45/x86_64-slc5-gcc43-opt is a link to /cvmfs/sft.cern.ch
+# --> 5.5.14/i686-slc5-gcc43-opt was deep copied from AFS via rsync
+# --> 5.5.14/x86_64-slc5-gcc43-opt is a link to /cvmfs/sft.cern.ch
+###macro mysql_home $(mysql_home) \
+###  LOCAL /opt/sw/lcg/external/mysql/$(mysql_native_version)/$(LCG_system)'

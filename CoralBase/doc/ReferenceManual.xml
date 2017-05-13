@@ -1,0 +1,35 @@
+<sect2>
+<title>Reference documentation of the CoralBase public interfaces</title>
+<para>
+<itemizedlist>
+<listitem><emphasis role="bold">coral::Blob</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Blob.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Blob.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::Date</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Date.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Date.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::TimeStamp</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1TimeStamp.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1TimeStamp.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::AttributeList</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeList.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeList.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::AttributeListSpecification</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeListSpecification.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeListSpecification.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::Attribute</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Attribute.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Attribute.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::AttributeSpecification</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeSpecification.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeSpecification.html</ulink></listitem>
+
+</itemizedlist>
+</para> 
+</sect2>

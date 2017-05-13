@@ -1,0 +1,45 @@
+<head><title>
+
+LCG Code Documentation Service
+
+</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body bgcolor="#FFFFFF">
+
+<!-------------------------------- Header ---------------------------->
+<table width="100%" border="1" height="142" cellpadding="10">
+  <tr bgcolor="#FFFFCC"> 
+    <td width="16%" height="73" valign="middle" align="center" bgcolor="#FFFFCC">
+     <!-- #BeginLibraryItem" -->
+      <img src="LCG_logo.jpg" width="61" height="61">
+     <!-- #EndLibraryItem --> 
+    </td>
+
+  <!-- #BeginItem -->
+  <td width="84%" height="73" valign="top" align="left">
+  <table width="100%" border="0">
+  <tr> 
+    <td colspan="2" height="28">
+       <a href="http://www.cern.ch/lhcgrid/" target="external">LHC Computing Grid Project</a>
+       &gt;
+       <a href="http://cern.ch/lcg/peb/applications" target="external">LCG Applications Area</a> 
+       &gt;
+       <a href="http://pool.cern.ch/coral">POOL/CORAL</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" height="28">
+      <h1>POOL/CORAL Documentation using Doxygen</h1>
+    </td>
+  </tr>
+ </table>
+ </td> 
+ <!-- #EndItem -->
+ </tr>
+ </table>
+ <table width="100%" border="1" height="142" cellpadding="10">
+ <tr>
+  <!-- BeginItem -->
+  <td align=top valign=left>
+  <!-- SPLIT -->

@@ -1,0 +1,9 @@
+<sect2>
+<title>Related components</title>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>RelationalAccess</emphasis>, is the package
+where the CORAL abstract interfaces are defined.</para></listitem>
+</itemizedlist>
+</para>    
+</sect2>

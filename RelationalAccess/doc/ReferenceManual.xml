@@ -1,0 +1,178 @@
+<sect2>
+<title>Reference documentation of the RelationalAccess public interfaces</title>
+<para>
+<itemizedlist>
+
+<listitem><emphasis role="bold">coral::ConnectionService</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ConnectionService.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ConnectionService.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::IRelationalService</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IRelationalService.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IRelationalService.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IRelationalDomain</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IRelationalDomain.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IRelationalDomain.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IConnection</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IConnection.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IConnection.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ISession</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ISession.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ISession.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITransaction</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITransaction.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITransaction.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITypeConverter</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITypeConverter.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITypeConverter.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::IAuthenticationService</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IAuthenticationService.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IAuthenticationService.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IAuthenticationCredentials</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IAuthenticationCredentials.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IAuthenticationCredentials.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::IConnectionService</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IConnectionService.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IConnectionService.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IConnectionServiceConfiguration</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IConnectionServiceConfiguration.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IConnectionServiceConfiguration.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ISessionProxy</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ISessionProxy.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ISessionProxy.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IWebCacheControl</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IWebCacheControl.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IWebCacheControl.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IWebCacheInfo</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IWebCacheInfo.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IWebCacheInfo.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::ILookupService</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ILookupService.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ILookupService.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IDatabaseServiceSet</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IDatabaseServiceSet.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IDatabaseServiceSet.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IDatabaseServiceDescription</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IDatabaseServiceDescription.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IDatabaseServiceDescription.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IReplicaSortingAlgorithm</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IReplicaSortingAlgorithm.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IReplicaSortingAlgorithm.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::IMonitoringService</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IMonitoringService.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IMonitoringService.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IMonitoringReporter</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IMonitoringReporter.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IMonitoringReporter.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IMonitoring</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IMonitoring.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IMonitoring.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::ISchema</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ISchema.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ISchema.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITable</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITable.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITable.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITableDescription</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITableDescription.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITableDescription.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITableSchemaEditor</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITableSchemaEditor.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITableSchemaEditor.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITableDataEditor</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITableDataEditor.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITableDataEditor.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ITablePrivilegeManager</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITablePrivilegeManager.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ITablePrivilegeManager.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IColumn</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IColumn.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IColumn.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IPrimaryKey</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IPrimaryKey.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IPrimaryKey.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IIndex</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IIndex.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IIndex.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IForeignKey</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IForeignKey.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IForeignKey.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IUniqueConstraint</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IUniqueConstraint.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IUniqueConstraint.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IQueryDefinition</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IQueryDefinition.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IQueryDefinition.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IQuery</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IQuery.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IQuery.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IBulkOperation</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IBulkOperation.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IBulkOperation.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IOperationWithQuery</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IOperationWithQuery.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IOperationWithQuery.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IBulkOperationWithQuery</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IBulkOperationWithQuery.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IBulkOperationWithQuery.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::ICursor</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ICursor.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1ICursor.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IViewFactory</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IViewFactory.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IViewFactory.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::IView</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IView.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1IView.html</ulink></listitem>
+
+<listitem><emphasis role="bold">coral::TableDescription</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1TableDescription.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1TableDescription.html</ulink></listitem>
+
+</itemizedlist>
+</para> 
+</sect2>

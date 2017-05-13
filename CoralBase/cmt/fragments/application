@@ -1,0 +1,49 @@
+#-- start of application
+
+$(bin)${CONSTITUENT}${application_suffix} :: ${OBJS} $(use_stamps) $(${CONSTITUENT}stamps) requirements $(use_requirements)
+	$(link_echo) "application $@"
+	$(link_silent) ${LINKMACRO} -o $(@).new ${OBJS} $(cmt_installarea_linkopts) $(${CONSTITUENT}_use_linkopts) $(${CONSTITUENT}linkopts) $(gcov_linkopts) && mv -f $(@).new $(@)
+
+#-----------------------------------------------------------------
+#
+#  New section for automatic installation
+#
+#-----------------------------------------------------------------
+
+install_dir = ${CMTINSTALLAREA}/$(tag)/${bindirname}
+${CONSTITUENT}installname = ${CONSTITUENT}${application_suffix}
+
+${CONSTITUENT} :: ${CONSTITUENT}install
+
+install :: ${CONSTITUENT}install
+
+${CONSTITUENT}install :: $(install_dir)/$(${CONSTITUENT}installname)
+ifdef CMTINSTALLAREA
+	$(echo) "installation done"
+endif
+
+$(install_dir)/$(${CONSTITUENT}installname) :: $(bin)$(${CONSTITUENT}installname)
+ifdef CMTINSTALLAREA
+	$(install_silent) $(cmt_install_action) \
+	    -source "`(cd $(bin); pwd)`" \
+	    -name "$(${CONSTITUENT}installname)" \
+	    -out "$(install_dir)" \
+	    -cmd "$(cmt_installarea_command)" \
+	    -cmtpath "$($(package)_cmtpath)"
+endif
+
+##${CONSTITUENT}clean :: ${CONSTITUENT}uninstall
+
+uninstall :: ${CONSTITUENT}uninstall
+
+${CONSTITUENT}uninstall ::
+ifdef CMTINSTALLAREA
+	$(cleanup_silent) $(cmt_uninstall_action) \
+	    -source "`(cd $(bin); pwd)`" \
+	    -name "$(${CONSTITUENT}installname)" \
+	    -out "$(install_dir)" \
+	    -cmtpath "$($(package)_cmtpath)"
+endif
+
+#	@echo "------> (${CONSTITUENT}.make) Removing installed files"
+#-- end of application

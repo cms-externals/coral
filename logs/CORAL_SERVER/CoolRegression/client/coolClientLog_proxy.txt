@@ -1,0 +1,1089 @@
+Thu Oct 13 12:36:40.664357000 CEST 2011
+COOLTESTDB: coral://localhost:40008&COOL-Oracle-lcgnight/COOLTEST
+*** Setup COOL lib, bin, python for configuration 'cwd'
+COOL lib directory: /afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/lib
+LD_LIBRARY_PATH=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/lib:$LD_LIBRARY_PATH
+PATH=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/bin:$PATH
+PYTHONPATH=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/python:$PYTHONPATH
+*** Setup COOL src for configuration 'cwd'
+COOL src directory: /afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/src
+COOLREGRESSIONTESTS=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/src/PyCoolUtilities/tests/Regression
+*** Setup ROOT lib, python for configuration 'cwd'
+ROOT lib directory: /afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib
+LD_LIBRARY_PATH=/afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib:$LD_LIBRARY_PATH
+PYTHONPATH=/afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib:$PYTHONPATH
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    61a
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_61a
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using Python: /afs/cern.ch/sw/lcg/external/Python/2.6.5/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+python /afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/src/PyCoolUtilities/tests/Regression/testReferenceDb1RO.py
+DEBUG: Import TestReferenceDb1RO
+DEBUG: Lookup 1st replica (R/O test) and 1st RW replica (R/W test)
+DEBUG: 1st replica: oracle://lcg_cool_nightly/lcg_cool_nightly
+DEBUG: 1st R/W replica: oracle://lcg_cool_nightly/lcg_cool_nightly
+DEBUG: Create TestReferenceDb1RO for 2.8.0 reference schema
+DEBUG: Create ReferenceDbMgr for 2.8.0 reference schema
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a cool::CoralApplication...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a new own CORAL connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create the COOL database service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Instantiate the RalDatabaseSvc
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a cool::CoralApplication... DONE
+DEBUG: Database service loaded from software release 2.8.11
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
+test_1RO_00_initialise (PyCoolReferenceDb.TestReferenceDb1RO) ... 
+DEBUG: (TestReferenceDb1RO) **********************************
+DEBUG: (TestReferenceDb1RO) Open reference database
+DEBUG: (TestReferenceDb1RO) -> db ID: coral://localhost:40008&COOL-Oracle-lcgnight/COOLTEST
+DEBUG: -> db replica (R/O): oracle://lcg_cool_nightly/lcg_cool_nightly
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Instantiate a R/O RalSessionMgr for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Connect to the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Starting the connection pool automatic cleanup thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Start a read-only transaction active for the duration of the database connection
+Got reply to request #3
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Instantiate a R/O RalDatabase for 'COOL-Oracle-lcgnight/COOLTEST'
+Got reply to request #4
+Got reply to request #5
+DEBUG: Database opened
+DEBUG: -> db schema version: 2.0.0
+DEBUG: Test 2.8.0 reference schema on a 2.0.0 db (R/O test)
+Got reply to request #6
+Got reply to request #7
+ok
+test_1RO_01_NodeHierarchy (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #8
+Got reply to request #9
+Got reply to request #10
+Got reply to request #11
+Got reply to request #12
+Got reply to request #13
+Got reply to request #14
+Got reply to request #15
+Got reply to request #16
+Got reply to request #17
+Got reply to request #18
+Got reply to request #19
+Got reply to request #20
+Got reply to request #21
+Got reply to request #22
+Got reply to request #23
+Got reply to request #24
+Got reply to request #25
+Got reply to request #26
+Got reply to request #27
+Got reply to request #28
+Got reply to request #29
+Got reply to request #30
+Got reply to request #31
+Got reply to request #32
+Got reply to request #33
+ok
+test_1RO_02_ReferencePayload (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #34
+Got reply to request #35
+Got reply to request #36
+Got reply to request #37
+Got reply to request #37
+Got reply to request #37
+Got reply to request #38
+Got reply to request #38
+ok
+test_1RO_02a_ReferencePayloadUChar (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #39
+Got reply to request #40
+Got reply to request #40
+Got reply to request #40
+Got reply to request #41
+Got reply to request #41
+ok
+test_1RO_02b1_ReferencePayloadBlobEmpty (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #42
+ok
+test_1RO_02b2_ReferencePayloadBlob (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #43
+Got reply to request #43
+Got reply to request #43
+Got reply to request #44
+Got reply to request #44
+ok
+test_1RO_02c_ReferencePayloadNull (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #45
+ok
+test_1RO_03a_listChannels_SV (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #46
+Got reply to request #47
+ok
+test_1RO_03b_listChannels_MV (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #48
+Got reply to request #49
+ok
+test_1RO_04_findMV_headTag (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #50
+Got reply to request #51
+ok
+test_1RO_05_findMV_userTag (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #52
+Got reply to request #53
+Got reply to request #54
+Got reply to request #55
+Got reply to request #56
+Got reply to request #57
+Got reply to request #58
+Got reply to request #59
+ok
+test_1RO_06a_UCharPayload (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #60
+Got reply to request #61
+Got reply to request #62
+Got reply to request #63
+Got reply to request #64
+Got reply to request #65
+Got reply to request #66
+Got reply to request #67
+Got reply to request #68
+Got reply to request #69
+Got reply to request #70
+Got reply to request #71
+Got reply to request #72
+Got reply to request #73
+Got reply to request #74
+Got reply to request #75
+Got reply to request #76
+Got reply to request #77
+Got reply to request #78
+Got reply to request #79
+Got reply to request #80
+Got reply to request #81
+Got reply to request #82
+Got reply to request #83
+Got reply to request #84
+Got reply to request #85
+Got reply to request #86
+Got reply to request #87
+Got reply to request #88
+Got reply to request #89
+Got reply to request #90
+Got reply to request #91
+Got reply to request #92
+Got reply to request #93
+Got reply to request #94
+Got reply to request #95
+Got reply to request #96
+Got reply to request #97
+Got reply to request #98
+Got reply to request #99
+Got reply to request #100
+Got reply to request #101
+Got reply to request #102
+Got reply to request #103
+Got reply to request #104
+Got reply to request #105
+Got reply to request #106
+Got reply to request #107
+Got reply to request #108
+Got reply to request #109
+Got reply to request #110
+Got reply to request #111
+Got reply to request #112
+Got reply to request #113
+Got reply to request #114
+Got reply to request #115
+Got reply to request #116
+Got reply to request #117
+Got reply to request #118
+Got reply to request #119
+Got reply to request #120
+Got reply to request #121
+Got reply to request #122
+Got reply to request #123
+Got reply to request #124
+Got reply to request #125
+Got reply to request #126
+Got reply to request #127
+Got reply to request #128
+Got reply to request #129
+Got reply to request #130
+Got reply to request #131
+Got reply to request #132
+Got reply to request #133
+Got reply to request #134
+Got reply to request #135
+Got reply to request #136
+Got reply to request #137
+Got reply to request #138
+Got reply to request #139
+Got reply to request #140
+Got reply to request #141
+Got reply to request #142
+Got reply to request #143
+Got reply to request #144
+Got reply to request #145
+Got reply to request #146
+Got reply to request #147
+Got reply to request #148
+Got reply to request #149
+Got reply to request #150
+Got reply to request #151
+Got reply to request #152
+Got reply to request #153
+Got reply to request #154
+Got reply to request #155
+Got reply to request #156
+Got reply to request #157
+Got reply to request #158
+Got reply to request #159
+Got reply to request #160
+Got reply to request #161
+Got reply to request #162
+Got reply to request #163
+Got reply to request #164
+Got reply to request #165
+Got reply to request #166
+Got reply to request #167
+Got reply to request #168
+Got reply to request #169
+Got reply to request #170
+Got reply to request #171
+Got reply to request #172
+Got reply to request #173
+Got reply to request #174
+Got reply to request #175
+Got reply to request #176
+Got reply to request #177
+Got reply to request #178
+Got reply to request #179
+Got reply to request #180
+Got reply to request #181
+Got reply to request #182
+Got reply to request #183
+Got reply to request #184
+Got reply to request #185
+Got reply to request #186
+Got reply to request #187
+Got reply to request #188
+Got reply to request #189
+Got reply to request #190
+Got reply to request #191
+Got reply to request #192
+Got reply to request #193
+Got reply to request #194
+Got reply to request #195
+Got reply to request #196
+Got reply to request #197
+Got reply to request #198
+Got reply to request #199
+Got reply to request #200
+Got reply to request #201
+Got reply to request #202
+Got reply to request #203
+Got reply to request #204
+Got reply to request #205
+Got reply to request #206
+Got reply to request #207
+Got reply to request #208
+Got reply to request #209
+Got reply to request #210
+Got reply to request #211
+Got reply to request #212
+Got reply to request #213
+Got reply to request #214
+Got reply to request #215
+Got reply to request #216
+Got reply to request #217
+Got reply to request #218
+Got reply to request #219
+Got reply to request #220
+Got reply to request #221
+Got reply to request #222
+Got reply to request #223
+Got reply to request #224
+Got reply to request #225
+Got reply to request #226
+Got reply to request #227
+Got reply to request #228
+Got reply to request #229
+Got reply to request #230
+Got reply to request #231
+Got reply to request #232
+Got reply to request #233
+Got reply to request #234
+Got reply to request #235
+Got reply to request #236
+Got reply to request #237
+Got reply to request #238
+Got reply to request #239
+Got reply to request #240
+Got reply to request #241
+Got reply to request #242
+Got reply to request #243
+Got reply to request #244
+Got reply to request #245
+Got reply to request #246
+Got reply to request #247
+Got reply to request #248
+Got reply to request #249
+Got reply to request #250
+Got reply to request #251
+Got reply to request #252
+Got reply to request #253
+Got reply to request #254
+Got reply to request #255
+Got reply to request #256
+Got reply to request #257
+Got reply to request #258
+Got reply to request #259
+Got reply to request #260
+Got reply to request #261
+Got reply to request #262
+Got reply to request #263
+Got reply to request #264
+Got reply to request #265
+Got reply to request #266
+Got reply to request #267
+Got reply to request #268
+Got reply to request #269
+Got reply to request #270
+Got reply to request #271
+Got reply to request #272
+Got reply to request #273
+Got reply to request #274
+Got reply to request #275
+Got reply to request #276
+Got reply to request #277
+Got reply to request #278
+Got reply to request #279
+Got reply to request #280
+Got reply to request #281
+Got reply to request #282
+Got reply to request #283
+Got reply to request #284
+Got reply to request #285
+Got reply to request #286
+Got reply to request #287
+Got reply to request #288
+Got reply to request #289
+Got reply to request #290
+Got reply to request #291
+Got reply to request #292
+Got reply to request #293
+Got reply to request #294
+Got reply to request #295
+Got reply to request #296
+Got reply to request #297
+Got reply to request #298
+Got reply to request #299
+Got reply to request #300
+Got reply to request #301
+Got reply to request #302
+Got reply to request #303
+Got reply to request #304
+Got reply to request #305
+Got reply to request #306
+Got reply to request #307
+Got reply to request #308
+Got reply to request #309
+Got reply to request #310
+Got reply to request #311
+Got reply to request #312
+Got reply to request #313
+Got reply to request #314
+Got reply to request #315
+Got reply to request #316
+Got reply to request #317
+ok
+test_1RO_06b_UCharPayload_asString (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #318
+
+Got reply to request #319
+Got reply to request #320
+Got reply to request #321
+Got reply to request #322
+Got reply to request #323
+Got reply to request #324
+Got reply to request #325
+Got reply to request #326
+Got reply to request #327
+Got reply to request #328
+Got reply to request #329
+Got reply to request #330
+Got reply to request #331
+Got reply to request #332
+Got reply to request #333
+Got reply to request #334
+Got reply to request #335
+Got reply to request #336
+Got reply to request #337
+Got reply to request #338
+Got reply to request #339
+Got reply to request #340
+Got reply to request #341
+Got reply to request #342
+Got reply to request #343
+Got reply to request #344
+Got reply to request #345
+Got reply to request #346
+Got reply to request #347
+Got reply to request #348
+Got reply to request #349
+Got reply to request #350
+Got reply to request #351
+Got reply to request #352
+Got reply to request #353
+Got reply to request #354
+Got reply to request #355
+Got reply to request #356
+Got reply to request #357
+Got reply to request #358
+Got reply to request #359
+Got reply to request #360
+Got reply to request #361
+Got reply to request #362
+Got reply to request #363
+Got reply to request #364
+Got reply to request #365
+Got reply to request #366
+Got reply to request #367
+Got reply to request #368
+Got reply to request #369
+Got reply to request #370
+Got reply to request #371
+Got reply to request #372
+Got reply to request #373
+Got reply to request #374
+Got reply to request #375
+Got reply to request #376
+Got reply to request #377
+Got reply to request #378
+Got reply to request #379
+Got reply to request #380
+Got reply to request #381
+Got reply to request #382
+Got reply to request #383
+Got reply to request #384
+Got reply to request #385
+Got reply to request #386
+Got reply to request #387
+Got reply to request #388
+Got reply to request #389
+Got reply to request #390
+Got reply to request #391
+Got reply to request #392
+Got reply to request #393
+Got reply to request #394
+Got reply to request #395
+Got reply to request #396
+Got reply to request #397
+Got reply to request #398
+Got reply to request #399
+Got reply to request #400
+Got reply to request #401
+Got reply to request #402
+Got reply to request #403
+Got reply to request #404
+Got reply to request #405
+Got reply to request #406
+Got reply to request #407
+Got reply to request #408
+Got reply to request #409
+Got reply to request #410
+Got reply to request #411
+Got reply to request #412
+Got reply to request #413
+Got reply to request #414
+Got reply to request #415
+Got reply to request #416
+Got reply to request #417
+Got reply to request #418
+Got reply to request #419
+Got reply to request #420
+Got reply to request #421
+Got reply to request #422
+Got reply to request #423
+Got reply to request #424
+Got reply to request #425
+Got reply to request #426
+Got reply to request #427
+Got reply to request #428
+Got reply to request #429
+Got reply to request #430
+Got reply to request #431
+Got reply to request #432
+Got reply to request #433
+Got reply to request #434
+Got reply to request #435
+Got reply to request #436
+Got reply to request #437
+Got reply to request #438
+Got reply to request #439
+Got reply to request #440
+Got reply to request #441
+Got reply to request #442
+Got reply to request #443
+Got reply to request #444
+Got reply to request #445
+Got reply to request #446
+Got reply to request #447
+Got reply to request #448
+Got reply to request #449
+Got reply to request #450
+Got reply to request #451
+Got reply to request #452
+Got reply to request #453
+Got reply to request #454
+Got reply to request #455
+Got reply to request #456
+Got reply to request #457
+Got reply to request #458
+Got reply to request #459
+Got reply to request #460
+Got reply to request #461
+Got reply to request #462
+Got reply to request #463
+Got reply to request #464
+Got reply to request #465
+Got reply to request #466
+Got reply to request #467
+Got reply to request #468
+Got reply to request #469
+Got reply to request #470
+Got reply to request #471
+Got reply to request #472
+Got reply to request #473
+Got reply to request #474
+Got reply to request #475
+Got reply to request #476
+Got reply to request #477
+Got reply to request #478
+Got reply to request #479
+Got reply to request #480
+Got reply to request #481
+Got reply to request #482
+Got reply to request #483
+Got reply to request #484
+Got reply to request #485
+Got reply to request #486
+Got reply to request #487
+Got reply to request #488
+Got reply to request #489
+Got reply to request #490
+Got reply to request #491
+Got reply to request #492
+Got reply to request #493
+Got reply to request #494
+Got reply to request #495
+Got reply to request #496
+Got reply to request #497
+Got reply to request #498
+Got reply to request #499
+Got reply to request #500
+Got reply to request #501
+Got reply to request #502
+Got reply to request #503
+Got reply to request #504
+Got reply to request #505
+Got reply to request #506
+Got reply to request #507
+Got reply to request #508
+Got reply to request #509
+Got reply to request #510
+Got reply to request #511
+Got reply to request #512
+Got reply to request #513
+Got reply to request #514
+Got reply to request #515
+Got reply to request #516
+Got reply to request #517
+Got reply to request #518
+Got reply to request #519
+Got reply to request #520
+Got reply to request #521
+Got reply to request #522
+Got reply to request #523
+Got reply to request #524
+Got reply to request #525
+Got reply to request #526
+Got reply to request #527
+Got reply to request #528
+Got reply to request #529
+Got reply to request #530
+Got reply to request #531
+Got reply to request #532
+Got reply to request #533
+Got reply to request #534
+Got reply to request #535
+Got reply to request #536
+Got reply to request #537
+Got reply to request #538
+Got reply to request #539
+Got reply to request #540
+Got reply to request #541
+Got reply to request #542
+Got reply to request #543
+Got reply to request #544
+Got reply to request #545
+Got reply to request #546
+Got reply to request #547
+Got reply to request #548
+Got reply to request #549
+Got reply to request #550
+Got reply to request #551
+Got reply to request #552
+Got reply to request #553
+Got reply to request #554
+Got reply to request #555
+Got reply to request #556
+Got reply to request #557
+Got reply to request #558
+Got reply to request #559
+Got reply to request #560
+Got reply to request #561
+Got reply to request #562
+Got reply to request #563
+Got reply to request #564
+Got reply to request #565
+Got reply to request #566
+Got reply to request #567
+Got reply to request #568
+Got reply to request #569
+Got reply to request #570
+Got reply to request #571
+Got reply to request #572
+Got reply to request #573
+ok
+test_1RO_06c_UCharPayload_asBlob (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #574
+Got reply to request #575
+Got reply to request #576
+Got reply to request #577
+Got reply to request #578
+Got reply to request #579
+Got reply to request #580
+Got reply to request #581
+Got reply to request #582
+Got reply to request #583
+Got reply to request #584
+Got reply to request #585
+Got reply to request #586
+Got reply to request #587
+Got reply to request #588
+Got reply to request #589
+Got reply to request #590
+Got reply to request #591
+Got reply to request #592
+Got reply to request #593
+Got reply to request #594
+Got reply to request #595
+Got reply to request #596
+Got reply to request #597
+Got reply to request #598
+Got reply to request #599
+Got reply to request #600
+Got reply to request #601
+Got reply to request #602
+Got reply to request #603
+Got reply to request #604
+Got reply to request #605
+Got reply to request #606
+Got reply to request #607
+Got reply to request #608
+Got reply to request #609
+Got reply to request #610
+Got reply to request #611
+Got reply to request #612
+Got reply to request #613
+Got reply to request #614
+Got reply to request #615
+Got reply to request #616
+Got reply to request #617
+Got reply to request #618
+Got reply to request #619
+Got reply to request #620
+Got reply to request #621
+Got reply to request #622
+Got reply to request #623
+Got reply to request #624
+Got reply to request #625
+Got reply to request #626
+Got reply to request #627
+Got reply to request #628
+Got reply to request #629
+Got reply to request #630
+Got reply to request #631
+Got reply to request #632
+Got reply to request #633
+Got reply to request #634
+Got reply to request #635
+Got reply to request #636
+Got reply to request #637
+Got reply to request #638
+Got reply to request #639
+Got reply to request #640
+Got reply to request #641
+Got reply to request #642
+Got reply to request #643
+Got reply to request #644
+Got reply to request #645
+Got reply to request #646
+Got reply to request #647
+Got reply to request #648
+Got reply to request #649
+Got reply to request #650
+Got reply to request #651
+Got reply to request #652
+Got reply to request #653
+Got reply to request #654
+Got reply to request #655
+Got reply to request #656
+Got reply to request #657
+Got reply to request #658
+Got reply to request #659
+Got reply to request #660
+Got reply to request #661
+Got reply to request #662
+Got reply to request #663
+Got reply to request #664
+Got reply to request #665
+Got reply to request #666
+Got reply to request #667
+Got reply to request #668
+Got reply to request #669
+Got reply to request #670
+Got reply to request #671
+Got reply to request #672
+Got reply to request #673
+Got reply to request #674
+Got reply to request #675
+Got reply to request #676
+Got reply to request #677
+Got reply to request #678
+Got reply to request #679
+Got reply to request #680
+Got reply to request #681
+Got reply to request #682
+Got reply to request #683
+Got reply to request #684
+Got reply to request #685
+Got reply to request #686
+Got reply to request #687
+Got reply to request #688
+Got reply to request #689
+Got reply to request #690
+Got reply to request #691
+Got reply to request #692
+Got reply to request #693
+Got reply to request #694
+Got reply to request #695
+Got reply to request #696
+Got reply to request #697
+Got reply to request #698
+Got reply to request #699
+Got reply to request #700
+Got reply to request #701
+Got reply to request #702
+Got reply to request #703
+Got reply to request #704
+Got reply to request #705
+Got reply to request #706
+Got reply to request #707
+Got reply to request #708
+Got reply to request #709
+Got reply to request #710
+Got reply to request #711
+Got reply to request #712
+Got reply to request #713
+Got reply to request #714
+Got reply to request #715
+Got reply to request #716
+Got reply to request #717
+Got reply to request #718
+Got reply to request #719
+Got reply to request #720
+Got reply to request #721
+Got reply to request #722
+Got reply to request #723
+Got reply to request #724
+Got reply to request #725
+Got reply to request #726
+Got reply to request #727
+Got reply to request #728
+Got reply to request #729
+Got reply to request #730
+Got reply to request #731
+Got reply to request #732
+Got reply to request #733
+Got reply to request #734
+Got reply to request #735
+Got reply to request #736
+Got reply to request #737
+Got reply to request #738
+Got reply to request #739
+Got reply to request #740
+Got reply to request #741
+Got reply to request #742
+Got reply to request #743
+Got reply to request #744
+Got reply to request #745
+Got reply to request #746
+Got reply to request #747
+Got reply to request #748
+Got reply to request #749
+Got reply to request #750
+Got reply to request #751
+Got reply to request #752
+Got reply to request #753
+Got reply to request #754
+Got reply to request #755
+Got reply to request #756
+Got reply to request #757
+Got reply to request #758
+Got reply to request #759
+Got reply to request #760
+Got reply to request #761
+Got reply to request #762
+Got reply to request #763
+Got reply to request #764
+Got reply to request #765
+Got reply to request #766
+Got reply to request #767
+Got reply to request #768
+Got reply to request #769
+Got reply to request #770
+Got reply to request #771
+Got reply to request #772
+Got reply to request #773
+Got reply to request #774
+Got reply to request #775
+Got reply to request #776
+Got reply to request #777
+Got reply to request #778
+Got reply to request #779
+Got reply to request #780
+Got reply to request #781
+Got reply to request #782
+Got reply to request #783
+Got reply to request #784
+Got reply to request #785
+Got reply to request #786
+Got reply to request #787
+Got reply to request #788
+Got reply to request #789
+Got reply to request #790
+Got reply to request #791
+Got reply to request #792
+Got reply to request #793
+Got reply to request #794
+Got reply to request #795
+Got reply to request #796
+Got reply to request #797
+Got reply to request #798
+Got reply to request #799
+Got reply to request #800
+Got reply to request #801
+Got reply to request #802
+Got reply to request #803
+Got reply to request #804
+Got reply to request #805
+Got reply to request #806
+Got reply to request #807
+Got reply to request #808
+Got reply to request #809
+Got reply to request #810
+Got reply to request #811
+Got reply to request #812
+Got reply to request #813
+Got reply to request #814
+Got reply to request #815
+Got reply to request #816
+Got reply to request #817
+Got reply to request #818
+Got reply to request #819
+Got reply to request #820
+Got reply to request #821
+Got reply to request #822
+Got reply to request #823
+Got reply to request #824
+Got reply to request #825
+Got reply to request #826
+Got reply to request #827
+Got reply to request #828
+Got reply to request #829
+ok
+test_1RO_07_ReferenceSchema (PyCoolReferenceDb.TestReferenceDb1RO) ... DEBUG: Column SQL type: BLOB , name: A_BLOB16M
+DEBUG: -----> expected: BLOB
+DEBUG: Column SQL type: BLOB , name: A_BLOB64K
+DEBUG: -----> expected: BLOB
+DEBUG: Column SQL type: NUMBER(1) , name: A_BOOL
+DEBUG: -----> expected: NUMBER(1)
+DEBUG: Column SQL type: BINARY_DOUBLE , name: A_DOUBLE
+DEBUG: -----> expected: BINARY_DOUBLE
+DEBUG: Column SQL type: BINARY_FLOAT , name: A_FLOAT
+DEBUG: -----> expected: BINARY_FLOAT
+DEBUG: Column SQL type: NUMBER(5) , name: A_INT16
+DEBUG: -----> expected: NUMBER(5)
+DEBUG: Column SQL type: NUMBER(10) , name: A_INT32
+DEBUG: -----> expected: NUMBER(10)
+DEBUG: Column SQL type: NUMBER(20) , name: A_INT64
+DEBUG: -----> expected: NUMBER(20)
+DEBUG: Column SQL type: NUMBER(10) , name: A_IOBJ
+DEBUG: -----> expected: NUMBER(10)
+DEBUG: Column SQL type: CLOB , name: A_STRING16M
+DEBUG: -----> expected: CLOB
+DEBUG: Column SQL type: VARCHAR2(255) , name: A_STRING255
+DEBUG: -----> expected: VARCHAR2(255)
+DEBUG: Column SQL type: VARCHAR2(4000) , name: A_STRING4K
+DEBUG: -----> expected: VARCHAR2(4000)
+DEBUG: Column SQL type: CLOB , name: A_STRING64K
+DEBUG: -----> expected: CLOB
+DEBUG: Column SQL type: NUMBER(3) , name: A_UCHAR
+DEBUG: -----> expected: NUMBER(3)
+DEBUG: Column SQL type: NUMBER(5) , name: A_UINT16
+DEBUG: -----> expected: NUMBER(5)
+DEBUG: Column SQL type: NUMBER(10) , name: A_UINT32
+DEBUG: -----> expected: NUMBER(10)
+DEBUG: Column SQL type: NUMBER(20) , name: A_UINT63
+DEBUG: -----> expected: NUMBER(20)
+DEBUG: Column SQL type: NUMBER(10) , name: CHANNEL_ID
+DEBUG: Column SQL type: NUMBER(20) , name: IOV_SINCE
+DEBUG: Column SQL type: NUMBER(20) , name: IOV_UNTIL
+DEBUG: Column SQL type: VARCHAR2(255) , name: LASTMOD_DATE
+DEBUG: Column SQL type: NUMBER(10) , name: NEW_HEAD_ID
+DEBUG: Column SQL type: NUMBER(10) , name: OBJECT_ID
+DEBUG: Column SQL type: NUMBER(10) , name: ORIGINAL_ID
+DEBUG: Column SQL type: VARCHAR2(255) , name: SYS_INSTIME
+DEBUG: Column SQL type: NUMBER(10) , name: USER_TAG_ID
+ok
+test_1RO_08_content_sv (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #830
+Got reply to request #831
+ok
+test_1RO_08a_content_sv (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #832
+Got reply to request #833
+ok
+test_1RO_09_content_mv1_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #834
+ok
+test_1RO_10_content_mv1_Tag_A1 (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #835
+Got reply to request #836
+Got reply to request #837
+Got reply to request #838
+Got reply to request #839
+Got reply to request #840
+ok
+test_1RO_11_content_mv1_Tag_B1 (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #841
+Got reply to request #842
+Got reply to request #843
+Got reply to request #844
+Got reply to request #845
+ok
+test_1RO_12_content_mv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #846
+ok
+test_1RO_13_content_mv2_UserTag_A2 (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #847
+Got reply to request #848
+Got reply to request #849
+Got reply to request #850
+Got reply to request #851
+ok
+test_1RO_14_channelsExist_SV (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #852
+Got reply to request #853
+Got reply to request #854
+Got reply to request #855
+Got reply to request #856
+ok
+test_1RO_14a_channelsExist_SV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_15_channelsExist_MV (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #857
+Got reply to request #858
+Got reply to request #859
+Got reply to request #860
+ok
+test_1RO_15a_channelsExist_MV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_16_folderSchemaVersion (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_17_tagRelations (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #861
+Got reply to request #862
+Got reply to request #863
+Got reply to request #864
+ok
+test_1RO_18_lowercase (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #865
+Got reply to request #866
+Got reply to request #867
+ok
+test_1RO_19_content_ptsv (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #868
+Got reply to request #869
+Got reply to request #870
+Got reply to request #871
+ok
+test_1RO_20_content_ptmv1_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #872
+Got reply to request #873
+Got reply to request #874
+Got reply to request #875
+ok
+test_1RO_21_content_ptmv1_Tag_A1PT (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #876
+Got reply to request #877
+Got reply to request #878
+Got reply to request #879
+Got reply to request #880
+Got reply to request #881
+ok
+test_1RO_22_content_ptmv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #882
+Got reply to request #883
+Got reply to request #884
+Got reply to request #885
+ok
+test_1RO_23_content_ptmv2_UserTag_A2PT (PyCoolReferenceDb.TestReferenceDb1RO) ... Got reply to request #886
+Got reply to request #887
+Got reply to request #888
+Got reply to request #889
+Got reply to request #890
+ok
+test_1RO_24_content_ptsv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_24a_content_ptsv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_25_content_ptmv1_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_26_content_ptmv1_Tag_A1PT (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_27_content_ptmv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_27a_content_ptmv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_28_content_ptmv2_UserTag_A2PT (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_99_finalise (PyCoolReferenceDb.TestReferenceDb1RO) ... 
+DEBUG: (TestReferenceDb1RO) Close reference database
+DEBUG: (TestReferenceDb1RO) **********************************
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Commit the read-only transaction active for the duration of the database connection
+Got reply to request #891
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Disconnect from the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #892
+ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 7.733s
+
+OK
+ == =TIMER (CLIENT) 6.25user 0.41system 9.21elapsed 72%CPU
+*******************************************************************
+Thu Oct 13 12:36:58.476695000 CEST 2011

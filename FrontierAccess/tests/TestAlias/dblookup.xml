@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<servicelist>
+  <!--
+  <logicalservice name="/coral/CoolFrontier">
+    <service name="frontier://(serverurl=http://atlasfrontier.cern.ch:8080/Frontier)/CORAL" accessMode="readonly" authentication="none" />
+    <service name="frontier://atlasfrontier.cern.ch:8080/Frontier/CORAL" accessMode="readonly" />
+  </logicalservice>
+  <logicalservice name="/coral/cooldev">
+    <service name="oracle://cooldev/CORAL" accessMode="update" authentication="password" />
+  </logicalservice>
+  <logicalservice name="/dbdev/Frontier3D">
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDevZip/CMS_COND_ECAL" accessMode="readonly" authentication="none" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDev/CMS_COND_ECAL" accessMode="readonly" authentication="none" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/FrontierDev/CMS_COND_ECAL" accessMode="readonly" authentication="none" />
+    <service name="frontier://cmsfrontier.cern.ch:8080/FrontierDev/CMS_COND_ECAL" accessMode="readonly" authentication="none" />
+    <service name="oracle://devdb10/CMS_COND_ECAL" accessMode="update" authentication="password" />
+   </logicalservice>
+  <logicalservice name="/dbdev/Frontier3DRead">
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDevZip/CMS_COND_ECAL" accessMode="readonly" authentication="none" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDev/CMS_COND_ECAL" accessMode="readonly" authentication="none" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/FrontierDev/CMS_COND_ECAL" accessMode="readonly" authentication="password" />
+    <service name="frontier://cmsfrontier.cern.ch:8080/FrontierDev/CMS_COND_ECAL" accessMode="readonly" authentication="password" />
+  </logicalservice>
+    -->
+
+  <!-- COOL nightly tests - START -->
+
+  <logicalservice name="Oracle-lcgspi">
+    <service name="oracle://lcg_cool_nightly/lcg_cool_nightly" accessMode="update" authentication="password" />
+  </logicalservice>
+
+  <logicalservice name="MySQL-lcgspi">
+    <service name="mysql://itrac424.cern.ch:3306/LCG_COOL_NIGHTLY" accessMode="update" authentication="password" />
+  </logicalservice>
+
+  <logicalservice name="Frontier-lcgspi">
+    <service name="frontier://frontier3d:8080/lcg_cool_nightly/lcg_cool_nightly" accessMode="readonly" authentication="password" />
+    <service name="oracle://lcg_cool_nightly/lcg_cool_nightly" accessMode="update" authentication="password" />
+  </logicalservice>
+
+  <logicalservice name="FrontierR-lcgspi">
+    <service name="frontier://frontier3d:8080/lcg_cool_nightly/lcg_cool_nightly" accessMode="readonly" authentication="password" />
+  </logicalservice>
+
+  <!-- COOL nightly tests - END -->
+
+</servicelist>

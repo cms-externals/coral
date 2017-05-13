@@ -1,0 +1,15 @@
+<use   name="LCG/CoralBase"/>
+<bin   name="unitTest_CoralBase_BlobReadWrite" file="BlobReadWrite/*.cpp">
+</bin>
+<bin   name="unitTest_CoralBase_AtLiFunctionality" file="AtLiFunctionality/*.cpp">
+</bin>
+<bin   name="unitTest_CoralBase_AtLiSpecFunctionality" file="AtLiSpecFunctionality/*.cpp">
+</bin>
+<bin   name="unitTest_CoralBase_AttributeReadWrite" file="AttributeReadWrite/*.cpp">
+</bin>
+<bin   name="unitTest_CoralBase_DataTypeBug" file="DataTypeBug/*.cpp">
+</bin>
+<bin   name="unitTest_CoralBase_Date" file="Date/*.cpp">
+</bin>
+<bin   name="unitTest_CoralBase_TimeStamp" file="TimeStamp/*.cpp">
+</bin>

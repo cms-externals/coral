@@ -1,0 +1,29 @@
+package LFCReplicaService
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v*
+use lfc v* LCG_Interfaces
+use XercesC v* LCG_Interfaces
+use uuid v* LCG_Interfaces
+
+apply_pattern lcg_module_library
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+# The unit tests
+apply_pattern coral_unit_test tname=FullService
+
+# The utilities
+apply_pattern coral_utility uname=coral_replica_manager
+

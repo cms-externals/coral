@@ -1,0 +1,5 @@
+<use   name="LCG/CoralCommon"/>
+<use   name="oracle"/>
+<export>
+  <lib   name="1"/>
+</export>

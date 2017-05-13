@@ -1,0 +1,262 @@
+<sect2><title>ConnectionService Semantics</title>
+<sect3><title>Architecture and object hierarchy</title>
+<para>
+The ConnectionService API is based on two main: the
+IConnectionService class, which acts as a central service to open the
+session on the database backends, and the ISessionProxy, providing
+proxy objects to the physical database sessions. 
+With the ConnectionService API, the user can configure most of the
+parameters required for the setting up of specific service
+implementation (authentication, database back-end instantiation, connection
+string resolution, monitoring) and specific policies for the handling
+of connection pooling, retries and failover. The configuration is
+accessible on a specific interface, the
+IConnectionServiceConfiguration.
+More specific parameter access are provided by the ISessionProperties
+(for a few session-specific quantities), the IWebCacheControl (for
+setting up of Web-cache related policies), the IMonitoringReporter
+(for the access to monitoring data).      
+</para>
+</sect3>
+<sect3><title>Service connection via session proxy</title>
+<para>
+The ISessionProxy provides access to the database schema and the transaction
+control.
+</para>
+<para>
+To obtain ISessionProxy object, one must provide a connection
+string specifying the service to be accessed. The string can
+explicitly describe a physical database service (when formed
+according to the specific rules supported by the CORAL relational
+service). Alternatively, the string can be an user-defined label,
+mapped logically to one or more explicit (physical) connection
+strings (replicas). The mapping between logical connection strings and
+their replicas is maintained and handled through the ILookupService
+interface, with its concrete implementations.   
+</para>
+</sect3>
+<sect3><title>Re-connection</title>
+<para>
+The user can use the ISessionProxy interface in a similar way as a
+physical ISession object (see example below). The underlying
+connection is handled internally and is guaranteed to be open for the
+lifetime of the ISessionProxy instance. In order to maximize the
+reliability, an automatic recover policy based on reconnect and
+failover is applied in case of failure of the connection.
+</para>
+</sect3>
+<sect3><title>Connection pooling</title>
+<para>
+One of the main task of the ConnectionService is the efficient connection
+management. The aim is to allow the re-use of already opened
+connections, in order to minimize on the database server side the CPU
+consumption required by the creation of new connection. 
+For this
+pourpose, the connections are kept in two pools:
+ <itemizedlist>
+<listitem><para>
+the ACTIVE pool, hosting the connection currently in use by some
+client of the Connection Service instance. As soon as a new session is
+opened, the corresponding connection will populate the ACTIVE pool. 
+</para></listitem>
+<listitem><para>
+the IDLE pool, hosting the connection released by all of the clients
+of the Connection Service instance. As soon as a session is dropped by
+its user, the corresponding connection will populate the IDLE pool.
+</para></listitem>
+</itemizedlist>
+The connectiond stored in the IDLE pool can be of course re-used to
+open new session, by any database user.
+For Read-Only session, also active connections
+(associated to sessions already open) can be shared among more proxy
+sessions, if the request comes from the same database user.
+At each request for a new Session, first the idle pool is searched. In
+case no idle connection is found matching the requested connection string,
+then the active pool is searched. When also in this case no suitable connection is found,   
+a new connection is created from scratch.
+The session sharing (enabled by default) can be disabled esplicitly in
+the IConnectionServiceConfiguration. 
+</para>
+<para>
+After a specific timeout the connections stored in the IDLE Pool will
+be closed. 
+The timeout can be configured by method 'setConnectionTimeOut' in class
+IConnectionServiceConfiguration.
+The cleanup of timed out session is internally triggered at each
+connection and delete pool operation. However, the purging can be forced
+explicitly at any moment, by calling the method IConnectionService::purgeTimedOutConnection.
+</para>
+</sect3>
+<sect3><title>Authentication</title>
+<para>
+The authentication is always implicit. The user cannot specify
+explicitly the database service username and password in the
+connection method call. The two parameters are retrieved "internally"
+by the authentication service, where they are stored in entries mapped
+to the corresponding connection string. Such feature implies that only
+a single pair user/password can be associated to a given connection string. 
+</para>
+</sect3>
+<sect3><title>Connection Retry</title>
+<para>
+The creation of a new connection, when requested, may fail for a
+various type of reasons. For some categories of failure, a recovey can
+be attempted by simply iterating the connection request. Such policy
+applies to some specific failure, like the ones due to a network
+glitch, the overloading of
+the service, or to a short service unavailability. The connection
+service can distinguish such condition, and apply the connection
+re-try according to the user configuration. 
+However, for other failure types, like for wrong authentication parameters, the retry will be not applied.
+The connection is attempted with a specific period of time
+between each trials (retry period), 
+during a well defined total time (retry timeout) on the given
+database service.  In
+case of insuccess, the given connection string is registered on
+an internal list of excluded replicas, for a specific duration of time
+(exclusion time out). After this timeout,
+the connection is re-admitted in the replica list.
+The three parameters  retry period, retry timeout and exclusion time
+can be modified at run time by the user, via the IConnectionServiceConfiguration interface.
+</para>
+</sect3>
+<sect3><title>Replica management and failover</title>
+<para>
+The Connection Service delegates the resolution of the connection
+string to an other service, the database lookup service, implementing the ILookupService interface.
+The lookup service provides a list of possible physical replicas for
+logical database/service name, with the associated authentication
+mechanisms and access mode.
+</para>
+<para>
+For read-only access, the user can define a set of equivalent database
+service.
+In this case, more than one physical connection string can be used for
+the connection and a failover mechanism can be applied. 
+The connection string associated to the replicas are used in the order
+they are stored, attempting the
+connection to the first entry, and moving to the next in case of
+failure. 
+A similar mechanism applies to the re-connect policy, in case
+an established connection fails during its lifetime.
+</para>
+</sect3>
+</sect2>
+
+<sect2><title>Examples</title>
+<sect3><title>Connection service instantiation</title>
+<programlisting>
+<para>
+  seal::PluginManager* pm = seal::PluginManager::get();
+  pm->initialise();
+  seal::Handle&lt;seal::ComponentLoader&gt; loader = new seal::ComponentLoader( context );
+  loader->load( "CORAL/Services/ConnectionService" );
+  std::vector&lt; seal::IHandle&lt;coral::IConnectionService&gt; &gt; v_svc;
+  context->query( v_svc );
+  if ( v_svc.empty() ) {
+    throw std::runtime_error( "Could not locate the connection service" );
+  }
+ seal::IHandle&lt;coral::IConnectionService&gt; theConnectionService  = v_svc.front();
+</para>
+</programlisting>
+</sect3>
+<sect3><title>Connection service initialization</title>
+<programlisting>
+<para>
+IConnectionServiceConfiguration&amp; conf = theConnectionService.configuration();
+// disable the failover to the next replica 
+conf.disableReplicaFailOver(); 
+// disable the connection sharing for read only replica 
+conf.disableConnectionSharing();   
+// disbale the use of update-capable idle connection for read only session
+conf.disableReadOnlySessionOnUpdateConnections();  
+// set the connection retrial period 
+conf.setConnectionRetrialPeriod(10);
+// set the connection retrial time out
+conf.setConnectionRetrialTimeOut(60);
+// set the timeout for idle connection
+conf.setConnectionTimeOut(120);
+// set the timeout in the exclusion list
+conf.setMissingConnectionExclusionTime(3600);
+// set the monitoring level
+conf.setMonitoringLevel(monitor::Debug);
+// enforce the usage of myAuthentication service
+conf.setDefaultAuthenticationService("myplugins/MyAuthenticationService");
+</para>
+</programlisting>
+</sect3>
+<sect3><title>Access to a database service</title>
+<programlisting>
+<para>
+// connect to a database described by a logical connection string
+try {
+  std::string connectionString = "myDatabase";
+  // connect in update mode 
+  ISessionProxy* session = theConnectionService->connect( connectionString, Update );
+  // start an update transaction
+  session->transaction().start();
+  // create a table in the nominal schema
+  coral::TableDescription descr;
+  descr.setName("MYTABLE");
+  descr.insertColumn("N_X",coral::AttributeSpecification::typeNameForType&lt;int&gt;());
+  descr.insertColumn("N_S",coral::AttributeSpecification::typeNameForType&lt;std::string&gt;());
+  session->nominalSchema().createTable( descr );
+  // commit changes
+  session->transaction().commit();
+  // delete the session proxy (the connection will be not dropped)
+  delete session;
+  // reconnect in read-only mode - the same connection will be re-used
+  session = theConnectionService->connect( connectionString, ReadOnly );
+  // start a read-only transaction
+  session->transaction().start( true );
+  std::set&lt;std::string&gt; tables = session->nominalSchema().listTables();
+  session->transaction().commit();
+  delete session;
+  for(std::set&lt;std::string&gt;::const_iterator iT=tables.begin();
+      iT!=tables.end();iT++){
+     std::cout &lt;&lt; "Found table:" &lt;&lt; *iT &lt;&lt; std::endl; 
+  }
+  // force clean up of timed-out connections
+  theConnectionService->purgeConnectionPool();
+} catch ( const ConnectionServiceException&amp; exc) {
+  std::cout &lt;&lt; "ERROR: " &lt;&lt; exc.what() &lt;&lt; std::endl;
+}
+</para>
+</programlisting>
+</sect3>
+<sect3><title>Increasing the failover coverage</title>
+<programlisting>
+<para>
+// connect to a database described by a logical connection string
+std::string connectionString = "myDatabase";
+int maxtries = 5;
+ISessionProxy* session = 0;
+bool success = false;
+bool give_up = false;
+int itry = 0;
+while( !success &amp;&amp; !give_up ){
+  try {
+     itry++;
+     session = theConnectionService->connect( connectionString, ReadOnly );
+     // start a read-only transaction
+     session->transaction().start( true );
+     std::set&lt;std::string&gt; tables = session->nominalSchema().listTables();
+     session->transaction().commit();
+     delete session;
+     session = 0;
+     success = true;
+     // do something...  
+  } catch (const ConnectionServiceException&amp; exc){
+    give_up = true;
+    delete session;
+    session = 0;
+    std::cout &lt;&lt; "ERROR:"  &lt;&lt; exc.what() &lt;&lt; std::endl;
+  } catch (const SessionException&amp; exc){
+    if(itry==maxtries) give_up = true;   
+  } 
+}
+</para>
+</programlisting>
+</sect3>
+
+</sect2>

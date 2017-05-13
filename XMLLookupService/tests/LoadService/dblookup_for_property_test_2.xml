@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<servicelist>
+
+  <logicalservice name="testservice_2">
+    <service name="oracle://host1/schema1" accessMode="update" authentication="password" />
+    <service name="oracle://host2/schema1" accessMode="readonly" authentication="password" />
+    <service name="oracle://host3/schema1" accessMode="update" authentication="certificate" />
+  </logicalservice>
+
+</servicelist>

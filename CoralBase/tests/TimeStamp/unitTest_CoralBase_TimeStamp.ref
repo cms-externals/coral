@@ -1,0 +1,18 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_CoralBase_TimeStamp
+[oval run] =================================================
+
+Testing the "time stamp" type...
+The moment was 24/11/2005 13:13:17.3
+Danae was born on 21/12/1999 at 12:10:30
+Nanoseconds are 213331
+[OVAL] : Test successful
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

@@ -1,0 +1,18 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_CoralBase_AtLiSpecFunctionality
+[oval run] =================================================
+
+x : double
+y : float
+z : int
+Type for "y" is "float"
+[OVAL] : Test successful
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

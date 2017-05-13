@@ -1,0 +1,27 @@
+package CoralKernel
+
+#============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+use CoralBase v*
+
+apply_pattern lcg_shared_library
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+use CppUnit v* LCG_Interfaces -no_auto_imports
+
+# The unit tests
+apply_pattern coral_unit_test tname=ExternalPluginManager
+apply_pattern coral_unit_test tname=PluginList
+apply_pattern coral_unit_test tname=PluginManager
+apply_pattern coral_unit_test tname=PropertyManager
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

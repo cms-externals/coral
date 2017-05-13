@@ -1,0 +1,37 @@
+<sect2><title>SQLiteAccess Semantics</title>
+<sect3><title>The logical data hiererchy</title>
+<para>In order to connect to a SQLite database file using CORAL one should
+specify a  connection string which typically has a format such as
+<programlisting>
+  sqlite_file:filename.db
+  sqlite_file:///home/dbfiles/f1.db
+</programlisting>
+In the case the contact string has the format: sqlite_file:my.db
+</para>
+<para>
+-if SQLITE_FILE_PATH variable is set, SQLiteAccess read/write my.db in this dir, exception if the dir does not exist;
+</para>
+<para>
+-if SQLITE_FILE_PATH variable is not set, SQLiteAccess read/write my.db in the currentdir
+</para>
+<para>
+In the case the contact string has the absolute path format:
+<programlisting>
+  sqlite_file:///tmp/my.db
+</programlisting>
+the SQLITE_FILE_PATH variable is not taken into consideration
+</para>
+<para>There is zero configuration required to read/write data into sqlite files.</para>
+<para>
+The schema name is fixed as "main".
+</para>
+<para>
+sqlite database doesnot have its own SQL types.
+SQLiteAccess defines the following SQL to c++ type mapping: 
+BOOLEAN(bool), CHAR(char), UNSIGNEDCHAR(unsigned char), SHORT(short), UNSIGNEDSHORT(unsigned short), INT(int), UNSIGNEDINT(unsigned int), LONG(long), UNSIGNEDLONG(unsigned long), ULONGLONG(unsigned long long), SLONGLONG(long long), FLOAT(float), DOUBLE(double), LONGDOUBLE(long double), TEXT(std::string), BLOB(coral::blob), DATE(coral::date), TIMESTAMP(coral::timestamp)
+</para>
+<para>
+Note: if the SQL type in a sqlite database is not found in this list, SQLiteAccess will NOT recognise it.
+</para>
+</sect3>
+</sect2>

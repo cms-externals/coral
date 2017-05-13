@@ -1,0 +1,46 @@
+<sect2><title>XMLLookupService Reference</title>
+<sect3>
+<title>Properties of the "CORAL/Services/XMLLookupService" component</title>
+<itemizedlist>
+<listitem><emphasis role="bold">Properties of Lookup File</emphasis> :
+The name of the file can be set through property manager of the service.
+The authentication methods include options of password or certificate, depending on originating site.
+Access Mode can be 'readonly' or 'update'.
+</listitem></itemizedlist>
+</sect3>
+
+<sect3>
+<title>Environment variables related to the "CORAL/Services/XMLLookupService" component</title>
+<itemizedlist>
+<listitem><emphasis role="bold">CORAL_DBLOOKUP_PATH</emphasis> :
+a path environment variable, where the XML input file is searched
+for. The current working directory has always higher priority.</listitem>
+</itemizedlist>
+</sect3>
+
+<sect3>
+<title>Connection related service parameters</title>
+<para>
+Currently three parameters are supported (see ConnectionService
+documentation for their meaning and usage):
+<itemizedlist>
+<listitem>
+<para>
+<emphasis role="bold">ConnectionRetrialPeriod.</emphasis>
+</para>
+</listitem>
+<listitem>
+<para>
+<emphasis role="bold">ConnectionRetrialTimeOut.</emphasis>
+</para>
+</listitem>
+<listitem>
+<para>
+<emphasis role="bold">ConnectionTimeOut.</emphasis>
+</para>
+</listitem>
+</itemizedlist> 
+</para>
+</sect3>
+
+</sect2>

@@ -1,0 +1,44 @@
+<sect2>
+<title>Implementation specifics</title>
+<para>
+This package consists of two main components connection service and
+web cache control service, providing a concrete implementation
+respectively for the public interfaces IConnectionService,
+IConnectionServiceConfiguration, ISessionProxy, and IWebCacheControl,
+IWebCacheInfo.
+</para>
+<para>
+The main subcomponents of connection service are the connection
+replica service and the connection pool service.
+The connection replica service is in charged to translate a user
+connection request ? based on logical or physical connection string  -
+into a list of pre-defined database connection corresponding to it,
+retrieved by the underlying ILookupService implementation. When a
+connection attempt to one of the physical replica fails for the
+(configurable) maximum number of times, the connection string to this
+replica is registered in a special list of 'unavailable' database
+services, where it remains for a configurable interval of
+time. Connection string in this list will be excluded as possible
+replicas.  
+</para>
+<para>
+The connection pool manages the cache of coral::ISession objects. In the pool idle connections (with no user session started on them) and active connections (with one session open on them, possibly shared among more clients of the proxy) are stored in two distinct registers. When active connection become idle ( when the user session on them is closed ) , it is automatically moved to the idle connection register.
+When a client requests a new ISessionProxy object, the first lookup is done against the idle connection register. If a connection matches the request (in terms of physical connection string for a given replica and access mode), a new user session is started on it and the connection is moved to the active list.
+If no idle connection is matching the request, the active list is looked up. According to the current policy, only READ-ONLY session can be shared among more proxy clients. Therefore, for UPDATE session the active list is never used.
+Both idle and active list are implemented with std::map, using uuid as unique connection identifier. Connection handling and reference management is implemented with boost::shared_ptr.     
+</para>
+</sect2>
+
+<sect2>
+<title>Related components</title>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>RelationalAccess</emphasis>, is the package
+where the CORAL abstract interfaces are defined.</para></listitem>
+<listitem><para><emphasis>CoralCommon</emphasis>, is the package
+where some developer-level interfaces and some common implementation
+classes are defined.</para></listitem>
+</itemizedlist>
+</para>    
+
+</sect2>

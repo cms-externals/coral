@@ -1,0 +1,27 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_CoralCommon_MonitoringEvent
+[oval run] =================================================
+
+Coral event text data:    text
+Coral event numeric data: 2
+Coral event time data:    4294967295
+Coral event text data:    text
+Coral event numeric data: 0x2
+Coral event time data:    0xffffffff
+Info OK:  0x1 0x11 0x1
+Error OK: 0x10 0x11 0x10
+Time OK:  0x4 0x11 0
+Created event: 0x1 0x42f87e23.295812 0x10 0x1 No payload event 
+Created event: 0x2 0x42f87e23.295918 0x10 0x1 App event Info
+Created event: 0x3 0x42f87e23.295965 0x40 0x4 Session event 2
+Created event: 0x4 0x42f87e23.295976 0x80 0x8 Tx event 2.2
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<connectionslist>
+  <connection name="sqlite_file:nestedqs_test.sqlite">
+   <parameter name="user" value="ora" />
+   <parameter name="password" value="ora" />
+  </connection>
+   <connection name="oracle://TEST10G/pool_fc_test">
+   <parameter name="user" value="pool_fc_test" />
+   <parameter name="password" value="test_pool_fc" />
+  </connection>
+  <connection name="oracle://devdb/rado">
+    <parameter name="user" value="rado" />
+    <parameter name="password" value="RaBeAn3" />
+  </connection>
+  <!-- RLS LRC production server connection -->
+  <connection name="oracle://rls1/lcg2_cms_lrc">
+    <parameter name="user" value="lcg2_cms_lrc" />
+    <parameter name="password" value="aiyeicha" />
+  </connection>
+  <!-- RLS RMC production server connection -->
+  <connection name="oracle://rls1/lcg2_cms_rmc">
+    <parameter name="user" value="lcg2_cms_rmc" />
+    <parameter name="password" value="eeduwaeb" />
+  </connection>
+  <!-- RLS LRC hot standby server connection -->
+  <connection name="oracle://rls1hs/lcg2_cms_lrc">
+    <parameter name="user" value="lcg2_cms_lrc" />
+    <parameter name="password" value="aiyeicha" />
+  </connection>
+  <!-- RLS RMC hot standby server connection -->
+  <connection name="oracle://rls1hs/lcg2_cms_rmc">
+    <parameter name="user" value="lcg2_cms_rmc" />
+    <parameter name="password" value="eeduwaeb" />
+  </connection>
+  <!-- RFC target server connection -->
+  <connection name="oracle://test10g/pool_fc_test">
+    <parameter name="user" value="pool_fc_test" />
+    <parameter name="password" value="test_pool_fc" />
+  </connection>
+  <connection name="oracle://raltest/pool_fc_test">
+    <parameter name="user" value="pool_fc_test" />
+    <parameter name="password" value="test_pool_fc" />
+  </connection>
+  <connection name="oracle://itrac/radovan">
+    <parameter name="user" value="radovan" />
+    <parameter name="password" value="radovan" />
+  </connection>
+  <connection name="mysql://pcitdb59.cern.ch/RFC">
+    <parameter name="user" value="rfc" />
+    <parameter name="password" value="rfc" />
+  </connection>
+  <connection name="mysql://pcitdb59.cern.ch/RADO_POOL">
+    <parameter name="user" value="rado_pool" />
+    <parameter name="password" value="rado_pool" />
+  </connection>
+  <connection name="frontier://lxfs6043.cern.ch:8000/Frontier3D">
+    <parameter name="user" value="CORAL" />
+    <parameter name="password" value="Frontier24" />
+  </connection>
+  <connection name="frontier://lxfs6043.cern.ch:8080/Frontier3D">
+    <parameter name="user" value="CORAL" />
+    <parameter name="password" value="Frontier24" />
+  </connection>
+  <connection name="oracle://cms_val_lb/CORAL">
+    <parameter name="user" value="CORAL" />
+    <parameter name="password" value="Frontier24" />
+  </connection>
+</connectionslist>

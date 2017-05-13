@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY Semantics SYSTEM "Semantics.xml">
+<!ENTITY Implementation SYSTEM "Implementation.xml">
+<!ENTITY ReferenceManual SYSTEM "ReferenceManual.xml">
+]>
+<article>
+ <articleinfo>
+	<title>CORAL Component documentation: OracleAccess</title>
+  <author>
+   <firstname>Ioannis</firstname> <surname>Papadopoulos</surname>
+ 	 <affiliation><orgname>CERN</orgname></affiliation>
+   <address>
+    e-mail:<email>Ioannis.Papadopoulos@cern.ch</email>
+   </address>
+  </author>
+  <pubdate>October 2005</pubdate>
+ </articleinfo>
+
+
+
+<sect2 id="OracleAccess_Introduction">
+<title>Introduction</title>
+    
+<sect3><title>Purpose of the component</title>
+  <para>The OracleAccess package is a plugin library providing an
+  implementation of the IRelationalDomain interface for accessing an
+  Oracle database. The package is based on the Oracle Call Interface (OCI) API.
+  </para>
+</sect3>
+ 
+<sect3><title>Known problem and restrictions</title>
+  <para>The package is for the moment tested against Oracle 9i and 10g database servers. Earlier server versions are not supported.</para>
+</sect3>
+
+<sect3><title>Repository of the component</title>
+   <para><emphasis>:pserver:anonymoys@coral.cvs.cern.ch:/cvs/coral</emphasis>/<emphasis role="bold">coral/OracleAccess</emphasis></para>
+</sect3>
+
+</sect2>
+
+
+&Semantics;
+
+&Implementation;
+
+&ReferenceManual;
+
+</article>

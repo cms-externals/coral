@@ -1,0 +1,47 @@
+<!-- $Id: ReferenceManual.xml,v 1.3 2005/11/18 10:36:44 ioannis Exp $ -->
+<sect2> <title>MySQLAccess Reference</title>
+ <sect3> <title>MySQLAccess environment variables</title>
+  <itemizedlist>
+   <listitem>
+    <para>
+    <emphasis role="bold">CORAL_MYSQL_CLOB_PREFIX_LEN</emphasis> :
+    if set to a numeric value in the range from 0 to 255, it affects
+    the orefix size of the index prefix of all the index column of the
+    CLOB MySQL types like TINYTEXT, TEXT, MEDIUMTEXT &amp; LONGTEXT.
+    If not set the default built-in prefix size is 32 bytes/chars.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </sect3>
+
+<!--
+<sect3> <title>Properties of the "CORAL/RelationalPlugins/mysql" component</title>
+ <itemizedlist>
+  <listitem>
+   <para>
+   <emphasis role="bold">TableSpaceForTables</emphasis> :
+defines the table space where tables are created. It takes its default
+value from the environment variable <emphasis role="bold">CORAL_ORA_TS_TAB</emphasis>.
+If not specified neither there, nor in the CORAL API, the user default is used.</para></listitem>
+
+<listitem><para><emphasis role="bold">TableSpaceForIndices</emphasis> :
+defines the table space where indices are created. It takes its default
+value from the environment variable <emphasis role="bold">CORAL_ORA_TS_IND</emphasis>.
+If not specified neither there, nor in the CORAL API, the user default is used.</para></listitem>
+
+<listitem><para><emphasis role="bold">TableSpaceForIndices</emphasis> :
+defines the table space where LOBs are created. It takes its default
+value from the environment variable <emphasis role="bold">CORAL_ORA_TS_LOB</emphasis>.
+If not specified neither there, nor in the CORAL API, the user default is used.</para></listitem>
+
+<listitem><para><emphasis role="bold">LobChunkSize</emphasis> :
+defines the size in bytes of the chunks when reading a LOB from the database. It takes its default
+value from the environment variable <emphasis role="bold">CORAL_ORA_LOB_CHUNK_SIZE</emphasis>.
+If not specified a default of 1024 bytes (1KB) is used.</para></listitem>
+
+</itemizedlist>
+
+</sect3>
+-->
+
+</sect2>

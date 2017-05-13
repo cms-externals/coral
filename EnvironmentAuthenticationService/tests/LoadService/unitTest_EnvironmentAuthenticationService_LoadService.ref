@@ -1,0 +1,21 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_EnvironmentAuthenticationService_LoadService
+[oval run] =================================================
+
+Connection "oracle://host1/USER" :
+    user : dbuser
+    password : dbpasswd
+Connection "oracle://host2/USER" :
+    user : dbuser
+    password : dbpasswd
+Exiting...
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

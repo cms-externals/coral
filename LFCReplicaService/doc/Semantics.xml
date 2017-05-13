@@ -1,0 +1,129 @@
+<sect2><title>LFCReplicaService Semantics</title>
+<sect3><title>Architecture</title>
+<para>
+The LFCReplicaService is a database replica catalogue using an LFC
+server as a storage backend. 
+The translation of the LFC stored data to the database-related
+information is implemented in the client-side code, based on the LFC
+C-API client.
+Each database replica is stored with its associated information,
+including the authentication credential (pair username+password),
+database server host name, status of the server.
+In order to protect the access to the replica entry for the disclosure
+of the associated authentication credentials, the
+LFCReplicaService fully uses the LFC built-in security scheme
+permission. 
+The LFC uses
+the Grid (proxy) certificates extended with the VOMS information to
+establish the identity of the client, and regulates the access to the
+file entries with a file-system like access permission scheme, which
+includes ACL's. 
+In order to adopt this security scheme, the
+LFCReplicaService defines a database catalogue entry (=a logical file
+name on the LFC side) for each role to be coupled to a credential
+pair.In such a way the role entry, represented by an entry in the
+LFC file system, can be protected for the access using the standard
+LFC security scheme, allowing only the intended grid roles or groups
+to access the file and disclose the authentication credentials.  
+</para>
+</sect3>
+<sect3><title>LFC Server Connection</title>
+<para>
+The LFC C-API client does not allow an explicit connection with a
+given LFC server. The connection is established implicitly, at any
+function call accessing the LFC name server. The LFC host is specified
+with the environment variable LFC_HOST.
+In order to be authenticated into a secure LFC name server, the user
+needs a valid grid certificate to be available in the execution
+context.
+In case of missing valid certificate, the LFC will return the error message: 
+"send2nsd: NS002 - send error : No valid credential found".
+</para>
+</sect3>
+<sect3><title>Deployment of CORAL database catalogue into an existing
+LFC server</title>
+<para>
+In order to use an existing LFC server as a database catalogue, very
+little deployment operation is required. Since the operation of the
+database entries involves the management of the database
+authentication credentials, it is assumed that it will be performed by
+a super-user, acting as
+database catalogue administrator. 
+The first action required is the definition of the database catalogue
+area in the LFC file system. By default, the LFCReplicaService assumes
+the folder /database as a root base folder for the database entries.
+Optionally, a user defined folder can be assumed as root, by setting
+the environment variable CORAL_LFC_BASEDIR.
+In both cases, the corrisponding folder has to be created and set with
+the necessary access permission RWX to the db catalogue administrator.
+In order to add a replica set, the administrator will run the
+coral_replica_manager -add command, specifying all the required
+parameters.
+The entry created will be by default not accessible to the world.
+In order to let a specific grid identity (role or group) access the
+database entry, the db administrator has to run the
+coral_replica_manager -set_perm command for all the group entitled to
+access the replicas.
+</para>
+<para>
+Example:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+logical connection name:  /atlas/ecal/calib
+</para>
+</listitem>
+<listitem>
+<para>
+physical connection string: oracle://ecal_calib/calib_writer
+</para>
+</listitem>
+<listitem>
+<para>
+username:          calib_reader
+</para>
+</listitem>
+<listitem>
+<para>
+password:          xyz2006
+</para>
+</listitem>
+<listitem>
+<para>
+database server:   atlr
+</para>
+</listitem>
+<listitem>
+<para>
+coral role:        writer
+</para>
+</listitem>
+<listitem>
+<para>
+to be visible for grid role: offline_reader
+</para>
+</listitem>
+</itemizedlist>
+<para> the commands necessary:</para>
+<para>
+<programlisting>
+coral_replica_manager -add -l /atlas/ecal/calib -c oracle://ecal_calib/calib_writer 
+                           -r writer -u calib_reader -p xyz2006 
+</programlisting>
+</para>
+<para>
+<programlisting>
+coral_replica_manager -set_perm -l /atlas/ecal/calib -r writer -g offline_writer -ro
+</programlisting>
+</para>
+</sect3>
+
+<sect3><title>Storage of database password in the LFC server</title>
+<para>
+In order to avoid storage of clear text password in the LFC tables, a
+simple key-based mechansim of encryption has been implemented.
+</para>
+</sect3>
+
+</sect2>

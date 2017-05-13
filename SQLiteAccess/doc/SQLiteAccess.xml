@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY Semantics SYSTEM "Semantics.xml">
+<!ENTITY Implementation SYSTEM "Implementation.xml">
+<!ENTITY ReferenceManual SYSTEM "ReferenceManual.xml">
+]>
+<article>
+ <articleinfo>
+	<title>CORAL Component documentation: SQLiteAccess</title>
+  <author>
+   <firstname>Zhen</firstname> <surname>Xie</surname>
+ 	 <affiliation><orgname>Princeton University</orgname></affiliation>
+   <address>
+    e-mail:<email>Zhen.Xie@cern.ch</email>
+   </address>
+  </author>
+  <pubdate>October 2005</pubdate>
+ </articleinfo>
+
+<sect2 id="SQLiteAccess_Introduction">
+<title>Introduction</title>
+    
+<sect3><title>Purpose of the component</title>
+  <para>The SQLiteAccess package is a plugin library providing an
+  implementation of the IRelatioalDomain interface for accessing a filebased
+  SQLite database. The package is based on the sqlite3 API.
+  </para>
+</sect3>
+ 
+<sect3><title>Repository of the component</title>
+   <para><emphasis>:pserver:anonymoys@coral.cvs.cern.ch:/cvs/coral</emphasis>/<emphasis role="bold">coral/SQLiteAccess</emphasis></para>
+</sect3>
+
+</sect2>
+
+
+&Semantics;
+
+&Implementation;
+
+&ReferenceManual;
+
+</article>

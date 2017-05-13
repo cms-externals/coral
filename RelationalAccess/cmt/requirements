@@ -1,0 +1,24 @@
+package RelationalAccess
+
+#============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+use CoralBase v*
+
+apply_pattern lcg_shared_library
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+use CoralKernel v*
+
+# The unit tests
+apply_pattern coral_unit_test tname=TableDescription
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

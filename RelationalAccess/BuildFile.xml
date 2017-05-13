@@ -1,0 +1,5 @@
+<use   name="LCG/CoralBase"/>
+<use   name="LCG/CoralKernel"/>
+<export>
+  <lib   name="1"/>
+</export>

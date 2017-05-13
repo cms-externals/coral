@@ -1,0 +1,76 @@
+<sect2>
+<title>Description of the CoralBase API functionality</title>
+
+<sect3><title>Data Types</title>
+<para>All operations with the CORAL API use exclusivelly C++ types. No SQL types are exposed.
+This means that column variables appearing in table descriptions and query result sets are mapped to
+a compatible C++ types. The C++ types supported in CORAL are:
+<itemizedlist>
+<listitem>All the primitive C++ types: <emphasis>bool, (unsigned) char, (unsigned) short, (unsigned) int, (unsigned) long, float, (long) double</emphasis>.</listitem>
+<listitem>The string type of the C++ standard library: <emphasis>std::string</emphasis></listitem>
+<listitem>The platform independent 64-bit integer types provided by SEAL (SealBase): <emphasis>seal::IntBits&lt;64>::SLeast</emphasis> (signed 64-bit integer),
+<emphasis>seal::IntBits&lt;64>::ULeast</emphasis> (unsigned 64-bit integer)</listitem>
+<listitem>The BLOB type defined by CORAL (CoralBase): <emphasis>coral::Blob</emphasis></listitem>
+<listitem>The DATE type defined by CORAL (CoralBase): <emphasis>coral::Date</emphasis></listitem>
+<listitem>The TIMESTAMP type defined by CORAL (CoralBase): <emphasis>coral::TimeStamp</emphasis></listitem>
+</itemizedlist>
+</para>
+
+<para>The <ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Blob.html">Blob</ulink> type is a wrapper class of a
+contiguous memory segment, which can be resized on user request. This type is suitable for I/O of raw data or LOB SQL types.</para>
+
+<para>The <ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Date.html">Date</ulink>
+and <ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1TimeStamp.html">TimeStamp</ulink>
+types wrap the seal::Time class in order to perform I/O to tables containing DATE and TIMESTAMP columns.</para>
+
+</sect3>
+
+<sect3><title>The AttributeList</title>
+<para>The main interface which is used for all the data exchange between a CORAL-based software component and a relational database is
+the <emphasis><ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AttributeList.html">AttributeList</ulink></emphasis> class.
+It is a container of <emphasis>Attributes</emphasis>, which are named variables of simple types (listed above).
+An <ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1Attribute.html">Attribute</ulink> holds the actual data of the named
+variable and its <emphasis>Specification</emphasis>, which holds its name and its C++ type. The Attribute also holds the <emphasis>null-ness</emphasis>
+of the variable, a concept which is inherent in SQL variables but absent in C++ ones.
+The AttributeList can therefore be thought of as a buffer holding the data of a table row. It is used both for input and output operations.</para>
+
+<para>The Attribute class provides access to the actual data which is either fast or accompanied with type checking. This allows a user to choose the
+access method that is mostly relevant to the use case or problem in consideration.</para>
+
+<para>The AttributeList and Attribute classes have been designed and optimized for database I/O operations. For this reason the following
+capabilities have been added to their basic functionality:
+<variablelist>
+<varlistentry><term>Sharing of data</term>
+<listitem>The actual C++ variable of an Attribute can be shared among other Attributes. This allows the construction of different AttributeLists
+accessing the same data, thus avoiding the need of copying and bookkeeping. For this reason, the variables in the Attributes are reference counted.</listitem>
+</varlistentry>
+
+<varlistentry><term>Binding of external data</term>
+<listitem>A user can define Attributes which correspond to variables that are external to the class. This capability facilitates the I/O of complex structures
+to a database without intermediate data copies.</listitem>
+</varlistentry>
+
+<varlistentry><term>Sharing of specifications</term>
+<listitem>Attributes and AttributeLists may share specifications. This feature, among other things, reduces the memory consumption of software components
+which create and destroy such objects rather frequently.</listitem>
+</varlistentry>
+
+</variablelist>
+</para>
+</sect3>
+
+</sect2>
+
+<sect2>
+<title>Example of usage of the CoralBase API</title>
+<para>
+Examples of usage of the Blob and AttributeList types can be found
+under the CoralBase unit tests:
+<itemizedlist>
+<listitem><ulink url="http://coral.cvs.cern.ch/cgi-bin/coral.cgi/coral/CoralBase/tests/BlobReadWrite/">Using the BLOB type</ulink>.</listitem>
+<listitem><ulink url="http://coral.cvs.cern.ch/cgi-bin/coral.cgi/coral/CoralBase/tests/Date/">Using the Date type</ulink>.</listitem>
+<listitem><ulink url="http://coral.cvs.cern.ch/cgi-bin/coral.cgi/coral/CoralBase/tests/TimeStamp/">Using the TimeStamp type</ulink>.</listitem>
+<listitem><ulink url="http://coral.cvs.cern.ch/cgi-bin/coral.cgi/coral/CoralBase/tests/AtLiFunctionality/">AttributeList functionality</ulink>.</listitem>
+</itemizedlist>
+</para>
+</sect2>

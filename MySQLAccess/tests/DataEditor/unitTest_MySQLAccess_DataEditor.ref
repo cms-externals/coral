@@ -1,0 +1,36 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_OracleAccess_DataEditor
+[oval run] =================================================
+
+CORAL/RelationalPlugins/oracle: level[Info] Connected to a server running Oracle version 10.1.0.4.0
+About to drop previous table
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "DROP TABLE IOANNIS."T_1""
+Describing new tables
+About to create the tables
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "CREATE TABLE IOANNIS."T_1" ( "ID" NUMBER(10), "x" BINARY_FLOAT NOT NULL, "Y" BINARY_DOUBLE, "Z" BINARY_DOUBLE, "data0" VARCHAR2(4000), "data1" CHAR(2), "data2" VARCHAR(321), CONSTRAINT "T_1_PK" PRIMARY KEY ( "ID" ) )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "INSERT INTO IOANNIS."T_1" ( "ID", "x", "Y", "Z", "data0", "data1", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data0", :"data1", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Error] ORA-00001: unique constraint (IOANNIS.T_1_PK) violated (Executing the statement)
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "DELETE FROM IOANNIS."T_1" WHERE "ID"<:"id""
+Removed 5 rows
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "UPDATE IOANNIS."T_1" SET "Y"   = "Y"+ :"increment" WHERE "ID">:"id""
+Updated 2 rows
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

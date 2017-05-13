@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<servicelist>
+
+  <logicalservice name="write_test">
+    <service name="oracle://devdb10/ral_writer" accessMode="update" authentication="password" />
+  </logicalservice>
+  
+  <logicalservice name="reader_test">
+    <service name="oracle://devdb10/ral_reader" accessMode="update" authentication="password" />
+  </logicalservice>
+
+  <logicalservice name="sql_test">
+    <service name="sqlite_file:yulia.db" accessMode="update" authentication="password" />
+  </logicalservice>
+
+  <logicalservice name="my_test">
+    <service name="mysql://pcitdb59.cern.ch/RADO_POOL" accessMode="update" authentication="password" />
+  </logicalservice>
+
+</servicelist>

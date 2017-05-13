@@ -1,0 +1,22 @@
+<?xml version="1.0" ?><!DOCTYPE extension  PUBLIC "-//QM/2.3/Extension//EN"  "http://www.codesourcery.com/qm/dtds/2.3/-//qm/2.3/extension//en.dtd">
+<extension class="LCG_QMTestExtensions.ShellCommandTest" kind="test">
+<argument name="excluded_lines"><text /></argument>
+<argument name="target_group"><text>.*</text></argument>
+<argument name="stderr"><text></text></argument>
+<argument name="prerequisites"><set /></argument>
+<argument name="stdout"><text /></argument>
+<argument name="stdout_ref"><text>test_Integration_ConnectionService_CleanUpPool_mysql.ref</text></argument>
+<argument name="stdout_ref_path"><text>../../Tests/Integration_ConnectionService_CleanUpPool//</text></argument>
+<argument name="stdout_tol"><integer>0</integer></argument>
+<argument name="exit_code"><integer>0</integer></argument>
+<argument name="stdout_tag"><text>[OVAL]</text></argument>
+<argument name="environment"><set>
+<text>CORAL_MSGFORMAT=ATLAS</text>
+</set></argument>
+<argument name="timeout"><integer>300</integer></argument>
+<argument name="description_test"><text /></argument>
+<argument name="command"><text>test_Integration_ConnectionService_CleanUpPool mysql</text></argument>
+<argument name="resources"><set /></argument>
+<argument name="stdin"><text /></argument>
+<argument name="unsupported_platforms"><text>.*</text></argument>
+</extension>

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<servicelist>
+  <logicalservice name="/dbdev/Frontier3D">
+    <service name="oracle://bd3d/RADOVAN"
+             accessMode="update"
+             authentication="password" />
+     <service name="frontier://frontier3d.cern.ch:8080/Frontier/RADOVAN"
+              accessMode="readonly"
+              authentication="password" />
+  </logicalservice>
+  <logicalservice name="/dbdev/Frontier3DRead">
+     <service name="frontier://frontier3d.cern.ch:8080/Frontier/RADOVAN"
+              accessMode="readonly"
+              authentication="password" />
+  </logicalservice>
+</servicelist>

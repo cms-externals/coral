@@ -1,0 +1,1080 @@
+Package container CORAL_SERVER
+List of packages and package managers:
+- CoralServerBase      (Andrea Valassi)
+- CoralAccess          (Andrea Valassi)
+- CoralServer          (Andrea Valassi)
+- CoralStubs           (Alex Kalkhof)
+- CoralSockets         (Martin Wache)
+- CoralServerProxy     (Andy Salnikov)
+- CoralAuthentication  (Martin Wache)
+- CoralMonitor         (Alex Kalkhof)
+
+==============================================================================
+!2009.11.23
+
+Private tag AV-20091123_01.
+
+Use it to move the CORAL_2_3-ATLAS branch to include the new 
+script/log infrastructure for the three main tests in CORAL_SERVER:
+
+  cvs rtag -d -B CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/CoralMonitor/scripts
+  cvs rtag -r AV-20091123_01 -b CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/CoralMonitor/scripts
+
+  cvs rtag -d -B CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/Tests/CoolRegression
+  cvs rtag -r AV-20091123_01 -b CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/Tests/CoolRegression
+
+  cvs rtag -d -B CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/CoralAccess/scripts
+  cvs rtag -r AV-20091123_01 -b CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/CoralAccess/scripts
+
+  cvs rtag -d -B CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/CoralAccess/logs
+  cvs rtag -r AV-20091123_01 -b CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/CoralAccess/logs
+
+  cvs rtag -d -B CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/Tests/HLT/testarea/15.2.0
+  cvs rtag -r AV-20091123_01 -b CORAL_2_3-ATLAS-branch \
+      coral/CORAL_SERVER/Tests/HLT/testarea/15.2.0
+
+ALL PyCoral, COOL R/O and HLT tests succeed (on slc4_ia32_gcc34_dbg)
+in the resulting CORAL_2_3-ATLAS-branch.
+
+==============================================================================
+!2009.11.11
+
+Created a CORAL_2_3-ATLAS branch for CORAL_SERVER.
+The branch point is COOL_2_3_3-pre2 (presently installed at ATLAS Point1).
+  cvs rtag -r CORAL_2_3_3-pre2 -b CORAL_2_3-ATLAS-branch coral/CORAL_SERVER
+
+==============================================================================
+!2009.10.02
+
+Private tag AV-20091002_02.
+Pre-release tag CORAL_2_3_3-pre2 (for all of coral CVS).
+
+Changes in CoralStubs:
+- Performance improvement for segmented FetchAllRows replies
+  (push packet segments back without waiting for all rows to be retrieved).
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+ALL HLT tests (local, server) succed (on slc4_ia32_gcc34_dbg).
+
+==============================================================================
+!2009.10.02
+
+Private tag AV-20091002_01.
+Pre-release tag CORAL_2_3_3-pre1 for selected base packages.
+
+Use a modified version of CoralBase (tagged as CORAL_2_3_3-pre1):
+- Add support for Atlas-like message format by setting CORAL_MSGFORMAT=ATLAS.
+  [TODO: clean up MsgReporter2 and remove unnecessary code from MsgReporter]
+- Attempt fix for bug #54968 (segfault in AttributeListSpecification::extend).
+
+Use a modified version of SQLiteAccess (tagged as CORAL_2_3_3-pre1):
+- Fix for bug #54806 (non-unique indexes may be handled as unique)
+
+Use a modified version of OracleAccess (tagged as CORAL_2_3_3-pre1):
+- Print SQL statement in several debug messages.
+- Workaround for bug #47435 (OracleAccess hangs in multi-threaded mode): 
+  keep OCILobRead, but skip OCILobOpen and OCILobClose (not necessary!).
+  This is an Oracle bug that would be fixed by the upgrade to the 11.1 client.
+  [TODO: remove CORAL_ORA_OCI_LOB_OPEN_CLOSE env to call OCILobOpen/Close].
+- Fix bug #54050 (improve previous fix for bug #49657 in ORA-01403).
+- Performance optimization for data dictionary queries (task #10775).
+- Use non-serializable read-only transactions (skip OCITransStart 
+  and OCITransCommit calls) if CORAL_ORA_SKIP_TRANS_READONLY is set. 
+  This makes it possible to read data added after a transaction was started.
+
+Use a modified version of ConnectionService (tagged as CORAL_2_3_3-pre1):
+- Add debug printouts about connection sharing.
+
+Add new package CoralMonitor:
+- Provide monitoring functionalities (replace ThreadMonitorReporter).
+- Move monitoring classes from CoralServerBase.
+
+Changes in CoralServerBase:
+- Move monitoring classes to CoralMonitor.
+
+Changes in CoralAccess:
+- Unset CORAL_ORA_SKIP_TRANS_READONLY in all tests (use default CORAL).
+- Added server csv files to committed test logs.
+- Adapt test scripts to new coralServer command line arguments and options.
+
+Changes in CoralServer:
+- Monitoring changes:
+  > Use CoralMonitor for monitoring. 
+  > Disable several ScopedTimers too.
+  > Class ThreadMonitorReporter and env CORALSERVER_MONFILE are no longer used.
+  > Add private option to eventually produce plots.
+- Use options instead of command line arguments for coralServer.
+
+Changes in CoralStubs:
+- Monitoring changes:
+  > Use CoralMonitor for monitoring. 
+  > Disable several ScopedTimers too.
+- Performance improvement for segmented FetchAllRows replies
+  (push packet segments back without waiting for all rows to be retrieved).
+
+Changes in CoralSockets:
+- Monitoring changes:
+  > Use CoralMonitor for monitoring. 
+  > Disable several printTimers too.
+
+Changes in Tests:
+- Unset CORAL_ORA_SKIP_TRANS_READONLY in COOL tests (use default CORAL).
+  Set CORAL_ORA_SKIP_TRANS_READONLY in HLT tests.
+- Added server csv files to committed test logs.
+- Adapt test scripts to new coralServer command line arguments and options.
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+ALL HLT tests (local, server) succed (on slc4_ia32_gcc34_dbg).
+
+==============================================================================
+!2009.08.31
+
+Private tag AV_20090831_01.
+
+Changes in CoralServerBase:
+- Fixes in the monitoring implementation.
+
+Changes in CoralServer:
+- Fixes in the monitoring implementation.
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+ALL HLT tests (local, server) succed (on slc4_ia32_gcc34_dbg).
+
+==============================================================================
+!2009.08.29
+
+Private tag AV_20090829_01.
+
+Changes in CoralAuthentication:
+- Minor fixes (remove semicolons).
+
+Changes in CoralServerBase:
+- Implement Alex's monitor prototype. 
+  Add interface IStatsType and classes StatsStorage and StatsTypeTimer.
+
+Changes in CoralServer:
+- Implement Alex's monitor prototype.
+
+Changes in CoralSockets:
+- Fix 'Bad file descriptor' (upper layers now see if connection gets closed).
+- Implement Alex's monitor prototype.
+
+Changes in CoralServerProxy:
+- Changed default port number from 8080 to 40007.
+- Host name can be specified in environment variable.
+- Disable client-side disconnects for now, breaks on fast machine.
+- Change packet header reading call from recv to read, saw segmented headers.
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+ALL HLT tests (local, server) succed (on slc4_ia32_gcc34_dbg).
+
+==============================================================================
+!2009.07.29
+
+Changes in CoralServer:
+- Fix compiler warnings.
+
+The code (CORAL and CORAL_SERVER) builds but was not tested.
+
+==============================================================================
+!2009.07.29
+
+Release tag CORAL_2_3_2.
+
+Private tag AV_20090729_01.
+
+Changes in CoralServerBase:
+- Fix bug #53719 (allocate memory for trailing '\0' appended by sprintf).
+- Fix CTL packet test after reducing max size from 0x00FFFFFF to 0x0000FFFF.
+
+The code (CORAL and CORAL_SERVER) builds but was not tested.
+
+==============================================================================
+!2009.07.21
+
+Private tag AV_20090721_01.
+
+Changes in CoralServerBase:
+- Add interface IThreadMonitor for monitoring threads using listThreads().
+
+Changes in CoralSockets:
+- Derive ThreadManager from new interface IThreadMonitor.
+- Add a threadMonitor() method to SocketServer to retrieve the IThreadMonitor.
+- Make Runnable::desc virtual=0 and implement it in all derived classes.
+
+Changes in CoralServer:
+- Add new class ThreadMonitorReporter.
+- Start a ThreadMonitorReporter in the coralServer executable.
+- Start the server on 0.0.0.0 by default instead of localhost.
+
+Changes in Tests:
+- Use formatted COOL/CORAL output on client and server.
+- Start server and proxy on 0.0.0.0 for tests instead of localhost.
+- Add option to switch on coralServer thread monitoring in the tests.
+- Recreate COOL reference database in the COOL regression tests
+
+Changes in CoralAccess:
+- Use formatted COOL/CORAL output on client and server.
+- Start server and proxy on 0.0.0.0 for tests instead of localhost.
+- Add option to switch on coralServer thread monitoring in the tests.
+
+Changes in database server configuration:
+- The lcg_cool_nightly database has been moved from pdbr to test2.
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+ALL HLT tests (local, server) succed (on slc4_ia32_gcc34_dbg).
+[Thread monitoring was used to debug the hang in proxy test if it happened]
+[But the proxy test did not hang anymore, although it is not clear why....]
+
+==============================================================================
+!2009.07.10
+
+Private tag AV_20090710_01.
+
+Changes in CoralServerBase:
+- Add '=0' to virtual setCertificateData in IRequestHandler and ICoralFacade.
+
+Changes in CoralServer:
+- Bug fix#1: do not set in CoralServerFacade the authentication/lookup service 
+  to CoralAuthenticationService (causes deadlock in PluginManager in Fac mode).
+  Set it in the coralServer executable instead (bug fix#2: do not use the
+  CoralAuthenticationService by default, configure it as runtime option only).
+- Bug fix#3: initialise m_certificateData=0 in CoralServerFacade.
+- Bug fix#4: do not pass default role if user specified no role (task #10393).
+  Use the 2nd connect method with certificate in ICertificateConnectionService.
+- Add '=0' to virtual setCertificateData in IRequestHandler and ICoralFacade.
+  Cosmetic changes to class documentation.
+
+Changes in CoralStubs:
+- Fix the code to remove the strict-aliasing warnings for optimized code
+  on gcc43 (bug #52382). Remove the CMT workaround (disabling warnings).
+- Add '=0' to virtual setCertificateData in IRequestHandler and ICoralFacade.
+  Implement it in ClientStub as explicitly dummy (is this OK?).
+  Implement it in DummyFacade as explicitly dummy.
+
+Changes in CoralSockets:
+- Add '=0' to virtual setCertificateData in IRequestHandler and ICoralFacade.
+  Implement it in SocketRequestHandler as explicitly dummy (is this OK?).
+  Implement it in DummyRequestHandler as explicitly dummy.
+
+Changes in CoralAccess:
+- Add '=0' to virtual setCertificateData in IRequestHandler and ICoralFacade.
+  Implement it in SocketClientWrapper by delegating to the wrapped object.
+
+Changes in CoralAuthentication:
+- Port to gcc43 (fix #include headers).
+
+Changes in Tests:
+- Use COOL281 (LCG56b) instead of COOL280 (LCG56a) for tests.
+
+Use a modified version of RelationalAccess (also tagged as AV_20090710_01):
+- Add a second connect method with certificate in ICertificateConnectionService
+  (to be used by CoralServerFacade if the user did not specify any role).
+
+Use a modified version of ConnectionService (also tagged as AV_20090710_01):
+- Add a second connect method with certificate in ICertificateConnectionService
+  (to be used by CoralServerFacade if the user did not specify any role).
+
+Use a modified version of CoralBase (also tagged as AV_20090710_01):
+- For for bug #53040 in MsgReporter
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+
+Two HLT tests (local, server) succed (on slc4_ia32_gcc34_dbg).
+BUT the proxy test always hangs: to be investigated.
+
+==============================================================================
+!2009.07.08
+
+Private tag AV_20090708_02. 
+
+Use a modified version of RelationalAccess (also tagged as AV_20090708_02):
+- Move all three new ICertificateXxx interfaces to RelationalAccess/src
+  (so that the public API remains exactly the same as in CORAL_2_3_1).
+
+Use a modified version of ConnectionService (also tagged as AV_20090708_02):
+- Move all three new ICertificateXxx interfaces to RelationalAccess/src.
+
+Changes in CoralAuthenticationService:
+- Move all three new ICertificateXxx interfaces to RelationalAccess/src.
+
+Changes in CoralServer:
+- Move all three new ICertificateXxx interfaces to RelationalAccess/src.
+
+Changes in CoralSockets:
+- Move all three new ICertificateXxx interfaces to RelationalAccess/src.
+
+The code (CORAL and CORAL_SERVER) builds but was not tested.
+
+==============================================================================
+!2009.07.08
+
+Private tag AV_20090708_01. 
+
+Use a modified version of RelationalAccess (also tagged as AV_20090708_01):
+- Add ICertificateAuthenticationService class. This adds the method credentials
+  with an ICertificateData argument, which is called inside ConnectionService.
+  [NB: API remains backward binary-compatible]
+- Add ICertificateConnectionService class. This adds the method connect
+  with an ICertificateData argument, which is called inside CoralServer.
+  [NB: API remains backward binary-compatible]
+
+Use a modified version of ConnectionService (also tagged as AV_20090708_01):
+- Fix requirements (remove lcg_shared_library, keep only lcg_module_library).
+- Remove dependency on CoralAuthenticationService (and on ssl through it).
+  Use the new ICertificateAuthenticationService interface to retrieve the db 
+  username and password for the given ICertificateData in the connect method.
+- Implement the new ICertificateConnectionService interface. This adds 
+  the connect method with an ICertificateData argument (no need to include 
+  the ConnectionService.h header inside CoralServer).
+
+Changes in CoralAuthenticationService (also tagged as AV_20090708_01):
+- Fix requirements (remove lcg_module_library, keep only lcg_shared_library).
+- Implement the new ICertificateAuthenticationService interface. This adds 
+  the credentials method with an ICertificateData argument (no need to include 
+  the CoralAuthenticationService.h header inside ConnectionService).
+- Rename Tests directory as tests.
+- Move openssl/evp.h header to OpenSSLCipher.cpp (from .h).
+- Disable openssl by default using #ifdef HAVE_OPENSSL.
+  Add the option to enable it for slc4 and slc5.
+- Move the CoralAuthenticationService package inside CORAL_SERVER 
+  (modify the CVS repository using file-level commands).
+
+Changes in CoralServer:
+- Remove dependency on ConnectionService. 
+  Use the new ICertificateConnectionService interface 
+  to establish a connection using a given ICertificateData.
+
+The code (CORAL and CORAL_SERVER) builds but was not tested.
+
+==============================================================================
+!2009.07.07
+
+Private tag AV_20090707_01. 
+
+Use a modified version of RelationalAccess (also tagged as AV_20090707_01):
+- Add ICertificateData class.
+  [NB: API remains backward binary-compatible]
+
+Add new package CoralAuthenticationService (also tagged as AV_20090707_01):
+- Provide a new replica service whose data is stored persistently 
+  using relational tables (currently in sqlite) instead of XML files.
+  [WARNING: this is both an authentication and lookup service!]
+  [WARNING: misleading name? it does not use CORAL_SERVER, it is used by it!]
+- Catalog entries are stored/retrieved according to certificate FQAN.
+  [** WARNING: there is no certificate authentication in this package!
+  The certificate FQAN provided as command-line argument is user-provided,
+  it does not come from the stripping of FQAN of a real certificate!]
+- The tool currently hard-codes an sqlite database authtest.db as repository.
+  [** WARNING: there is no certificate authentication in this package!
+  There is no access control, any user may write to the local authtest.db]
+  [** WARNING: what is the deployment model for this? eventually this should
+  be deployed as a real 'Coral'AuthenticationService storing/retrieving data
+  in an sqlite database file maintained on a remote CoralServer, to which
+  the user must first authenticate using a certificate?]  
+- Extend the standard IAuthenticationService to retrieve the database
+  username and password for a given ICertificateData.
+  [WARNING: this header is not in public API but is used by ConnectionService!]
+
+Use a modified version of CoralKernel (also tagged as AV_20090707_01):
+- Add the new CoralAuthenticationService plugin.
+
+Use a modified version of ConnectionService (also tagged as AV_20090707_01):
+- Add method ConnectionService::connect with an ICertificateData argument.
+  [WARNING: this header is not in public API but is used by CoralServer!]
+- Add dependency on CoralAuthenticationService to retrieve the database
+  username and password for the given ICertificateData in the connect method.
+  [WARNING: ConnectionService now links ssl via CoralAuthenticationService!]
+
+Changes in CoralServerBase:
+- Add method setCertificateData to both IRequestHandler and ICoralFacade.
+  [WARNING: this is not virtual=0!]
+  [WARNING: this hard-codes a model where each socket thread has its own
+  request handler and facade to serve connection requests through that socket!]
+
+Changes in CoralStubs:
+- Extend the workaround for bug #52382 to all target-gcc43&target-opt 
+  platforms (disable strict-aliasing warnings for opimized code).
+- Remove StaticBufferPool (see task #10197).
+- Add method ServerStub::setCertificateData (implementing IRequestHandler).
+  The call is delegated to ICoralFacade::setCertificateData.
+
+Changes in CoralSockets:
+- Call ServerStub::setCertificateData to pass the SslSocket certificate.
+- Add method SslSocket::getCertificateData (for both client and server).
+
+Changes in CoralServer:
+- Add a dependency on ConnectionService 
+  [WARNING: this is needed to call ConnectionService::connect with an 
+  ICertificateData argument using a dynamic cast to a private header!]
+- Add method ServerStubWrapper::setCertificateData (implement IRequestHandler).
+- Add methods CoralServerFacade::setCertificateData and
+  CoralServerFacadeService::setCertificateData (implement ICoralFacade).
+
+The code (CORAL and CORAL_SERVER) builds but was not tested.
+
+==============================================================================
+!2009.06.30
+
+Release tag CORAL_2_3_1.
+
+Private tag AV_20090630_01. 
+
+Disable MacOSX builds again in release and nightlies, too many pending issues.
+
+Changes in CoralStubs:
+- Set the cacheable flag in the client for the Connect packet.
+- Workaround for bug #52382 on x86_64-slc5-gcc43-opt 
+  (disable strict-aliasing warnings for opimized code).
+- Set the fromProxy flag in the server also for unknown exceptions.
+- Set the cacheable flag in the server reply whenever it is set in the request.
+
+Changes in CoralSockets:
+- Enable SO_REUSEADDR on the listening server socket (so that the server
+  can be restarted on the same socket if if crashes or it is killed).
+- Drop the idea to statically link ssl to avoid globus incompatibilities
+  (bad idea: there are frequent security updates to the ssl library).
+- Rename all utility executables as 'coralXXX' (prepare for the release).
+
+Changes in CoralServer:
+- Disable connection sharing by default (task #9589)
+  unless CORALSERVER_ENABLECONNECTIONSHARING is set
+  [NB all tests I have done until today had connection sharing enabled!]
+
+Changes in CoralAccess:
+- Make sure CORALSERVER_ENABLECONNECTIONSHARING is not set 
+  (i.e. connection sharing is disabled), add option to set it
+- Do not install the scripts in the release bin area.
+
+Changes in Tests:
+- Make sure CORALSERVER_ENABLECONNECTIONSHARING is not set 
+  (i.e. connection sharing is disabled), add option to set it
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+
+ALL HLT tests (local, server, proxy) succed (on slc4_ia32_gcc34_dbg). 
+
+==============================================================================
+!2009.06.25
+
+Private tag AV_20090625_01.
+
+Port to allow builds on gcc43/SLC5.
+Minor changes for MacOSX too (port not yet complete).
+
+Changes in CoralServerBase:
+- Port to gcc43 (fix #include for memcpy, getenv, SYS_gettid).
+
+Changes in CoralSockets:
+- Port to gcc43 (fix: #include for memcpy, strerror; main signature; sleep).
+
+Changes in CoralStubs:
+- Port to gcc43 (fix: #include for memcpy; main signature; unsigned constants).
+
+Changes in CoralAccess:
+- Port to gcc43 (remove const from AccessMode return).
+
+Changes in CoralServer:
+- Remove warnings (for the nightlies) from unimplemented facade methods.
+
+Changes in CoralServerProxy:
+- Port to gcc43 (fix #include for strlen).
+- Port to MacOSX (it builds, but there is no guarantee that it will work!):
+  use alternatives to clock_gettime, dynamic buf[size], MSG_NOSIGNAL.
+
+==============================================================================
+!2009.06.24
+
+*** Include CORAL_SERVER in the CORAL release and nightlies!!! ***
+
+Private tag AV_20090624_03.
+
+Changes in CoralServerBase:
+- Rename ICoralFacade::table[view]Description as fetchTable[View]Description.
+- Remove ICoralFacade::fetchTableDescriptionMap method (already commented out).
+- Remove TableDescription2 header file (this was only needed for LCG54);
+  rename TableDescription2 as TableDescription.
+
+Changes in CoralStubs:
+- Rename ICoralFacade::table[view]Description as fetchTable[View]Description.
+- Remove ICoralFacade::fetchTableDescriptionMap method (already commented out).
+- Rename TableDescription2 as TableDescription.
+
+Changes in CoralAccess:
+- Rename ICoralFacade::table[view]Description as fetchTable[View]Description.
+- Rename TableDescription2 as TableDescription.
+
+Changes in CoralServer:
+- Rename ICoralFacade::table[view]Description as fetchTable[View]Description.
+- Remove ICoralFacade::fetchTableDescriptionMap method (already commented out).
+- Rename TableDescription2 as TableDescription.
+- Remove special handling of schemaName=="" in CoralServerFacade and QueryMgr
+  (simply forward it to the relevant plugins and other internal methods).
+
+Changes in CoralSockets:
+- Disable VOMS by default (the version conflicts with LCG56b configuration,
+  this would cause problems if we try to release CORAL server in LCG56b).
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+
+ALL HLT tests (local, server, proxy) succed (on slc4_ia32_gcc34_dbg). 
+
+==============================================================================
+!2009.06.24
+
+Private tag AV_20090624_02.
+
+Changes in CoralServerBase:
+- Rename ICoralFacade::sessionProperties as fetchSessionProperties.
+
+Changes in CoralStubs:
+- Rename ICoralFacade::sessionProperties as fetchSessionProperties.
+
+Changes in CoralAccess:
+- Rename ICoralFacade::sessionProperties as fetchSessionProperties.
+- Add nominal schema name to fetched session properties.
+- Use the correct schema name in ISession::nominalSchema (fix for bug #51048).
+- Drop assumption that schemaName=="" means nominal schema:
+  throw an exception if users call ISession::schema() with schemaName=="",
+  throw internal errors isf schemaName=="" in other internal methods.
+
+Changes in CoralServer:
+- Rename ICoralFacade::sessionProperties as fetchSessionProperties.
+- Add nominal schema name to fetched session properties.
+
+Changes in CoralSockets:
+- Adapt to more correct voms installation (1.9.8-1 instead of 1.9.8).
+
+==============================================================================
+!2009.06.24
+
+Private tag AV_20090624_01.
+
+Changes in CoralServerBase:
+- Throw more exceptions if malloc/realloc fail in ByteBuffer (bug #51048).
+
+Changes in CoralSockets:
+- Fix locking in SocketThread (close socket cleanly on receiving wrong packet).
+- Close socket if an unrecoverable exception is caught (bug #51048).
+
+Changes in Tests:
+- Add new options to run the HLT athena test (debug IOVDbSvc - see bug #51048).
+
+==============================================================================
+!2009.06.22
+
+Private tag AV_20090622_03.
+
+Move to 32bit for all tests as Atlas HLT tests do not run on 64bit.
+
+ALL PyCoral and COOL R/O tests succeed (on slc4_ia32_gcc34_dbg). 
+
+==============================================================================
+!2009.06.22
+
+Private tag AV_20090622_02.
+
+Remove all configuration and code fragments for LCG54.
+As of this version, only the latest LCG56a is supported.
+
+ALL PyCoral and COOL R/O tests succeed.
+
+==============================================================================
+!2009.06.22
+
+Private tag AV_20090622_01.
+
+Changes in CoralServerBase:
+- Throw an exception if malloc fails in ByteBuffer (bug #51048).
+
+Changes in CoralSockets:
+- Performance improvements (one context switch less per packet).
+- Configure SslSockets with voms installation in /afs/cern.ch/lcg/external.
+
+Changes in Tests:
+- Move the cmt directory to CoolRegression (foresee a different one for HLT).
+- Add Andy's standalone HLT test in Tests/HLT.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.05.27
+
+Private tag AV_20090527_01.
+
+Changes in Tests:
+- Use COOL_2_8_0.
+- Use an alias rather than an explicit URL (test alias for packet recording).
+- Add wrappers to run all tests.
+
+Changes in CoralAccess:
+- Throw an exception if dataEditor() is requested in R/O mode.
+- Add wrappers to run all tests.
+
+Changes in CoralSockets
+- Add env CORALSERVER_DUMPPACKET_PATH to dump packets to a path.
+  Add a client to replay the packet dumps.
+- Add env CORALSERVER_STATS to print out connection statistics.
+  Always print network statistics to info stream.
+- Fix error handling of poll() and accept() using new NonFatalSocketException.
+  This should remove the confusing "Error in accept()" messages.
+- Replace gethostbyname() with thread safe getaddrinfo().
+
+Changes in CoralServer
+- Instrument code with ScopedTimer for performance measurements.
+
+Changes in CoralStubs
+- Instrument code with ScopedTimer for performance measurements.
+
+Use the new CORAL_2_3_0 release.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.04.29
+
+Private tag AV_20090429_01.
+
+Changes in CoralServerBase:
+- New checksum algorithm (replace boost by a faster public domain CRC32).
+- Fix error handling to remove a confusing "Error in accept()" message.
+- Replace gethostbyname() with thread safe getaddrinfo()
+- Do not calculate CRC checksum if CORALSERVER_NOCRC is defined (return 0).
+
+Changes in CoralStubs:
+- Performance improvement for many rows: encode AttributeListSpec only once.
+
+==============================================================================
+!2009.04.23
+
+Private tag AV_20090423_01.
+
+Changes in CoralServerBase:
+- Add ICoralFacade methods existsTable and existsView.
+
+Changes in CoralAccess:
+- Add a new TableDescriptionProxy class.
+- Performance improvement using new methods existsTable and existsView.
+
+Changes in CoralServer:
+- Implement ICoralFacade methods existsTable and existsView.
+
+Changes in CoralStubs:
+- Implement ICoralFacade methods existsTable and existsView.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.04.22
+
+Private tag AV_20090422_02.
+
+Changes in CoralServer:
+- Add CursorIterator (IRowIterator implementation as an ICursor wrapper).
+- Performance improvement: replace RowVectorIterator by CursorIterator.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.04.22
+
+Private tag AV_20090422_01.
+
+Changes in CoralServerBase:
+- Add StopTimer and ScopedTimer classes for performance measurements.
+  They are enabled if CORALSERVER_TIMING is set.
+
+Changes in CoralAccess:
+- Performance improvements in the Schema class caching of tables and views.
+- Implement Schema::callProcedure.
+
+Changes in CoralStubs:
+- Complete the implementation of packet segmentation (task #9303).
+- Performance optimization of std::string copy.
+- Major internal cleanup of the code.
+
+Changes in CoralSockets:
+- Add ssl sockets using openssl.
+  > This is currently disabled by default (using #ifdef HAVE_OPENSSL).
+  > Add the CMT infrastructure to enable it (only on slc4_ia32),
+    taking openssl from /usr.
+- Add secure authentication using voms 195.
+  > This is currently disabled by default (using #ifdef VOMS195).
+  > Add the CMT infrastructure to enable it (only on slc4_ia32),
+    taking voms from /afs/cern.ch/sw/lcg/app/releases/COOL/internal/Grid.
+
+Changes in CoralServerProxy:
+- Fix compilation errors in the Packet test.
+
+Changes in Tests/cmt:
+- Use the default COOL_2_7_0 installation for CoolRegression tests.
+
+Use a modified version of OracleAccess (also tagged as AV_20090422_01):
+- Performance optimization of std::string copy in OutputVariableHolder.cpp.
+- Add option to debug OCIEnvCreate problems (bug #31554).
+- Remove failed attempts to fix multi-threading problems with more mutexes.
+
+Use a modified version of SQLiteAccess (also tagged as AV_20090422_01):
+- Add several mutexes to improve thread safety (geometry tests are now ok).
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.03.30
+
+Private tag AV_20090330_01.
+
+Changes in CoralSockets:
+- Add possibility to join a single thread.
+- Release slot already after returning the last ByteBuffer.
+
+Changes in CoralStubs:
+- Fixes for Date and Timestamp constructor (workaround for CORAL220 bugs).
+
+Changes in CoralAccess:
+- Added scripts to start server and proxy in Alex's environment.
+
+Use a modified version of SQLiteAccess (also tagged as AV_20090330_01):
+- Add several mutexes to improve thread safety.
+- Replace boost mutexes by pthread mutexes.
+
+Use a modified version of OracleAccess (also tagged as AV_20090330_01):
+- Fix bug #48522 (print an error message if OCI type is unknown).
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.03.19
+
+Private tag AV_20090319_02.
+
+Changes in CoralAccess:
+- Throw a ConnectionException if coralServer cannot be reached (allow retrial).
+
+Changes in CoralStubs:
+- Fixed an issue with timestamps.
+
+Use a modified version of CoralBase (also tagged as AV_20090319_02):
+- Fix in Date and Timestamp ctors (bug #48063): new CORAL230 API, full rebuild
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.03.19
+
+Private tag AV_20090319_01.
+
+Changes in CoralStubs:
+- Fix for bug #48261 (cache size larger than payload size, leading to 
+  'identical entries' error in the proxy).
+
+Changes in CoralServerProxy:
+- Throw an exception if cache size is larger than payload size (bug #48261).
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.03.18
+
+Private tag AV_20090318_01.
+
+Changes in CoralStubs:
+- New implementation of ReplyIterator.
+- Added segmentation for fetchAllRows iterator.
+- Added test with large BLOB.
+- Support long strings in StreamBuffer (encode size as 32 bits, previously 16).
+- Handle empty AttributeList's.
+- Fixes for various issues with dates and timestamps.
+- Fix for a segmentation fault in fetchAllRows.
+- Added CAL protocol versioning.
+- Fix for exception 'StaticBufferPool is not empty' in ~StaticBufferPool.
+- Added machine type specification.
+- Log exceptions in ServerStub before sending them back as replies to clients.
+
+Changes in CoralSockets:
+- Add support for TCP_CORK option on linux.
+- Handle situations where iterators are closed before all replies arrive.
+
+Use a modified version of PyCoral (also tagged as AV_20090318_01):
+- Fix memory leak in ICursor.
+
+Use a modified version of SQLiteAccess (also tagged as AV_20090318_01):
+- Improve exception messages (see bug #48259).
+
+Cleanup logs in CVS:
+- Remove all LCG54 logs.
+- Remove detailed logs from Andy's tests.
+
+Almost all PyCoral and COOL R/O tests succeed on LCG56:
+- The proxy log shows failures in PyCoral tests against the proxy: 
+  "[ERR] PacketCacheMemory::insert"... "identical entry in the cache already".
+- The server logs show that in PyCoral tests replies are received after the
+  first ICursor::next (rather than after the cursor ctor in IQuery::execute).
+
+Other pending problems:
+- Exceptions in Andy's tests with SQLite (COOL database)
+- OracleAccess with connection sharing hangs even with 10.2.0.4 client
+
+==============================================================================
+!2009.03.06
+
+Private tag AV_20090306_01.
+
+Changes in CoralStubs:
+- Use the user-provided cache size (#rows or MB) in the FetchRows iterator.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+- The server logs show a decrease in the number of reply/requests
+  (after disabling open cursors by default in CoralAccess).
+- The proxy logs show no change in the number of reply/requests
+  (open cursors were already disabled with proxy; stub changes have no effect).
+
+==============================================================================
+!2009.03.04
+
+Private tag AV_20090304_01.
+
+Changes in CoralAccess:
+- Disable open cursors by default.
+  Enable them only if CORALACCESS_ENABLEOPENCURSORS is set.
+
+Changes in CoralSockets:
+- Adapt to use CTLPacketHeader::CTLPACKET_MAX_SIZE.
+
+PyCoral and COOL R/O tests were not executed.
+
+==============================================================================
+!2009.03.03
+
+Private tag AV_20090303_02.
+
+Changes in CoralServerBase:
+- Add const CTLPacketHeader::CTLPACKET_MAX_SIZE (currently 0x00FFFFFF ~16MB).
+  Eventually this will be used for CTL segmentation in CoralStubs.
+- Add stronger internal checks on min/max packet size in CTLPacketHeader.
+
+Use a modified version of OracleAccess (also tagged as AV_20090226_01):
+- New attempt to fix a deadlock in the multi-client HLT tests (bug #47435).
+  Lock also in OracleStatement::OracleStatement and Schema::tableHandle
+  the same mutex already locked in OracleStatement::fetchNext().
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.03.03
+
+Private tag AV_20090303_01.
+
+Threading model improvements in the coralServer
+- Each client socket has its own request handler and its own facade
+  (previously all client sockets were sharing the same thread-safe facade).
+- Only motivation: better cleanup of dead connections (if a client socket 
+  dies, the RH and facade are deleted, releasing any associated DB sessions).
+
+Changes in CoralServerBase
+- Add IRequestHandlerFactory.
+  
+Changes in CoralSockets
+- Use a RH factory in SocketServer to start a new RH per client socket.
+- Sleep if no request slot is available and make the error message less scary.
+
+Changes in CoralServer
+- The coralServer has a facade factory, used by a RH factory, used by the 
+  socket server (it had one facade, used by one RH, used by the socket server).
+- Ensure that tokens are globally unique across all facades associated to
+  different client sockets, by sharing a token generator in the facade factory.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+[The code also builds but was not tested on LCG54].
+
+==============================================================================
+!2009.02.26
+
+Private tag AV_20090226_01.
+
+Improve thread-safety of CoralServer package:
+- Add mutex lock in ObjectStoreMgr registerObject, findObject, releaseObject.
+
+Use a modified version of OracleAccess (also tagged as AV_20090226_01):
+- New attempt to fix a deadlock in the multi-client HLT tests (bug #47435).
+  Add mutex to OracleStatement::fetchNext() to make it thread safe
+  (only one OracleStatement::fetchNext call per connection is now possible).
+  Remove the mutex previously added in ClobOutputVariableHolder::copyData().
+
+Use a modified version of CoralBase (also tagged as AV_20090226_01):
+- Add mutex to MsgReporter::report to make MessageStream thread safe.
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.02.25
+
+Private tag AV_20090225_01.
+
+Workarounds for problems in multi-client HLT tests
+- Disable connection sharing in the server (e.g. for Oracle connections)
+  if CORALSERVER_DISABLECONNECTIONSHARING is set
+
+Improvements in CoralStubs
+- Increase the StaticBufferPool number
+
+Use a modified version of OracleAccess (also tagged as AV_20090225_01):
+- Attempt to fix a deadlock in the multi-client Atlas HLT tests.
+  Only one CLOB operation per connection is now possible.
+  Several threads show a mutex in the Oracle client library 
+  from coral::OracleAccess::ClobOutputVariableHolder::copyData().
+
+==============================================================================
+!2009.02.24
+
+Private tag AV_20090224_02.
+
+Fixes relevant to HLT tests with many clients in server-only mode (no proxy):
+- Bug fix in CoralStubs::request_ReleaseCursor (avoid segmentation fault)
+- Disable open cursors if CORALACCESS_DISABLEOPENCURSORS is set
+  (this was already the case in proxy-mode but not in server-only mode)
+
+Fixes relevant to Alex's CORAL-only tests
+- Bug fix: share input condition data in QueryDefinition::setCondition
+  (move all set operations from QueryDefinition.h to QueryDefinition.cpp)
+
+ALL PyCoral and COOL R/O tests succeed on LCG56.
+
+==============================================================================
+!2009.02.24
+
+Private tag AV_20090224_01.
+
+Changes in CoralServerProxy:
+- Fix the bug in CoralServerProxy after swapping bytes: flags byte
+  is hardcoded in ServerReader::operator() [was #24, is now #23]
+- Minor change in Packet::read
+
+Changes in CoralServerBase
+- Fix the tests after swapping bytes and adding packet size check
+
+ALL PyCoral and COOL R/O tests succeed (on both LCG56 and LCG54).
+
+As the HLT tests can now be run executed using LCG55b, this is the last time 
+LCG54 is built and tested. The LCG54 code is not removed as this may change.
+
+==============================================================================
+!2009.02.20
+
+Private tag AV_20090220_03.
+
+Protocol changes
+- Swap opcode (was #0, now #1) and flags (was #1, now #0) in CAL header
+- Skip 1st byte instead of 2nd byte when computing CTL payload checksum
+
+The COOL test with proxy on LCG56 fails (infinite loop) - to be debugged.
+
+==============================================================================
+!2009.02.20
+
+Private tag AV_20090220_02.
+
+CoralServerProxy changes
+- Move all headers from CoralServerProxy/CoralServerProxy to ../src
+- Drop rollback packets (just like it is done for commit)
+
+The COOL test with proxy on LCG56 succeeds.
+
+==============================================================================
+!2009.02.20
+
+Private tag AV_20090220_01.
+
+Complete the API and implementation for the R/O functionality.
+- Add ICoralFacade method rollbackTransaction and implement it.
+  Implement Transaction::rollback and Transaction::isReadOnly.
+- Add ICoralFacade methods listViews, viewDescription and implement them.
+  Implement Schema::existsView, Schema::listViews, Schema::viewHandle.
+- Add ICoralFacade method callProcedure and implement it.
+  Implement Schema::callProcedure.
+- Implement Table::newQuery.
+- Remove ICoralFacade::tableDescriptionMap and related methods (not used).
+
+ALL PyCoral and COOL R/O tests succeed (on both LCG56 and LCG54).
+
+==============================================================================
+!2009.02.19
+
+Private tag AV_20090219_01.
+
+Updates in all packages, including the following changes and others:
+- Backport to LCG54, including several workarounds for old CORAL/COOL bugs:
+  > add a local TableDescription2 class (bug #46528 in RelationalAccess)
+  > use "Oracle" as coral Domain flavor (this is needed for a correct
+    handling of hints, schema.table items and :"bindvariable" in COOL) 
+- Create Tests/CoolRegression subpackage to run the COOL tests locally.
+- Add separate log directories for LCG54.
+- Use CoralServerProxyException in CoralServerProxy.
+- Implement Session::schema(name) using a schema map.
+- Add option to configure the (socket) server timeout.
+
+ALL PyCoral and COOL R/O tests succeed (on both LCG56 and LCG54).
+
+==============================================================================
+!2009.02.16
+
+Private tag AV_20090216_01.
+
+First version where ALL PyCoral and COOL R/O tests succeed:
+- succeed in Fac mode
+- succeed in StbFac mode
+- succeed in server mode
+- succeed in proxy0 mode (hack: all packets are not cacheable)
+- succeed in proxy mode
+
+Fixed the last bug (in CoralStubs) affecting the proxy tests:
+- The output buffer of RowIteratorAll must be filled in next, not currentRow.
+
+==============================================================================
+!2009.02.15
+
+Private tag AV_20090215_02.
+
+Fixed bugs relevant to the proxy:
+- Fix bug in CoralServerProxy::Packet::operator== (this was causing the hang 
+  because the request corresponding to a given reply could not be found)
+- Call fetchAllRows instead of fetchRows in Cursor::Cursor if fromProxy=true
+  (TODO: throw an exception in fetchRows if fromProxy=true).
+- Add missing implementation of CoralAccess::SessionProperties::fromProxy.
+
+All PyCoral tests (including proxy) now succed.
+
+New status for the COOL R/O tests: no hang anymore in the proxy test, 
+but both the proxy (that was failing) and proxy0 test (that was succeeding) 
+now fail with the usual "Error decoding string '' into Time (C++ exception)".
+This is probably due to another missing copyData in CoralStubs: what changed 
+in the proxy0 test is that now I call fetchAllRows everywhere instead of 
+fetchRows: most likely there is a copyData missing for fetchAllRows. 
+Find out with a StbFac test forcing CoralAccess to set fromProxy=true?
+
+==============================================================================
+!2009.02.15
+
+Private tag AV_20090215_01.
+
+Same status for both the PyCoral and COOL R/O tests:
+- succeed in Fac mode
+- succeed in StbFac mode
+- succeed in server mode
+- succeed in proxy0 mode (hack: all packets are not cacheable)
+- hang in proxy mode
+Added logs (client, server, proxy) for all of these tests.
+Added scripts to run them (missing doc about configuration).
+
+Fixed defineOutput bug by using AttributeList::copyData everywhere.
+
+==============================================================================

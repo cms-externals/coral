@@ -1,0 +1,5 @@
+<use   name="LCG/RelationalAccess"/>
+<use   name="python"/>
+<export>
+  <lib   name="1"/>
+</export>

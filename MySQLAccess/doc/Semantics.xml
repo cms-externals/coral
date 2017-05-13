@@ -1,0 +1,115 @@
+<sect2> <title>MySQLAccess Semantics</title>
+ <sect3> <title>The logical data hiererchy</title>
+  <para>
+  In order to connect to an MySQL database using CORAL one should
+  specify a  connection string which typically has a format such as
+  <programlisting> 
+   mysql://databaseServerName:port/schemaOrDbName
+  </programlisting>
+  where the port number is optional (default is port number 3306).
+  </para>
+  <para>
+  The schema name is in practice the same as MySQL user account
+  name. A user has access to the tables defined in the schema of
+  another user for which all the relevant privileges have been
+  granted. 
+  </para>
+ </sect3>
+ <sect3> <title>Controlling MySQL-specific parameters</title>
+  <sect4> <title>Table spaces</title>
+   <para>
+   New tables, indices and LOBs are created in the default table space
+   as set in the MySQL server configuration file. This can't be
+   changed yet in the 4.0.x version. In 4.1.x version one can enable
+   tablespace per table feature but it's not controllable parameter on
+   the client side so this can't be in sync with OracleAccess plug-in.
+   </para>
+  </sect4>
+  <sect4> <title>(C)LOB handling</title>
+   <para>
+   When reading back a LOB object from the database server we rely
+   entirely on MySQL machinery. We might change it in the future to
+   perform retrieval in chunks with configurable size if we see a gain
+   in performance.
+   There is an important client &amp; server side parameter
+   <emphasis role="bold">max_alowed_packet_size</emphasis> which
+   specifies the maximum size for the transfer of CLOB/BLOB data.
+   Our server setting in /etc/my.cnf is:
+   <programlisting> 
+     set-variable=max_allowed_packet=21000000
+   </programlisting>
+   which means roughly 21MB maximum size of CLOB/BLOB data per one
+   transfer. If the size is exceeded MySQL will issue an error.
+   We do not set anything yet in CORAL for the client side.
+   </para>
+  </sect4>
+  <sect4> <title>Silent type conversions</title>
+   <para>
+   When a column is created and its size is more then 255 characters
+   the silent (VAR)CHAR conversion into CLOB type happens.
+   CORAL does it already for 4.0, MySQL itself does it from version
+   4.1.6 onwards. Since we will provide 4.1 &amp; later support in CORAL
+   soon we consider it a safe behavior.
+   </para>
+   <para>
+   If user defines a column of type std::string without specifying the
+   size and whether it is fixed or not the SQL type becomes
+   VARCHAR(255) for this column defintion. It is better to be more
+   explicit when defining table column description.
+   </para>
+  </sect4>
+  <sect4> <title>Silent index creation</title>
+   <para>
+   The silent creation of indices for foreign key columns happens in
+   the referencing table to avoid the MySQL error:
+   <programlisting>
+   ERROR 1005 (00000): Can't create table './DbName/TableName.frm' (errno: 150)
+   </programlisting>
+   The reason is that MySQL performs renaming of the altered table and
+   if there is no index created it does not know anymore about the
+   column and issues an error. Beware, this is valid so far for the
+   InnoDB tables (the CORAL default engine). This error might not
+   appear for MyISAM tables as for this engine MySQL apparently parses
+   the SQL for FK constraints but ignores it completely. Note that
+   MySQL does not maintain referential integrity for MyISAM tables.
+   </para>
+  </sect4>
+  <sect4> <title>CLOB/BLOB unique constraints, indexes &amp; implications </title>
+   <para>
+   The implication for unique constraints on CLOB/BLOB columns is that
+   the mandatory prefix must be used for index creation otherwise
+   there is MySQL error:
+   <programlisting>
+   ERROR 1170 (00000): BLOB column 'ColumnName' used in key specification without a key length
+   </programlisting>
+   For configuring this prefix see MySQLAccess ReferenceManual.
+   </para>
+   <para>
+   Foreign key constraints of the CLOB/BLOB types are not supported,
+   it's just pure craziness!
+   The primary keys are allowed to be of a CLOB type which is crazy
+   as well but building a foreign key in addition is a complete
+   madness. Doing it just doubles the total storage requirements at
+   least not saying that updating such tables for many rows will take
+   the whole life-time.
+   </para>
+   <para>
+    The index prefix is not supported for foreign key
+    constraints. There is simply too much restrictions being applied
+    and is very complex to build DDL for it. The golden rule is to
+    make sure the referenced key &amp; the foreign key are the same type
+    and size to avoid surprises. 
+   </para>
+  </sect4>
+  <sect4> <title>Enabling SQL TRACE</title>
+   <para>
+   There are some ways to enable debugging of MySQL server to see what
+   a particular session is doing but it does not seem yet as a
+   systematic activity performed by a standard user and is more
+   targeted to MySQL developers and testers.
+   This has not been investigated yet in detail as there was no strong
+   interest from our user community to do it. 
+   </para>
+  </sect4>
+ </sect3>
+</sect2>

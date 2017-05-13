@@ -1,0 +1,32 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_OracleAccess_MultipleSchemas
+[oval run] =================================================
+
+CORAL/RelationalPlugins/oracle: level[Info] Connected to a server running Oracle version 10.1.0.4.0
+Tables in the nominal schema:
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+Tables in the other schema:
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+POOL_COLLECTIONS
+POOL_COLLECTIONS_DESC
+POOL_COLLECTION_DATA
+POOL_COLLECTION_DATA_1
+POOL_COLLECTION_DATA_2
+POOL_COLLECTION_DATA_3
+POOL_COLLECTION_LINKS
+POOL_COLLECTION_LINKS_1
+POOL_COLLECTION_LINKS_2
+POOL_COLLECTION_LINKS_3
+Attempting to catch a specific exception for accessing an unknown schema
+CORAL/RelationalPlugins/oracle: level[Debug] ORA-04043: object RAL_WRITERX does not exist (retrieving the describe handle of schema RAL_WRITERX)
+Exception caught.
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

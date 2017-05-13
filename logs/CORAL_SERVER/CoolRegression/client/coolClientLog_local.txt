@@ -1,0 +1,284 @@
+Thu Oct 13 12:34:07.511839000 CEST 2011
+COOLTESTDB: COOL-Oracle-lcgnight/COOLTEST
+*** Setup COOL lib, bin, python for configuration 'cwd'
+COOL lib directory: /afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/lib
+LD_LIBRARY_PATH=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/lib:$LD_LIBRARY_PATH
+PATH=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/bin:$PATH
+PYTHONPATH=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/python:$PYTHONPATH
+*** Setup COOL src for configuration 'cwd'
+COOL src directory: /afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/src
+COOLREGRESSIONTESTS=/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/src/PyCoolUtilities/tests/Regression
+*** Setup ROOT lib, python for configuration 'cwd'
+ROOT lib directory: /afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib
+LD_LIBRARY_PATH=/afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib:$LD_LIBRARY_PATH
+PYTHONPATH=/afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib:$PYTHONPATH
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    61a
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_61a
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using Python: /afs/cern.ch/sw/lcg/external/Python/2.6.5/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+DEBUG: Import ReferenceDbMgr
+DEBUG: PYTHONPATH = /afs/cern.ch/sw/lcg/app/releases/ROOT/5.30.02/i686-slc5-gcc43-dbg/root/lib:/afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/i686-slc5-gcc43-dbg/python:/afs/cern.ch/sw/lcg/external/Grid/LFC/1.7.4-7sec/i686-slc5-gcc43-opt/lib/python2.6:/afs/cern.ch/sw/lcg/external/Grid/LFC/1.7.4-7sec/i686-slc5-gcc43-opt/lib/python2.6/site-packages:/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/../i686-slc5-gcc43-dbg/lib:/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/../i686-slc5-gcc43-dbg/python:/afs/cern.ch/sw/lcg/external/QMtest/2.4.1_python2.6/i686-slc5-gcc43-opt/lib/python2.6/site-packages:/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/../i686-slc5-gcc43-dbg/tests/bin
+DEBUG: Create ReferenceDbMgr for 2.8.0 reference schema
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a cool::CoralApplication...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a new own CORAL connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create the COOL database service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Instantiate the RalDatabaseSvc
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a cool::CoralApplication... DONE
+DEBUG: Database service loaded from software release 2.8.11
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Instantiate a R/W RalSessionMgr for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Connect to the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Starting the connection pool automatic cleanup thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLLookupService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLLookupService factory from XMLLookupService library
+Data source lookup using /afs/cern.ch/sw/lcg/app/pool/db/dblookup.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/oracle factory from OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLAuthenticationService factory from XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/XMLAuthenticationService} Authentication using /afs/cern.ch/sw/lcg/app/pool/db/authentication.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in update mode
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Instantiate a R/W RalDatabase for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Release number backward compatibility - NO SCHEMA EVOLUTION REQUIRED: database with OLDER release number 2.8.10 will be opened using CURRENT client release number 2.8.11
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Drop database...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Drop all nodes (do notkeep root)...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Drop all nodes (do not keep root)... DONE
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Drop database... DONE
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Delete the RalDatabase for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Delete the RalSessionMgr for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Disconnect from the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+DEBUG: Create 2.8.0 reference database
+DEBUG: -> db ID: COOL-Oracle-lcgnight/COOLTEST
+DEBUG: -> db replica (R/W): oracle://lcg_cool_nightly/lcg_cool_nightly
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Instantiate a R/W RalSessionMgr for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Connect to the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in update mode
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Instantiate a R/W RalDatabase for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CORAL/RelationalPlugins/oracle} A variable has a size larger than 4000. A CLOB type will be used.
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CORAL/RelationalPlugins/oracle} A variable has a size larger than 4000. A CLOB type will be used.
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CORAL/RelationalPlugins/oracle} A variable has a size larger than 4000. A CLOB type will be used.
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CORAL/RelationalPlugins/oracle} A variable has a size larger than 4000. A CLOB type will be used.
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CORAL/RelationalPlugins/oracle} A variable has a size larger than 4000. A CLOB type will be used.
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CORAL/RelationalPlugins/oracle} A variable has a size larger than 4000. A CLOB type will be used.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Delete the RalDatabase for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Delete the RalSessionMgr for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Disconnect from the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Delete the COOL CoralApplication...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Delete the COOL database service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Delete the RalDatabaseSvc...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Purge the connection pool
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Reset the ICS pointer
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Delete the RalDatabaseSvc... DONE
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Delete the CORAL connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Delete the COOL CoralApplication... DONE
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Deleting the ConnectionPool
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Stopping the connection pool automatic cleanup thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+python /afs/cern.ch/sw/lcg/app/releases/COOL/COOL_2_8_11/src/PyCoolUtilities/tests/Regression/testReferenceDb1RO.py
+DEBUG: Import TestReferenceDb1RO
+DEBUG: Lookup 1st replica (R/O test) and 1st RW replica (R/W test)
+DEBUG: 1st replica: oracle://lcg_cool_nightly/lcg_cool_nightly
+DEBUG: 1st R/W replica: oracle://lcg_cool_nightly/lcg_cool_nightly
+DEBUG: Create TestReferenceDb1RO for 2.8.0 reference schema
+DEBUG: Create ReferenceDbMgr for 2.8.0 reference schema
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a cool::CoralApplication...
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a new own CORAL connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create the COOL database service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalDatabaseSvc} Instantiate the RalDatabaseSvc
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralApplication} Create a cool::CoralApplication... DONE
+DEBUG: Database service loaded from software release 2.8.11
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
+test_1RO_00_initialise (PyCoolReferenceDb.TestReferenceDb1RO) ... 
+DEBUG: (TestReferenceDb1RO) **********************************
+DEBUG: (TestReferenceDb1RO) Open reference database
+DEBUG: (TestReferenceDb1RO) -> db ID: COOL-Oracle-lcgnight/COOLTEST
+DEBUG: -> db replica (R/O): oracle://lcg_cool_nightly/lcg_cool_nightly
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Instantiate a R/O RalSessionMgr for 'COOL-Oracle-lcgnight/COOLTEST'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Connect to the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Starting the connection pool automatic cleanup thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLLookupService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLLookupService factory from XMLLookupService library
+Data source lookup using /afs/cern.ch/sw/lcg/app/pool/db/dblookup.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/oracle factory from OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLAuthenticationService factory from XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/XMLAuthenticationService} Authentication using /afs/cern.ch/sw/lcg/app/pool/db/authentication.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Start a read-only transaction active for the duration of the database connection
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RelationalDatabase} Instantiate a R/O RalDatabase for 'COOL-Oracle-lcgnight/COOLTEST'
+DEBUG: Database opened
+DEBUG: -> db schema version: 2.0.0
+DEBUG: Test 2.8.0 reference schema on a 2.0.0 db (R/O test)
+ok
+test_1RO_01_NodeHierarchy (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_02_ReferencePayload (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_02a_ReferencePayloadUChar (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_02b1_ReferencePayloadBlobEmpty (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_02b2_ReferencePayloadBlob (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_02c_ReferencePayloadNull (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_03a_listChannels_SV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_03b_listChannels_MV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_04_findMV_headTag (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_05_findMV_userTag (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_06a_UCharPayload (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_06b_UCharPayload_asString (PyCoolReferenceDb.TestReferenceDb1RO) ... 
+ok
+test_1RO_06c_UCharPayload_asBlob (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_07_ReferenceSchema (PyCoolReferenceDb.TestReferenceDb1RO) ... DEBUG: Column SQL type: BLOB , name: A_BLOB16M
+DEBUG: -----> expected: BLOB
+DEBUG: Column SQL type: BLOB , name: A_BLOB64K
+DEBUG: -----> expected: BLOB
+DEBUG: Column SQL type: NUMBER(1) , name: A_BOOL
+DEBUG: -----> expected: NUMBER(1)
+DEBUG: Column SQL type: BINARY_DOUBLE , name: A_DOUBLE
+DEBUG: -----> expected: BINARY_DOUBLE
+DEBUG: Column SQL type: BINARY_FLOAT , name: A_FLOAT
+DEBUG: -----> expected: BINARY_FLOAT
+DEBUG: Column SQL type: NUMBER(5) , name: A_INT16
+DEBUG: -----> expected: NUMBER(5)
+DEBUG: Column SQL type: NUMBER(10) , name: A_INT32
+DEBUG: -----> expected: NUMBER(10)
+DEBUG: Column SQL type: NUMBER(20) , name: A_INT64
+DEBUG: -----> expected: NUMBER(20)
+DEBUG: Column SQL type: NUMBER(10) , name: A_IOBJ
+DEBUG: -----> expected: NUMBER(10)
+DEBUG: Column SQL type: CLOB , name: A_STRING16M
+DEBUG: -----> expected: CLOB
+DEBUG: Column SQL type: VARCHAR2(255) , name: A_STRING255
+DEBUG: -----> expected: VARCHAR2(255)
+DEBUG: Column SQL type: VARCHAR2(4000) , name: A_STRING4K
+DEBUG: -----> expected: VARCHAR2(4000)
+DEBUG: Column SQL type: CLOB , name: A_STRING64K
+DEBUG: -----> expected: CLOB
+DEBUG: Column SQL type: NUMBER(3) , name: A_UCHAR
+DEBUG: -----> expected: NUMBER(3)
+DEBUG: Column SQL type: NUMBER(5) , name: A_UINT16
+DEBUG: -----> expected: NUMBER(5)
+DEBUG: Column SQL type: NUMBER(10) , name: A_UINT32
+DEBUG: -----> expected: NUMBER(10)
+DEBUG: Column SQL type: NUMBER(20) , name: A_UINT63
+DEBUG: -----> expected: NUMBER(20)
+DEBUG: Column SQL type: NUMBER(10) , name: CHANNEL_ID
+DEBUG: Column SQL type: NUMBER(20) , name: IOV_SINCE
+DEBUG: Column SQL type: NUMBER(20) , name: IOV_UNTIL
+DEBUG: Column SQL type: VARCHAR2(255) , name: LASTMOD_DATE
+DEBUG: Column SQL type: NUMBER(10) , name: NEW_HEAD_ID
+DEBUG: Column SQL type: NUMBER(10) , name: OBJECT_ID
+DEBUG: Column SQL type: NUMBER(10) , name: ORIGINAL_ID
+DEBUG: Column SQL type: VARCHAR2(255) , name: SYS_INSTIME
+DEBUG: Column SQL type: NUMBER(10) , name: USER_TAG_ID
+ok
+test_1RO_08_content_sv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_08a_content_sv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_09_content_mv1_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_10_content_mv1_Tag_A1 (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_11_content_mv1_Tag_B1 (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_12_content_mv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_13_content_mv2_UserTag_A2 (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_14_channelsExist_SV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_14a_channelsExist_SV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_15_channelsExist_MV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_15a_channelsExist_MV (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_16_folderSchemaVersion (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_17_tagRelations (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_18_lowercase (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_19_content_ptsv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_20_content_ptmv1_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_21_content_ptmv1_Tag_A1PT (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_22_content_ptmv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_23_content_ptmv2_UserTag_A2PT (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_24_content_ptsv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_24a_content_ptsv (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_25_content_ptmv1_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_26_content_ptmv1_Tag_A1PT (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_27_content_ptmv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_27a_content_ptmv2_HEAD (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_28_content_ptmv2_UserTag_A2PT (PyCoolReferenceDb.TestReferenceDb1RO) ... ok
+test_1RO_99_finalise (PyCoolReferenceDb.TestReferenceDb1RO) ... 
+DEBUG: (TestReferenceDb1RO) Close reference database
+DEBUG: (TestReferenceDb1RO) **********************************
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Commit the read-only transaction active for the duration of the database connection
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {RalSessionMgr} Disconnect from the database server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 15.845s
+
+OK
+ == =TIMER (CLIENT) 7.23user 0.71system 17.36elapsed 45%CPU
+*******************************************************************
+Thu Oct 13 12:35:10.173576000 CEST 2011

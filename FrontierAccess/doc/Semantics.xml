@@ -1,0 +1,137 @@
+<!-- $Id: Semantics.xml,v 1.6 2007/01/25 12:31:30 ioannis Exp $ -->
+<sect2> <title>FrontierAccess Semantics</title>
+ <sect3> <title>The logical data hierarchy</title>
+  <para>
+   In order to connect to an Oracle database using Frontier one should
+   specify a  connection string which typically used to have the format as
+   <programlisting>
+    frontier://FrontierServerName:port/serviceBaseURL/SCHEMA_NAME
+   </programlisting>
+   which gets translated automatically into valid Frontier URL in form:
+   <programlisting>
+    http://FrontierServerName:port/serviceBaseURL
+   </programlisting>
+
+   where the port number is optional but one has to pay attention to
+   it as the same connection string can differ only in port number
+   which may indicate that the server is cache instead of an
+   application server.
+  </para>
+  <para>
+   The schema name is in practice the user name of an oracle user.
+   A user has access to the tables defined in the schema of another user
+   for which all the relevant privileges have been granted. Frontier
+   application server usually connects only via one acount, so when
+   the tables are created in an Oracle database to which Frontier
+   application server connects, then is required that the proper SELECT
+   access rights on these tables are granted to the Frontier user,
+   otherwise FrontierAccess will not work.
+  </para>
+  <para>
+   The FrontierAccess now decodes and passes down to the underlying
+   frontier_client library the new conneciton string format which may
+   look like:
+   <programlisting>
+    frontier://(proxyurl=http://srv.fnal.gov:3128)(proxyurl=http://srv15.fnal.gov:3128)
+               (serverurl=http://frontier.cern.ch:8000/Frontier)(serverurl=http://frontier1.cern.ch:8000/Frontier)
+               (retrieve-ziplevel=5)
+              /SCHEMA_NAME
+   </programlisting>
+   The complex connection string now contains all the parameters to
+   let the frontier_client library to perform load-balancing and
+   fail-over itself and configure the compression level used for data
+   transfer.
+  </para>
+ </sect3>
+
+ <sect3> <title>Controlling Frontier-specific parameters</title>
+  <sect4> <title>Refreshing cache contents</title>
+   <para>
+    FrontierAccess is primarily going to access the cached
+    information. There are, however, situations where it is not desired or a
+    fresh information is needed. This typically happens when database
+    schema has been updated. In order to make sure that FrontierAccess
+    uses the most recent database objects it forces a cache to be
+    refreshed for data dictionary queries.
+    For the the data queries the cache access is enabled &amp;
+    preferred.
+
+    In cases where there is a need to refresh cache contents due to
+    updates in the back-end databases one can control the refresh
+    behavior by using coral::IWebCacheControl API. This
+    interface allows to inform the FrontierAccess plug-in to execute
+    its queries with refresh parameter enabled, thus causing the
+    refresh of all the Squid caches on the way up to a Frontier
+    server. 
+
+    The access to the coral::IWebCacheControl interface is via
+    coral::ConnectionService component. 
+    Once the web cache control handle is obtained one can force
+    reloading of a whole database schema, e.g. the queries involving
+    any table in the given schema will be executed with refresh
+    enabled or one can do finer selection by registering
+    specific table names so the FrontierAccess plug-in enables
+    refresh only for the queries which involve any of the registred
+    tables.
+   </para>
+   <para>
+    Imagine the following data source setup using CORAL data service
+    lookup mechanism reading input from dblookup.xml file:
+
+    <screen>
+    <![CDATA[
+    <?xml version="1.0" ?>
+     <servicelist>
+       <logicalservice name="/coral/CoolFrontier">
+         <service name="frontier://afrontier.cern.ch:8080/Frontier/CORAL" accessMode="readonly" />
+       </logicalservice>
+     <servicelist>
+    ]]>
+    </screen>
+
+    then the application code needs to do the following to switch on
+    refresh for the all queries to schema CORAL as follows:
+
+    <programlisting>
+      // Locate the CORAL ConnectionService component
+      seal::IHandle&lt;coral::IConnectionService&gt;
+      connectionService = appcontext->query&lt;coral::IConnectionService&gt;( "CORAL/Services/ConnectionService" );
+      // Setup refresh
+      coral::IWebCacheControl&amp; webcache = connectionService-&gt;webCacheControl();
+      // Set refresh for the whole schema, e.g. each query in this schema will skip Squid cache
+      // NOTE! One must specify the physical connection string as the plugins don't know about the logical ones!!!
+      webcache.refreshSchemaInfo( "http://atlasfrontier.cern.ch:8080/Frontier" );
+    </programlisting>
+
+    Please note the fact that one needs to specify the real physical
+    connection string being actually used to connect to the Frontier
+    server and with the "frontier://" prefix being already rewritten
+    as "http://". The same applies for the new complex conneciton
+    string syntax just the "http://" will not be there because is not
+    needed anymore.
+
+    One can select also the particular tables in the target schema to
+    become subject to refresh for each query run against them. See the API
+    of coral::IWebCacheControl interface.
+   </para>
+  </sect4>
+  <sect4> <title>Enabling Frontier client debug log</title>
+   <para>
+    A user can trigger the more verbose log output, by setting the
+    environment variable
+    <emphasis role="bold">FRONTIER_LOG_LEVEL=Debug</emphasis>.
+   </para>
+  </sect4>
+<!--
+<sect4><title>LOB handling</title>
+<para>
+When reading back a LOB object from the database, this is done in
+chunks which have a default size of 1024 bytes (1 KB). This default
+value can changed by setting the property <emphasis role="bold">LobChunkSize</emphasis>
+or the environment variable <emphasis role="bold">CORAL_ORA_LOB_CHUNK_SIZE</emphasis>
+accordingly.
+</para>
+</sect4>
+-->
+ </sect3>
+</sect2>

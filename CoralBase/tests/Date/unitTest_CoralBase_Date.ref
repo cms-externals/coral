@@ -1,0 +1,17 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_CoralBase_Date
+[oval run] =================================================
+
+Testing the "date" type...
+The date today is 24/11/2005
+Danae was born on 21/12/1999
+[OVAL] : Test successful
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

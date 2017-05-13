@@ -1,0 +1,40 @@
+package CoralServerProxy
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralServerBase v* CORAL_SERVER
+
+###macro_append cppflags " -ggdb -O0 " WIN32 ""
+
+apply_pattern include_dir_policy
+apply_pattern lcg_shared_library
+
+#----------------------------------------------------------------------------
+# Headers
+#----------------------------------------------------------------------------
+
+# Do not install the header files (task #15555)
+macro_remove constituents 'install_includes'
+
+#----------------------------------------------------------------------------
+# Tests
+#----------------------------------------------------------------------------
+
+use CppUnit v* LCG_Interfaces -no_auto_imports
+
+apply_pattern coral_unit_test tname=Packet
+
+#----------------------------------------------------------------------------
+# Utilities
+#----------------------------------------------------------------------------
+
+coral_utility uname=coralServerProxy
+

@@ -1,0 +1,25 @@
+package RelationalService
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v* 
+
+apply_pattern lcg_module_library
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+apply_pattern coral_unit_test tname=LoadService
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

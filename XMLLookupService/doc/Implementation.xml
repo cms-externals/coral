@@ -1,0 +1,21 @@
+<sect2>
+<title>Implementation specifics</title>
+<para>
+The implementation of the package is based on XercesC for the parsing
+of the XML file.
+</para>
+</sect2>
+
+
+<sect2>
+<title>Related components</title>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>RelationalAccess</emphasis>, is the package
+where the CORAL abstract interfaces are defined.</para></listitem>
+<listitem><para><emphasis>CoralCommon</emphasis>, is the package
+where some developer-level interfaces and some common implementation
+classes are defined.</para></listitem>
+</itemizedlist>
+</para>    
+</sect2>

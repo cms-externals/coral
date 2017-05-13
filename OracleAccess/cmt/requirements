@@ -1,0 +1,41 @@
+package OracleAccess
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v*
+use oracle * LCG_Interfaces
+
+apply_pattern lcg_module_library
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+use CppUnit v* LCG_Interfaces -no_auto_imports
+
+# The unit tests
+apply_pattern coral_unit_test tname=BulkInserts
+apply_pattern coral_unit_test tname=Connection
+apply_pattern coral_unit_test tname=DataEditor
+apply_pattern coral_unit_test tname=DataDictionary
+apply_pattern coral_unit_test tname=DateAndTime
+apply_pattern coral_unit_test tname=Dual
+apply_pattern coral_unit_test tname=GroupBy
+apply_pattern coral_unit_test tname=MultipleSchemas
+apply_pattern coral_unit_test tname=MultipleSessions
+apply_pattern coral_unit_test tname=MultiThreading
+apply_pattern coral_unit_test tname=Schema
+apply_pattern coral_unit_test tname=SimpleQueries
+apply_pattern coral_unit_test tname=Views
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

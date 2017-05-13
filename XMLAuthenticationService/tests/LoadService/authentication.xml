@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<connectionlist>
+
+<connection name="oracle://devdb9/IOANNIS">
+  <parameter name="user" value="the_user" />
+  <parameter name="password" value="the_passwd" />
+
+  <role name="writer">
+    <parameter name="user" value="the_user_writer" />
+    <parameter name="password" value="the_passwd_writer" />
+  </role>
+
+</connection>
+
+<connection name="oracle://devdb10/IOANNIS">
+  <parameter name="user" value="the_other_user" />
+  <parameter name="password" value="the_other_passwd" />
+</connection>
+
+<connection name="oracle://devdb10/IOANNIS">
+  <role name="updater">
+    <parameter name="user" value="the_other_user_updater" />
+    <parameter name="password" value="the_other_passwd_updater" />
+  </role>
+</connection>
+
+</connectionlist>

@@ -1,0 +1,57 @@
+package CoralServer
+
+#============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+use CoralKernel     v*
+use CoralServerBase v* CORAL_SERVER
+
+# Debug output (on stdout)
+###set CORALSERVER_DEBUG 1
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+apply_pattern include_dir_policy
+apply_pattern lcg_module_library
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Headers
+#----------------------------------------------------------------------------
+
+# Do not install the header files 
+macro_remove constituents 'install_includes'
+
+#----------------------------------------------------------------------------
+# Tests
+#----------------------------------------------------------------------------
+
+#use CppUnit v* LCG_Interfaces -no_auto_imports
+
+# Fake target for tests
+action tests "echo No tests in this package"
+macro_remove cmt_actions_constituents "tests"
+
+#----------------------------------------------------------------------------
+# Utilities
+#----------------------------------------------------------------------------
+
+coral_utility uname=coralServer
+
+# These are only needed in the utilities
+use CoralSockets v* CORAL_SERVER
+use CoralStubs   v* CORAL_SERVER
+macro_remove use_linkopts "$(CoralSockets_linkopts)"
+macro_remove use_linkopts "$(CoralStubs_linkopts)"
+macro_append coralServerlinkopts " $(CoralSockets_linkopts)"
+macro_append coralServerlinkopts " $(CoralStubs_linkopts)"
+
+#============================================================================

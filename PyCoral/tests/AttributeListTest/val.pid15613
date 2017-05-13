@@ -1,0 +1,1636 @@
+==15613== Memcheck, a memory error detector for x86-linux.
+==15613== Copyright (C) 2002-2005, and GNU GPL'd, by Julian Seward et al.
+==15613== Using valgrind-2.4.0, a program supervision framework for x86-linux.
+==15613== Copyright (C) 2000-2005, and GNU GPL'd, by Julian Seward et al.
+==15613== 
+==15613== My PID = 15613, parent PID = 15603.  Prog and args are:
+==15613==    python2.5
+==15613==    ./all_functions_test.py
+==15613== For more details, rerun with: -v
+==15613== 
+==15613== 
+==15613== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 3137 from 7)
+==15613== malloc/free: in use at exit: 1000258 bytes in 278 blocks.
+==15613== malloc/free: 27383 allocs, 27105 frees, 6870462 bytes allocated.
+==15613== For counts of detected errors, rerun with: -v
+==15613== searching for pointers to 278 not-freed blocks.
+==15613== checked 2208444 bytes.
+==15613== 
+==15613== 24 bytes in 1 blocks are still reachable in loss record 6 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C0BCFB7: _ZNSt8_Rb_treeISsSt4pairIKSsjESt10_Select1stIS2_ESt4lessISsESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_ (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BD480: std::_Rb_tree<std::string, std::pair<std::string const, unsigned>, std::_Select1st<std::pair<std::string const, unsigned> >, std::less<std::string>, std::allocator<std::pair<std::string const, unsigned> > >::insert_unique(std::_Rb_tree_iterator<std::pair<std::string const, unsigned> >, std::pair<std::string const, unsigned> const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BC88C: seal::ContextKey::create(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BCB64: seal::ContextKeyDef::ContextKeyDef(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B8704: _GLOBAL__I__ZN4seal15ComponentLoader10s_keyLabelE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C48A8: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B3FE4: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 24 bytes in 1 blocks are still reachable in loss record 7 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C0BCFB7: _ZNSt8_Rb_treeISsSt4pairIKSsjESt10_Select1stIS2_ESt4lessISsESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_ (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BD480: std::_Rb_tree<std::string, std::pair<std::string const, unsigned>, std::_Select1st<std::pair<std::string const, unsigned> >, std::less<std::string>, std::allocator<std::pair<std::string const, unsigned> > >::insert_unique(std::_Rb_tree_iterator<std::pair<std::string const, unsigned> >, std::pair<std::string const, unsigned> const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BC88C: seal::ContextKey::create(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BCB64: seal::ContextKeyDef::ContextKeyDef(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B8BD8: _GLOBAL__I__ZN4seal20ComponentWrapperBase10s_keyLabelE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C48A8: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B3FE4: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 24 bytes in 1 blocks are still reachable in loss record 8 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C0BCFB7: _ZNSt8_Rb_treeISsSt4pairIKSsjESt10_Select1stIS2_ESt4lessISsESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_ (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BD1B6: std::_Rb_tree<std::string, std::pair<std::string const, unsigned>, std::_Select1st<std::pair<std::string const, unsigned> >, std::less<std::string>, std::allocator<std::pair<std::string const, unsigned> > >::insert_unique(std::pair<std::string const, unsigned> const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BD542: std::_Rb_tree<std::string, std::pair<std::string const, unsigned>, std::_Select1st<std::pair<std::string const, unsigned> >, std::less<std::string>, std::allocator<std::pair<std::string const, unsigned> > >::insert_unique(std::_Rb_tree_iterator<std::pair<std::string const, unsigned> >, std::pair<std::string const, unsigned> const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BC88C: seal::ContextKey::create(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0BCB64: seal::ContextKeyDef::ContextKeyDef(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C2224: _GLOBAL__I__ZN4seal15PropertyManager10s_keyLabelE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C48A8: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B3FE4: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 25 bytes in 1 blocks are possibly lost in loss record 9 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x8363F4: std::string::_Rep::_S_create(unsigned, unsigned, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838E34: (within /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838F65: std::string::string(char const*, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x1C0B8BCA: _GLOBAL__I__ZN4seal20ComponentWrapperBase10s_keyLabelE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C48A8: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B3FE4: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 36 bytes in 3 blocks are still reachable in loss record 10 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C0A36A2: seal::PluginManager::PluginManager(seal::SearchPath const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A37FD: seal::PluginManager::get() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A1136: seal::PluginFactoryBase::PluginFactoryBase(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A05AD: seal::PluginCapabilities::PluginCapabilities() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A099D: _GLOBAL__I__ZN4seal18PluginCapabilities10s_instanceE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A4BCC: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C090FD0: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 41 bytes in 1 blocks are possibly lost in loss record 11 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x8363F4: std::string::_Rep::_S_create(unsigned, unsigned, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838E34: (within /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838F65: std::string::string(char const*, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x1C0B86F6: _GLOBAL__I__ZN4seal15ComponentLoader10s_keyLabelE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C48A8: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B3FE4: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 41 bytes in 1 blocks are possibly lost in loss record 12 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x8363F4: std::string::_Rep::_S_create(unsigned, unsigned, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838E34: (within /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838F65: std::string::string(char const*, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x1C0C2216: _GLOBAL__I__ZN4seal15PropertyManager10s_keyLabelE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0C48A8: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1C0B3FE4: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealKernel.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 60 bytes in 1 blocks are still reachable in loss record 13 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C0A37F0: seal::PluginManager::get() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A1136: seal::PluginFactoryBase::PluginFactoryBase(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A05AD: seal::PluginCapabilities::PluginCapabilities() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A099D: _GLOBAL__I__ZN4seal18PluginCapabilities10s_instanceE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A4BCC: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C090FD0: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1B8F0327: _dl_init (in /lib/ld-2.3.4.so)
+==15613==    by 0x5233CF: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 60 bytes in 3 blocks are still reachable in loss record 14 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x1B904C3B: realloc (vg_replace_malloc.c:188)
+==15613==    by 0x1B8ED16E: _dl_lookup_symbol_x (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EDD53: _dl_relocate_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x523279: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x57A2BA: _dlerror_run (in /lib/libdl-2.3.4.so)
+==15613==    by 0x579D10: dlopen@@GLIBC_2.1 (in /lib/libdl-2.3.4.so)
+==15613==    by 0x8104583: _PyImport_GetDynLoadFunc (dynload_shlib.c:130)
+==15613== 
+==15613== 
+==15613== 72 bytes in 1 blocks are still reachable in loss record 15 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C04AF1F: seal::logstream::logstream() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C04BAB4: seal::SinkLog::SinkLog() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C04BB1C: seal::logstream::createSinkLogDevice(char const*) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C049768: seal::logstream::logger() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C049CF3: seal::logstream::trace(seal::logflag&, int) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C0A37A3: seal::PluginManager::get() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A1136: seal::PluginFactoryBase::PluginFactoryBase(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A05AD: seal::PluginCapabilities::PluginCapabilities() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A099D: _GLOBAL__I__ZN4seal18PluginCapabilities10s_instanceE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A4BCC: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C090FD0: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613== 
+==15613== 
+==15613== 75 bytes in 4 blocks are still reachable in loss record 16 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x1B8EB59A: _dl_map_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EED97: openaux (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EF039: _dl_map_object_deps (in /lib/ld-2.3.4.so)
+==15613==    by 0x523168: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x57A2BA: _dlerror_run (in /lib/libdl-2.3.4.so)
+==15613==    by 0x579D10: dlopen@@GLIBC_2.1 (in /lib/libdl-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 132 bytes in 1 blocks are still reachable in loss record 17 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x523584: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x57A2BA: _dlerror_run (in /lib/libdl-2.3.4.so)
+==15613==    by 0x579D10: dlopen@@GLIBC_2.1 (in /lib/libdl-2.3.4.so)
+==15613==    by 0x8104583: _PyImport_GetDynLoadFunc (dynload_shlib.c:130)
+==15613==    by 0x80F2820: _PyImport_LoadDynamicModule (importdl.c:42)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 140 bytes in 1 blocks are still reachable in loss record 18 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x1C04AF3E: seal::logstream::logstream() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C04BAB4: seal::SinkLog::SinkLog() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C04BB1C: seal::logstream::createSinkLogDevice(char const*) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C049768: seal::logstream::logger() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C049CF3: seal::logstream::trace(seal::logflag&, int) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C0A37A3: seal::PluginManager::get() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A1136: seal::PluginFactoryBase::PluginFactoryBase(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A05AD: seal::PluginCapabilities::PluginCapabilities() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A099D: _GLOBAL__I__ZN4seal18PluginCapabilities10s_instanceE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A4BCC: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C090FD0: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613== 
+==15613== 
+==15613== 271 bytes in 3 blocks are possibly lost in loss record 22 of 130
+==15613==    at 0x1B904407: operator new(unsigned) (vg_replace_malloc.c:132)
+==15613==    by 0x8363F4: std::string::_Rep::_S_create(unsigned, unsigned, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838A54: (within /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x838CB8: std::string::string(std::string const&, unsigned, unsigned) (in /usr/lib/libstdc++.so.6.0.3)
+==15613==    by 0x1C062EB1: seal::StringOps::split(std::string const&, std::vector<int, std::allocator<int> > const&, int, int, int) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C06332A: seal::StringOps::split(std::string const&, std::string const&, int, int, int, int) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C059809: seal::SearchPath::SearchPath(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_SealBase.so)
+==15613==    by 0x1C0A37E4: seal::PluginManager::get() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A1136: seal::PluginFactoryBase::PluginFactoryBase(std::string const&) (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A05AD: seal::PluginCapabilities::PluginCapabilities() (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A099D: _GLOBAL__I__ZN4seal18PluginCapabilities10s_instanceE (in /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613==    by 0x1C0A4BCC: (within /afs/cern.ch/sw/lcg/app/releases/SEAL/SEAL_1_9_0/slc4_ia32_gcc34/lib/liblcg_PluginManager.so)
+==15613== 
+==15613== 
+==15613== 304 bytes in 1 blocks are possibly lost in loss record 26 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808E9EF: PyObject_Realloc (obmalloc.c:1152)
+==15613==    by 0x808ED48: _PyObject_DebugRealloc (obmalloc.c:1389)
+==15613==    by 0x8076A18: list_resize (listobject.c:53)
+==15613==    by 0x80770E4: app1 (listobject.c:232)
+==15613==    by 0x8077165: PyList_Append (listobject.c:244)
+==15613==    by 0x80AAF56: add_subclass (typeobject.c:3329)
+==15613==    by 0x80AADB6: PyType_Ready (typeobject.c:3291)
+==15613==    by 0x1BE8EA7C: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 28 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8EA7C: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 29 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8EA46: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 30 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8EA10: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 31 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E9DA: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 32 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E9A4: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 33 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E96E: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 34 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E938: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 35 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E902: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 36 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E8CC: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 37 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E895: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 38 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E85F: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 39 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E829: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 40 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E7F3: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 41 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E7A2: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 42 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80AC40D: add_tp_new_wrapper (typeobject.c:3998)
+==15613==    by 0x80B0FA7: add_operators (typeobject.c:5537)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E76C: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 43 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E735: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 44 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E6FE: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 45 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E6AB: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 52 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80F642D: Py_InitModule4TraceRefs (modsupport.c:85)
+==15613==    by 0x1C1E24E6: inittime (timemodule.c:820)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 53 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8EA61: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 54 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80AC40D: add_tp_new_wrapper (typeobject.c:3998)
+==15613==    by 0x80B0FA7: add_operators (typeobject.c:5537)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8EA2B: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 55 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E9F5: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 56 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E9BF: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 57 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E989: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 58 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E953: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 59 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E91D: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 60 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E8E7: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 61 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E8B1: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 62 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E87A: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 63 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E844: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 64 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E80E: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 65 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E7D8: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 66 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E7BD: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 67 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E787: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 68 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E751: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 69 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E71A: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 70 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x1BE8E6E2: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 71 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E690: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 72 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x811DCDA: initzipimport (zipimport.c:1146)
+==15613==    by 0x80EFC3A: init_builtin (import.c:1825)
+==15613==    by 0x80EFA54: load_module (import.c:1754)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 73 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80AC40D: add_tp_new_wrapper (typeobject.c:3998)
+==15613==    by 0x80B0FA7: add_operators (typeobject.c:5537)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x808C0DC: PyObject_GenericGetAttr (object.c:1276)
+==15613==    by 0x808BBAB: PyObject_GetAttr (object.c:1127)
+==15613==    by 0x80F188A: PyImport_Import (import.c:2534)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 74 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x806AC08: _PyExc_Init (exceptions.c:2030)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 75 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x806ABE4: _PyExc_Init (exceptions.c:2029)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 76 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x806ABC0: _PyExc_Init (exceptions.c:2028)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 77 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x806AAA0: _PyExc_Init (exceptions.c:2019)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 78 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x806A95C: _PyExc_Init (exceptions.c:2004)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 79 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x806A818: _PyExc_Init (exceptions.c:1995)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 80 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x808D4BA: _Py_ReadyTypes (object.c:1870)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 81 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x808D496: _Py_ReadyTypes (object.c:1867)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 400 bytes in 1 blocks are possibly lost in loss record 82 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x80AA97D: PyType_Ready (typeobject.c:3173)
+==15613==    by 0x808D472: _Py_ReadyTypes (object.c:1864)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 410 bytes in 1 blocks are possibly lost in loss record 83 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8096132: PyString_FromString (stringobject.c:130)
+==15613==    by 0x80AAC59: PyType_Ready (typeobject.c:3262)
+==15613==    by 0x1BE8E7BD: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613==    by 0x80F09EC: load_next (import.c:2203)
+==15613==    by 0x80F011E: import_module_level (import.c:1984)
+==15613==    by 0x80F0567: PyImport_ImportModuleLevel (import.c:2055)
+==15613== 
+==15613== 
+==15613== 410 bytes in 1 blocks are possibly lost in loss record 84 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8096132: PyString_FromString (stringobject.c:130)
+==15613==    by 0x80AAC59: PyType_Ready (typeobject.c:3262)
+==15613==    by 0x808C0DC: PyObject_GenericGetAttr (object.c:1276)
+==15613==    by 0x808BBAB: PyObject_GetAttr (object.c:1127)
+==15613==    by 0x808B949: PyObject_GetAttrString (object.c:1069)
+==15613==    by 0x805EFDD: PyObject_CallMethod (abstract.c:1949)
+==15613==    by 0x80D93A8: import_all_from (ceval.c:4023)
+==15613==    by 0x80D37E6: PyEval_EvalFrameEx (ceval.c:2081)
+==15613==    by 0x80D61A9: PyEval_EvalCodeEx (ceval.c:2833)
+==15613== 
+==15613== 
+==15613== 412 bytes in 1 blocks are possibly lost in loss record 85 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x81078E0: _PyObject_GC_NewVar (gcmodule.c:1352)
+==15613==    by 0x81292B7: PyFrame_New (frameobject.c:614)
+==15613==    by 0x80D580A: PyEval_EvalCodeEx (ceval.c:2628)
+==15613==    by 0x812B0BE: function_call (funcobject.c:517)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x80B0461: slot_tp_new (typeobject.c:4862)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613== 
+==15613== 
+==15613== 448 bytes in 1 blocks are still reachable in loss record 87 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x1B904C3B: realloc (vg_replace_malloc.c:188)
+==15613==    by 0x808DC43: new_arena (obmalloc.c:532)
+==15613==    by 0x808DFA3: PyObject_Malloc (obmalloc.c:782)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x81078E0: _PyObject_GC_NewVar (gcmodule.c:1352)
+==15613==    by 0x80A0A56: PyTuple_New (tupleobject.c:68)
+==15613==    by 0x80AA9C6: PyType_Ready (typeobject.c:3191)
+==15613==    by 0x80AA97D: PyType_Ready (typeobject.c:3173)
+==15613==    by 0x808D472: _Py_ReadyTypes (object.c:1864)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613== 
+==15613== 
+==15613== 461 bytes in 1 blocks are possibly lost in loss record 88 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8096132: PyString_FromString (stringobject.c:130)
+==15613==    by 0x80AAC59: PyType_Ready (typeobject.c:3262)
+==15613==    by 0x80AA97D: PyType_Ready (typeobject.c:3173)
+==15613==    by 0x808D4BA: _Py_ReadyTypes (object.c:1870)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 89 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x1C27A72E: coral::PyCoral::Exception() (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/liblcg_coral_PyCoral.so)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 90 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x1C3FAD19: init_stuff (cPickle.c:5657)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 91 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x1C3FAD4E: init_stuff (cPickle.c:5661)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 92 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x1C3FAC9D: init_stuff (cPickle.c:5651)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 93 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x1C3FABD2: init_stuff (cPickle.c:5636)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 94 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x1C3FAB56: init_stuff (cPickle.c:5630)
+==15613== 
+==15613== 
+==15613== 480 bytes in 1 blocks are possibly lost in loss record 95 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805EE7C: call_function_tail (abstract.c:1891)
+==15613==    by 0x805EF2E: PyObject_CallFunction (abstract.c:1915)
+==15613==    by 0x80E7EFC: PyErr_NewException (errors.c:570)
+==15613==    by 0x811DDB5: initzipimport (zipimport.c:1169)
+==15613== 
+==15613== 
+==15613== 678 bytes in 1 blocks are possibly lost in loss record 96 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808D876: PyMem_Malloc (object.c:2005)
+==15613==    by 0x8105AC4: calculate_path (getpath.c:574)
+==15613==    by 0x8105DDB: Py_GetProgramFullPath (getpath.c:686)
+==15613==    by 0x8102706: _PySys_Init (sysmodule.c:1158)
+==15613==    by 0x80F9255: Py_InitializeEx (pythonrun.c:210)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 748 bytes in 2 blocks are possibly lost in loss record 97 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x81078E0: _PyObject_GC_NewVar (gcmodule.c:1352)
+==15613==    by 0x81292B7: PyFrame_New (frameobject.c:614)
+==15613==    by 0x80D580A: PyEval_EvalCodeEx (ceval.c:2628)
+==15613==    by 0x812B0BE: function_call (funcobject.c:517)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x806702D: instancemethod_call (classobject.c:2493)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x80B0212: slot_tp_init (typeobject.c:4819)
+==15613== 
+==15613== 
+==15613== 904 bytes in 11 blocks are still reachable in loss record 98 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x1B8EAC85: open_path (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EB412: _dl_map_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EED97: openaux (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EF039: _dl_map_object_deps (in /lib/ld-2.3.4.so)
+==15613==    by 0x523168: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x57A2BA: _dlerror_run (in /lib/libdl-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 930 bytes in 1 blocks are possibly lost in loss record 99 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8096132: PyString_FromString (stringobject.c:130)
+==15613==    by 0x80AAC59: PyType_Ready (typeobject.c:3262)
+==15613==    by 0x808C0DC: PyObject_GenericGetAttr (object.c:1276)
+==15613==    by 0x808BBAB: PyObject_GetAttr (object.c:1127)
+==15613==    by 0x808B949: PyObject_GetAttrString (object.c:1069)
+==15613==    by 0x805EFDD: PyObject_CallMethod (abstract.c:1949)
+==15613==    by 0x80F94A1: Py_InitializeEx (pythonrun.c:275)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 979 bytes in 15 blocks are still reachable in loss record 100 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x1B8ED46F: _dl_new_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8E95B8: _dl_map_object_from_fd (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EB0BB: _dl_map_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EED97: openaux (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EF039: _dl_map_object_deps (in /lib/ld-2.3.4.so)
+==15613==    by 0x523168: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 1000 bytes in 1 blocks are possibly lost in loss record 102 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8073750: fill_free_list (intobject.c:49)
+==15613==    by 0x8075D88: _PyInt_Init (intobject.c:1147)
+==15613==    by 0x80F91B4: Py_InitializeEx (pythonrun.c:188)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 103 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x812D31A: PyStructSequence_InitType (structseq.c:396)
+==15613==    by 0x1C1E25AC: inittime (timemodule.c:844)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 104 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x1BE8E6C6: initPyCoral (in /afs/cern.ch/user/s/stomar/CORAL_1_6_1/slc4_ia32_gcc34/lib/PyCoral.so)
+==15613==    by 0x80F287B: _PyImport_LoadDynamicModule (importdl.c:53)
+==15613==    by 0x80EFA0B: load_module (import.c:1741)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 105 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x808C0DC: PyObject_GenericGetAttr (object.c:1276)
+==15613==    by 0x808BBAB: PyObject_GetAttr (object.c:1127)
+==15613==    by 0x80D3145: PyEval_EvalFrameEx (ceval.c:1991)
+==15613==    by 0x80D828A: fast_function (ceval.c:3652)
+==15613==    by 0x80D8065: call_function (ceval.c:3587)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 106 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x812D31A: PyStructSequence_InitType (structseq.c:396)
+==15613==    by 0x810FAF7: initposix (posixmodule.c:8567)
+==15613==    by 0x80EFC3A: init_builtin (import.c:1825)
+==15613==    by 0x80EFA54: load_module (import.c:1754)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 107 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8F5D: add_members (typeobject.c:2855)
+==15613==    by 0x80AAA86: PyType_Ready (typeobject.c:3216)
+==15613==    by 0x812D31A: PyStructSequence_InitType (structseq.c:396)
+==15613==    by 0x810FAC4: initposix (posixmodule.c:8562)
+==15613==    by 0x80EFC3A: init_builtin (import.c:1825)
+==15613==    by 0x80EFA54: load_module (import.c:1754)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 108 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x80C502C: _PyUnicodeUCS2_Init (unicodeobject.c:8013)
+==15613==    by 0x80F91F6: Py_InitializeEx (pythonrun.c:199)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 109 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x808D502: _Py_ReadyTypes (object.c:1876)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 110 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x808D4DE: _Py_ReadyTypes (object.c:1873)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 111 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80B0F32: add_operators (typeobject.c:5532)
+==15613==    by 0x80AAA34: PyType_Ready (typeobject.c:3209)
+==15613==    by 0x80AA97D: PyType_Ready (typeobject.c:3173)
+==15613==    by 0x808D4BA: _Py_ReadyTypes (object.c:1870)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 1552 bytes in 1 blocks are possibly lost in loss record 112 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A9037: add_getset (typeobject.c:2875)
+==15613==    by 0x80AAAB2: PyType_Ready (typeobject.c:3220)
+==15613==    by 0x808D472: _Py_ReadyTypes (object.c:1864)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613== 
+==15613== 
+==15613== 2242 bytes in 4 blocks are possibly lost in loss record 114 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x80A6980: type_new (typeobject.c:1895)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805F432: PyObject_CallFunctionObjArgs (abstract.c:2090)
+==15613==    by 0x80D9762: build_class (ceval.c:4086)
+==15613==    by 0x80D1C60: PyEval_EvalFrameEx (ceval.c:1711)
+==15613==    by 0x80D61A9: PyEval_EvalCodeEx (ceval.c:2833)
+==15613==    by 0x80CCF44: PyEval_EvalCode (ceval.c:494)
+==15613==    by 0x80EDDC4: PyImport_ExecCodeModuleEx (import.c:658)
+==15613== 
+==15613== 
+==15613== 2400 bytes in 6 blocks are possibly lost in loss record 115 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A9037: add_getset (typeobject.c:2875)
+==15613==    by 0x80AAAB2: PyType_Ready (typeobject.c:3220)
+==15613==    by 0x80A6D77: type_new (typeobject.c:1987)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805F432: PyObject_CallFunctionObjArgs (abstract.c:2090)
+==15613== 
+==15613== 
+==15613== 2413 bytes in 7 blocks are possibly lost in loss record 116 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8095F5F: PyString_FromStringAndSize (stringobject.c:75)
+==15613==    by 0x80F4C2E: r_object (marshal.c:661)
+==15613==    by 0x80F4EE3: r_object (marshal.c:721)
+==15613==    by 0x80F54A2: r_object (marshal.c:841)
+==15613==    by 0x80F4EE3: r_object (marshal.c:721)
+==15613==    by 0x80F54A2: r_object (marshal.c:841)
+==15613==    by 0x80F4EE3: r_object (marshal.c:721)
+==15613==    by 0x80F54A2: r_object (marshal.c:841)
+==15613==    by 0x80F5C61: PyMarshal_ReadObjectFromString (marshal.c:1013)
+==15613== 
+==15613== 
+==15613== 2613 bytes in 4 blocks are still reachable in loss record 117 of 130
+==15613==    at 0x1B904BC9: calloc (vg_replace_malloc.c:175)
+==15613==    by 0x1B8ED1F0: _dl_new_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8E95B8: _dl_map_object_from_fd (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EB0BB: _dl_map_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x523107: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x57A2BA: _dlerror_run (in /lib/libdl-2.3.4.so)
+==15613==    by 0x579D10: dlopen@@GLIBC_2.1 (in /lib/libdl-2.3.4.so)
+==15613==    by 0x8104583: _PyImport_GetDynLoadFunc (dynload_shlib.c:130)
+==15613== 
+==15613== 
+==15613== 3104 bytes in 2 blocks are possibly lost in loss record 119 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x80A8E83: add_methods (typeobject.c:2836)
+==15613==    by 0x80AAA5A: PyType_Ready (typeobject.c:3212)
+==15613==    by 0x808C0DC: PyObject_GenericGetAttr (object.c:1276)
+==15613==    by 0x808BBAB: PyObject_GetAttr (object.c:1127)
+==15613==    by 0x808B949: PyObject_GetAttrString (object.c:1069)
+==15613==    by 0x805EFDD: PyObject_CallMethod (abstract.c:1949)
+==15613== 
+==15613== 
+==15613== 3499 bytes in 7 blocks are possibly lost in loss record 120 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x8095F5F: PyString_FromStringAndSize (stringobject.c:75)
+==15613==    by 0x80F4C2E: r_object (marshal.c:661)
+==15613==    by 0x80F4EE3: r_object (marshal.c:721)
+==15613==    by 0x80F54A2: r_object (marshal.c:841)
+==15613==    by 0x80F4EE3: r_object (marshal.c:721)
+==15613==    by 0x80F54A2: r_object (marshal.c:841)
+==15613==    by 0x80F5C61: PyMarshal_ReadObjectFromString (marshal.c:1013)
+==15613==    by 0x80F5B61: PyMarshal_ReadLastObjectFromFile (marshal.c:975)
+==15613==    by 0x80EE000: read_compiled_module (import.c:750)
+==15613== 
+==15613== 
+==15613== 3904 bytes in 4 blocks are possibly lost in loss record 121 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80D1E17: PyEval_EvalFrameEx (ceval.c:1723)
+==15613==    by 0x80D61A9: PyEval_EvalCodeEx (ceval.c:2833)
+==15613==    by 0x80CCF44: PyEval_EvalCode (ceval.c:494)
+==15613==    by 0x80EDDC4: PyImport_ExecCodeModuleEx (import.c:658)
+==15613==    by 0x80EE548: load_source_module (import.c:942)
+==15613==    by 0x80EF9D3: load_module (import.c:1732)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 3952 bytes in 7 blocks are possibly lost in loss record 122 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80872FA: PyDict_Merge (dictobject.c:1307)
+==15613==    by 0x808776C: PyDict_Copy (dictobject.c:1389)
+==15613==    by 0x80A6854: type_new (typeobject.c:1868)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805F432: PyObject_CallFunctionObjArgs (abstract.c:2090)
+==15613==    by 0x80D9762: build_class (ceval.c:4086)
+==15613==    by 0x80D1C60: PyEval_EvalFrameEx (ceval.c:1711)
+==15613== 
+==15613== 
+==15613== 6160 bytes in 1 blocks are possibly lost in loss record 123 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x8088BF8: PyDict_SetItemString (dictobject.c:2103)
+==15613==    by 0x806B08F: _PyExc_Init (exceptions.c:2065)
+==15613==    by 0x80F92FC: Py_InitializeEx (pythonrun.c:225)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613==    by 0x8057119: Py_Main (main.c:449)
+==15613==    by 0x80566C9: main (python.c:23)
+==15613== 
+==15613== 
+==15613== 7712 bytes in 2 blocks are possibly lost in loss record 124 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80D951B: import_all_from (ceval.c:4050)
+==15613==    by 0x80D37E6: PyEval_EvalFrameEx (ceval.c:2081)
+==15613==    by 0x80D61A9: PyEval_EvalCodeEx (ceval.c:2833)
+==15613==    by 0x80CCF44: PyEval_EvalCode (ceval.c:494)
+==15613==    by 0x80EDDC4: PyImport_ExecCodeModuleEx (import.c:658)
+==15613==    by 0x80EE548: load_source_module (import.c:942)
+==15613==    by 0x80EF9D3: load_module (import.c:1732)
+==15613== 
+==15613== 
+==15613== 9105 bytes in 15 blocks are still reachable in loss record 125 of 130
+==15613==    at 0x1B904BC9: calloc (vg_replace_malloc.c:175)
+==15613==    by 0x1B8ED1F0: _dl_new_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8E95B8: _dl_map_object_from_fd (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EB0BB: _dl_map_object (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EED97: openaux (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x1B8EF039: _dl_map_object_deps (in /lib/ld-2.3.4.so)
+==15613==    by 0x523168: dl_open_worker (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613==    by 0x523CC7: _dl_open (in /lib/tls/libc-2.3.4.so)
+==15613==    by 0x579CB7: dlopen_doit (in /lib/libdl-2.3.4.so)
+==15613==    by 0x1B8F00FD: _dl_catch_error (in /lib/ld-2.3.4.so)
+==15613== 
+==15613== 
+==15613== 10080 bytes in 21 blocks are possibly lost in loss record 126 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x80A36DC: PyType_GenericAlloc (typeobject.c:454)
+==15613==    by 0x80A66BD: type_new (typeobject.c:1830)
+==15613==    by 0x80A3551: type_call (typeobject.c:422)
+==15613==    by 0x805ED5B: PyObject_Call (abstract.c:1860)
+==15613==    by 0x805F432: PyObject_CallFunctionObjArgs (abstract.c:2090)
+==15613==    by 0x80D9762: build_class (ceval.c:4086)
+==15613==    by 0x80D1C60: PyEval_EvalFrameEx (ceval.c:1711)
+==15613==    by 0x80D61A9: PyEval_EvalCodeEx (ceval.c:2833)
+==15613== 
+==15613== 
+==15613== 98320 bytes in 1 blocks are possibly lost in loss record 127 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808E38E: PyObject_Malloc (obmalloc.c:901)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x808539D: dictresize (dictobject.c:495)
+==15613==    by 0x80857FA: PyDict_SetItem (dictobject.c:637)
+==15613==    by 0x80A05E1: PyString_InternInPlace (stringobject.c:4907)
+==15613==    by 0x80F4CDF: r_object (marshal.c:671)
+==15613==    by 0x80F4EE3: r_object (marshal.c:721)
+==15613==    by 0x80F54A2: r_object (marshal.c:841)
+==15613==    by 0x80F5C61: PyMarshal_ReadObjectFromString (marshal.c:1013)
+==15613==    by 0x80F5B61: PyMarshal_ReadLastObjectFromFile (marshal.c:975)
+==15613==    by 0x80EE000: read_compiled_module (import.c:750)
+==15613== 
+==15613== 
+==15613== 262144 bytes in 1 blocks are still reachable in loss record 128 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808DDB8: new_arena (obmalloc.c:563)
+==15613==    by 0x808DFA3: PyObject_Malloc (obmalloc.c:782)
+==15613==    by 0x808E9EF: PyObject_Realloc (obmalloc.c:1152)
+==15613==    by 0x808ED48: _PyObject_DebugRealloc (obmalloc.c:1389)
+==15613==    by 0x811ED3C: PyNode_AddChild (node.c:95)
+==15613==    by 0x811F03B: shift (parser.c:112)
+==15613==    by 0x811F571: PyParser_AddToken (parser.c:257)
+==15613==    by 0x805794F: parsetok (parsetok.c:194)
+==15613==    by 0x8057606: PyParser_ParseFileFlags (parsetok.c:89)
+==15613==    by 0x80FBC4C: PyParser_ASTFromFile (pythonrun.c:1373)
+==15613==    by 0x80FB745: PyRun_FileExFlags (pythonrun.c:1242)
+==15613== 
+==15613== 
+==15613== 262144 bytes in 1 blocks are still reachable in loss record 129 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808DDB8: new_arena (obmalloc.c:563)
+==15613==    by 0x808DFA3: PyObject_Malloc (obmalloc.c:782)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x810788E: _PyObject_GC_New (gcmodule.c:1342)
+==15613==    by 0x812B6A9: PyCFunction_NewEx (methodobject.c:19)
+==15613==    by 0x80F63BF: Py_InitModule4TraceRefs (modsupport.c:80)
+==15613==    by 0x810F96B: initposix (posixmodule.c:8530)
+==15613==    by 0x80EFC3A: init_builtin (import.c:1825)
+==15613==    by 0x80EFA54: load_module (import.c:1754)
+==15613==    by 0x80F11EF: import_submodule (import.c:2383)
+==15613== 
+==15613== 
+==15613== 262144 bytes in 1 blocks are still reachable in loss record 130 of 130
+==15613==    at 0x1B904298: malloc (vg_replace_malloc.c:130)
+==15613==    by 0x808DDB8: new_arena (obmalloc.c:563)
+==15613==    by 0x808DFA3: PyObject_Malloc (obmalloc.c:782)
+==15613==    by 0x808EBA2: _PyObject_DebugMalloc (obmalloc.c:1326)
+==15613==    by 0x81077F6: _PyObject_GC_Malloc (gcmodule.c:1320)
+==15613==    by 0x81078E0: _PyObject_GC_NewVar (gcmodule.c:1352)
+==15613==    by 0x80A0A56: PyTuple_New (tupleobject.c:68)
+==15613==    by 0x80AA9C6: PyType_Ready (typeobject.c:3191)
+==15613==    by 0x80AA97D: PyType_Ready (typeobject.c:3173)
+==15613==    by 0x808D472: _Py_ReadyTypes (object.c:1864)
+==15613==    by 0x80F9196: Py_InitializeEx (pythonrun.c:183)
+==15613==    by 0x80F96F2: Py_Initialize (pythonrun.c:315)
+==15613== 
+==15613== LEAK SUMMARY:
+==15613==    definitely lost: 0 bytes in 0 blocks.
+==15613==      possibly lost: 187997 bytes in 144 blocks.
+==15613==    still reachable: 801128 bytes in 66 blocks.
+==15613==         suppressed: 11133 bytes in 68 blocks.

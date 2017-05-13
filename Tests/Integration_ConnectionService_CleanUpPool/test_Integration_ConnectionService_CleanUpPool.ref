@@ -1,0 +1,51 @@
+Loading Connection Service
+Getting the first sessionProxy object 
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "frontier" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "mysql" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "oracle" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "sqlite" with native implementation
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "frontier" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "mysql" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "oracle" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "sqlite" is native
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+CORAL/Services/ConnectionService    Debug No valid connection for string "/dbdev/service1" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService    Debug Trying to get a new update session on "oracle://devdb10/LCG_CORAL_NIGHT"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=0sec.
+CORAL/Services/ConnectionService     Info  Connection to service "devdb10" established. Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/Services/ConnectionService    Debug  A New connection to service "devdb10" has been added in the active list. Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection CORAL-Oracle-lcgnight/admin was ok.
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10"
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10"
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10"
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10"
+--------------------------(1)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:1
+CORAL/Services/ConnectionService    Debug Connection id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10" has 4 session(s) opended.
+CORAL/Services/ConnectionService    Debug Connection id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10" has 3 session(s) opended.
+CORAL/Services/ConnectionService    Debug Connection id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10" has 2 session(s) opended.
+CORAL/Services/ConnectionService    Debug Connection id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10" has 1 session(s) opended.
+CORAL/Services/ConnectionService    Debug Connection id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=7c9cf0d0-bda3-11db-8303-000347d7bfc3 to service "devdb10" has been removed from the active list.
+--------------------------(2)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:0
+--------------------------(3)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:0
+[OVAL] Success

@@ -1,0 +1,47 @@
+<sect2>
+<title>Implementation Specifics</title>
+<para>
+The implementation of the package is based on the LFC C-api. All the
+access to the LFC name server are perfomed within non-named,
+serialized transactions. The I/O operations are perfomed with calls
+to the corresponding LFC functions, handling the error condition by
+translating the LFC error codes in specific run time exceptions.
+The functionality of the component are provided by a single service,
+implementing the features of replica lookup and credential store,
+and the administration commands for the deployment and operation of
+the database catalogue.
+The access to the LFC entries for administration and lookup is
+protected by the LFC built-in file system access permission. In
+particular,
+autorization to specific grid-roles or grid-groups is managed with
+LFC ACL's. 
+</para>
+<sect3><title>Mapping of CORAL database catalogue information to LFC
+tables</title>
+<para>
+The mapping between the database-related information and the LFC data
+fields is well isolated in a single, specific class, allowing for easy
+modification of the schema with little impact on the rest of the
+software architecture. 
+Here follows the table describing the mapping.
+</para>
+</sect3>
+</sect2>
+
+<sect2>
+<title>Related components</title>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem>
+<para>
+<emphasis>RelationalAccess</emphasis>, is the package
+where the CORAL abstract interfaces are defined.</para>
+</listitem>
+<listitem><para><emphasis>CoralCommon</emphasis>, is the package
+where some developer-level interfaces and some common implementation
+classes are defined.</para></listitem>
+<listitem><para><emphasis>LFC</emphasis>, is the package
+where APIs are defined.</para></listitem>
+</itemizedlist>
+</para>    
+</sect2>

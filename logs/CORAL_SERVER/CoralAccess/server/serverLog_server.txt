@@ -1,0 +1,394 @@
+Thu Oct 13 12:22:13.577744000 CEST 2011
+Kill any running instance of coralServer and sleep 1s
+Setup CMT environment using CMT_env.sh
+Configure CMT using AFS
+CMTCONFIG set to 'i686-slc5-gcc43-dbg'
+CMTROOT set to '/afs/cern.ch/sw/contrib/CMT/v1r20p20090520'
+CMTPATH set to ''
+CMTPROJECTPATH set to '/afs/cern.ch/sw/lcg/app/releases'
+CMTUSERCONTEXT set to '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/config/cmt/USERCONTEXT/trentad'
+CMTINSTALLAREA set to ''
+CMTSITE set to ''
+LD_LIBRARY_PATH set to ''
+Thu Oct 13 12:22:16.136195000 CEST 2011
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    61a
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_61a
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Starting CoralServer built on Oct 10 2011
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_MSGFORMAT = 'ATLAS'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_MSGLEVEL = '4'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_AUTH_PATH = '/afs/cern.ch/sw/lcg/app/pool/db'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_DBLOOKUP_PATH = '/afs/cern.ch/sw/lcg/app/pool/db'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService2 component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService2 component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Creating a ConnectionPool
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Create the server on 0.0.0.0:40007
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Create SocketServer on host 0.0.0.0 and port 40007
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Activate Monitoring ( period: 10s, log rotate: deactivated, filename: '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/logs/CORAL_SERVER/CoralAccess/server/serverLog_server.csv' )
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Start the server (timeout = -1s)
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Open listening  socket on host 0.0.0.0 and port 40007
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'listenOn: 0.0.0.0:40007'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+CORAL Server timings enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLLookupService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLLookupService factory from XMLLookupService library
+Data source lookup using /afs/cern.ch/sw/lcg/app/pool/db/dblookup.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/oracle factory from OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLAuthenticationService factory from XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/XMLAuthenticationService} Authentication using /afs/cern.ch/sw/lcg/app/pool/db/authentication.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #3 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #3) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #4) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #5) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #6) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #7) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #8) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 12 packets send : 20 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.000585556MB  send: 0.522815MB 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #3 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #3) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #4) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #5) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #6) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #7) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #8) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 12 packets send : 20 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.000564575MB  send: 0.522902MB 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #3 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #3) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #4) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #5) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #6) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #7) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #8) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #13 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #14 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #15 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #16 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #17 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 17 packets send : 25 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.000906944MB  send: 0.523616MB 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #3 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #3) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #4) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #5) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #6) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #7) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #8) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #13 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #14 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #15 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #16 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #17 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 17 packets send : 25 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.000864983MB  send: 0.523702MB 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #3 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #3) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #4) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #5) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #6) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #7) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #8) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #13 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #14 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #15 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #16 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #17 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 17 packets send : 25 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.000906944MB  send: 0.522968MB 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #3 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #3) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #4) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #5) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #6) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #7) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #8) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #13 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #14 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #15 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #16 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+Sending reply to request #17 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 17 packets send : 25 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.000864983MB  send: 0.523543MB 
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGTERM (#15) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Close the server socket
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Waiting for client connections to terminate:
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} All client connections are closed
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Shutdown the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'listenOn: 0.0.0.0:40007'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'listenOn: 0.0.0.0:40007' rec: 0MB  send: 0MB 
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} The server has been stopped
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Delete the StatsCSVPlotter
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Delete the server
+Delete SocketServer
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Exiting main
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Deleting the ConnectionPool
+=== TIMER (SERVER) 2.58user 0.15system 25.19elapsed 10%CPU
+*******************************************************************
+Thu Oct 13 12:22:44.864412000 CEST 2011

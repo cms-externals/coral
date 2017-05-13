@@ -1,0 +1,26 @@
+package MonitoringService
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v* 
+
+apply_pattern lcg_module_library
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+# The unit tests
+apply_pattern coral_unit_test tname=Report
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<sect2>
+    <title>PyCoral Semantics</title>
+    <sect3>
+        <title>Definitions and capabilities of the coral python module</title>
+        <para>
+PyCoral is an extension module of python, developed using the python C API. It
+ is a python interface to the CORAL package or in other words it provides CORAL
+ equivalent functionalities to python programmers.  The coral module can be 
+directly imported to python environment by using the "import" command of python.
+ In other words, just after starting the python interpreter one just needs to 
+type in "import coral" in the python interpreter for using the various classes 
+and functions of the coral module. The subsequent invocations of any of the 
+coral module specific classes and functions will require prepending the class 
+name with "coral.". For avoiding the prepend string one must load the coral 
+module using the command "from coral import *" in the python interpreter.
+</para>
+        <para>
+There are two types of classes in the coral module, namely the "exposed" classes
+ and the "unexposed" classes. The "exposed" classes are the ones which are 
+directly available to the user for instantiation. The "unexposed" classes are 
+the ones which can never be directly used by the user for creating objects. The
+objects of such types will be return values of some function of the exposed 
+types or unexposed types. Following are the seven (07) "exposed" classes of the coral module:
+<emphasis role="bold">"ConnectionService", "Context", "AttributeList", "Blob", "Date", "TableDescription", and "TimeStamp".</emphasis>
+</para>
+        <para>
+Following is the list of "unexposed" classes of the coral module:
+<emphasis role="bold">
+"IConnectionServiceConfiguration", "AttributeSpecification", "Attribute", "AttributeListIterator", "ICursorIterator",  "ISessionProxy", "ISchema", "IQueryDefinition", "IOperationWithQuery", "IBulkOperation",  "IBulkOperationWithQuery", "ITable", "ITableDataEditor", "ITableSchemaEditor", "ITableDescription", "ITablePrivilegeManager", "ISessionProperties", "IPrimaryKey", "IForeignKey", "IUniqueConstraint", "IIndex", "IColumn", "ITransaction", "ITypeConverter", "IQuery", "IWebCacheControl", "IWebCacheInfo", "ICursor", "IView", "IViewFactory", and "IMonitoringReporter"
+</emphasis>
+</para>
+    </sect3>
+    <sect3>
+        <title>Setting up the environment</title>
+        <para>
+The PYTHONPATH path environment variable should contain both the lib
+and python subdirectories of a CORAL installation.</para>
+</sect3>
+
+<sect3>
+<title>Examples of usage</title>
+<para>
+<emphasis role="bold">Example 1:</emphasis>
+Importing coral module into the python interpreter and then instantiating one AttributeList with list1 as its name.
+<programlisting>
+import coral
+list1 = coral.AttributeList()
+OR
+from coral import *
+list1 = AttributeList()
+</programlisting>
+</para>
+<para>
+<emphasis role="bold">Example 2:</emphasis>
+Reading and writing python objects into Blob with cPickle.</para>
+<para>
+The following example creates an AttributeList named "w" then it extends the AttributeList to have a "blob" type attribute. Then a tuple named "li1" is generated with item values from 1 to 499. The tuple is then written using the dump method of the cPickle module. The serialized tuple kept in blob can be read using the loads or load function of cPickle module.
+
+<programlisting>
+import cPickle //import pickling module
+import coral // import coral module
+w = coral.AttributeList() // create an attributeList named w
+w.extend("h","blob") // Extend the attributeList with blob type object
+li1 = [] // create an empty tuple named "li1"
+li2 = [] // cretae an empty tuple named "li2"
+for j in range(1,500):
+ li1.append(j) // append the int values 1 to 499 to the tuple "li1"
+cPickle.dump(li1,h,1) // serialize li1[] to the blob named "h"
+li2 = cPickle.load(w[0].data())
+OR
+li2 = cPickle.loads(w[0].data().readline()) // unserialize the contents of the 
+                                               blob held at the 0th index of 
+                                               the attributeList into tuple 
+                                               "li2", thus copying "li1" to 
+                                               "li2"
+</programlisting>
+</para>
+<para>
+<emphasis role="bold">Example 3:</emphasis>
+Various ways of accessing bufferRows of the AttributeList using the cursor. 
+
+<programlisting>
+cursor = query.execute() //cursor created with seperated line of code
+while (cursor.next()): // C++ style
+ currentRow = cursor.currentRow()
+ print str(currentRow)
+OR
+for currentRow in cursor: // Python style
+ print str(currentRow)
+OR 
+for currentRow in query.execute(): // Python style without creating cursor 
+                                      using another line of code
+ print str(currentRow)
+</programlisting>
+</para>
+<para>
+<emphasis role="bold">Example 4:</emphasis>
+Various ways of accessing attributes in an AttributeList
+
+<programlisting>
+print attrList[0].data() // Prints data value for attribute at index 0
+OR
+print attrList['X'].data() // Prints data value for attribute with name 'X'
+OR
+for attribute in attrList:
+ print attribute.data()   // Prints data value of all the attributes in
+                             the attributeList one ny one using the iterator
+                             protocol
+</programlisting>
+</para>
+<para>
+<emphasis role="bold">Example 5:</emphasis>
+Setting an attribute value to NULL.
+
+<programlisting>
+attrList[0].setData(None) // Sets the value of the attribute at index 0 in the 
+                              attrList to NULL
+OR
+attrList['X'].setData(None) // Sets the value of the attribute with name as 'X'
+                                in the attrList to NULL
+</programlisting>
+</para>
+
+<para>
+<emphasis role="bold">Example 6:</emphasis>
+Compare two attributeLists
+
+<programlisting>
+cmp(list1,list2) // compares the two attribute lists list1 and list2
+                 // 0 is returned for success and -1 for failure
+</programlisting>
+</para>
+
+<para>
+<emphasis role="bold">Example 7:</emphasis>
+Printing string representation of the AttributeList
+
+<programlisting>
+print str(attList1) // prints the string representation of the attList1.
+
+</programlisting>
+</para>
+</sect3>
+</sect2>

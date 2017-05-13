@@ -1,0 +1,54 @@
+<sect2><title>XMLLookupService Semantics</title>
+<para>
+The XMLLookupService is responsible for logical-physical mapping and is providing 
+list of possible replica based on logical database/service name, authentication method
+and access mode in which database will be accessed.
+</para>
+<para>
+Service specific parameters can be specified as child nodes of the
+service entries (see example below).
+</para>
+<para>The XML file should have a format like the following:
+<screen>
+<![CDATA[
+<servicelist>
+
+  <logicalservice name="myservice1">
+    <service name="oracle://host1/schema1" accessMode="update" authentication="password" />
+    <service name="oracle://host2/schema1" accessMode="readonly" authentication="password" />
+    <service name="oracle://host3/schema1" accessMode="update" authentication="certificate" />
+  </logicalservice>
+
+  <logicalservice name="myservice2">
+    <service name="oracle://host1/schema2" accessMode="readonly" authentication="password certificate" />
+    <service name="oracle://host2/schema2" accessMode="readonly" authentication="certificate" />
+    <service name="oracle://host3/schema2" accessMode="update" authentication="certificate password" />
+  </logicalservice>
+
+  <logicalservice name="myservice3">
+    <service name="oracle://host1/schema2" accessMode="update" authentication="password" >
+      <parameter name="ConnectionRetrialPeriod" value="60" />
+      <parameter name="ConnectionRetrialTimeOut" value="360" />
+      <parameter name="ConnectionTimeOut" value="3000" />
+    </service>
+  </logicalservice>
+
+</servicelist>
+
+]]>
+</screen>
+</para>
+<para>
+The <emphasis role="bold">dblookup.xml</emphasis> file is searched for
+in the current working directory and, if not found, the directories
+defined in the <emphasis role="bold">CORAL_DBLOOKUP_PATH</emphasis> environment path variable.
+</para>
+<para>
+XMLLookup service returns a list of possible replica as object of class IDatabaseServiceSet defined
+in RelationalAccess package.  Through IDatabaseServiceSet information can be accessed about number
+of available replicas, replica connection string, allowed access mode and authentication
+procedure of originating site.</para>  
+
+
+
+</sect2>

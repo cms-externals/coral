@@ -1,0 +1,81 @@
+Starting top thread 1
+Starting top thread 2
+Starting top thread 3
+Starting top thread 4
+Starting top thread 5
+Starting top thread 6
+Starting top thread 7
+Starting top thread 8
+Starting top thread 9
+Starting top thread 10
+Starting read thread 1/0
+Starting read thread 1/1
+Starting read thread 1/2
+Starting read thread 4/0
+Starting read thread 4/1
+Starting read thread 4/2
+Starting read thread 2/0
+Starting read thread 2/1
+Starting read thread 2/2
+End of read thread 1/2
+End of read thread 2/1
+Starting read thread 6/0
+Starting read thread 6/1
+Starting read thread 6/2
+End of read thread 1/0
+End of read thread 2/2
+End of read thread 4/2
+End of read thread 6/0
+Starting read thread 5/0
+Starting read thread 5/1
+Starting read thread 5/2
+Starting read thread 7/0
+Starting read thread 7/1
+Starting read thread 7/2
+Starting read thread 9/0
+Starting read thread 9/1
+Starting read thread 9/2
+Starting read thread 3/0
+Starting read thread 3/1
+Starting read thread 3/2
+End of read thread 2/0
+End of read thread 3/0
+End of thread 2
+End of read thread 3/1
+End of read thread 4/1
+End of read thread 1/1
+End of read thread 5/0
+End of read thread 9/0
+End of read thread 6/1
+Starting read thread 10/0
+Starting read thread 10/1
+Starting read thread 10/2
+End of thread 1
+Starting read thread 8/0
+Starting read thread 8/1
+Starting read thread 8/2
+End of read thread 5/2
+End of read thread 6/2
+End of read thread 3/2
+End of read thread 7/1
+End of read thread 9/1
+End of read thread 8/0
+End of read thread 4/0
+End of read thread 10/0
+End of read thread 9/2
+End of read thread 7/2
+End of read thread 7/0
+End of thread 6
+End of thread 7
+End of read thread 5/1
+End of read thread 8/1
+End of read thread 10/2
+End of read thread 8/2
+End of thread 3
+End of read thread 10/1
+End of thread 4
+End of thread 5
+End of thread 9
+End of thread 8
+End of thread 10
+[OVAL] Test passed!

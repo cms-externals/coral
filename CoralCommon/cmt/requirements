@@ -1,0 +1,31 @@
+package CoralCommon
+
+#============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+use CoralKernel v*
+use RelationalAccess v*
+
+apply_pattern lcg_shared_library
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+use CppUnit v* LCG_Interfaces -no_auto_imports
+
+# Do not install the header files (task #15556)
+macro_remove constituents 'install_includes'
+
+# The unit tests
+apply_pattern coral_unit_test tname=MonitoringEvent
+apply_pattern coral_unit_test tname=SimpleExpressionParser
+apply_pattern coral_unit_test tname=Timer
+apply_pattern coral_unit_test tname=URIParser
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

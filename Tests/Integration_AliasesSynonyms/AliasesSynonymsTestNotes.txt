@@ -1,0 +1,253 @@
+***GOAL OF THE TEST***
+
+COARL application are enabled to create synonims for the tables and objects in 
+Oracle DB.
+The synonims should be accessible as well as the underlying object. This could 
+be checked just using a nightly test that creates a table, with different prefix 
+and suffix depending on the slot and the platform, and the corresponding synonym
+trying to successfully access both.  
+
+
+*** TEST DETAILS ***
+The test was implemented using CPP-UNITTEST module.
+It access the database in UPDATE mode and create a table with a unambigous name
+containing the platforl and the slot name coded as in the method "BuildUniqueName"
+in the file:
+
+CoralBase/tests/Common/CoralCppUnitDBTest.h
+
+Afterwards the SYNONYM for that table is created as well adding just the prefix 
+"SYNONIM_OF_" to the table name.
+By means the following lines:
+
+________________________________________________________________________
+
+    //Create strings for SYNONYM, SQL COMMAND, SQLPLUS CONNECTION STRING
+    std::stringstream synonym;
+    synonym<<"SYNONYM_OF_"<<T1;
+
+    //Create string for the sql command
+    std::stringstream cmd;
+    cmd << "sqlplus -L -S "
+	<<creds.valueForItem( creds.userItem() )<<"/"
+	<<creds.valueForItem( creds.passwordItem() )
+	<< "@lcg_coral_nightly <<ENDOFSQL \n"
+	<< "create or replace synonym "
+	<< synonym.str() << " for "
+	<< creds.valueForItem( creds.userItem() )<< "." << T1 << "; \n"
+	<< "exit; \n"
+	<< "ENDOFSQL";
+
+    //Execute the SQLPLUS command and create SYNONYM of the table
+    system(cmd.str().c_str()); 
+_______________________________________________________________________
+
+the SYNONYM is created using the SQLPLUS command line.
+
+The command "popen" istead of "system" could not be used because
+it forks generationg a child process for the sql execution which 
+is concluded only at the end of the entire parent process. 
+This prevent any connection, open after the creation synonym, 
+to see the new object as the transaction of the child process is 
+not committed yet.
+ 
+The test execute a check to verify whether both the table and the 
+SYNONYM existe. 
+
+THE TEST IS WORKING FINE. The only doubt was related to the way of the check 
+done using the method "existTable". This method is working correctly also
+for the SYNONYM, since, if the part of the code that create the SYNONYM is 
+commented out, the run_time error raises as expected.
+
+
+Finally, the table and the synonym are deleted just keep clean the DB.
+
+The delete of the table is executed with the classic method:
+
+schema.dropIfExistsTable( T1 );
+
+However a problem raises when the same operation is attempted on the synonym.
+Both "dropTable" and "dropIfExistTable" methods are ineffective.
+THIS COULD BE A POSSIBLE BUG!!!!
+
+This is the reason why the synonym is deleted using another SQLPLUS 
+command like in the following:
+
+_______________________________________________________________________
+
+    //Create string for the sql command to drop SYNONYM
+    std::stringstream cmd1;
+    cmd1 << "sqlplus -L -S "
+	<<creds.valueForItem( creds.userItem() )<<"/"
+	<<creds.valueForItem( creds.passwordItem() )
+	<< "@lcg_coral_nightly <<ENDOFSQL \n"
+	<< "drop synonym " << synonym.str() << "; \n"
+	<< "exit; \n"
+	<< "ENDOFSQL";
+
+    //Execute the SQLPLUS command and create SYNONYM of the table
+    system(cmd1.str().c_str()); 
+
+_______________________________________________________________________
+
+
+
+=====================
+|   *************   |        
+|   * APPENDIX A*   |
+|   *************   |
+=====================
+
+***INTRODUCTION TO SYNONYMS***
+
+A synonym is an alternative name, permanently stored in the Oracle DB dictionary,
+for objects such as tables, views, sequences, stored procedures, and other 
+database objects. Its task is referencing a database object using a form of 
+shorthand. 
+
+There are two categories of synonyms, public and private.
+A public synonym can be accessed by any system user.
+
+The individual creating a public synonym does not own the synonym rather, 
+it will belong to the PUBLIC user group that exists within Oracle.
+Private synonyms, on the other hand, belong to the system user that creates 
+them and reside in that user's schema. 
+
+A system user can grant the privilege to use private synonyms that they own 
+to other system users.
+In order to create synonyms, you will need to have the CREATE SYNONYM privilege.
+This privilege will be granted to you by the DBA.You must have the CREATE PUBLIC 
+SYNONYM privilege in order to create public synonyms.
+
+The three advantages to synonym usage.  	
+·     First, a synonym provides what is termed location transparency because 
+      the synonym name hides the actual object name and object owner from the 
+      user of the synonym.  
+·     Second, you can create a synonym for a database object and then refer 
+      to the synonym in application code. The underlying object can be 	moved 
+      or renamed, and a redefinition of the synonym will allow the application 
+      code to continue to execute without errors.  	
+·     Third, a public synonym can be used to allow easy access to an object for 
+      all system users.  
+
+
+***SINTAX AND EXAMPLES***
+
+The SQL syntax for creating a synonym is:
+
+create [or replace]  [public]  synonym [schema .] synonym_name
+for [schema .] object_name [@ dblink];
+
+The or replace phrase allows you to recreate the synonym (if it already exists) 
+without having to issue a DROP synonym command.
+
+The public phrase means that the synonym is a public synonym and is accessible 
+to all users. Remember though that the user must first have the appropriate 
+privileges to the object to use the synonym.
+
+The schema phrase is the appropriate schema. If this phrase is omitted, 
+Oracle assumes that you are referring to your own schema.
+
+The object_name phrase is the name of the object for which you are creating 
+the synonym. It can be one of the following:
+
+table	             package
+view	             materialized view
+sequence	     java class schema object
+stored procedure     user-defined object
+function	     synonym
+
+
+For example:
+
+create public synonym suppliers
+for app.suppliers;
+
+This first example demonstrates how to create a synonym called suppliers. 
+Now, users of other schemas can reference the table called suppliers 
+without having to prefix the table name with the schema named app. 
+
+For example:
+
+select * from suppliers;
+
+If this synonym already existed and you wanted to redefine it, you could always 
+use the or replace phrase as follows:
+
+create or replace public synonym suppliers
+for app.suppliers;
+
+
+Dropping a synonym
+
+It is also possible to drop a synonym. The syntax for dropping a synonym is:
+
+drop [public] synonym [schema .] synonym_name [force];
+
+The public phrase allows you to drop a public synonym. If you have specified 
+public, then you don't specify a schema.
+
+The force phrase will force Oracle to drop the synonym even if it has 
+dependencies. It is probably not a good idea to use the force phrase as 
+it can cause invalidation of Oracle objects.
+
+
+For example:
+
+drop public synonym suppliers;
+
+This drop statement would drop the synonym called suppliers that we defined 
+earlier.
+
+
+=====================
+|   *************   |        
+|   * APPENDIX B*   |
+|   *************   |
+=====================
+
+The method "existTable" of Schema class check for both tables and synonyms.
+Infact in the code if the object is not found as a table with this lines:
+
+    status = OCIDescribeAny( m_sessionProperties.serviceContextHandle(),
+                             m_sessionProperties.errorHandle(),
+                             const_cast<char *>( fullTableName.c_str() ),
+                             ::strlen( fullTableName.c_str() ),
+                             OCI_OTYPE_NAME, OCI_DEFAULT,
+                             OCI_PTYPE_TABLE,
+                             describeHandle );
+
+the software looks for a synonym with the same name:
+
+    std::string tableForSynonym = this->synonymForTable( tableName );
+
+Inside the function "tableForSynonym" a synonym is looked for:
+
+  status = OCIDescribeAny( m_sessionProperties.serviceContextHandle(),
+                           m_sessionProperties.errorHandle(),
+                           const_cast<char *>( fullTableName.c_str() ),
+                           ::strlen( fullTableName.c_str() ),
+                           OCI_OTYPE_NAME, OCI_DEFAULT,
+                           OCI_PTYPE_SYN,
+                           describeHandle );
+
+The parameter OCI_PTYPE_SYN indicate the type of searched object. 
+
+
+  OCIParam* parameterHandle = 0;
+  status = OCIAttrGet( describeHandle, OCI_HTYPE_DESCRIBE,
+                       &parameterHandle, 0, OCI_ATTR_PARAM,
+                       m_sessionProperties.errorHandle() );
+
+
+  text* textPlaceHolder = 0;
+  ub4 textSize = 0;
+  status = OCIAttrGet( parameterHandle, OCI_DTYPE_PARAM,
+                       &textPlaceHolder, &textSize,
+                       OCI_ATTR_NAME,
+                       m_sessionProperties.errorHandle() );
+
+THe OCI_ATTR_NAME parameter provides a string containing the objectname of the synonym translation.
+
+
+

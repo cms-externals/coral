@@ -1,0 +1,7 @@
+<dir name="Connection"> Tests the basic connectivity </dir>
+<dir name="Schema"> Exercises the creation and description of tables </dir>
+<dir name="DataEditor"> Exercises simple DML operations </dir>
+<dir name="SimpleQueries"> Exercises simple queries on a table </dir>
+<dir name="BulkInserts"> Exercises bulk insertion of several types</dir>
+<dir name="Views"> Exercises the creation of views</dir>
+<dir name="MultipleSchemas"> Exercises the access of multiple schemas with a single connection</dir>

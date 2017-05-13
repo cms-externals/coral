@@ -1,0 +1,46 @@
+package MySQLAccess
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v*
+use mysql * LCG_Interfaces
+
+apply_pattern lcg_module_library
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+# The unit tests
+apply_pattern coral_unit_test tname=BulkInserts
+apply_pattern coral_unit_test tname=DataEditor
+apply_pattern coral_unit_test tname=MultipleSchemas
+apply_pattern coral_unit_test tname=Schema
+apply_pattern coral_unit_test tname=SchemaCopy
+apply_pattern coral_unit_test tname=SegFault
+apply_pattern coral_unit_test tname=ShowCreateTableParser
+apply_pattern coral_unit_test tname=SimpleQueries
+apply_pattern coral_unit_test tname=TestAlias
+apply_pattern coral_unit_test tname=Test40
+apply_pattern coral_unit_test tname=Connection
+apply_pattern coral_unit_test tname=NIPP
+
+# Link some tests to plugin libraries
+macro_append test_unit_MySQLAccess_Test40linkopts ' -llcg_MySQLAccess '\
+  target-winxp ' lcg_MySQLAccess.lib'
+macro_append test_unit_MySQLAccess_Connectionlinkopts ' -llcg_MySQLAccess ' \
+  target-winxp ' lcg_MySQLAccess.lib '
+macro_append test_unit_MySQLAccess_NIPPlinkopts ' -llcg_MySQLAccess ' \
+  target-winxp ' lcg_MySQLAccess.lib '
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

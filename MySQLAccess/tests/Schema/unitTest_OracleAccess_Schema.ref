@@ -1,0 +1,15 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_OracleAccess_Schema
+[oval run] =================================================
+
+CORAL/RelationalPlugins/oracle: level[Info] Connected to a server running Oracle version 10.1.0.4.0
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

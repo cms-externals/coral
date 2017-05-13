@@ -1,0 +1,179 @@
+#!/bin/bash
+#------------------------------------------------------------------------------
+#
+#    /etc/rc.d/init.d/coralserver
+#
+#    Script to start/stop the coralserverd daemon as a system service
+#    [implemented from the /usr/share/doc/initscripts/sysvinitfiles template]
+#
+#    Author:        Andrea Valassi (15 November 2009)
+#    Modifications: Andrea Valassi and Alexander Kalkhof (2009-2011)
+#
+#------------------------------------------------------------------------------
+# chkconfig: - 94 06
+# description: a middle tier for RDBMS access from CORAL applications
+
+# Installation directories and parameters (should be modified if needed)
+CS_SCR=$0
+CS_SYS=${CS_SCR#/etc/init.d/}
+if [ ${CS_SYS} == ${CS_SCR} ]; then CS_SYS=${CS_SCR#/etc/rc?.d/K??}; fi
+if [ ${CS_SYS} == ${CS_SCR} ]; then CS_SYS=${CS_SCR#/etc/rc?.d/S??}; fi
+if [ ${CS_SYS} == coralserverdev ]; then
+    CS_TAG=dev; CS_EXE="coralServerDev"; CS_PRT=40007;
+elif [ ${CS_SYS} == coralserver ]; then
+    CS_TAG=pro; CS_EXE="coralServerPro"; CS_PRT=40009;
+else
+    echo "ERROR! Invalid path '$0'"
+    echo "Expect 'coralserver' or 'coralserverdev', following"
+    echo "'/etc/init.d/', '/etc/rc?.d/K??' or '/etc/rc?.d/S??'"
+    exit 1;
+fi
+CS_USR=coralsrv
+CS_REL=/home/${CS_USR}/CORAL/${CS_TAG}
+CS_LOG=/home/${CS_USR}/logs/${CS_TAG}
+CS_AUT=/home/${CS_USR}
+CS_DBL=/home/${CS_USR}
+CS_CFG=x86_64-slc5-gcc43-opt
+CS_VER=-vvvv
+export CORAL_ORA_SKIP_TRANS_READONLY=yes
+unset CORAL_MSGLEVEL
+unset CORAL_MSGFORMAT
+
+# Derived variables (should generally not need to be modified)
+CS_LGP=${CS_EXE}-`date +%Y%m%d-%H%M%S`
+###CS_LGP=${CS_EXE}-`date +%Y%m%d-%H%M%S%N`
+CS_LGM=${CS_LOG}/${CS_LGP}
+CS_LGF=${CS_LOG}/${CS_LGP}.log
+CS_LGL=${CS_LOG}/${CS_EXE}.log
+
+#------------------------------------------------------------------------------
+
+# Source function library
+. /etc/init.d/functions
+
+# Local shell functions
+check() {
+    if [ ! -f ${CS_LGL} ]; then echo "${CS_EXE} is stopped"; return 1; fi
+    pid=`head -1 ${CS_LGL} | awk '{print substr($7,5)}'`
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo "${CS_EXE} is stopped"; return $RETVAL; fi
+    checkpid $pid
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo "${CS_EXE} is stopped"; return $RETVAL; fi
+    echo "${CS_EXE} (pid $pid) is running..."
+    return 0
+}
+
+start() {
+    logger "${CS_SCR} start: starting ${CS_EXE}"
+    echo -n "Starting ${CS_EXE}: "
+    running=`check > /dev/null`
+    if [ $? -eq 0 ]; then echo_warning; echo $running; check; return 0; fi
+    pushd ${CS_REL}/src/config/cmt > /dev/null
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    export CMTCONFIG=${CS_CFG}
+    source CMT_env.sh > /dev/null
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    if [ ! -f /home/${CS_USR}/CORAL/${CS_TAG}/${CS_CFG}/bin/${CS_EXE} ]; then ln -sf coralServer /home/${CS_USR}/CORAL/${CS_TAG}/${CS_CFG}/bin/${CS_EXE}; RETVAL=$?; fi
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    source setup.sh > /dev/null
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    popd > /dev/null
+    if [ ! -d ${CS_LOG}/archive ]; then mkdir -p ${CS_LOG}/archive > /dev/null; fi
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    \rm -f ${CS_LGL} > /dev/null 2>&1
+    ln -sf ${CS_LGF} ${CS_LGL} > /dev/null
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    CS_CAL="${CS_EXE} -p ${CS_PRT} -A ${CS_AUT} -L ${CS_DBL} -d ${CS_LGF} -e ${CS_LGM} -r 604800 ${CS_VER}"
+    if [ "$USER" == "root" ] || [ "$USER" == "" ]; then
+	chown ${CS_USR}:${CS_USR} ${CS_LOG}
+	su ${CS_USR} -m -c "${CS_CAL}" #> /dev/null
+    else
+	${CS_CAL} #> /dev/null
+    fi
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    echo_success; echo
+    logger "${CS_SCR} start: started ${CS_CAL}"
+    return 0
+}
+
+stopall() {
+    echo -n "Shutting down ALL ${CS_EXE}: "
+    killproc ${CS_EXE}
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then echo_failure; echo; return $RETVAL; fi
+    echo_success; echo
+    return 0
+}
+
+stop() {
+    logger "${CS_SCR} stop: stopping ${CS_EXE}"
+    echo -n "Shutting down ${CS_EXE}: "
+    if [ ! -f ${CS_LGL} ]; then echo_warning; echo; echo "${CS_EXE} is stopped"; return 0; fi
+    pid=`head -1 ${CS_LGL} | awk '{print substr($7,5)}'`
+    if [ $? -ne 0 ]; then echo_warning; echo; echo "${CS_EXE} is stopped"; return 0; fi
+    checkpid $pid
+    if [ $? -ne 0 ]; then echo_warning; echo; echo "${CS_EXE} is stopped"; return 0; fi
+    kill -TERM $pid
+    if checkpid $pid && sleep 1 &&
+	checkpid $pid && sleep 1 &&
+	checkpid $pid && sleep 1 &&
+	checkpid $pid; then kill -KILL $pid; fi
+    if checkpid $pid; then echo_failure; echo; return 1; fi
+    echo_success; echo
+    CS_LGP_OLD=`\ls -l ${CS_LGL} | awk '{print $NF}'`
+    CS_LGP_OLD=`basename ${CS_LGP_OLD} .log`
+    \rm -f ${CS_LGL} > /dev/null
+    logger "${CS_SCR} stop: move logs to ${CS_LOG}/archive/${CS_LGP_OLD}"
+    mkdir -p ${CS_LOG}/archive/${CS_LGP_OLD} > /dev/null
+    \mv ${CS_LOG}/${CS_EXE}-* ${CS_LOG}/archive/${CS_LGP_OLD} > /dev/null
+    logger "${CS_SCR} stop: stopped ${CS_EXE} ($pid)"
+    return 0
+}
+
+lock() {
+    touch /var/lock/subsys/${CS_SYS} # Needed by /etc/rc.d/rc
+}
+
+unlock() {
+    \rm -f /var/lock/subsys/${CS_SYS} # Needed by /etc/rc.d/rc
+}
+
+#------------------------------------------------------------------------------
+
+case "$1" in
+    start)
+        start
+        lock
+        ;;
+    stop)
+        ###stopall
+        stop
+        unlock
+        ;;
+    status)
+        ###status ${CS_EXE}
+        check
+        ;;
+    restart)
+        ###stopall
+        stop
+        unlock
+        start
+        lock
+        ;;
+    *)
+        echo "Usage: ${CS_SCR} {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+exit $?
+
+#------------------------------------------------------------------------------
+

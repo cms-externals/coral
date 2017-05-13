@@ -1,0 +1,43 @@
+<sect2><title>Reference documentation of the CoralCommon developer-level interfaces</title>
+<itemizedlist>
+
+
+<listitem><emphasis role="bold">coral::AuthenticationCredentials</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AuthenticationCredentials.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1AuthenticationCredentials.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::DatabaseServiceSet</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1DatabaseServiceSet.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1DatabaseServiceSet.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::monitor::MonitoringEventDescription</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1monitor_1_1MonitoringEventDescription.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1monitor_1_1MonitoringEventDescription.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::monitor::Event::Record</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/structcoral_1_1monitor_1_1Event_1_1Record.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/structcoral_1_1monitor_1_1Event_1_1Record.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::monitor::Event::Payload</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1monitor_1_1Event_1_1Payload.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1monitor_1_1Event_1_1Payload.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::URIException</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1URIException.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1URIException.html</ulink></listitem>
+
+
+<listitem><emphasis role="bold">coral::URIParser</emphasis>:
+<ulink url="http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1URIParser.html">
+http://pool.cern.ch/coral/currentReleaseDoc/doxygen/classcoral_1_1URIParser.html</ulink></listitem>
+
+
+</itemizedlist>
+
+
+</sect2>

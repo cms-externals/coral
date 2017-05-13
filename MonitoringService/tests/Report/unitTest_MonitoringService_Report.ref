@@ -1,0 +1,22 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_MonitoringService_Report
+[oval run] =================================================
+
+MonitoringService     Info Session: first monitored at level: Default has recorded 3 events
+MonitoringService     Info 1 13:55:11 09.08. 2005 16 1 This the first event at the Default monitoring level without payload, e.g. only time is recorded no payload
+MonitoringService     Info 2 13:55:11 09.08. 2005 16 16 Application exception Monitoring for session invalid not initialized...
+MonitoringService     Info 3 13:55:11 09.08. 2005 16 1 This the last event at the Default monitoring level without payload and should have ID 3 no payload
+MonitoringService     Info Session: second monitored at level: Debug has recorded 3 events
+MonitoringService     Info 4 13:55:11 09.08. 2005 16 32 This the first event at the Debug monitoring level with payload 1000000
+MonitoringService     Info 5 13:55:11 09.08. 2005 16 8 Application exception Monitoring for session impossible to report anything not initialized...
+MonitoringService     Info 6 13:55:11 09.08. 2005 16 1 This the last event at the Debug monitoring level without payload and should have ID 6 no payload
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

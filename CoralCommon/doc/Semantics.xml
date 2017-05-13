@@ -1,0 +1,49 @@
+<sect2><title>CoralCommon Semantics</title>
+
+<sect3><title>Shared implementations for the Authentication Service components</title>
+<para>The package provides the definition and implementation of the
+<emphasis role="bold">AuthenticationCredentials</emphasis> class, which is
+a transient implementation of the <emphasis>IAuthenticationCredentials</emphasis> interface.
+It provides shared code for the various implementations of the <emphasis>IAuthenticationService</emphasis> interface.
+</para>
+</sect3>
+
+<sect3><title>Shared implementations for the Lookup Service components</title>
+<para>The <emphasis role="bold">DatabaseServiceSet</emphasis> class is a transient implementation of the
+<emphasis>IDatabaseServiceSet</emphasis> interface. It can be used as a shared implementation in components
+providing implementations of the <emphasis>ILookupService</emphasis> interface, where the result set of a
+lookup query is fully retrieved before in can be made available to the client. This is a behaviour which is
+expected to be always valid for any ILookupService implementation.</para>
+</sect3>
+
+<sect3><title>Shared implementations for the Monitoring Service
+components and the related developer-level interfaces</title>
+<para>The developer level interfaces and default implementations related the the client-side monitoring
+are defined within the <emphasis>coral::monitor</emphasis> namespace. This namespace defines:
+<itemizedlist>
+<listitem>The state-less class <emphasis role="bold">MonitoringEventDescription</emphasis> and the singleton
+object monitoringEventDescription, which is used for the definition of the string literals corresponding
+to a monitoring event. The RDBMS-specific plugins use its methods for retrieving this string literals instead
+of hard-coded strings.</listitem>
+<listitem>The namespace <emphasis role="bold">Event</emphasis>, where the <emphasis role="bold">Record</emphasis>
+and <emphasis role="bold">Payload</emphasis> classes are defined. The latter are used as shared
+code by the various plugins providing implementations for the <emphasis>IMonitoringService</emphasis> interface.</listitem>
+<listitem>The enumeration <emphasis role="bold">ReportType</emphasis>, which is used by the various
+implementations of the <emphasis>IMonitoringService</emphasis> interface.</listitem>
+</itemizedlist>
+</para>
+</sect3>
+
+<sect3><title>A URI parser for the connection strings</title>
+<para>The package provides a simple parser for processing the database connection strings supplied to the
+<emphasis>IRelationalService</emphasis> and/or <emphasis>IConnectionService</emphasis>
+interfaces by the client. The <emphasis role="bold">URIParser</emphasis>
+class extracts from a valid connection string the RDBMS technology name, the optional protocol, the host
+name, the optional port number, and the name which defines the schema/service name. In case the supplied
+connection string is not valid or cannot be parsed, a <emphasis role="bold">URIException</emphasis> object is thrown.
+The URIParser class is also used in the plugins providing the RDBMS-specific implementations.
+</para>
+</sect3>
+
+
+</sect2>

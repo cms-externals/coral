@@ -1,0 +1,46 @@
++++ List of open bugs in CORAL_SERVER +++
+
+==============================================================================
+* AV: CoralServerProxy (2009/02/10) - HIGH
+
+The 2sesAll test fails, the proxy prints out the following:
+
+2009-02-10 09:46:01.277 [DBG] SingleClientReader <socket:4>: received new packet [Packet type=Q op=1 size=29 ID=<0:1#0> data=\x1b\x00CORALSERVER-Oracle-avalassi]
+2009-02-10 09:46:01.277 [DBG] SingleClientReader <socket:4>: set packet client id = 1
+2009-02-10 09:46:01.277 [DBG] SingleClientReader <socket:4>: queued new packet [Packet type=Q op=1 size=29 ID=<1:1#0> data=\x1b\x00CORALSERVER-Oracle-avalassi], new queue size = 1
+2009-02-10 09:46:01.277 [DBG] PacketDispatcher: received new packet [Packet type=Q op=1 size=29 ID=<1:1#0> data=\x1b\x00CORALSERVER-Oracle-avalassi]
+2009-02-10 09:46:01.277 [DBG] PacketDispatcher: packet non-cacheable, moving it to server queue
+2009-02-10 09:46:01.277 [DBG] ServerWriter <socket:5>: got packet from queue [Packet type=Q op=1 size=29 ID=<1:1#0> data=\x1b\x00CORALSERVER-Oracle-avalassi]
+2009-02-10 09:46:01.278 [ERR] Packet::read - packet size is smaller than header size: 23
+
+The server prints out
+Received packet with errors in the header 'payload checksum in received header is wrong! ( CORAL : "PacketSocket::receivePacket()" from "coral::CoralSockets" )'
+and then closes the socket towards the proxy (correctly).
+
+The proxy instead does not close the socket towards the client or send an 
+exception to it, so that the client hangs waiting for the proxy.
+
+The same test succeeds against the server without going through the proxy.
+
+==============================================================================
+* AV: CoralStubs (2009/02/10) - HIGH
+
+The fetchRows method does not work in the 1ses and 2ses tests.
+
++++ CORALSERVER TEST +++ Current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ ERROR! Exception caught: No AttributeBuffer found for cursor #2
+
+In method ClientStub::fetchRows, what is the difference 
+between cursor and cursorID???
+
+==============================================================================
+* AV: CoralStubs (2009/02/10) - LOW
+
+The exceptions from CoralServerProxy are not recognized.
++++ CORALSERVER TEST +++ ERROR! Exception caught: Unknown exception (0x50)(0x72) ( CORAL : "ClientStub::prepareExceptionMessage" from "coral::CoralStubs" )
+This is an exception thrown when trying to connect in R/W mode.
+A test should be added too.
+
+==============================================================================

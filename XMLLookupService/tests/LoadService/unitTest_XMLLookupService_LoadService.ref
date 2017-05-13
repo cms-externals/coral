@@ -1,0 +1,26 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_XMLLookupService_LoadService
+[oval run] =================================================
+
+myservice1 : oracle://host1/schema1, password, Update
+myservice1 : oracle://host3/schema1, certificate, Update
+myservice2 : oracle://host3/schema2, certificate password, Update
+myservice1 : oracle://host1/schema1, password, Read-Only
+myservice1 : oracle://host2/schema1, password, Read-Only
+myservice1 : oracle://host3/schema1, certificate, Read-Only
+myservice2 : oracle://host1/schema2, password certificate, Read-Only
+myservice2 : oracle://host2/schema2, certificate, Read-Only
+myservice2 : oracle://host3/schema2, certificate password, Read-Only
+myservice2 : oracle://host1/schema2, password, Read-Only
+myservice2 : oracle://host3/schema2, password, Read-Only
+Exiting...
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

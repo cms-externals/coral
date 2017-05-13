@@ -1,0 +1,189 @@
+Loading Connection Service
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "frontier" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "mysql" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "oracle" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "sqlite" with native implementation
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "frontier" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "mysql" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "oracle" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "sqlite" is native
+CORAL/Services/ConnectionService    Debug Looking up read-only replicas for logical connection: "missing_connection_string"
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::ILookupService: CORAL/Services/LFCReplicaService
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "missing_connection_string" with access mode=Read-Only
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Error Logical connection string "/databasetest/missing_connection_string" not found. Closing transaction.
+[OVAL]Exception:Logical connection string is unknown. ( CORAL : "LFCReplicaService::listReplicas" from "CORAL/Services/LFCReplicaService" )
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for logical string="/connection_folder/connection0", role=""
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for file /databasetest/connection_folder/connection0/coral_default_role
+CORAL/Services/LFCReplicaService    Debug Deleting file /databasetest/connection_folder/connection0/coral_default_role from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for file /databasetest/connection_folder/connection0/reader
+CORAL/Services/LFCReplicaService    Debug Deleting file /databasetest/connection_folder/connection0/reader from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for file /databasetest/connection_folder/connection0/writer
+CORAL/Services/LFCReplicaService    Debug Deleting file /databasetest/connection_folder/connection0/writer from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Deleted 5 replicas.
+CORAL/Services/LFCReplicaService    Debug Starting transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Removing folder /databasetest/connection_folder/connection0 from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Delete operation completed.
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for logical string="/connection_folder/connection1", role=""
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for file /databasetest/connection_folder/connection1/coral_default_role
+CORAL/Services/LFCReplicaService    Debug Deleting file /databasetest/connection_folder/connection1/coral_default_role from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Deleting replicas for file /databasetest/connection_folder/connection1/writer
+CORAL/Services/LFCReplicaService    Debug Deleting file /databasetest/connection_folder/connection1/writer from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Deleted 5 replicas.
+CORAL/Services/LFCReplicaService    Debug Starting transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Removing folder /databasetest/connection_folder/connection1 from LFC name server.
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Delete operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection0", role="coral_default_role": pcs="oracle://int5r/lcg_coral_nightly".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection0", role="coral_default_role": pcs="oracle://int5r/coral_writer".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection0", role="coral_default_role": pcs="sqlite_file:ral.db".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection0", role="reader": pcs="oracle://int5r/coral_writer".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection0", role="writer": pcs="oracle://int5r/lcg_coral_nightly".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection1", role="coral_default_role": pcs="mysql://itrac424.cern.ch/lcg_coral_nightly".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection1", role="coral_default_role": pcs="oracle://int5r/lcg_coral_nightly".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection1", role="coral_default_role": pcs="sqlite_file:ral.db".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection1", role="writer": pcs="mysql://itrac424.cern.ch/lcg_coral_nightly".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/LFCReplicaService    Debug Adding replica for logical string="/connection_folder/connection1", role="writer": pcs="oracle://int5r/lcg_coral_nightly".
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Committing transaction.
+CORAL/Services/LFCReplicaService     Info Add Replica operation completed.
+CORAL/Services/ConnectionService    Debug Looking up update replicas for logical connection: "/connection_folder/connection0"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection0" with access mode=Update
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/lcg_coral_nightly" in the credential map. Total entries=1
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/lcg_coral_nightly" in the credential map. Total entries=1
+CORAL/Services/ConnectionService    Debug No valid connection for string "/connection_folder/connection0" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Trying to get a new update session on "oracle://int5r/lcg_coral_nightly"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=300sec.
+CORAL/Services/ConnectionService     Info  Connection to service "int5r" established. Id=278d347c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService     Info New session on connection to service "int5r" started for user "lcg_coral_nightly". Connection Id=278d347c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService    Debug  A New connection to service "int5r" has been added in the active list. Id=278d347c-e12c-11db-8804-000347cf812f
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "DROP TABLE lcg_coral_nightly."T_CONNECTION_SERVICE_TEST""
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "CREATE TABLE lcg_coral_nightly."T_CONNECTION_SERVICE_TEST" ( "N_X" NUMBER(10), "N_S" VARCHAR2(4000) )"
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection /connection_folder/connection0 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been moved to the idle list.
+CORAL/Services/ConnectionService    Debug Looking up read-only replicas for logical connection: "/connection_folder/connection0"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection0" with access mode=Read-Only
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/ConnectionService    Debug Checking idle pool for timed-out connections - Total=1, Expired=0
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/coral_writer" in the credential map. Total entries=2
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/coral_writer" in the credential map. Total entries=2
+CORAL/Services/ConnectionService     Info New session on connection to service "int5r" started for user "lcg_coral_nightly". Connection Id=278d347c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService    Debug The idle connection Id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been moved to the active list.
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection /connection_folder/connection0 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been moved to the idle list.
+# Connection with role="writer"
+CORAL/Services/ConnectionService    Debug Looking up update replicas for logical connection: "/connection_folder/connection0"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection0" with access mode=Update
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/lcg_coral_nightly" in the credential map. Total entries=1
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/lcg_coral_nightly" in the credential map. Total entries=1
+CORAL/Services/ConnectionService     Info New session on connection to service "int5r" started for user "lcg_coral_nightly". Connection Id=278d347c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService    Debug The idle connection Id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been moved to the active list.
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection /connection_folder/connection0 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=278d347c-e12c-11db-8804-000347cf812f to service "int5r" has been moved to the idle list.
+# Connection with role="reader"
+CORAL/Services/ConnectionService    Debug Looking up update replicas for logical connection: "/connection_folder/connection0"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection0" with access mode=Update
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+CORAL/Services/LFCReplicaService    Debug Searching connection "oracle://int5r/lcg_coral_nightly" in the credential map. Total entries=1
+CORAL/Services/ConnectionService    Debug Could not retrieve credentials for connection "oracle://int5r/lcg_coral_nightly" from authentication service: Role "reader" is not known for connection string "oracle://int5r/lcg_coral_nightly" ( CORAL : "IAuthenticationService::credentials" from "CORAL/Services/LFCReplicaService" )
+CORAL/Services/ConnectionService  Warning Replica on connection "oracle://int5r/lcg_coral_nightly" skipped (no authentication provided).
+Connection not established: No physical Update connection for "/connection_folder/connection0" is available. ( CORAL : "ReplicaCatalogue::replicasForConnection" from "CORAL/Services/ConnectionService" )
+CORAL/Services/ConnectionService    Debug Looking up update replicas for logical connection: "/connection_folder/connection1"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection1" with access mode=Update
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+MySQLAccess::TypeConverter    Debug Initializing MySQL type converter
+CORAL/RelationalPlugins/mysql    Debug MySQLAccess domain is loading its components
+CORAL/Services/LFCReplicaService    Debug Searching connection "mysql://itrac424.cern.ch/lcg_coral_nightly" in the credential map. Total entries=2
+CORAL/Services/LFCReplicaService    Debug Searching connection "mysql://itrac424.cern.ch/lcg_coral_nightly" in the credential map. Total entries=2
+CORAL/Services/ConnectionService    Debug No valid connection for string "/connection_folder/connection1" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Trying to get a new update session on "mysql://itrac424.cern.ch/lcg_coral_nightly"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=300sec.
+CORAL/RelationalPlugins/mysql  Warning Establishing connection with login name failed, user supplied credentials required
+CORAL/RelationalPlugins/mysql    Debug Connecting to : itrac424.cern.ch
+
+CORAL/Services/ConnectionService     Info  Connection to service "itrac424.cern.ch" established. Id=2f7a640c-e12c-11db-8804-000347cf812f
+CORAL/RelationalPlugins/mysql    Debug Starting user session by connecting to: mysql://itrac424.cern.ch as "lcg_coral_nightly"
+CORAL/Services/ConnectionService     Info New session on connection to service "itrac424.cern.ch" started for user "lcg_coral_nightly". Connection Id=2f7a640c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService    Debug  A New connection to service "itrac424.cern.ch" has been added in the active list. Id=2f7a640c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService    Debug Checking idle pool for timed-out connections - Total=1, Expired=0
+CORAL/RelationalPlugins/mysql    Debug Executing: DROP TABLE "lcg_coral_nightly"."T_CONNECTION_SERVICE_TEST"
+CORAL/RelationalPlugins/mysql    Debug Table DDL: CREATE TABLE "lcg_coral_nightly"."T_CONNECTION_SERVICE_TEST" ("N_X" INTEGER, "N_S" VARCHAR(255) BINARY)
+CORAL/Services/ConnectionService    Debug Checking idle pool for timed-out connections - Total=1, Expired=0
+[OVAL]Connection /connection_folder/connection1 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has been moved to the idle list.
+# Connection with role="writer"
+CORAL/Services/ConnectionService    Debug Looking up update replicas for logical connection: "/connection_folder/connection1"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection1" with access mode=Update
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+CORAL/Services/LFCReplicaService    Debug Searching connection "mysql://itrac424.cern.ch/lcg_coral_nightly" in the credential map. Total entries=2
+CORAL/Services/LFCReplicaService    Debug Searching connection "mysql://itrac424.cern.ch/lcg_coral_nightly" in the credential map. Total entries=2
+CORAL/RelationalPlugins/mysql    Debug Starting user session by re-authentication as: lcg_coral_nightly
+CORAL/Services/ConnectionService     Info New session on connection to service "itrac424.cern.ch" started for user "lcg_coral_nightly". Connection Id=2f7a640c-e12c-11db-8804-000347cf812f
+CORAL/Services/ConnectionService    Debug The idle connection Id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has been moved to the active list.
+CORAL/Services/ConnectionService    Debug Checking idle pool for timed-out connections - Total=1, Expired=0
+[OVAL]Connection /connection_folder/connection1 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=2f7a640c-e12c-11db-8804-000347cf812f to service "itrac424.cern.ch" has been moved to the idle list.
+# Connection with role="reader"
+CORAL/Services/ConnectionService    Debug Looking up update replicas for logical connection: "/connection_folder/connection1"
+CORAL/Services/LFCReplicaService    Debug Looking up logical string "/connection_folder/connection1" with access mode=Update
+CORAL/Services/LFCReplicaService    Debug Opening transaction on LFC host "lxb1925.cern.ch"
+CORAL/Services/LFCReplicaService    Debug Lookup completed. Closing transaction.
+CORAL/Services/LFCReplicaService    Debug Searching connection "mysql://itrac424.cern.ch/lcg_coral_nightly" in the credential map. Total entries=2
+CORAL/Services/ConnectionService    Debug Could not retrieve credentials for connection "mysql://itrac424.cern.ch/lcg_coral_nightly" from authentication service: Role "reader" is not known for connection string "mysql://itrac424.cern.ch/lcg_coral_nightly" ( CORAL : "IAuthenticationService::credentials" from "CORAL/Services/LFCReplicaService" )
+CORAL/Services/ConnectionService  Warning Replica on connection "mysql://itrac424.cern.ch/lcg_coral_nightly" skipped (no authentication provided).
+Connection not established: No physical Update connection for "/connection_folder/connection1" is available. ( CORAL : "ReplicaCatalogue::replicasForConnection" from "CORAL/Services/ConnectionService" )
+[OVAL] Success

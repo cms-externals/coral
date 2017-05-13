@@ -1,0 +1,7 @@
+<sect2><title>SQLiteAccess Reference</title>
+<sect3>
+<title>Properties of the "CORAL/RelationalPlugins/sqlite" component</title>
+
+<para> There's no specific parameters to be set for the sqlite domain.</para>
+</sect3>
+</sect2>

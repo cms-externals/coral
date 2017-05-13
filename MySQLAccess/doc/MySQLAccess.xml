@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY Semantics SYSTEM "Semantics.xml">
+<!ENTITY Implementation SYSTEM "Implementation.xml">
+<!ENTITY ReferenceManual SYSTEM "ReferenceManual.xml">
+]>
+<!-- $Id: MySQLAccess.xml,v 1.4 2005/12/20 14:33:31 rado Exp $ -->
+<article>
+	<articleinfo>
+		<title>CORAL Component documentation: MySQLAccess</title>
+		<author>
+			<firstname>Radovan</firstname> <surname>Chytracek</surname>
+			<affiliation><orgname>CERN</orgname></affiliation>
+			<address>
+				e-mail:<email>Radovan.Chytracek@cern.ch</email>
+			</address>
+		</author>
+		<pubdate>December 2005</pubdate>
+	</articleinfo>
+	
+	
+	
+	<sect2 id="MySQLAccess_Introduction">
+		<title>Introduction</title>
+    
+		<sect3>
+			<title>Purpose of the component</title>
+			<para>
+      The MySQLAccess package is a plugin library providing an
+      implementation of the IRelationalDomain interface for accessing
+      an MySQL database. The package is based on the MySQL C API
+      version 4.0.24 which is still based on ASCII protocol and
+      old password scheme.
+			</para>
+		</sect3>
+		
+		<sect3>
+			<title>Known problem and restrictions</title>
+			<para>
+      The package is for the moment tested against MySQL 4.0.26 server
+      version. Earlier server versions might work as of versions 4.0.13
+      and later. The plan is to add incrementally support for 4.1 and 5.0
+      versions of MySQL server in the short time after 4.0 is proven to
+      work well.
+      </para>
+			<para>
+      Bulk inserts are emulated as there is no API which allows that.
+      </para>
+		</sect3>
+		
+		<sect3>
+			<title>Repository of the component</title>
+			<para>
+				<emphasis>:pserver:anonymoys@coral.cvs.cern.ch:/cvs/coral</emphasis>/<emphasis role="bold">coral/MySQLAccess</emphasis>
+			</para>
+		</sect3>
+		
+	</sect2>
+	
+	&Semantics;
+	
+	&Implementation;
+	
+	&ReferenceManual;
+	
+</article>

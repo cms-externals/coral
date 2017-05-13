@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY Semantics SYSTEM "Semantics.xml">
+<!ENTITY Implementation SYSTEM "Implementation.xml">
+<!ENTITY ReferenceManual SYSTEM "ReferenceManual.xml">
+]>
+<article>
+ <articleinfo>
+	<title>CORAL Component documentation: ConnectionService</title>
+  <author>
+   <firstname>Giacomo</firstname> <surname>Govi</surname>
+ 	 <affiliation><orgname>CERN</orgname></affiliation>
+   <address>
+    e-mail:<email>Giacomo.Govi@cern.ch</email>
+   </address>
+  </author>
+  <pubdate>March 2006</pubdate>
+ </articleinfo>
+
+
+
+<sect2 id="ConnectionService_Introduction">
+<title>Introduction</title>
+    
+<sect3><title>Purpose of the component</title>
+  <para>The ConnectionService package is a plugin module providing 
+  connection management, connection pooling, connection retry and replica failover policies.</para>
+<para>  This module provides implementation of some user-level
+  interfaces of the RelationalAccess package: IConnectionService, IConnectionServiceConfiguration, 
+ISessionProxy, ISessionProperties, IWebCacheControl.
+  </para>
+</sect3>
+ 
+
+<sect3><title>Repository of the component</title>
+   <para><emphasis>:pserver:anonymoys@coral.cvs.cern.ch:/cvs/coral</emphasis>/<emphasis role="bold">coral/ConnectionService</emphasis></para>
+</sect3>
+
+</sect2>
+
+
+&Semantics;
+
+&Implementation;
+
+&ReferenceManual;
+
+</article>

@@ -1,0 +1,17 @@
+<sect2>
+<title>Implementation specifics</title>    
+<para>
+The RelationalAccess package provides only the definition of abstract interfaces and
+the exception hierarchy. The only implementation code that exists is for the
+<emphasis>TableDescription</emphasis> class, which is a transient implementation of the
+<emphasis>ITableDescription</emphasis> and <emphasis>ITableSchemaEditor</emphasis>
+interfaces. This class exists in order to provide the user a means to define and
+create new tables.
+</para>
+<para>The TableDescription class uses internally simple transient implementations of the
+<emphasis>IColumn</emphasis>, <emphasis>IPrimaryKey</emphasis>, <emphasis>IIndex</emphasis>,
+<emphasis>IForeignKey</emphasis> and <emphasis>IUniqueConstraint</emphasis>
+interfaces. The class itself is used also internally in the various RDBMS-specific
+implementation plugins.
+</para>
+</sect2>

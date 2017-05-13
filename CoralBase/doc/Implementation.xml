@@ -1,0 +1,12 @@
+<sect2>
+<title>Implementation specifics</title>    
+<para>
+Blob uses the malloc() and realloc() functions of the C standard
+library in order to ensure the fastest possible contiguous memory allocation.
+</para
+>
+<para>
+The Date and TimeStamp classes are simple wrappers of the seal::Time class.
+</para>
+</sect2>
+

@@ -1,0 +1,39 @@
+<sect2>
+<title>Implementation specifics</title>
+<para>
+The package is based on SQLite version 3. The implementation uses SQLite 3 C API. The format used by SQLite database files has been completely from version 2 to version 3 therefore SQLiteAccess plugin will not read a SQLite version 2 database file. The shared library is linked against library sqlite3
+</para>
+
+<para> Since SQLite reads and writes an ordinary disk file, the only access permissions that can be applied are the normal file access permissions of the underlying operating system. No user name and password are required to start a user session in sqlite domain. Also the PrivilegeManager implementation is completely dummy which means GRANT and REVOKE commands commonly found on client/server RDBMSes are not implemented.
+</para>
+
+<para> VIEWs in SQLite are read-only. You may not execute a DELETE, INSERT, or UPDATE statement on a view. Different from the oracle backend, the constraints on the columns of the source table of the view are NOT propagated to the view.
+</para>
+
+<para> FOREIGN KEY constraints are parsed and created but are not really enforced by the backend.
+</para>
+
+<para> The current SQLite backend implementation only allows a single active transaction. Nested transactions are not supported.
+</para>
+
+<para> There is no tablespace management in SQLiteAccess therefore tablespace arguments are ignored.
+</para>
+
+<para> Only one schema with fixed name "main" is handled in one SQLiteAccess session.
+</para>
+
+</sect2>
+
+
+<sect2>
+<title>Related components</title>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>RelationalAccess</emphasis>, is the package
+where the CORAL abstract interfaces are defined.</para></listitem>
+<listitem><para><emphasis>CoralCommon</emphasis>, is the package
+where some developer-level interfaces and some common implementation
+classes are defined.</para></listitem>
+</itemizedlist>
+</para>    
+</sect2>

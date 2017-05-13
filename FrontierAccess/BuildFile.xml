@@ -1,0 +1,6 @@
+<use   name="frontier_client"/>
+<use   name="openssl"/>
+<use   name="LCG/CoralCommon"/>
+<export>
+  <lib   name="1"/>
+</export>

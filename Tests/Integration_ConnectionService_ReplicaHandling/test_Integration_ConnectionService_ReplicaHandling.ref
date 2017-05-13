@@ -1,0 +1,4 @@
+[OVAL]Exception:No physical Read-Only connection for "CORAL-Oracle-lcgnight/replica0" is available. ( CORAL : "ReplicaCatalogue::replicasForConnection" from "CORAL/Services/ConnectionService" )
+[OVAL]Exception:No physical Read-Only connection for "CORAL-Oracle-lcgnight/replica2" is available. ( CORAL : "ReplicaCatalogue::replicasForConnection" from "CORAL/Services/ConnectionService" )
+[OVAL]Connection CORAL-Oracle-lcgnight/replica3 was ok.
+[OVAL] Success

@@ -1,0 +1,30 @@
+Thu Oct 13 12:36:11.651993000 CEST 2011
+Kill any running instance of coralServerProxy and sleep 1s
+Setup CMT environment using CMT_env.sh
+Configure CMT using AFS
+CMTCONFIG set to 'i686-slc5-gcc43-dbg'
+CMTROOT set to '/afs/cern.ch/sw/contrib/CMT/v1r20p20090520'
+CMTPATH set to ''
+CMTPROJECTPATH set to '/afs/cern.ch/sw/lcg/app/releases'
+CMTUSERCONTEXT set to '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/config/cmt/USERCONTEXT/trentad'
+CMTINSTALLAREA set to ''
+CMTSITE set to ''
+LD_LIBRARY_PATH set to ''
+Thu Oct 13 12:36:14.946422000 CEST 2011
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    61a
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_61a
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Spawning the connection manager thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Setting up signal handlers
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Waiting for interrupts
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Received interrupt, exiting
+=== TIMER (SPROXY) 0.05user 0.10system 16.05elapsed 0%CPU
+*******************************************************************
+Thu Oct 13 12:36:36.574593000 CEST 2011

@@ -1,0 +1,1074 @@
+Thu Oct 13 12:22:48.835428000 CEST 2011
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    61a
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_61a
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using Python: /afs/cern.ch/sw/lcg/external/Python/2.6.5/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+python ./CoralAccess/testCoralServer.py proxy 1ses defOut
++++ CORALSERVER TEST +++ Got the PyCoral connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
++++ CORALSERVER TEST +++ Connection service has been configured
++++ CORALSERVER TEST +++ Connect R/O to: coral://localhost:40008&COOL-Oracle-lcgnight
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a R/O session
++++ CORALSERVER TEST +++ Got a schema
+Got reply to request #3
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
++++ CORALSERVER TEST +++ Fetched tables in the schema
+Got reply to request #5
++++ CORALSERVER TEST +++ Formatted the output buffer
++++ CORALSERVER TEST +++ Execute test query for the 1st time
+Got reply to request #6
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a cursor
+Got reply to request #7
++++ CORALSERVER TEST +++ Current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Retrieved 20 rows
+OK
++++ CORALSERVER TEST +++ Release the cursor
++++ CORALSERVER TEST +++ Release the query
+Got reply to request #8
++++ CORALSERVER TEST +++ Execute test query for the 2nd time
+Got reply to request #9
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a cursor
+Got reply to request #10
++++ CORALSERVER TEST +++ Current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Retrieved 20 rows
+OK
++++ CORALSERVER TEST +++ Release the cursor
++++ CORALSERVER TEST +++ Release the query
+Got reply to request #11
++++ CORALSERVER TEST +++ Sleep a bit
++++ CORALSERVER TEST +++ Slept a bit
++++ CORALSERVER TEST +++ Exiting
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #12
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} SocketClient destructor
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} Destructor SocketRequestHandler started
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} The socket has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop ended
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'connectTo: localhost:40008 from port nnnnn' rec : 20 packets send : 12 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'connectTo: localhost:40008 from port nnnnn' rec: 0.522787MB  send: 0.000585556MB 
+ == =TIMER (CLIENT) 0.19user 0.03system 4.19elapsed 5%CPU
+*******************************************************************
+Thu Oct 13 12:23:01.326865000 CEST 2011
+python ./CoralAccess/testCoralServer.py proxy 1ses noDefOut
++++ CORALSERVER TEST +++ Got the PyCoral connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
++++ CORALSERVER TEST +++ Connection service has been configured
++++ CORALSERVER TEST +++ Connect R/O to: coral://localhost:40008&COOL-Oracle-lcgnight
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a R/O session
++++ CORALSERVER TEST +++ Got a schema
+Got reply to request #3
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
++++ CORALSERVER TEST +++ Fetched tables in the schema
+Got reply to request #5
++++ CORALSERVER TEST +++ Formatted the output buffer
++++ CORALSERVER TEST +++ Execute test query for the 1st time
+Got reply to request #6
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a cursor
+Got reply to request #7
++++ CORALSERVER TEST +++ Current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Retrieved 20 rows
+OK
++++ CORALSERVER TEST +++ Release the cursor
++++ CORALSERVER TEST +++ Release the query
+Got reply to request #8
++++ CORALSERVER TEST +++ Execute test query for the 2nd time
+Got reply to request #9
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a cursor
+Got reply to request #10
++++ CORALSERVER TEST +++ Current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Retrieved 20 rows
+OK
++++ CORALSERVER TEST +++ Release the cursor
++++ CORALSERVER TEST +++ Release the query
+Got reply to request #11
++++ CORALSERVER TEST +++ Sleep a bit
++++ CORALSERVER TEST +++ Slept a bit
++++ CORALSERVER TEST +++ Exiting
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #12
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} SocketClient destructor
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} Destructor SocketRequestHandler started
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} The socket has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop ended
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'connectTo: localhost:40008 from port nnnnn' rec : 20 packets send : 12 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'connectTo: localhost:40008 from port nnnnn' rec: 0.5229MB  send: 0.000564575MB 
+ == =TIMER (CLIENT) 0.19user 0.03system 4.00elapsed 5%CPU
+*******************************************************************
+Thu Oct 13 12:23:05.351796000 CEST 2011
+python ./CoralAccess/testCoralServer.py proxy 2ses defOut
++++ CORALSERVER TEST +++ Got the PyCoral connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
++++ CORALSERVER TEST +++ Connection service has been configured
++++ CORALSERVER TEST +++ Connect R/O to: coral://localhost:40008&COOL-Oracle-lcgnight
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a R/O session
++++ CORALSERVER TEST +++ Got a schema
+Got reply to request #3
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
++++ CORALSERVER TEST +++ Fetched tables in the schema
+Got reply to request #5
++++ CORALSERVER TEST +++ Formatted the output buffer
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #6
+Got reply to request #7
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a 2nd session
++++ CORALSERVER TEST +++ Got a schema
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #8
+Got reply to request #9
++++ CORALSERVER TEST +++ Execute test query for the 1st time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #10
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #11
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
++++ CORALSERVER TEST +++ Execute test query for the 2nd time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #12
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #13
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
+Got reply to request #14
+Got reply to request #15
++++ CORALSERVER TEST +++ Sleep a bit
++++ CORALSERVER TEST +++ Slept a bit
++++ CORALSERVER TEST +++ Exiting
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #16
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #17
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} SocketClient destructor
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} Destructor SocketRequestHandler started
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket::read the socket for connectTo: localhost:40008 from port nnnnn is invalid. Should not happen... 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} The socket has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop ended
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'connectTo: localhost:40008 from port nnnnn' rec : 25 packets send : 17 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'connectTo: localhost:40008 from port nnnnn' rec: 0.523237MB  send: 0.000906944MB 
+ == =TIMER (CLIENT) 0.19user 0.03system 3.97elapsed 5%CPU
+*******************************************************************
+Thu Oct 13 12:23:09.351659000 CEST 2011
+python ./CoralAccess/testCoralServer.py proxy 2ses noDefOut
++++ CORALSERVER TEST +++ Got the PyCoral connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
++++ CORALSERVER TEST +++ Connection service has been configured
++++ CORALSERVER TEST +++ Connect R/O to: coral://localhost:40008&COOL-Oracle-lcgnight
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a R/O session
++++ CORALSERVER TEST +++ Got a schema
+Got reply to request #3
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
++++ CORALSERVER TEST +++ Fetched tables in the schema
+Got reply to request #5
++++ CORALSERVER TEST +++ Formatted the output buffer
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #6
+Got reply to request #7
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a 2nd session
++++ CORALSERVER TEST +++ Got a schema
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #8
+Got reply to request #9
++++ CORALSERVER TEST +++ Execute test query for the 1st time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #10
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #11
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
++++ CORALSERVER TEST +++ Execute test query for the 2nd time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #12
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #13
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
+Got reply to request #14
+Got reply to request #15
++++ CORALSERVER TEST +++ Sleep a bit
++++ CORALSERVER TEST +++ Slept a bit
++++ CORALSERVER TEST +++ Exiting
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #16
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #17
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} SocketClient destructor
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} Destructor SocketRequestHandler started
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} The socket has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop ended
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'connectTo: localhost:40008 from port nnnnn' rec : 25 packets send : 17 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'connectTo: localhost:40008 from port nnnnn' rec: 0.523673MB  send: 0.000864983MB 
+ == =TIMER (CLIENT) 0.20user 0.03system 4.09elapsed 5%CPU
+*******************************************************************
+Thu Oct 13 12:23:13.471730000 CEST 2011
+python ./CoralAccess/testCoralServer.py proxy 2sesAll defOut
++++ CORALSERVER TEST +++ Got the PyCoral connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
++++ CORALSERVER TEST +++ Connection service has been configured
++++ CORALSERVER TEST +++ Connect R/O to: coral://localhost:40008&COOL-Oracle-lcgnight
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a R/O session
++++ CORALSERVER TEST +++ Got a schema
+Got reply to request #3
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
++++ CORALSERVER TEST +++ Fetched tables in the schema
+Got reply to request #5
++++ CORALSERVER TEST +++ Formatted the output buffer
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #6
+Got reply to request #7
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a 2nd session
++++ CORALSERVER TEST +++ Got a schema
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #8
+Got reply to request #9
++++ CORALSERVER TEST +++ Execute test query for the 1st time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #10
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #11
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
++++ CORALSERVER TEST +++ Execute test query for the 2nd time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Defined the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #12
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #13
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
+Got reply to request #14
+Got reply to request #15
++++ CORALSERVER TEST +++ Sleep a bit
++++ CORALSERVER TEST +++ Slept a bit
++++ CORALSERVER TEST +++ Exiting
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #16
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #17
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} SocketClient destructor
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} Destructor SocketRequestHandler started
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket::read the socket for connectTo: localhost:40008 from port nnnnn is invalid. Should not happen... 
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} The socket has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop ended
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'connectTo: localhost:40008 from port nnnnn' rec : 25 packets send : 17 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'connectTo: localhost:40008 from port nnnnn' rec: 0.523678MB  send: 0.000906944MB 
+ == =TIMER (CLIENT) 0.19user 0.03system 3.97elapsed 5%CPU
+*******************************************************************
+Thu Oct 13 12:23:17.472554000 CEST 2011
+python ./CoralAccess/testCoralServer.py proxy 2sesAll noDefOut
++++ CORALSERVER TEST +++ Got the PyCoral connection service
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Creating a ConnectionPool
++++ CORALSERVER TEST +++ Connection service has been configured
++++ CORALSERVER TEST +++ Connect R/O to: coral://localhost:40008&COOL-Oracle-lcgnight
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/coral component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/coral factory from CoralAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Connect to coral://localhost:40008
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server technology: coral
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server protocol:   
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server host:       localhost
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CORAL/RelationalPlugins/coral} Coral server port:       40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connect to host localhost and port 40008
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} Connection established
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler constructor connection:connectTo: localhost:40008 from port nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop started
+Got reply to request #1
+Got reply to request #2
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a R/O session
++++ CORALSERVER TEST +++ Got a schema
+Got reply to request #3
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
+Got reply to request #4
++++ CORALSERVER TEST +++ Fetched tables in the schema
+Got reply to request #5
++++ CORALSERVER TEST +++ Formatted the output buffer
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #6
+Got reply to request #7
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "coral://localhost:40008" for user "" in read-only mode
++++ CORALSERVER TEST +++ Got a 2nd session
++++ CORALSERVER TEST +++ Got a schema
++++ CORALSERVER TEST +++ ------------------------------------------------------
+Got reply to request #8
+Got reply to request #9
++++ CORALSERVER TEST +++ Execute test query for the 1st time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #10
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #11
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
++++ CORALSERVER TEST +++ Execute test query for the 2nd time
++++ CORALSERVER TEST +++ Got a query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a 2nd query
++++ CORALSERVER TEST +++ Did NOT define the output
++++ CORALSERVER TEST +++ Got a cursor
++++ CORALSERVER TEST +++ Got a 2nd cursor
+Got reply to request #12
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 0], [x (float) : 0]
+Got reply to request #13
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 0], [x (float) : 0]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 1], [x (float) : 1.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 2], [x (float) : 2.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 3], [x (float) : 3.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 4], [x (float) : 4.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 5], [x (float) : 5.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 6], [x (float) : 6.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 7], [x (float) : 7.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 8], [x (float) : 8.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 9], [x (float) : 9.9]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 10], [x (float) : 11]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 11], [x (float) : 12.1]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 12], [x (float) : 13.2]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 13], [x (float) : 14.3]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 14], [x (float) : 15.4]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 15], [x (float) : 16.5]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 16], [x (float) : 17.6]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 17], [x (float) : 18.7]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 18], [x (float) : 19.8]
++++ CORALSERVER TEST +++ Cursor #1: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #2: current row: [ID (int) : 19], [x (float) : 20.9]
++++ CORALSERVER TEST +++ Cursor #1 - retrieved 20 rows
++++ CORALSERVER TEST +++ Cursor #2 - retrieved 20 rows
+OK
+OK
+Got reply to request #14
+Got reply to request #15
++++ CORALSERVER TEST +++ Sleep a bit
++++ CORALSERVER TEST +++ Slept a bit
++++ CORALSERVER TEST +++ Exiting
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #16
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+Got reply to request #17
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService} Connection to service "coral://localhost:40008" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketClient} SocketClient destructor
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} Destructor SocketRequestHandler started
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} The socket has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketRequestHandler} SocketRequestHandler::receiveThread main loop ended
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'connectTo: localhost:40008 from port nnnnn' rec : 25 packets send : 17 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'connectTo: localhost:40008 from port nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'connectTo: localhost:40008 from port nnnnn' rec: 0.523525MB  send: 0.000864983MB 
+ == =TIMER (CLIENT) 0.19user 0.03system 4.00elapsed 5%CPU
+*******************************************************************
+Thu Oct 13 12:23:21.507220000 CEST 2011

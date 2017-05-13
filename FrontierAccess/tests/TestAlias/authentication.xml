@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<connectionslist>
+<!--
+  <connection name="sqlite_file:nestedqs_test.sqlite">
+   <parameter name="user" value="ora" />
+   <parameter name="password" value="ora" />
+  </connection>
+   <connection name="oracle://TEST10G/pool_fc_test">
+   <parameter name="user" value="pool_fc_test" />
+   <parameter name="password" value="test_pool_fc" />
+  </connection>
+  <connection name="oracle://devdb/rado">
+    <parameter name="user" value="rado" />
+    <parameter name="password" value="RaBeAn3" />
+  </connection>
+  <connection name="oracle://rls1/lcg2_cms_lrc">
+    <parameter name="user" value="lcg2_cms_lrc" />
+    <parameter name="password" value="aiyeicha" />
+  </connection>
+  <connection name="oracle://rls1/lcg2_cms_rmc">
+    <parameter name="user" value="lcg2_cms_rmc" />
+    <parameter name="password" value="eeduwaeb" />
+  </connection>
+  <connection name="oracle://rls1hs/lcg2_cms_lrc">
+    <parameter name="user" value="lcg2_cms_lrc" />
+    <parameter name="password" value="aiyeicha" />
+  </connection>
+  <connection name="oracle://rls1hs/lcg2_cms_rmc">
+    <parameter name="user" value="lcg2_cms_rmc" />
+    <parameter name="password" value="eeduwaeb" />
+  </connection>
+  <connection name="oracle://test10g/pool_fc_test">
+    <parameter name="user" value="pool_fc_test" />
+    <parameter name="password" value="test_pool_fc" />
+  </connection>
+  <connection name="oracle://raltest/pool_fc_test">
+    <parameter name="user" value="pool_fc_test" />
+    <parameter name="password" value="test_pool_fc" />
+  </connection>
+  <connection name="oracle://itrac/radovan">
+    <parameter name="user" value="radovan" />
+    <parameter name="password" value="radovan" />
+  </connection>
+  <connection name="mysql://pcitdb59.cern.ch/RFC">
+    <parameter name="user" value="rfc" />
+    <parameter name="password" value="rfc" />
+  </connection>
+  <connection name="mysql://pcitdb59.cern.ch/RADO_POOL">
+    <parameter name="user" value="rado_pool" />
+    <parameter name="password" value="rado_pool" />
+  </connection>
+  <connection name="frontier://lxfs6043.cern.ch:8000/Frontier3D">
+    <parameter name="user" value="CORAL" />
+    <parameter name="password" value="Frontier24" />
+  </connection>
+  <connection name="frontier://lxfs6043.cern.ch:8080/Frontier3D">
+    <parameter name="user" value="CORAL" />
+    <parameter name="password" value="Frontier24" />
+  </connection>
+  <connection name="oracle://cms_val_lb/CORAL">
+    <parameter name="user" value="CORAL" />
+    <parameter name="password" value="Frontier24" />
+  </connection>
+  <connection name="oracle://cooldev/CORAL">
+    <parameter name="user" value="coral" />
+    <parameter name="password" value="coral" />
+  </connection>
+  <connection name="frontier://lxfs6043.cern.ch:8080/Frontier3D/CORAL" />
+  <connection name="frontier://lxfs6043.cern.ch:8000/Frontier3D/CORAL" />
+  <connection name="oracle://devdb10/CMS_COND_ECAL">
+    <parameter name="user" value="CMS_COND_ECAL" />
+    <parameter name="password" value="ECAL_CERN200603" />
+  </connection>
+  <connection name="frontier://cmsfrontier.cern.ch:8080/FrontierDev/CMS_COND_ECAL" />
+  <connection name="frontier://cmsfrontier1.cern.ch:8080/CoralDev/CMS_COND_ECAL" />
+  <connection name="frontier://cmsfrontier1.cern.ch:8080/CoralDevZip/CMS_COND_ECAL" />
+  <connection name="frontier://cmsfrontier1.cern.ch:8080/FrontierDev/CMS_COND_ECAL" />
+  <connection name="frontier://atlasfrontier.cern.ch:8080/Frontier/CORAL" />
+  
+  -->
+  
+  <!-- COOL nightly tests - START -->
+
+  <connection name="oracle://lcg_cool_nightly/lcg_cool_nightly">
+    <parameter name="user" value="lcg_cool_nightly" />
+    <parameter name="password" value="cool4lcgspi" />
+  </connection>
+
+  <connection name="mysql://itrac424.cern.ch:3306/LCG_COOL_NIGHTLY" >
+    <parameter name="user" value="LCG_COOL_NIGHTLY" />
+    <parameter name="password" value="lcg_cool_pw" />
+  </connection>
+
+  <!-- COOL nightly tests - END -->
+  
+</connectionslist>

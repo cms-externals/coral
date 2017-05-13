@@ -1,0 +1,3 @@
+[OVAL]Connection CORAL-Oracle-lcgnight/replica3 was ok.
+[OVAL]Exception:No physical Update connection for "CORAL-Oracle-lcgnight/replica4" is available. ( CORAL : "ReplicaCatalogue::replicasForConnection" from "CORAL/Services/ConnectionService" )
+[OVAL] Success

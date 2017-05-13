@@ -1,0 +1,28 @@
+<use   name="LCG/SQLiteAccess"/>
+<use   name="UnitTests"/>
+<use   name="cppunit"/>
+<include_path   path="$(LOCALTOP)/$(SCRAM_SOURCEDIR)/LCG/SQLiteAccess"/>
+<bin   name="unitTest_SQLiteAccess_BulkInserts" file="BulkInserts/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_BulkOperations" file="BulkOperations/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_CreateListDrop" file="CreateListDrop/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_DataEditor" file="DataEditor/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_DateAndTime" file="DateAndTime/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_DescribeTable" file="DescribeTable/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_ExpressionParser" file="ExpressionParser/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_QueriesInSingleTable" file="QueriesInSingleTable/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_QueriesWithMultipleTables" file="QueriesWithMultipleTables/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_SchemaEditor" file="SchemaEditor/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_Views" file="Views/*.cpp">
+</bin>
+<bin   name="unitTest_SQLiteAccess_uInt32Order" file="uInt32Order/*.cpp">
+</bin>

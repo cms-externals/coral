@@ -1,0 +1,1311 @@
+--- TEST ENVIRONMENT ---------------------------------------------------------
+
+  qmtest.run.uname:
+     Linux lxmrra5001.cern.ch 2.6.18-274.el5 #1 SMP Fri Jul 22 05:40:59 CEST 2011 x86_64
+
+  qmtest.run.username:
+     avalassi
+
+  qmtest.run.command_line:
+     /cvmfs/lhcb.cern.ch/lib/lcg/external/QMtest/2.4.1_python2.6/x86_64-slc5-gcc43-opt/bin/qmtest run -o /home/avalassi/CORAL/CORAL_2_3_20/src/logs/qmtest/x86_64-slc5-gcc43-dbg.qmr
+
+  qmtest.run.version:
+     2.4.1
+
+  qmtest.run.start_time:
+     2011-12-09T17:42:30Z
+
+  qmtest.run.end_time:
+     2011-12-09T17:51:38Z
+
+--- TEST RESULTS -------------------------------------------------------------
+
+  integration.aliasessynonyms_mysql             : UNTESTED
+    Platform not supported.
+
+  integration.aliasessynonyms_mysql-coral       : UNTESTED
+    Platform not supported.
+
+  integration.aliasessynonyms_oracle            : PASS    
+
+  integration.aliasessynonyms_oracle-coral      : PASS    
+
+  integration.aliasessynonyms_oracle-frontier   : UNTESTED
+    Platform not supported.
+
+  integration.aliasessynonyms_sqlite            : UNTESTED
+    Platform not supported.
+
+  integration.basic_mysql                       : UNTESTED
+    Platform not supported.
+
+  integration.basic_mysql-coral                 : UNTESTED
+    Platform not supported.
+
+  integration.basic_oracle                      : PASS    
+
+  integration.basic_oracle-coral                : PASS    
+
+  integration.basic_oracle-frontier             : PASS    
+
+  integration.basic_sqlite                      : PASS    
+
+  integration.changenotification_mysql          : PASS    
+
+  integration.changenotification_mysql-coral    : UNTESTED
+    Platform not supported.
+
+  integration.changenotification_oracle         : PASS    
+
+  integration.changenotification_oracle-coral   : UNTESTED
+    Platform not supported.
+
+  integration.changenotification_oracle-frontier: PASS    
+
+  integration.changenotification_sqlite         : PASS    
+
+  integration.connectionservice_cleanuppool_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_cleanuppool_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_cleanuppool_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_cleanuppool_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_cleanuppool_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_cleanuppool_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_connectionpool_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_connectionpool_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_connectionpool_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_connectionpool_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_connectionpool_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_connectionpool_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_mysql           : UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_mysql-coral     : UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_oracle          : UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_oracle-coral    : UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_oracle-frontier : UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicaexcluding_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicaexcluding_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicaexcluding_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicaexcluding_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicaexcluding_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicaexcluding_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicahandling_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicahandling_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicahandling_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicahandling_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicahandling_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicahandling_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicasorting_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicasorting_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicasorting_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicasorting_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicasorting_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_replicasorting_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sessionsharing_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sessionsharing_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sessionsharing_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sessionsharing_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sessionsharing_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sessionsharing_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_simplefailover_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_simplefailover_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_simplefailover_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_simplefailover_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_simplefailover_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_simplefailover_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlite          : UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqliteconnection_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqliteconnection_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqliteconnection_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqliteconnection_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqliteconnection_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqliteconnection_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlitefailover_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlitefailover_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlitefailover_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlitefailover_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlitefailover_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_sqlitefailover_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_switchschema_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_switchschema_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_switchschema_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_switchschema_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_switchschema_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_switchschema_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_timerbasic_mysql: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_timerbasic_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_timerbasic_oracle: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_timerbasic_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_timerbasic_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.connectionservice_timerbasic_sqlite: UNTESTED
+    Platform not supported.
+
+  integration.deletecascade_mysql               : PASS    
+
+  integration.deletecascade_mysql-coral         : UNTESTED
+    Platform not supported.
+
+  integration.deletecascade_oracle              : PASS    
+
+  integration.deletecascade_oracle-coral        : UNTESTED
+    Platform not supported.
+
+  integration.deletecascade_oracle-frontier     : PASS    
+
+  integration.deletecascade_sqlite              : PASS    
+
+  integration.inputoutput_mysql                 : UNTESTED
+    Platform not supported.
+
+  integration.inputoutput_mysql-coral           : UNTESTED
+    Platform not supported.
+
+  integration.inputoutput_oracle                : PASS    
+
+  integration.inputoutput_oracle-coral          : UNTESTED
+    Platform not supported.
+
+  integration.inputoutput_oracle-frontier       : PASS    
+
+  integration.inputoutput_sqlite                : UNTESTED
+    Platform not supported.
+
+  integration.lfcreplicaservice_mysql           : UNTESTED
+    Platform not supported.
+
+  integration.lfcreplicaservice_mysql-coral     : UNTESTED
+    Platform not supported.
+
+  integration.lfcreplicaservice_oracle          : UNTESTED
+    Platform not supported.
+
+  integration.lfcreplicaservice_oracle-coral    : UNTESTED
+    Platform not supported.
+
+  integration.lfcreplicaservice_oracle-frontier : UNTESTED
+    Platform not supported.
+
+  integration.lfcreplicaservice_sqlite          : UNTESTED
+    Platform not supported.
+
+  integration.lookupservice_mysql               : PASS    
+
+  integration.lookupservice_mysql-coral         : UNTESTED
+    Platform not supported.
+
+  integration.lookupservice_oracle              : PASS    
+
+  integration.lookupservice_oracle-coral        : UNTESTED
+    Platform not supported.
+
+  integration.lookupservice_oracle-frontier     : PASS    
+
+  integration.lookupservice_sqlite              : PASS    
+
+  integration.miscellaneousbugs_mysql           : PASS    
+
+  integration.miscellaneousbugs_mysql-coral     : UNTESTED
+    Platform not supported.
+
+  integration.miscellaneousbugs_oracle          : PASS    
+
+  integration.miscellaneousbugs_oracle-coral    : UNTESTED
+    Platform not supported.
+
+  integration.miscellaneousbugs_oracle-frontier : PASS    
+
+  integration.miscellaneousbugs_sqlite          : PASS    
+
+  integration.monitoring_mysql                  : UNTESTED
+    Platform not supported.
+
+  integration.monitoring_mysql-coral            : UNTESTED
+    Platform not supported.
+
+  integration.monitoring_oracle                 : PASS    
+
+  integration.monitoring_oracle-coral           : UNTESTED
+    Platform not supported.
+
+  integration.monitoring_oracle-frontier        : PASS    
+
+  integration.monitoring_sqlite                 : UNTESTED
+    Platform not supported.
+
+  integration.monitoringservice_mysql           : UNTESTED
+    Platform not supported.
+
+  integration.monitoringservice_mysql-coral     : UNTESTED
+    Platform not supported.
+
+  integration.monitoringservice_oracle          : PASS    
+
+  integration.monitoringservice_oracle-coral    : UNTESTED
+    Platform not supported.
+
+  integration.monitoringservice_oracle-frontier : PASS    
+
+  integration.monitoringservice_sqlite          : PASS    
+
+  integration.multithreading_mysql              : PASS    
+
+  integration.multithreading_mysql-coral        : UNTESTED
+    Platform not supported.
+
+  integration.multithreading_oracle             : PASS    
+
+  integration.multithreading_oracle-coral       : PASS    
+
+  integration.multithreading_oracle-frontier    : UNTESTED
+    Platform not supported.
+
+  integration.multithreading_sqlite             : UNTESTED
+    Platform not supported.
+
+  integration.networkfailure_mysql              : UNTESTED
+    Platform not supported.
+
+  integration.networkfailure_mysql-coral        : UNTESTED
+    Platform not supported.
+
+  integration.networkfailure_oracle             : UNTESTED
+    Platform not supported.
+
+  integration.networkfailure_oracle-coral       : UNTESTED
+    Platform not supported.
+
+  integration.networkfailure_oracle-frontier    : UNTESTED
+    Platform not supported.
+
+  integration.networkfailure_sqlite             : UNTESTED
+    Platform not supported.
+
+  integration.objectconsistency_mysql           : UNTESTED
+    Platform not supported.
+
+  integration.objectconsistency_mysql-coral     : UNTESTED
+    Platform not supported.
+
+  integration.objectconsistency_oracle          : PASS    
+
+  integration.objectconsistency_oracle-coral    : UNTESTED
+    Platform not supported.
+
+  integration.objectconsistency_oracle-frontier : UNTESTED
+    Platform not supported.
+
+  integration.objectconsistency_sqlite          : UNTESTED
+    Platform not supported.
+
+  integration.prefetching_mysql                 : PASS    
+
+  integration.prefetching_mysql-coral           : UNTESTED
+    Platform not supported.
+
+  integration.prefetching_oracle                : UNTESTED
+    Platform not supported.
+
+  integration.prefetching_oracle-coral          : UNTESTED
+    Platform not supported.
+
+  integration.prefetching_oracle-frontier       : UNTESTED
+    Platform not supported.
+
+  integration.prefetching_sqlite                : PASS    
+
+  integration.quotes_mysql                      : PASS    
+
+  integration.quotes_mysql-coral                : UNTESTED
+    Platform not supported.
+
+  integration.quotes_oracle                     : PASS    
+
+  integration.quotes_oracle-coral               : PASS    
+
+  integration.quotes_oracle-frontier            : PASS    
+
+  integration.quotes_sqlite                     : PASS    
+
+  integration.randomcycler_mysql                : UNTESTED
+    Platform not supported.
+
+  integration.randomcycler_mysql-coral          : UNTESTED
+    Platform not supported.
+
+  integration.randomcycler_oracle               : PASS    
+
+  integration.randomcycler_oracle-coral         : PASS    
+
+  integration.randomcycler_oracle-frontier      : UNTESTED
+    Platform not supported.
+
+  integration.randomcycler_sqlite               : UNTESTED
+    Platform not supported.
+
+  integration.retryandfailover_mysql            : UNTESTED
+    Platform not supported.
+
+  integration.retryandfailover_mysql-coral      : UNTESTED
+    Platform not supported.
+
+  integration.retryandfailover_oracle           : UNTESTED
+    Platform not supported.
+
+  integration.retryandfailover_oracle-coral     : UNTESTED
+    Platform not supported.
+
+  integration.retryandfailover_oracle-frontier  : UNTESTED
+    Platform not supported.
+
+  integration.retryandfailover_sqlite           : UNTESTED
+    Platform not supported.
+
+  integration.sequence_mysql                    : UNTESTED
+    Platform not supported.
+
+  integration.sequence_mysql-coral              : UNTESTED
+    Platform not supported.
+
+  integration.sequence_oracle                   : PASS    
+
+  integration.sequence_oracle-coral             : UNTESTED
+    Platform not supported.
+
+  integration.sequence_oracle-frontier          : PASS    
+
+  integration.sequence_sqlite                   : UNTESTED
+    Platform not supported.
+
+  integration.sessionsinmultiplethreads_mysql   : UNTESTED
+    Platform not supported.
+
+  integration.sessionsinmultiplethreads_mysql-coral: UNTESTED
+    Platform not supported.
+
+  integration.sessionsinmultiplethreads_oracle  : UNTESTED
+    Platform not supported.
+
+  integration.sessionsinmultiplethreads_oracle-coral: UNTESTED
+    Platform not supported.
+
+  integration.sessionsinmultiplethreads_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  integration.sessionsinmultiplethreads_sqlite  : UNTESTED
+    Platform not supported.
+
+  integration.specificfrontier_mysql            : PASS    
+
+  integration.specificfrontier_mysql-coral      : UNTESTED
+    Platform not supported.
+
+  integration.specificfrontier_oracle           : PASS    
+
+  integration.specificfrontier_oracle-coral     : UNTESTED
+    Platform not supported.
+
+  integration.specificfrontier_oracle-frontier  : PASS    
+
+  integration.specificfrontier_sqlite           : PASS    
+
+  integration.storedprocedures_mysql            : UNTESTED
+    Platform not supported.
+
+  integration.storedprocedures_mysql-coral      : UNTESTED
+    Platform not supported.
+
+  integration.storedprocedures_oracle           : UNTESTED
+    Platform not supported.
+
+  integration.storedprocedures_oracle-coral     : UNTESTED
+    Platform not supported.
+
+  integration.storedprocedures_oracle-frontier  : UNTESTED
+    Platform not supported.
+
+  integration.storedprocedures_sqlite           : UNTESTED
+    Platform not supported.
+
+  integration.stresstest_mysql                  : UNTESTED
+    Platform not supported.
+
+  integration.stresstest_mysql-coral            : UNTESTED
+    Platform not supported.
+
+  integration.stresstest_oracle                 : UNTESTED
+    Platform not supported.
+
+  integration.stresstest_oracle-coral           : UNTESTED
+    Platform not supported.
+
+  integration.stresstest_oracle-frontier        : UNTESTED
+    Platform not supported.
+
+  integration.stresstest_sqlite                 : UNTESTED
+    Platform not supported.
+
+  integration.usertests_mysql                   : UNTESTED
+    Platform not supported.
+
+  integration.usertests_mysql-coral             : UNTESTED
+    Platform not supported.
+
+  integration.usertests_oracle                  : UNTESTED
+    Platform not supported.
+
+  integration.usertests_oracle-coral            : UNTESTED
+    Platform not supported.
+
+  integration.usertests_oracle-frontier         : UNTESTED
+    Platform not supported.
+
+  integration.usertests_sqlite                  : UNTESTED
+    Platform not supported.
+
+  integration.writeread_mysql                   : UNTESTED
+    Platform not supported.
+
+  integration.writeread_mysql-coral             : UNTESTED
+    Platform not supported.
+
+  integration.writeread_oracle                  : PASS    
+
+  integration.writeread_oracle-coral            : PASS    
+
+  integration.writeread_oracle-frontier         : PASS    
+
+  integration.writeread_sqlite                  : PASS    
+
+  pycoral.importpycoral                         : PASS    
+
+  pycoral.networkglitch                         : FAIL    
+    Unexpected exit_code.
+
+    ExecTest.exit_code:
+      1
+
+    ExecTest.expected_exit_code:
+      0
+
+    ExecTest.expected_stdout:
+      
+      *
+      
+
+    ExecTest.stderr:
+      
+
+    ExecTest.stdout:
+      
+      ----------------------------------------------------------------------
+      +++ PYTEST MAIN ( 3908) @18:48:25.963906 +++ Table name: R5SD_NETWORKGLITCHTEST
+      +++ PYTEST MAIN ( 3908) @18:48:25.963972 +++ Local port number: 46561
+      +++ PYTEST MAIN ( 3908) @18:48:25.973876 +++ TNS_ADMIN: /tmp/avalassi/x86_64-slc5-gcc43-dbg/release
+      +++ PYTEST MAIN ( 3908) @18:48:25.990390 +++ Instantiate the PyCoral connection service
+      +++ PYTEST MAIN ( 3908) @18:48:25.993194 +++ Open a network tunnel
+      ssh(3926) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:27.106378 +++ Do not create the table
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test010_createQueryAfterGlitch ... 
+      +++ PYTEST MAIN ( 3908) @18:48:27.111709 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      +++ PYTEST MAIN ( 3908) @18:48:27.674463 +++ Start a R/O transaction
+      +++ PYTEST MAIN ( 3908) @18:48:27.674550 +++ GLITCH.....!
+      ssh(3926) Process will be killed
+      ssh(3965) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:30.838443 +++ GLITCH OVER!
+      2011-12-09 18:48:30.839 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:30.840 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      +++ PYTEST MAIN ( 3908) @18:48:30.877027 +++ Trigger reconnect (retrieve nominal schema)
+      +++ PYTEST MAIN ( 3908) @18:48:30.877677 +++ Create a query
+      +++ PYTEST MAIN ( 3908) @18:48:30.945533 +++ Retrieve the first 5 rows
+      ID (int) : 0 Data (float) : 0
+      ID (int) : 1 Data (float) : 1
+      ID (int) : 2 Data (float) : 2
+      ID (int) : 3 Data (float) : 3
+      ID (int) : 4 Data (float) : 4
+      +++ PYTEST MAIN ( 3908) @18:48:30.947098 +++ Commit the R/O transaction
+      ======================================================================
+      ok
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test011_ICursorPVM_bug73334 ... 
+      +++ PYTEST MAIN ( 3908) @18:48:30.951914 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:31.023 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:31.023354 +++ Start a R/O transaction
+      +++ PYTEST MAIN ( 3908) @18:48:31.023938 +++ Create a query
+      +++ PYTEST MAIN ( 3908) @18:48:31.027287 +++ Retrieve the first 5 rows
+      ID (int) : 0 Data (float) : 0
+      ID (int) : 1 Data (float) : 1
+      ID (int) : 2 Data (float) : 2
+      ID (int) : 3 Data (float) : 3
+      ID (int) : 4 Data (float) : 4
+      +++ PYTEST MAIN ( 3908) @18:48:31.028534 +++ GLITCH.....!
+      ssh(3965) Process will be killed
+      ssh(4004) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:34.188544 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:34.188670 +++ Trigger reconnect (retrieve nominal schema)
+      2011-12-09 18:48:34.189 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:34.189 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:48:34.222 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:34.223106 +++ Retrieve the 6th row (this may fail)
+      ERROR
+      ======================================================================
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test021_glitchInActiveTransRW_bug73688_akaBug57639 ... 
+      +++ PYTEST MAIN ( 3908) @18:48:34.226702 +++ Connect R/W to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      +++ PYTEST MAIN ( 3908) @18:48:34.297867 +++ Start a R/W transaction
+      +++ PYTEST MAIN ( 3908) @18:48:34.298910 +++ GLITCH.....!
+      ssh(4004) Process will be killed
+      ssh(4043) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:37.456635 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:37.456758 +++ Try to commit... it should fail
+      2011-12-09 18:48:37.457 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:37.457 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      +++ PYTEST MAIN ( 3908) @18:48:37.491613 +++ Commit has failed: OK
+      ======================================================================
+      ok
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test022_glitchInActiveTransSerialRO_bug57117 ... 
+      +++ PYTEST MAIN ( 3908) @18:48:37.494630 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      +++ PYTEST MAIN ( 3908) @18:48:37.565997 +++ Start a R/O transaction
+      +++ PYTEST MAIN ( 3908) @18:48:37.567017 +++ GLITCH.....!
+      ssh(4043) Process will be killed
+      ssh(4088) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:40.728731 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:40.728852 +++ Try to commit... it should fail
+      2011-12-09 18:48:40.729 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:40.729 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      FAIL
+      ======================================================================
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test023_glitchInActiveTransNonSerialRO_bug65597 ... 
+      +++ PYTEST MAIN ( 3908) @18:48:40.769047 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:40.840 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:40.840421 +++ Start a R/O transaction
+      +++ PYTEST MAIN ( 3908) @18:48:40.840932 +++ GLITCH.....!
+      ssh(4088) Process will be killed
+      ssh(4142) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:44.001823 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:44.001947 +++ Try to commit... it should succeed
+      2011-12-09 18:48:44.002 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:44.002 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:48:44.038 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:44.038262 +++ Commit has succeeded: OK
+      ======================================================================
+      ok
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test031_IConnectionToCursor ... 
+      +++ PYTEST MAIN ( 3908) @18:48:44.040933 +++ Open a network tunnel
+      +++ PYTEST MAIN ( 3908) @18:48:44.077090 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:44.113 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:44.113519 +++ GLITCH.....!
+      ssh(4142) Process will be killed
+      ssh(4190) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:47.265919 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:47.266047 +++ Glitch before transaction instantiation
+      2011-12-09 18:48:47.266 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:47.266 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:48:47.300 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      ID (int) : 526 Data (float) : 526
+      ID (int) : 527 Data (float) : 527
+      ID (int) : 528 Data (float) : 528
+      ID (int) : 529 Data (float) : 529
+      ID (int) : 530 Data (float) : 530
+      ID (int) : 531 Data (float) : 531
+      ID (int) : 532 Data (float) : 532
+      ID (int) : 533 Data (float) : 533
+      ID (int) : 534 Data (float) : 534
+      ID (int) : 535 Data (float) : 535
+      ID (int) : 536 Data (float) : 536
+      ID (int) : 537 Data (float) : 537
+      ID (int) : 538 Data (float) : 538
+      ID (int) : 539 Data (float) : 539
+      ID (int) : 540 Data (float) : 540
+      ID (int) : 541 Data (float) : 541
+      ID (int) : 542 Data (float) : 542
+      ID (int) : 543 Data (float) : 543
+      ID (int) : 544 Data (float) : 544
+      ID (int) : 545 Data (float) : 545
+      ID (int) : 546 Data (float) : 546
+      ======================================================================
+      ok
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test032_IConnectionToCursor ... 
+      +++ PYTEST MAIN ( 3908) @18:48:47.335384 +++ Open a network tunnel
+      +++ PYTEST MAIN ( 3908) @18:48:47.371492 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:47.406 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:47.407382 +++ GLITCH.....!
+      ssh(4190) Process will be killed
+      ssh(4235) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:50.559013 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:50.559142 +++ Glitch before transaction start
+      2011-12-09 18:48:50.559 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:50.560 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:48:50.594 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      ID (int) : 526 Data (float) : 526
+      ID (int) : 527 Data (float) : 527
+      ID (int) : 528 Data (float) : 528
+      ID (int) : 529 Data (float) : 529
+      ID (int) : 530 Data (float) : 530
+      ID (int) : 531 Data (float) : 531
+      ID (int) : 532 Data (float) : 532
+      ID (int) : 533 Data (float) : 533
+      ID (int) : 534 Data (float) : 534
+      ID (int) : 535 Data (float) : 535
+      ID (int) : 536 Data (float) : 536
+      ID (int) : 537 Data (float) : 537
+      ID (int) : 538 Data (float) : 538
+      ID (int) : 539 Data (float) : 539
+      ID (int) : 540 Data (float) : 540
+      ID (int) : 541 Data (float) : 541
+      ID (int) : 542 Data (float) : 542
+      ID (int) : 543 Data (float) : 543
+      ID (int) : 544 Data (float) : 544
+      ID (int) : 545 Data (float) : 545
+      ID (int) : 546 Data (float) : 546
+      ======================================================================
+      ok
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test033_IConnectionToCursor ... 
+      +++ PYTEST MAIN ( 3908) @18:48:50.613391 +++ Open a network tunnel
+      +++ PYTEST MAIN ( 3908) @18:48:50.650484 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:50.684 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:50.685402 +++ GLITCH.....!
+      ssh(4235) Process will be killed
+      ssh(4279) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:53.837125 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:53.837252 +++ Glitch before Nominal Schema
+      2011-12-09 18:48:53.838 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:48:53.838 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:48:54.273 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      ID (int) : 526 Data (float) : 526
+      ID (int) : 527 Data (float) : 527
+      ID (int) : 528 Data (float) : 528
+      ID (int) : 529 Data (float) : 529
+      ID (int) : 530 Data (float) : 530
+      ID (int) : 531 Data (float) : 531
+      ID (int) : 532 Data (float) : 532
+      ID (int) : 533 Data (float) : 533
+      ID (int) : 534 Data (float) : 534
+      ID (int) : 535 Data (float) : 535
+      ID (int) : 536 Data (float) : 536
+      ID (int) : 537 Data (float) : 537
+      ID (int) : 538 Data (float) : 538
+      ID (int) : 539 Data (float) : 539
+      ID (int) : 540 Data (float) : 540
+      ID (int) : 541 Data (float) : 541
+      ID (int) : 542 Data (float) : 542
+      ID (int) : 543 Data (float) : 543
+      ID (int) : 544 Data (float) : 544
+      ID (int) : 545 Data (float) : 545
+      ID (int) : 546 Data (float) : 546
+      ======================================================================
+      ok
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test034_IConnectionToCursor ... 
+      +++ PYTEST MAIN ( 3908) @18:48:54.290512 +++ Open a network tunnel
+      +++ PYTEST MAIN ( 3908) @18:48:54.327467 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:54.362 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      +++ PYTEST MAIN ( 3908) @18:48:54.363276 +++ GLITCH.....!
+      ssh(4279) Process will be killed
+      ssh(4697) Process started
+      +++ PYTEST MAIN ( 3908) @18:48:57.516210 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:48:57.516402 +++ Glitch before Query
+      2011-12-09 18:48:57.645 [ERR] {CORAL/RelationalPlugins/oracle} ORA-03113: end-of-file on communication channel
+      Process ID: 0
+      Session ID: 789 Serial number: 35248 (retrieving the describe handle of LCG_CORAL_NIGHTLY."R5SD_NETWORKGLITCHTEST" (Schema::tableHandle))
+      ERROR
+      ======================================================================
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test035_IConnectionToCursor ... 
+      +++ PYTEST MAIN ( 3908) @18:48:57.649008 +++ Open a network tunnel
+      +++ PYTEST MAIN ( 3908) @18:48:57.685846 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:48:57.721 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      ID (int) : 526 Data (float) : 526
+      ID (int) : 527 Data (float) : 527
+      ID (int) : 528 Data (float) : 528
+      ID (int) : 529 Data (float) : 529
+      ID (int) : 530 Data (float) : 530
+      ID (int) : 531 Data (float) : 531
+      ID (int) : 532 Data (float) : 532
+      ID (int) : 533 Data (float) : 533
+      ID (int) : 534 Data (float) : 534
+      ID (int) : 535 Data (float) : 535
+      ID (int) : 536 Data (float) : 536
+      +++ PYTEST MAIN ( 3908) @18:48:57.731931 +++ GLITCH.....!
+      ssh(4697) Process will be killed
+      ssh(4741) Process started
+      +++ PYTEST MAIN ( 3908) @18:49:00.883305 +++ GLITCH OVER!
+      +++ PYTEST MAIN ( 3908) @18:49:00.883430 +++ GLITCH during the loop on the Cursor
+      2011-12-09 18:49:00.963 [ERR] {CORAL/RelationalPlugins/oracle} ORA-03113: end-of-file on communication channel
+      Process ID: 0
+      Session ID: 789 Serial number: 35252 (Fetching the next row from "SELECT * FROM LCG_CORAL_NIGHTLY."R5SD_NETWORKGLITCHTEST" "R5SD_NETWORKGLITCHTEST"")
+      ERROR
+      ======================================================================
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test036_IConnectionToCursorWithDoubleSession ... 
+      Open a network tunnel
+      Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      2011-12-09 18:49:01.039 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      2011-12-09 18:49:01.043 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      GLITCH.....!
+      ssh(4741) Process will be killed
+      ssh(4785) Process started
+      GLITCH OVER!
+      Instantiate the transaction 1
+      2011-12-09 18:49:04.196 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:49:04.197 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:49:04.230 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      Instantiate the transaction 2
+      2011-12-09 18:49:04.230 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:49:04.234 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      REInstantiate the transaction 1
+      GLITCH.....!
+      ssh(4785) Process will be killed
+      ssh(4824) Process started
+      GLITCH OVER!
+      Start the transaction 1
+      GLITCH.....!
+      ssh(4824) Process will be killed
+      ssh(4863) Process started
+      GLITCH OVER!
+      Start the transaction 2
+      ReStart the transaction 1
+      2011-12-09 18:49:10.555 [WRN] {CORAL/RelationalPlugins/oracle} A transaction is already active
+      End
+      GLITCH.....!
+      ssh(4863) Process will be killed
+      ssh(4902) Process started
+      GLITCH OVER!
+      Use sessions again
+      SCHEMA1 SESSION1
+      2011-12-09 18:49:13.721 [ERR] {CORAL/RelationalPlugins/oracle} The connection has been lost!?
+      2011-12-09 18:49:13.721 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:49:13.755 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      SCHEMA2 SESSION2
+      2011-12-09 18:49:13.755 [ERR] {CORAL/Services/ConnectionService} The session is no longer valid: re-open a new session (ConnectionService::SessionProxy::reconnect)
+      2011-12-09 18:49:13.759 [WRN] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is set: this session will skip OCI serializable read-only transactions
+      QUERY SCHEMA1 SESSION1
+      GLITCH.....!
+      ssh(4902) Process will be killed
+      ssh(4962) Process started
+      GLITCH OVER!
+      Trigger a new query using the old schema
+      Cursor
+      2011-12-09 18:49:17.040 [ERR] {CORAL/RelationalPlugins/oracle} ORA-03113: end-of-file on communication channel
+      Process ID: 0
+      Session ID: 833 Serial number: 14024 (Executing statement "SELECT * FROM LCG_CORAL_NIGHTLY."R5SD_NETWORKGLITCHTEST" "R5SD_NETWORKGLITCHTEST"")
+      ERROR
+      ======================================================================
+      
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test040_glitchInConnect_ora24327_bug58522 ... +++ PYTEST MAIN ( 3908) @18:49:27.116036 +++ Exception caught after 10.066 seconds
+      +++ PYTEST MAIN ( 3908) @18:49:27.116104 +++ Sleep + Retrial timeout is 25.000 seconds
+      +++ PYTEST MAIN ( 3908) @18:49:27.116141 +++ CORAL did not wait for the retrial timeout: SUCCESS
+      
+      +++ PYTEST MAIN ( 3908) @18:49:17.048713 +++ Fork and delay dump to resync parent and child
+      +++ PYTEST MAIN ( 3908) @18:49:17.049941 +++ Parent process: PID=3908
+      +++ PYTEST MAIN ( 3908) @18:49:17.050076 +++ Connect R/O to: oracle://lcg_coral_nightly_proxy/lcg_coral_nightly
+      __Connection::connect() @18:49:17.114274 sleep 10s (test ORA-24327)
+      +++ PYTEST child( 4978) @18:49:18.049900 +++  Child process: PID=4978
+      +++ PYTEST child( 4978) @18:49:20.049806 +++  GLITCH.....!
+      ssh(4962) Process will be killed
+      ssh(5003) Process started
+      +++ PYTEST child( 4978) @18:49:23.215935 +++  GLITCH OVER!
+      +++ PYTEST child( 4978) @18:49:23.216308 +++  Child process: exit!
+      __Connection::connect() @18:49:27.115008 slept 10s (test ORA-24327)
+      2011-12-09 18:49:27.115 [ERR] {CORAL/RelationalPlugins/oracle} ORA-03113: end-of-file on communication channel
+      Process ID: 0
+      Session ID: 0 Serial number: 0 (authenticating)
+      +++ PYTEST MAIN ( 3908) @18:49:27.116956 +++ Delayed dump completed
+      ======================================================================
+      ok
+      
+      ======================================================================
+      ERROR: 
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test011_ICursorPVM_bug73334
+      ----------------------------------------------------------------------
+      Traceback (most recent call last):
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 143, in test011_ICursorPVM_bug73334
+          cursor.next()
+      Exception: Session is no longer valid ( CORAL : "SessionProperties::isTransactionActive" from "CORAL/RelationalPlugins/oracle" )
+      
+      ======================================================================
+      ERROR: 
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test034_IConnectionToCursor
+      ----------------------------------------------------------------------
+      Traceback (most recent call last):
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 241, in test034_IConnectionToCursor
+          self.internalTest03x_IConnectionToCursor(dbg,4)
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 282, in internalTest03x_IConnectionToCursor
+          query = schema.tableHandle(tableName).newQuery()
+      Exception: Could not retrieve a describe handle ( CORAL : "ISchema::tableHandle" from "CORAL/RelationalPlugins/oracle" )
+      
+      ======================================================================
+      ERROR: 
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test035_IConnectionToCursor
+      ----------------------------------------------------------------------
+      Traceback (most recent call last):
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 250, in test035_IConnectionToCursor
+          self.internalTest03x_IConnectionToCursor(dbg,5)
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 292, in internalTest03x_IConnectionToCursor
+          while ( cursor.next() ):
+      Exception: ORA-03113: end-of-file on communication channel
+      Process ID: 0
+      Session ID: 789 Serial number: 35252 (Fetching the next row from "SELECT * FROM LCG_CORAL_NIGHTLY."R5SD_NETWORKGLITCHTEST" "R5SD_NETWORKGLITCHTEST"") ( CORAL : "OracleStatement" from "CORAL/RelationalPlugins/oracle" )
+      
+      ======================================================================
+      ERROR: 
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test036_IConnectionToCursorWithDoubleSession
+      ----------------------------------------------------------------------
+      Traceback (most recent call last):
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 355, in test036_IConnectionToCursorWithDoubleSession
+          cursor1 = query1.execute()
+      Exception: Could not execute a query ( CORAL : "IQuery::execute" from "CORAL/RelationalPlugins/oracle" )
+      
+      ======================================================================
+      FAIL: 
+      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      TestNetworkGlitch.test022_glitchInActiveTransSerialRO_bug57117
+      ----------------------------------------------------------------------
+      Traceback (most recent call last):
+        File "/home/avalassi/CORAL/CORAL_2_3_20/src/../x86_64-slc5-gcc43-dbg/tests/bin/test_PyCoral_NetworkGlitch.py", line 192, in test022_glitchInActiveTransSerialRO_bug57117
+          self.fail( "Commit should fail for serializable RO transaction after glitch!" )
+      AssertionError: Commit should fail for serializable RO transaction after glitch!
+      
+      ----------------------------------------------------------------------
+      Ran 12 tests in 60.006s
+      
+      FAILED (failures=1, errors=4)
+      ssh(5003) Process will be killed
+      
+
+    qmtest.end_time:
+      2011-12-09T17:49:28Z
+
+    qmtest.start_time:
+      2011-12-09T17:48:25Z
+
+    qmtest.target:
+      local
+
+  pycoral_integration.basic_mysql               : PASS    
+
+  pycoral_integration.basic_mysql-coral         : UNTESTED
+    Platform not supported.
+
+  pycoral_integration.basic_oracle              : PASS    
+
+  pycoral_integration.basic_oracle-coral        : PASS    
+
+  pycoral_integration.basic_oracle-frontier     : PASS    
+
+  pycoral_integration.basic_sqlite              : PASS    
+
+  pycoral_integration.miscellaneousbugs_mysql   : PASS    
+
+  pycoral_integration.miscellaneousbugs_mysql-coral: UNTESTED
+    Platform not supported.
+
+  pycoral_integration.miscellaneousbugs_oracle  : PASS    
+
+  pycoral_integration.miscellaneousbugs_oracle-coral: UNTESTED
+    Platform not supported.
+
+  pycoral_integration.miscellaneousbugs_oracle-frontier: UNTESTED
+    Platform not supported.
+
+  pycoral_integration.miscellaneousbugs_sqlite  : PASS    
+
+  unit.connectionservice_connection             : PASS    
+
+  unit.coralbase_atlifunctionality              : PASS    
+
+  unit.coralbase_atlispecfunctionality          : PASS    
+
+  unit.coralbase_attributereadwrite             : PASS    
+
+  unit.coralbase_blobreadwrite                  : PASS    
+
+  unit.coralbase_cppunitexample                 : PASS    
+
+  unit.coralbase_datatypebug                    : UNTESTED
+    Platform not supported.
+
+  unit.coralbase_date                           : PASS    
+
+  unit.coralbase_messagestream                  : PASS    
+
+  unit.coralbase_timestamp                      : PASS    
+
+  unit.coralcommon_monitoringevent              : PASS    
+
+  unit.coralcommon_simpleexpressionparser       : PASS    
+
+  unit.coralcommon_timer                        : PASS    
+
+  unit.coralcommon_uriparser                    : PASS    
+
+  unit.coralkernel_externalpluginmanager        : PASS    
+
+  unit.coralkernel_pluginlist                   : PASS    
+
+  unit.coralkernel_pluginmanager                : PASS    
+
+  unit.coralkernel_propertymanager              : PASS    
+
+  unit.environmentauthenticationservice_loadservice: PASS    
+
+  unit.frontieraccess_cmsnewfrontier            : UNTESTED
+    Platform not supported.
+
+  unit.frontieraccess_monitorcontroller         : UNTESTED
+    Platform not supported.
+
+  unit.frontieraccess_multipleschemas           : UNTESTED
+    Platform not supported.
+
+  unit.frontieraccess_schema                    : UNTESTED
+    Platform not supported.
+
+  unit.frontieraccess_segfault                  : UNTESTED
+    Platform not supported.
+
+  unit.frontieraccess_simplequeries             : UNTESTED
+    Platform not supported.
+
+  unit.frontieraccess_testalias                 : UNTESTED
+    Platform not supported.
+
+  unit.lfcreplicaservice_fullservice            : UNTESTED
+    Platform not supported.
+
+  unit.monitoringservice_report                 : PASS    
+
+  unit.mysqlaccess_bulkinserts                  : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_connection                   : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_dataeditor                   : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_multipleschemas              : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_nipp                         : PASS    
+
+  unit.mysqlaccess_schema                       : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_schemacopy                   : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_segfault                     : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_showcreatetableparser        : PASS    
+
+  unit.mysqlaccess_simplequeries                : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_test40                       : UNTESTED
+    Platform not supported.
+
+  unit.mysqlaccess_testalias                    : UNTESTED
+    Platform not supported.
+
+  unit.oracleaccess_bulkinserts                 : PASS    
+
+  unit.oracleaccess_connection                  : PASS    
+
+  unit.oracleaccess_datadictionary              : PASS    
+
+  unit.oracleaccess_dataeditor                  : PASS    
+
+  unit.oracleaccess_dateandtime                 : PASS    
+
+  unit.oracleaccess_dual                        : PASS    
+
+  unit.oracleaccess_groupby                     : PASS    
+
+  unit.oracleaccess_multipleschemas             : PASS    
+
+  unit.oracleaccess_multiplesessions            : PASS    
+
+  unit.oracleaccess_multithreading              : PASS    
+
+  unit.oracleaccess_schema                      : PASS    
+
+  unit.oracleaccess_simplequeries               : PASS    
+
+  unit.oracleaccess_views                       : PASS    
+
+  unit.relationalaccess_tabledescription        : PASS    
+
+  unit.relationalservice_loadservice            : PASS    
+
+  unit.sqliteaccess_bulkinserts                 : PASS    
+
+  unit.sqliteaccess_bulkoperations              : PASS    
+
+  unit.sqliteaccess_createlistdrop              : PASS    
+
+  unit.sqliteaccess_dataeditor                  : PASS    
+
+  unit.sqliteaccess_dateandtime                 : PASS    
+
+  unit.sqliteaccess_describetable               : PASS    
+
+  unit.sqliteaccess_expressionparser            : PASS    
+
+  unit.sqliteaccess_queriesinsingletable        : PASS    
+
+  unit.sqliteaccess_querieswithmultipletables   : PASS    
+
+  unit.sqliteaccess_schemaeditor                : PASS    
+
+  unit.sqliteaccess_uint32order                 : PASS    
+
+  unit.sqliteaccess_views                       : PASS    
+
+  unit.xmlauthenticationservice_loadservice     : UNTESTED
+    Platform not supported.
+
+  unit.xmllookupservice_loadservice             : UNTESTED
+    Platform not supported.
+
+  unit_coralserver.coralauthenticationservice_opensslcipher: PASS    
+
+  unit_coralserver.coralauthenticationservice_querymgr: PASS    
+
+  unit_coralserver.coralmonitor_csvstatsreporter: PASS    
+
+  unit_coralserver.coralmonitor_monitorservice  : PASS    
+
+  unit_coralserver.coralmonitor_serviceorder    : PASS    
+
+  unit_coralserver.coralmonitor_statsmanager    : PASS    
+
+  unit_coralserver.coralmonitor_statsset        : PASS    
+
+  unit_coralserver.coralmonitor_statsstatic     : PASS    
+
+  unit_coralserver.coralmonitor_stoptimer       : UNTESTED
+    Platform not supported.
+
+  unit_coralserver.coralmonitor_threadsafety    : PASS    
+
+  unit_coralserver.coralserverbase_bytebuffer   : PASS    
+
+  unit_coralserver.coralserverbase_calopcode    : PASS    
+
+  unit_coralserver.coralserverbase_calpacket    : PASS    
+
+  unit_coralserver.coralserverbase_coralserverproxyexception: PASS    
+
+  unit_coralserver.coralserverbase_ctlpacket    : PASS    
+
+  unit_coralserver.coralserverbase_stoptimer    : UNTESTED
+    Platform not supported.
+
+  unit_coralserver.coralserverproxy_packet      : PASS    
+
+  unit_coralserver.coralsockets_dummyrequesthandler: PASS    
+
+  unit_coralserver.coralsockets_packetsocket    : PASS    
+
+  unit_coralserver.coralsockets_poll            : PASS    
+
+  unit_coralserver.coralsockets_replymanager    : PASS    
+
+  unit_coralserver.coralsockets_requestiterator : PASS    
+
+  unit_coralserver.coralsockets_ringbuffersocket: PASS    
+
+  unit_coralserver.coralsockets_socketcontext   : PASS    
+
+  unit_coralserver.coralsockets_socketrequesthandler: PASS    
+
+  unit_coralserver.coralsockets_socketthread    : PASS    
+
+  unit_coralserver.coralsockets_sslsocket       : PASS    
+
+  unit_coralserver.coralsockets_tcpsocket       : PASS    
+
+  unit_coralserver.coralsockets_threadmanager   : PASS    
+
+  unit_coralserver.coralstubs_allparts          : PASS    
+
+  unit_coralserver.coralstubs_requesthandler    : PASS    
+
+  unit_coralserver.coralstubs_streambuffer      : PASS    
+
+--- TESTS THAT DID NOT PASS (EXCLUDING UNTESTED TESTS) -----------------------
+
+  pycoral.networkglitch                         : FAIL    
+    Unexpected exit_code.
+
+
+--- STATISTICS ---------------------------------------------------------------
+
+     331        tests total
+       1 (  0%) tests FAIL
+     191 ( 58%) tests UNTESTED
+     139 ( 42%) tests PASS
+

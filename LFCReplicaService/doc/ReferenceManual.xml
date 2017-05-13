@@ -1,0 +1,375 @@
+<sect2><title>LFCReplicaService Reference</title>
+<sect3>
+<title>class ILookupService</title>
+
+<sect4><title>Members</title>
+  <itemizedlist>
+  <listitem>
+  <programlisting>
+  <para>
+IDatabaseServiceSet* lookup( const std::string&amp; logicalName,
+                             coral::AccessMode accessMode = coral::Update,
+                             std::string authenticationMechanism = ""
+                             ) const;
+  </para>
+  </programlisting>
+  <para>
+  <emphasis role="bold">Parameters:</emphasis>
+  <itemizedlist>
+    <listitem>
+    <para>
+      <programlisting> logicalName </programlisting>: the logical connection
+string, which can be described by a file absolute or relative path,
+with an arbitrary complex folder hierarchy. The root base folder in
+the LFC filesystem is fixed to /database by default, and can be moved
+to other location using the environment variable CORAL_LFC_BASEDIR.
+    </para>
+    </listitem>  
+    <listitem>
+    <para>
+      <programlisting> accessMode </programlisting>: the access mode
+capability of the connection. Possible values are items of the
+coral::AccessMode enumeration. Default value is Update, which means
+that with no parameter specified, only the Update capable connection will be considered.
+    </para>
+    </listitem>  
+    <listitem>
+    <para>
+      <programlisting> authenticationMechanism </programlisting>: the
+authentication mechanism required by the physical connections. Default
+value is an empty string, which will be interpreted by applying no
+filter to the available connections (all the mechansim are
+considered.).
+In the LFC replica service, only two mechansim can be currently
+associated to the physical connections: "password", to be used for
+credential based authentication, and "none", when no authentication is required.
+    </para>
+    </listitem>  
+  </itemizedlist>
+  </para>
+  <para>
+  <emphasis role="bold">Effects:</emphasis> Resolves the specified
+logical connection string, looking up the LFC database catalogue
+according to the access permission of the underlying grid role or
+group. In case of successfull access, a data structure is filled with the
+associated replica information, while in the service memory the are
+stored the authentication credentials required by all of the physical connections
+involved in the selection. 
+  </para>
+  <para>
+  <emphasis role="bold">Returns:</emphasis> A user owned pointer to the
+data structure holding the replica list. The free of this memory allocation
+does not have any effect on the service.
+</para>
+</listitem>
+</itemizedlist>
+</sect4>
+</sect3>
+<sect3>
+<title>class IAuthenticationService</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+<listitem>
+<programlisting>
+<para>
+IAuthenticationCredential&amp; credentials( const std::string&amp; connectionString ) const;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> connectionString </programlisting>: the physical connection
+string requiring the authentication parameters.
+</para>
+</listitem>  
+</itemizedlist>
+</para>
+<para>
+<emphasis role="bold">Effects:</emphasis> This method call DOES NOT
+trigger any access to the LFC catalogue. It only delivers a reference
+to the already existing authentication data for the default role
+(named coral_default_role), loaded by the previous
+last lookup call. Any call to this method which is not anticipated by
+a lookup call, will throw an Authentication exception, because no data
+will be present in the service credential store.   
+</para>
+<para>
+<emphasis role="bold">Returns:</emphasis> A reference to the
+current credential store loaded in the service memory. It contains
+valid data only after a call of the corresponding lookup method. 
+The role looked up for the credential pairs (username+password) is the
+default role (named coral_default_role).  
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+IAuthenticationCredential&amp; credentials( const std::string&amp; connectionString, 
+                                           const std::string&amp; role
+                                           ) const;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> connectionString </programlisting>: the physical connection
+string requiring the authentication parameters.
+</para>
+</listitem>  
+<listitem>
+<para>
+<programlisting> role </programlisting>: the role defining the
+identity for the authentication.
+</para>
+</listitem>  
+</itemizedlist>
+</para>
+<para>
+<emphasis role="bold">Effects:</emphasis>Same effect as for the above method. 
+</para>
+<para>
+<emphasis role="bold">Returns:</emphasis>Same return value as the
+above method, selecting the credential pair associated to the
+specified role.
+</para>
+</listitem>
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3 id='LFCReplicaService Command Line Tools'>
+<title>Command line tools</title>
+<para>
+A set of LFCDbLookupService administrating commands has been provided for the management of mapping information stored 
+in LFC. These command line tools are implemented using LFC APIs for
+adding, removing, listing the replica entries (with the accociated
+credential informaton) for specified 
+logical connection string and to export the replica entries of a logical connection string into XML file. 
+
+All of the available commands are issued with a single executable: 
+</para>
+<programlisting><para>coral_replica_manager</para></programlisting>
+<para>
+The usage sintax is:
+</para>
+<programlisting><para>coral_replica_manager [COMMAND] [PARAMETER_0]... [PARAMETER_N] 
+</para></programlisting>
+<para>
+The available commands:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<emphasis>-add ( --add ) :</emphasis> Adds a new replica entry for the
+specified logical connection string and role 
+Usage:
+</para>
+<para>
+-add 
+</para>
+<itemizedlist>	
+<listitem><para>-l lcs  ( the logical connection string to be mapped to the replica )</para></listitem>
+<listitem><para>-c pcs  ( the physical connection string defining the replica )</para></listitem>
+<listitem><para>[-h host] ( the database host of the replica - if not
+specified is extracted from the physical connection string)</para></listitem>
+<listitem><para>[-r role] ( the role associated to the replica
+credential pairs - default=coral_default_role )</para></listitem>
+<listitem><para>[-u username]( the username associated to the replica )</para></listitem>
+<listitem><para>[-p password]( the password associated to the replica )</para></listitem>
+<listitem><para>[-np]( no authentication credential associated to the replica )</para></listitem>
+<listitem><para>[-ro]( read-only capable physical connection )</para></listitem>
+<listitem><para>[-rw]( update capable physical connection - default )</para></listitem>
+<listitem><para>[-help]( help for the add command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-ls ( --list ) :</emphasis> Lists available replicas mapped to a logical connection string - with optional filters.  
+Usage:
+</para>
+<para>
+-ls 
+</para>
+<itemizedlist>	
+<listitem><para>[-h host] ( select replicas with the specified database host)</para></listitem>
+<listitem><para>[-l lcs ] ( select replica of the the specified
+logical connection string (or path )</para></listitem>
+<listitem><para>[-c pcs ] ( select replicas with the sepcified
+physical connection string )</para></listitem>
+<listitem><para>[-r role]( selecting replicas with the credential
+associated to the specified role )</para></listitem>
+<listitem><para>[-np]( select replicas with no authentication required )</para></listitem>
+<listitem><para>[-u username]( select replicas with the specified
+username in the credential pair )</para></listitem>
+<listitem><para>[-s ]( scan option - recursively scan inner folders )</para></listitem>
+<listitem><para>[-ro]( select replicas with read-only capability )</para></listitem>
+<listitem><para>[-rw]( select replicas with update capability )</para></listitem>
+<listitem><para>[-on]( select replicas with status on )</para></listitem>
+<listitem><para>[-off]( select replicas with status off )</para></listitem>
+<listitem><para>[-help]( help for the list command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-set ( --set_param ) :</emphasis> Change the status or the
+passoword values to the specified replica(s)
+Usage:
+</para>
+<para>
+-set
+</para>
+<itemizedlist>	
+<listitem><para> -h host ( select replicas with the specified database host)</para></listitem>
+<listitem><para>[-u username]( select replicas with the specified
+username in the credential pair )</para></listitem>
+<listitem><para>[-p password]( the new password associated to the
+replica, replacing the existing one. )</para></listitem>
+<listitem><para>[-on]( the new value for the replica status=on )</para></listitem>
+<listitem><para>[-off]( the new value for the replica status=off )</para></listitem>
+<listitem><para>[-help]( help for the set command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-del ( --delete ) :</emphasis> Removes the existing replica(s) mapped to a logical connection string. 
+Usage:
+</para>
+<para>
+-del
+</para>
+<itemizedlist>	
+<listitem><para> -l lcs  ( select replica(s) of the the specified
+logical connection string (or path )</para></listitem>
+<listitem><para>[-h host] ( select replicas with the specified database host)</para></listitem>
+<listitem><para>[-c pcs ] ( select replicas with the sepcified
+physical connection string )</para></listitem>
+<listitem><para>[-r role]( selecting replicas with the credential
+associated to the specified role )</para></listitem>
+<listitem><para>[-np]( select replicas with no authentication required )</para></listitem>
+<listitem><para>[-u username]( select replicas with the specified
+username in the credential pair )</para></listitem>
+<listitem><para>[-s ]( scan option - recursively scan inner folders )</para></listitem>
+<listitem><para>[-ro]( select replicas with read-only capability )</para></listitem>
+<listitem><para>[-rw]( select replicas with update capability )</para></listitem>
+<listitem><para>[-on]( select replicas with status on )</para></listitem>
+<listitem><para>[-off]( select replicas with status off )</para></listitem>
+<listitem><para>[-help]( help for the del command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-val ( --validate_param ) :</emphasis> Validate the
+specified passoword against the current value for the specified replica(s)
+Usage:
+</para>
+<para>
+-val
+</para>
+<itemizedlist>	
+<listitem><para> -h host ( select replicas with the specified database host)</para></listitem>
+<listitem><para> -u username( select replicas with the specified
+username in the credential pair )</para></listitem>
+<listitem><para> -p password( the password associated to the
+replica, to be validated. )</para></listitem>
+<listitem><para>[-help]( help for the val command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-set_perm ( --set_permission) :</emphasis> Set the specified
+access permission for the specified LFC group entry (mapped to a Grid
+role or group), to the specified logical connection string and role.
+Usage:
+</para>
+<para>
+-set_perm
+</para>
+<itemizedlist>	
+<listitem><para> -g group ( the LFC group entry to be granted )</para></listitem>
+<listitem><para> -l lcs   (  the logical connection string to access )</para></listitem>
+<listitem><para> -r role  ( the role associated to the credential pair) </para></listitem>
+<listitem><para>[-na] ( grant no access permission )</para></listitem>
+<listitem><para>[-rw]( grant read-write access permission )</para></listitem>
+<listitem><para>[-ro]( grant read-only access permission )</para></listitem>
+<listitem><para>[-wo]( grant write only access permission )</para></listitem>
+<listitem><para>[-help]( help for the set_perm command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-exp ( --export ) :</emphasis> Export available replicas and
+associated credential information into xml files, in the format
+supported by XMLLookupService and XMLAuthenticationService, with optional filters.  
+Usage:
+</para>
+<para>
+-exp
+</para>
+<itemizedlist>	
+<listitem><para>[-h host] ( select replicas with the specified database host)</para></listitem>
+<listitem><para>[-l lcs ] ( select replica of the the specified
+logical connection string (or path )</para></listitem>
+<listitem><para>[-c pcs ] ( select replicas with the sepcified
+physical connection string )</para></listitem>
+<listitem><para>[-r role]( selecting replicas with the credential
+associated to the specified role )</para></listitem>
+<listitem><para>[-np]( select replicas with no authentication required )</para></listitem>
+<listitem><para>[-u username]( select replicas with the specified
+username in the credential pair )</para></listitem>
+<listitem><para>[-s ]( scan option - recursively scan inner folders )</para></listitem>
+<listitem><para>[-ro]( select replicas with read-only capability )</para></listitem>
+<listitem><para>[-rw]( select replicas with update capability )</para></listitem>
+<listitem><para>[-on]( select replicas with status on )</para></listitem>
+<listitem><para>[-off]( select replicas with status off )</para></listitem>
+<listitem><para>[-af authentication_file]( specify the name of the
+authentication file - default=authentication.xml )</para></listitem>
+<listitem><para>[-lf lookup_file ]( specify the name of the lookup
+file - default=dblookup.xml )</para></listitem>
+<listitem><para>[-help]( help for the exp command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-imp ( --import ) :</emphasis> Import available replicas and
+associated credential information from xml files, in the format
+supported by XMLLookupService and XMLAuthenticationService.  
+Usage:
+</para>
+<para>
+-imp
+</para>
+<itemizedlist>	
+<listitem><para>[-af authentication_file]( specify the name of the
+authentication file - default=authentication.xml )</para></listitem>
+<listitem><para>[-lf lookup_file ]( specify the name of the lookup
+file - default=dblookup.xml )</para></listitem>
+<listitem><para>[-help]( help for the exp command )</para></listitem>
+</itemizedlist>	
+</listitem>
+
+<listitem>
+<para>
+<emphasis>-help ( --help ) :</emphasis> Displays the general help of
+the tool
+Usage:
+</para>
+<para>
+-help
+</para>
+</listitem>
+</itemizedlist>	
+
+</sect3>
+</sect2>

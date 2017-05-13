@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+
+<connectionlist>
+
+<connection name="connection_2">
+  <parameter name="user" value="testuser_2" />
+  <parameter name="password" value="testpasswd_2" />
+</connection>
+
+</connectionlist>

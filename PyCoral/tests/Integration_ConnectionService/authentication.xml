@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<connectionlist>
+
+<connection name="oracle://devdb10/ral_reader">
+  <parameter name="user" value="ral_reader" />
+  <parameter name="password" value="ral" />
+</connection>
+
+<connection name="oracle://devdb10/ral_writer">
+  <parameter name="user" value="ral_writer" />
+  <parameter name="password" value="ral" />
+</connection>
+
+<connection name="mysql://pcitdb59.cern.ch/RADO_POOL">
+  <parameter name="user" value="rado_pool" />
+  <parameter name="password" value="rado_pool" />
+</connection>
+
+</connectionlist>
+

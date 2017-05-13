@@ -1,0 +1,18 @@
+Medium priority
+-------------
+
+2009-02-04 - AK: cursorID inside stub rather than inside facade...
+(he needs to keep an objectstore with cursors on the serverstub...)
+Always get an iterator back, not a cursorID!
+
+Low priority
+-------------
+
+2009-02-04 - AV: CoralServerBase tests fail on Windows (vc9 and vc7).
+Window popup 'The application failed to initialize properly'.
+
+2009-02-04 - AV: queries fail unless defineOutput is called: feature?
+
+
+
+

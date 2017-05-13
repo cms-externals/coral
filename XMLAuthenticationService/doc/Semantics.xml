@@ -1,0 +1,58 @@
+<sect2><title>XMLAuthenticationService Semantics</title>
+<para>
+The XMLAuthenticationService component ("CORAL/Services/XMLAuthenticationService")
+provides an implementation of
+the <emphasis>IAuthenticationService</emphasis> interface which is
+based on the parsing of an XML input file, from where a list of known
+connection strings is read. For each connection string a user name
+and a password are specified in the file.
+</para>
+<para>In addition to the credentials corresponding to the <emphasis>default</emphasis>
+database role, one may define several <emphasis>roles</emphasis> for a given connection string.
+</para>
+
+<para>The XML file should have a format like the following:
+<screen>
+<![CDATA[
+<connectionlist>
+
+<connection name="technology1://host1/db1">
+  <parameter name="user" value="dbuser1" />
+  <parameter name="password" value="dbpasswd1" />
+</connection>
+
+<connection name="technology2://host2/db2">
+  <parameter name="user" value="dbuser2" />
+  <parameter name="password" value="dbpasswd2" />
+
+  <role name="writer">
+    <parameter name="user" value="dbuser2_writer" />
+    <parameter name="password" value="dbpasswd2_writer" />
+  </role>
+
+  <role name="updater">
+    <parameter name="user" value="dbuser2_updater" />
+    <parameter name="password" value="dbpasswd2_updater" />
+  </role>
+
+</connection>
+.
+.
+.
+</connectionlist>
+]]>
+</screen>
+</para>
+
+<para>By default the file name of the authentication file that is read
+is called <emphasis role="bold">authentication.xml</emphasis>. This however can be changed by setting
+accordingly the value of the component's property named <emphasis role="bold">AuthenticationFile</emphasis>.</para>
+
+<para>If the authentication file name does not correspond to an absolute path, the system
+will try to search it in the current working directory and then in the
+directories defined in the path environment variable <emphasis role="bold">CORAL_AUTH_PATH</emphasis>.</para>
+
+<para>If the authentication file is found in multiple places in the directories specified by CORAL_AUTH_PATH,
+then repeated entries are not overriden, but the first one found is kept.
+</para>
+</sect2>

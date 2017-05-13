@@ -1,0 +1,60 @@
+package CoralAccess
+
+#============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+use CoralCommon     v*
+use CoralServerBase v* CORAL_SERVER
+use CoralSockets    v* CORAL_SERVER
+use CoralStubs      v* CORAL_SERVER
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+apply_pattern include_dir_policy
+apply_pattern lcg_module_library
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Scripts
+#----------------------------------------------------------------------------
+
+# Install the scripts
+###macro  scrdir "$(CMTINSTALLAREA)/$(tag)/bin" \
+###       target-winxp  "$(CMTINSTALLAREA)\$(tag)\bin"
+###action install_scripts "mkdir -p $(scrdir); cp -r ../scripts/* $(scrdir)/."\
+###       target-winxp  "xcopy /I/S/Y/Q ..\scripts\*.* $(scrdir)\."
+
+# Append to 'constituents' to execute an action in 'cmt make'
+# (append to 'all_constituents' to execute it only in 'cmt make all').
+# Remove the action from cmt_actions_constituents so that the action 
+# is not executed twice in 'cmt make all_groups' (it executes all actions).
+###macro_append constituents "install_scripts"
+###macro_remove cmt_actions_constituents "install_scripts"
+
+#----------------------------------------------------------------------------
+# Tests
+#----------------------------------------------------------------------------
+
+#use CppUnit v* LCG_Interfaces -no_auto_imports
+
+# Fake target for tests
+action tests "echo No tests in this package"
+macro_remove cmt_actions_constituents "tests"
+
+#----------------------------------------------------------------------------
+# Utilities
+#----------------------------------------------------------------------------
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"
+
+#============================================================================

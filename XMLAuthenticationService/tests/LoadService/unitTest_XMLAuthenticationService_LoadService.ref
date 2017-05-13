@@ -1,0 +1,21 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_XMLAuthenticationService_LoadService
+[oval run] =================================================
+
+Connection "oracle://devdb9/IOANNIS" :
+    user : the_user
+    password : the_passwd
+Connection "oracle://devdb10/IOANNIS" :
+    user : the_other_user
+    password : the_other_passwd
+Exiting...
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

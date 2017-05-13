@@ -1,0 +1,5 @@
+<use   name="LCG/RelationalAccess"/>
+<use   name="xerces-c"/>
+<export>
+  <lib   name="1"/>
+</export>

@@ -1,0 +1,47 @@
+Loading Connection Service
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "frontier" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "mysql" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "oracle" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "sqlite" with native implementation
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "frontier" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "mysql" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "oracle" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "sqlite" is native
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service00"
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+CORAL/Services/ConnectionService    Debug No valid connection for string "/dbdev/service00" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Trying to get a new update session on "oracle://int5r/coral_READER"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=0sec.
+CORAL/Services/ConnectionService     Info  Connection to service "int5r" established. Id=b20fd4d8-d88a-11db-8c70-000423d65662
+CORAL/Services/ConnectionService     Info New session on connection to service "int5r" started for user "lcg_coral_nightly". Connection Id=b20fd4d8-d88a-11db-8c70-000423d65662
+CORAL/Services/ConnectionService    Debug  A New connection to service "int5r" has been added in the active list. Id=b20fd4d8-d88a-11db-8c70-000423d65662
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "DROP TABLE lcg_coral_nightly."T_CONNECTION_SERVICE_TEST""
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "CREATE TABLE lcg_coral_nightly."T_CONNECTION_SERVICE_TEST" ( "N_X" NUMBER(10), "N_S" VARCHAR2(4000) )"
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "GRANT SELECT ON lcg_coral_nightly."T_CONNECTION_SERVICE_TEST" TO PUBLIC"
+CORAL/Services/ConnectionService    Debug Connection id=b20fd4d8-d88a-11db-8c70-000423d65662 to service "int5r" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=b20fd4d8-d88a-11db-8c70-000423d65662 to service "int5r" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service0"
+CORAL/Services/ConnectionService    Debug No valid connection for string "/dbdev/service0" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Trying to get a new read-Only session on "oracle://int5r/CORAL_READER"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=0sec.
+CORAL/Services/ConnectionService     Info  Connection to service "int5r" established. Id=b2e4e0c4-d88a-11db-8c70-000423d65662
+CORAL/Services/ConnectionService     Info New session on connection to service "int5r" started for user "CORAL_READER". Connection Id=b2e4e0c4-d88a-11db-8c70-000423d65662
+CORAL/Services/ConnectionService    Debug  A New connection to service "int5r" has been added in the active list. Id=b2e4e0c4-d88a-11db-8c70-000423d65662
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection CORAL-Oracle-lcgnight/service1 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=b2e4e0c4-d88a-11db-8c70-000423d65662 to service "int5r" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=b2e4e0c4-d88a-11db-8c70-000423d65662 to service "int5r" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService    Debug No valid connection for string "/dbdev/service1" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Trying to get a new read-Only session on "oracle://int5r/lcg_coral_nightly"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=0sec.
+CORAL/Services/ConnectionService     Info  Connection to service "int5r" established. Id=b2f71708-d88a-11db-8c70-000423d65662
+CORAL/Services/ConnectionService     Info New session on connection to service "int5r" started for user "lcg_coral_nightly". Connection Id=b2f71708-d88a-11db-8c70-000423d65662
+CORAL/Services/ConnectionService    Debug  A New connection to service "int5r" has been added in the active list. Id=b2f71708-d88a-11db-8c70-000423d65662
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection CORAL-Oracle-lcgnight/service2 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=b2f71708-d88a-11db-8c70-000423d65662 to service "int5r" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=b2f71708-d88a-11db-8c70-000423d65662 to service "int5r" has been removed from the active list.
+[OVAL] Success

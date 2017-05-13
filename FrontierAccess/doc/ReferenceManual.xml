@@ -1,0 +1,40 @@
+<sect2><title>FrontierAccess Reference</title>
+
+<!--
+<sect3>
+<title>Properties of the "CORAL/RelationalPlugins/frontier" component</title>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold">LobChunkSize</emphasis> :
+defines the size in bytes of the chunks when reading a LOB from the database. It takes its default
+value from the environment variable <emphasis role="bold">CORAL_ORA_LOB_CHUNK_SIZE</emphasis>.
+If not specified a default of 1024 bytes (1KB) is used.</para></listitem>
+
+</itemizedlist>
+
+</sect3>
+-->
+
+<sect3><title>Other environment variables</title>
+<itemizedlist>
+
+<!--
+<listitem>
+<para><emphasis role="bold">CORAL_FRONTIER_RELOAD</emphasis> :
+if set, it disables globally the cached data access.
+</para>
+</listitem>
+-->
+
+<listitem>
+<para><emphasis role="bold">FRONTIER_LOG_LEVEL</emphasis> :
+if set to "Debug", it enables the debug log output for the frontier
+client.
+</para>
+</listitem>
+
+</itemizedlist>
+
+</sect3>
+</sect2>

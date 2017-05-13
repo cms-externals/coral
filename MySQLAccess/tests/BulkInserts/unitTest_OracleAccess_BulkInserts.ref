@@ -1,0 +1,30 @@
+
+[oval run] =================================================
+[oval run] USER : ioannis
+[oval run] HOST : pcitapi70
+[oval run] run tool: oval
+[oval run] final instruction: unitTest_OracleAccess_BulkInserts
+[oval run] =================================================
+
+CORAL/RelationalPlugins/oracle: level[Info] Connected to a server running Oracle version 10.1.0.4.0
+About to drop previous table
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "DROP TABLE RAL_WRITER."T""
+Describing new table
+About to create the table
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "CREATE TABLE RAL_WRITER."T" ( "ID" NUMBER(10), "x" BINARY_FLOAT NOT NULL, "Y" BINARY_DOUBLE, "Z" BINARY_DOUBLE, "data2" BLOB, CONSTRAINT "T_PK" PRIMARY KEY ( "ID" ) )"
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared for bulk operation statement "INSERT INTO RAL_WRITER."T" ( "ID", "x", "Y", "Z", "data2" ) VALUES ( :"ID", :"x", :"Y", :"Z", :"data2" )"
+CORAL/RelationalPlugins/oracle: level[Debug] Executing a bulk insert (flushing the cache)
+CORAL/RelationalPlugins/oracle: level[Debug] Executing a bulk insert (flushing the cache)
+CORAL/RelationalPlugins/oracle: level[Info] Connected to a server running Oracle version 10.1.0.4.0
+CORAL/RelationalPlugins/oracle: level[Debug] Prepared statement : "SELECT * FROM RAL_WRITER."T""
+[ID (double) : 0], [x (float) : 0], [Y (double) : 0], [Z (double) : 0], [data2 (blob) : 1000@0x866cff0]
+[ID (double) : 1], [x (float) : 1.1], [Y (double) : NULL], [Z (double) : 1.001], [data2 (blob) : NULL]
+[ID (double) : 2], [x (float) : 2.2], [Y (double) : 2.02], [Z (double) : 2.002], [data2 (blob) : 3000@0x866cff0]
+[ID (double) : 3], [x (float) : 3.3], [Y (double) : NULL], [Z (double) : 3.003], [data2 (blob) : NULL]
+[ID (double) : 4], [x (float) : 4.4], [Y (double) : 4.04], [Z (double) : 4.004], [data2 (blob) : 5000@0x86a95d0]
+[OVAL] Success
+
+[oval run] ==========================================
+[oval run] result: OK
+[oval run] ==========================================
+

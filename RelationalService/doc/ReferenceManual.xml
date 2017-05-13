@@ -1,0 +1,16 @@
+<sect2><title>RelationalService Reference</title>
+<sect3>
+<title>Properties of the "CORAL/Services/RelationalService" component</title>
+
+<itemizedlist>
+
+<listitem><para><emphasis role="bold">DefaultImplementations</emphasis> :
+defines the list of default implementations for the given technology.
+Each entry should have the format
+<programlisting>technologyName:implementationName</programlisting>
+</para></listitem>
+</itemizedlist>
+
+</sect3>
+
+</sect2>

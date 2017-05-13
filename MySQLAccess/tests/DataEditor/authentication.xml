@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<connection name="mysql://pcitdb59.cern.ch/test">
+  <parameter name="user" value="rado_pool" />
+  <parameter name="password" value="rado_pool" />
+</connection>
+<connection name="mysql://pcitdb59.cern.ch:3307/test">
+  <parameter name="user" value="rado_pool" />
+  <parameter name="password" value="rado_pool" />
+</connection>

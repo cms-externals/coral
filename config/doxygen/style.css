@@ -1,0 +1,87 @@
+
+      .comment {color:red}
+      
+h1 {  font-family: Arial, Helvetica, sans-serif; font-size: 16pt; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #cc0000}
+h2 { font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #CC0000}
+h3 { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #CC0000}
+
+h4 { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; line-height: normal; font-weight: bold; font-variant: normal; text-transform: none; color: #CC0000}
+
+
+BODY {
+    margin: 6;
+    font-family: arial, helvetica, sans-serif;
+    color: black;
+    background: #FFFFFF;
+    font-size: 12pt
+  }
+
+a:link {
+  color: #000000
+}
+
+a:visited {
+  color: #333333
+}
+
+a:active {
+  color:#CC0000
+}
+
+TT {color:black;
+   font-family: courier;
+}
+
+PRE {color:black;
+   font-family: courier;
+}
+
+.emphasis { color:red }
+
+LI { font-family: arial, helvetica, sans-serif }
+
+table.header {
+  background: #CCFFFF;
+  color: #CC0000;
+}
+
+table.people {
+  background: #dddddd;
+  color: #CC0000;
+  font-size: 12pt
+}
+
+table.light {
+  background: #FFFF99;
+  color: #CC0000;
+}
+
+tr.dark {
+  background: #CCFFFF;
+}
+
+tr.light {
+  background: #FFFFCC;
+}
+
+td {
+  font-size: 11pt;
+}
+
+td.small {
+  font-size: 9pt;
+}
+
+td.title {
+  font-size: 26pt;
+  font-family: arial, helvetica;
+  font-weight: bold;
+  color: #CC0000;
+}
+
+td.smalltitle {
+  font-size: 18pt;
+  font-family: arial, helvetica;
+  font-weight: bold;
+  color: #CC0000;
+}

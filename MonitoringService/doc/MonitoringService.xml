@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY Semantics SYSTEM "Semantics.xml">
+<!ENTITY Implementation SYSTEM "Implementation.xml">
+<!ENTITY ReferenceManual SYSTEM "ReferenceManual.xml">
+]>
+<!-- $Id: MonitoringService.xml,v 1.1 2005/11/18 11:42:58 rado Exp $ -->
+<article>
+	<articleinfo>
+		<title>CORAL Component documentation: MonitoringService</title>
+		<author>
+			<firstname>Radovan</firstname> <surname>Chytracek</surname>
+			<affiliation><orgname>CERN</orgname></affiliation>
+			<address>
+				e-mail:<email>Radovan.Chytracek@cern.ch</email>
+			</address>
+		</author>
+		<pubdate>November 2005</pubdate>
+	</articleinfo>	
+	<sect2 id="MonitoringService Introduction"> <title>Introduction</title>
+		<sect3> <title>Purpose of the component</title>
+			<para>
+      The MonitoringService package is a plugin library providing an
+      implementation of the IMonitoringService interface as a service
+      providing the possibility to register various events happening
+      during a database session. In addition it performs in memory
+      book-keeping and reporting facilities in order to store the
+      recorded events in formats suitable for the later processing
+      either for post-mortem analysis or for performance tuning.
+			</para>
+		</sect3>
+		<sect3> <title>Known problem and restrictions</title>
+			<para>
+      The package is at the moment in early stage of development and
+      thus supports only very basic formatting of reports in CSV
+      (comma separated values) format or printout to standard output
+      at the end of a session or an application job.
+      </para>
+		</sect3>
+		<sect3> <title>Repository of the component</title>
+			<para>
+				<emphasis>:pserver:anonymoys@coral.cvs.cern.ch:/cvs/coral</emphasis>/<emphasis role="bold">coral/MonitoringService</emphasis>
+			</para>
+		</sect3>
+	</sect2>
+	
+	&Semantics;
+	&Implementation;
+	&ReferenceManual;
+	
+</article>

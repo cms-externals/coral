@@ -1,0 +1,5 @@
+<use   name="CoralBricks"/>
+<use   name="LCG/CoralBase"/>
+<export>
+  <lib   name="1"/>
+</export>

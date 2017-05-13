@@ -1,0 +1,66 @@
+04/12 16:57:19 29084,0 Cns_srv_starttrans: NS092 - starttrans request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_starttrans: NS098 - starttrans (Listing available replicas.)
+04/12 16:57:19 29084,0 Cns_srv_starttrans: returns 0
+04/12 16:57:19 29084,0 Cns_srv_statg: NS092 - statg request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_statg: NS098 - statg /grid/lhcb/database/CondDB 
+04/12 16:57:19 29084,0 Cns_srv_statg: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 4 /grid/lhcb/database/CondDB
+04/12 16:57:19 29084,0 Cns_srv_access: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 2 /grid/lhcb/database/CondDB
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 1 /grid/lhcb/database/CondDB
+04/12 16:57:19 29084,0 Cns_srv_access: returns 0
+04/12 16:57:19 29084,1 Cns_srv_opendir: NS092 - opendir request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,1 Cns_srv_opendir: NS098 - opendir /grid/lhcb/database/CondDB 
+04/12 16:57:19 29084,1 Cns_srv_opendir: returns 0
+04/12 16:57:19 29084,1 Cns_srv_readdir: NS092 - readdir request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,1 Cns_srv_readdir: returns 0
+04/12 16:57:19 29084,0 Cns_srv_statg: NS092 - statg request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_statg: NS098 - statg /grid/lhcb/database/CondDB/coral_default_role 
+04/12 16:57:19 29084,0 Cns_srv_statg: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 4 /grid/lhcb/database/CondDB/coral_default_role
+04/12 16:57:19 29084,0 Cns_srv_access: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 2 /grid/lhcb/database/CondDB/coral_default_role
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 1 /grid/lhcb/database/CondDB/coral_default_role
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_getreplica: NS092 - getreplica request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_getreplica: NS098 - getreplica /grid/lhcb/database/CondDB/coral_default_role 
+04/12 16:57:19 29084,0 Cns_srv_getreplica: returns 0
+04/12 16:57:19 29084,0 Cns_srv_statg: NS092 - statg request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_statg: NS098 - statg /grid/lhcb/database/CondDB/owner 
+04/12 16:57:19 29084,0 Cns_srv_statg: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 4 /grid/lhcb/database/CondDB/owner
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 2 /grid/lhcb/database/CondDB/owner
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 1 /grid/lhcb/database/CondDB/owner
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_statg: NS092 - statg request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_statg: NS098 - statg /grid/lhcb/database/CondDB/reader 
+04/12 16:57:19 29084,0 Cns_srv_statg: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 4 /grid/lhcb/database/CondDB/reader
+04/12 16:57:19 29084,0 Cns_srv_access: returns 0
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 2 /grid/lhcb/database/CondDB/reader
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_access: NS092 - access request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_access: NS098 - access 1 /grid/lhcb/database/CondDB/reader
+04/12 16:57:19 29084,0 Cns_srv_access: returns 13
+04/12 16:57:19 29084,0 Cns_srv_getreplica: NS092 - getreplica request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_getreplica: NS098 - getreplica /grid/lhcb/database/CondDB/reader 
+04/12 16:57:19 29084,0 Cns_srv_getreplica: returns 0
+04/12 16:57:19 29084,0 Cns_srv_endtrans: NS092 - endtrans request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:19 29084,0 Cns_srv_endtrans: returns 0
+04/12 16:57:20 29084,1 Cns_srv_readdir: NS092 - closedir request by /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=avalassi/CN=437551/CN=Andrea Valassi (19544,1470) from lxb8041.cern.ch
+04/12 16:57:20 29084,1 Cns_srv_readdir: returns 0

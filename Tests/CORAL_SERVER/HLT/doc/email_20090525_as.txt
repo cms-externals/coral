@@ -1,0 +1,74 @@
+From salnikov@slac.stanford.edu Thu May 28 07:06:26 2009
+Date: Mon, 25 May 2009 22:49:26 +0200
+From: "Salnikov, Andrei A." <salnikov@slac.stanford.edu>
+To: Martin Wache <wache@abstracture.de>,
+    Andrea Valassi <Andrea.Valassi@cern.ch>
+Cc: atlas-coral-l <atlas-coral-l@slac.stanford.edu>
+Subject: RE: CoralServer performance test
+
+...
+
+I made some progress with running ATLAS HLT as a standalone
+application, and I even have a recipe for how to run it at CERN.
+You can try it and see if this works for you. 
+
+The recipe is limited to a single HLT process, but in principle 
+one can try to run several applications simultaneously, except 
+that they will not be so well synchronized as in real TDAQ system.
+Also it has been tested with 15.0.1 release only, other releases
+may need something additional.
+
+1. setup CMT (do it once only):
+
+- create directory ~/cmthome
+create file ~/cmthome/requirements with this contents:
+
+#-- begin ---------------------------------------------------
+set   CMTSITE  CERN
+set   SITEROOT /afs/cern.ch
+macro ATLAS_DIST_AREA ${SITEROOT}/atlas/software/dist
+macro ATLAS_TEST_AREA      ${HOME}/testarea
+
+apply_tag appendProject
+macro APPEND_PROJECT_AREA /afs/cern.ch/atlas/project/tdaq/cmt
+
+apply_tag setup
+apply_tag simpleTest
+
+use AtlasLogin AtlasLogin-* $(ATLAS_DIST_AREA)
+#-- end -----------------------------------------------------
+
+then execute:
+  cd ~/cmthome
+  . /afs/cern.ch/sw/contrib/CMT/v1r20p20080222/mgr/setup.sh
+  cmt config
+
+2. environment setup (on every login):
+
+  # define ATLAS release to use
+  REL=15.0.1
+  mkdir -p ~/testarea/$REL
+  cd ~/testarea/$REL
+  . ~/cmthome/setup.sh -tag=AtlasHLT,$REL,32
+
+3. copy/link script and data files
+
+  cp /afs/cern.ch/atlas/software/builds/AtlasTrigger/$REL/InstallArea/jobOptions/TriggerRelease/runHLT_standalone.py ./
+  ln -s /afs/cern.ch/atlas/project/trigger/pesa-sw/releases/data/daq.lumi1E31.latest.data ./
+
+4. dblookup file
+
+  grep -v sqlite_file /afs/cern.ch/atlas/software/builds/AtlasCore/$REL/InstallArea/XML/AtlasAuthentication/dblookup.xml > ./dblookup.xml
+  export CORAL_DBLOOKUP_PATH=.
+
+5. run athenaMT
+
+  athenaMT -f daq.lumi1E31.latest.data -c "test1E31MC=True" runHLT_standalone.py
+
+
+If this runs successfully then you can modify dblookup.xml
+and point it to CoralServer instead of direct Oracle.
+Let me know if this works at all.
+
+Cheers,
+Andy.

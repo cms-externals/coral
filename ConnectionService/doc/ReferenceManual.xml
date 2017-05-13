@@ -1,0 +1,1044 @@
+<sect2><title>ConnectionService Reference</title>
+<sect3>
+<title>class IConnectionService</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+<listitem>
+<programlisting>
+<para>
+ISessionProxy* connect( const std::string&amp; connectionName,
+                        AccessMode accessMode = Update );
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> connectionName </programlisting>: the logical or
+physical connection string
+</para>
+</listitem>
+<listitem>
+<para>
+<programlisting> accessMode </programlisting>: the access mode
+capabilities of the connection. Possible values: ReadOnly,
+Update. Default: Update
+</para>
+</listitem>
+</itemizedlist>
+</para>
+<para>
+<emphasis role="bold">Effects:</emphasis> Delivers a valid session
+proxy object, constructed around an active connection to the requested
+service. The ownership of the session object is fully controlled by
+the user code. 
+</para>
+<para>
+<emphasis role="bold">Returns:</emphasis> The pointer to the session
+proxy object, constructed by new. The ownership of the session object is fully controlled by
+the user code. 
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: When no valid connection is available, a
+ConnectionServiceException object is thrown by value.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+IConnectionServiceConfiguration&amp; configuration();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference of the
+internal configuration parameter store. The object can be accesses in
+read/write mode, for changing and reading the configuration parameters.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+void purgeConnectionPool() ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Cleans up the IDLE pool,
+closing and deleting the connections for which the lifetime reached
+the timeout. No disconnect is enforced to the other connections in
+IDLE pool, no action is taken for connection in the ACTIVE pool. 
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+const IMonitoringReporter&amp; monitoringReporter() const ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference of the
+internal monitoring reporter, which can be used for read-only access.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+IWebCacheControl&amp; webCacheControl(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference of the
+internal object for the control of the web cache. Its usage make sense
+only for the Frontier back-end plug-in.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3>
+<title>class IConnectionServiceConfiguration</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+<listitem>
+<programlisting>
+<para>
+void enableReplicaFailOver();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Enables the failing over to the next available
+replica in case the first provided by the ILookupService is not available.
+Otherwise the ConnectionService gives up.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: isReplicaFailoverEnabled() == true.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+void disableReplicaFailOver();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Disables the failing over to the next available
+replica in case the first provided by the ILookupService is not available.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: isReplicaFailoverEnabled() == false.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+bool isReplicaFailOverEnabled();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> TRUE if the failing over to the next available
+replica is enabled. Default value is TRUE.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void enableConnectionSharing() ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Enables the sharing of the
+same physical connection among more read-only session proxies.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: isConnectionSharingEnabled()  == true.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+void disableConnectionSharing() ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Disables the sharing of the
+same physical connection among more read-only session proxies.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: isConnectionSharingEnabled() == false.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+bool isConnectionSharingEnabled();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> TRUE if the connection
+sharing is enabled. Default value is TRUE.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void enableReadOnlySessionOnUpdateConnections() ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Enables the re-use of idle
+connections opened in update mode for read-Only sessions.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: isReadOnlySessionOnUpdateConnectionsEnabled  == true.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+void disableReadOnlySessionOnUpdateConnections() ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Effects:</emphasis> Disables the re-use of idle
+connections opened in update mode for read-Only sessions.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: isReadOnlySessionOnUpdateConnectionsEnabled == false.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+bool isReadOnlySessionOnUpdateConnectionsEnabled();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> TRUE if the re-use of Update connections for Read-Only sessions is enabled 
+. Default value is TRUE.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setConnectionRetrialPeriod( int timeOutInSeconds ) ;
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> timeOutInSeconds </programlisting>: the time out in seconds
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the period of
+connection retrials on the requested service (time interval between two retrials).
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: connectionRetrialPeriod()  == timeOutInSeconds.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+int connectionRetrialPeriod();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the rate of connection
+retrials on the requested service (time interval between two
+retrials). Default value is 10 sec.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setConnectionRetrialTimeOut( int timeOutInSeconds ) ;
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> timeOutInSeconds </programlisting>: the time out in seconds
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the time out for the connection retrials before the connection
+     service fails over to the next available replica or gives up.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: connectionRetrialTimeOut()  == timeOutInSeconds.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+int connectionRetrialTimeOut();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the rate of connection
+retrials on the requested service (time interval between two
+retrials). Default value is 60 sec.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setConnectionTimeOut( int timeOutInSeconds );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> timeOutInSeconds </programlisting>: the time out in seconds
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the time out
+(in seconds) for the IDLE connections.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: connectionTimeOut()  == timeOutInSeconds.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+int connectionTimeOut();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the time out
+(in seconds) for the IDLE connections. Default value is 300 sec.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setMissingConnectionExclusionTime( int timeInSeconds );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> timeInSeconds </programlisting>: the time in seconds
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the time duration of exclusion from failover list for a
+connection not available.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: missingConnectionExclusionTime()  == timeInSeconds.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+int missingConnectionExclusionTime();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the time duration of exclusion from failover list for a
+connection not available. Default value is 3600 sec.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setMonitoringLevel( monitor::Level level );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> level </programlisting>: the monitoring
+level. Possible values in coral::IMontoring
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the monitoring level for the new sessions.
+</para>
+<para>
+<emphasis role="bold">Postcondition</emphasis>: monitoringLevel() == level.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+<listitem>
+<programlisting>
+<para>
+monitor::Level monitoringLevel() ;
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the current monitoring
+level. Default is monitor::Off.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setDefaultAuthenticationService( const std::string serviceName );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> serviceName </programlisting>: the name of the
+service to be used.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the default
+authentication service to be used for the new sessions. The
+corresponding plug-in is loaded when necessary, and only if no other
+implementation of the corresponding interface is found in the context.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setDefaultLookupService( const std::string serviceName );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> serviceName </programlisting>: the name of the
+service to be used.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the default
+lookup service to be used for the new sessions. The
+corresponding plug-in is loaded when necessary, and only if no other
+implementation of the corresponding interface is found in the context.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setDefaultRelationalService( const std::string serviceName );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> serviceName </programlisting>: the name of the
+service to be used.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the default
+relational service to be used for the new sessions. The
+corresponding plug-in is loaded when necessary, and only if no other
+implementation of the corresponding interface is found in the context.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setDefaultMonitoringService( const std::string serviceName );
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> serviceName </programlisting>: the name of the
+service to be used.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the default
+monitoring service to be used for the new sessions. The
+corresponding plug-in is loaded when necessary, and only if no other
+implementation of the corresponding interface is found in the context.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3>
+<title>class ISessionProxy</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+
+<listitem>
+<programlisting>
+<para>
+ISessionProperties&amp; properties();
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference of the internal
+property store, containing read-only data related to the underlying
+connection.
+Since the underlying connection is probed before the object info construction, it always contains valid data.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: ConnectionServiceException if
+the underlying connection becomes invalid and cannot be recovered. InvalidSessionProxyException
+if the associated Connection service is unavailable. 
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+ISchema&amp; nominalSchema(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference to the object
+ describing the working schema of the connection.
+Since the underlying connection is probed before the object info
+construction, it is always a valid schema.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: ConnectionServiceException if
+the underlying connection becomes invalid and cannot be recovered. InvalidSessionProxyException
+if the associated Connection service is unavailable. 
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+ISchema&amp; schema(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference to the object
+ describing the specified schema.
+Since the underlying connection is probed before the object info
+construction, it is always a valid schema.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: ConnectionServiceException if
+the underlying connection becomes invalid and cannot be recovered. InvalidSessionProxyException
+if the associated Connection service is unavailable. 
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+ITransaction&amp; transaction(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference to the object
+ describing the transaction.
+Since the underlying connection is probed before the object info
+construction, it is always a valid transaction.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: ConnectionServiceException if
+the underlying connection becomes invalid and cannot be recovered. InvalidSessionProxyException
+if the associated Connection service is unavailable. 
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+ITypeConverter&amp; typeConverter(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> a reference to the type converter of the active session.
+Since the underlying connection is probed before the object info
+construction, it is always a valid type converter.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: ConnectionServiceException if
+the underlying connection becomes invalid and cannot be recovered. InvalidSessionProxyException
+if the associated Connection service is unavailable. 
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+bool isConnectionShared(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> TRUE if the underlying
+connection is shared among more session proxies. To be used to control
+read-only transaction of shared sessions. Only the last remaining
+session (the one having isConnectionShared()== false ) must call the
+transaction commit.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: InvalidSessionProxyException
+if the associated Connection service is unavailable. 
+</para>
+</listitem>
+
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3>
+<title>class ISessionProperties</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+
+<listitem>
+<programlisting>
+<para>
+std::string flavorName() ; 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the name of the
+RDBMS flavour for the underlying connection.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+std::string serverVersion(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the version of the database
+server of the underying connection
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3>
+<title>class IWebCacheControl</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+
+<listitem>
+<programlisting>
+<para>
+void refreshSchemaInfo( const std::string&amp; connection ); 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> connection </programlisting>: the connection name
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Instructs the RDBMS backend that all the tables within the schema specified
+by the physical or logical connection should be refreshed, in case they are accessed. 
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void refreshTable( const std::string&amp; connection,
+                   const std::string&amp; tableName ); 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> connection </programlisting>: the connection name
+</para>
+</listitem>
+<listitem>
+<para>
+<programlisting> tableName </programlisting>: the specific table name
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Instructs the RDBMS backend that the specified table within the schema specified
+by the physical or logical connection should be refreshed in case it is accessed.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+const IWebCacheInfo&amp; webCacheInfo( const std::string&amp; connection ) const ; 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> connection </programlisting>: the connection name
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Returns:</emphasis> the web cache information for a schema given the corresponding physical or
+logical connection.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+int compressionLevel(); 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the current compression
+level in use.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setCompressionLevel( int level ); 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> level </programlisting>: the compression level:
+0 - off, 1 - fast, 5 - default, 9 - maximum
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the compression level
+for data transfer
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void setProxyList( const std::vector&lt;std::string&gt;&amp; proxyList ); 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> proxyList </programlisting>: the list of the web
+cache proxies
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Sets the list of the web
+cache proxies for the plug-in internal fail-over mechanism
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3>
+<title>class IWebCacheInfo</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+
+<listitem>
+<programlisting>
+<para>
+bool isSchemaInfoCached() const ; 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> TRUE if the schema info (data dictionary) is cached, i.e.it  does not need to be refreshed
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+bool isTableCached( const std::string&amp; tableName ) const; 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> tableName </programlisting>: the specific table of
+the schema
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Returns:</emphasis> TRUE if a table in the schema is cached, i.e.it  does not need to be refreshed
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+</itemizedlist>
+</sect4>
+</sect3>
+
+<sect3>
+<title>class IWebCacheInfo</title>
+
+<sect4><title>Members</title>
+<itemizedlist>
+
+<listitem>
+<programlisting>
+<para>
+std::set&lt; std::string &gt; monitoredDataSources() const ; 
+</para>
+</programlisting>
+<para>
+<emphasis role="bold">Returns:</emphasis> the set of currently monitored data sources.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void report( unsigned int level=coral::monitor::Default  ) const; 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> level </programlisting>: the monitoring level used as
+a filter
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Reports the events for all data sources being monitored.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void report( const std::string&amp; contextKey,
+             unsigned int level=coral::monitor::Default  ) const ; 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> contextKey </programlisting>: the data source name
+</para>
+</listitem>
+<listitem>
+<para>
+<programlisting> level </programlisting>: the monitoring level used as
+a filter
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Reports the events for a given data source name of a given monitoring level.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+<listitem>
+<programlisting>
+<para>
+void reportToOutputStream( const std::string&amp; contextKey, std::ostream&amp; os,
+                           unsigned int level=coral::monitor::Default ) const ; 
+</para>
+</programlisting>
+<emphasis role="bold">Parameters:</emphasis>
+<itemizedlist>
+<listitem>
+<para>
+<programlisting> contextKey </programlisting>: the data source name
+</para>
+</listitem>
+<listitem>
+<para>
+<programlisting> os </programlisting>: the reference the output stream
+to be used.
+</para>
+</listitem>
+<listitem>
+<para>
+<programlisting> level </programlisting>: the monitoring level used as
+a filter
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="bold">Effects:</emphasis> Reports the events for a given data source name to the specified output stream.
+</para>
+<para>
+<emphasis role="bold">Throws</emphasis>: never throws.
+</para>
+</listitem>
+
+</itemizedlist>
+</sect4>
+</sect3>
+
+</sect2>

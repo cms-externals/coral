@@ -1,0 +1,6 @@
+<dir name="BlobReadWrite"> Tests the functionality of the Blob type </dir>
+<dir name="AttributeReadWrite"> Tests the functionality of the Attribute type </dir>
+<dir name="AtLiSpecFunctionality"> Tests the functionality of the AttributeListSpecification type </dir>
+<dir name="AtLiFunctionality"> Tests the functionality of the AttributeList type </dir>
+<dir name="Date"> Tests the functionality of the Date type </dir>
+<dir name="TimeStamp"> Tests the functionality of the TimeStamp type </dir>

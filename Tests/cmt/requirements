@@ -1,0 +1,134 @@
+package Tests
+
+#============================================================================
+# Public paths
+#============================================================================
+
+# Add the PyCoral test directory to PYTHONPATH
+path_append PYTHONPATH $(CMTINSTALLAREA)/$(tag)/tests/bin \
+  target-winxp $(CMTINSTALLAREA)\$(tag)\tests\bin
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+use CoralCommon v*
+use ConnectionService v*
+use CppUnit v* LCG_Interfaces -no_auto_imports
+    
+include_dirs ../Libraries/TestEnv
+
+#----------------------------------------------------------------------------
+# Test patterns and runtime
+#----------------------------------------------------------------------------
+
+# Patterns to build the C++ integration tests
+pattern coral_test \
+  apply_pattern lcg_unit_test_application \
+    name=<name> files=../<name>/src/*.cpp ; \
+  macro_append test_<name>_dependencies " test_TestEnv "
+
+# Install the PyCoral tests
+pattern pycoral_test_action \
+  macro pycoral_test_action_<name> "mkdir -p $(CMTINSTALLAREA)/$(tag)/tests/bin; cp -L ../<name>/*.py $(CMTINSTALLAREA)/$(tag)/tests/bin/." \
+  target-winxp "xcopy /I/S/Y/Q ..\<name>\*.py $(CMTINSTALLAREA)\$(tag)\tests\bin\."
+pattern pycoral_test \
+  apply_pattern pycoral_test_action name=<name> ;\
+  document cmt_action_runner install_pytests_<name> -group=tests \
+    -target_tag action_value=$(pycoral_test_action_<name>)
+
+#----------------------------------------------------------------------------
+# PyCoral tests
+#----------------------------------------------------------------------------
+
+# The 'import coral' test
+apply_pattern pycoral_test name=PyCoral_ImportPyCoral
+
+# All other tests depend on the 'import coral' test
+apply_pattern pycoral_test name=PyCoral_Basic
+apply_pattern pycoral_test name=PyCoral_MiscellaneousBugs
+apply_pattern pycoral_test name=PyCoral_NetworkGlitch
+
+#----------------------------------------------------------------------------
+# Integration tests
+#----------------------------------------------------------------------------
+
+# Build the TestEnv library
+apply_pattern lcg_test_library \
+  name=TestEnv files=../Libraries/TestEnv/src/*.cpp
+macro_append test_TestEnv_cppflags \
+  ' $(ppcmd)"$(CppUnit_home)/include" $(CppUnit_cppflags) '
+
+apply_pattern coral_test name=Integration_AliasesSynonyms
+apply_pattern coral_test name=Integration_Basic
+apply_pattern coral_test name=Integration_ChangeNotification
+#apply_pattern coral_test name=Integration_ConnectionService
+###apply_pattern coral_test name=Integration_ConnectionService_CleanUpPool
+###apply_pattern coral_test name=Integration_ConnectionService_ConnectionPool
+###apply_pattern coral_test name=Integration_ConnectionService_ReplicaExcluding
+###apply_pattern coral_test name=Integration_ConnectionService_ReplicaHandling
+###apply_pattern coral_test name=Integration_ConnectionService_ReplicaSorting
+###apply_pattern coral_test name=Integration_ConnectionService_SimpleFailover
+###apply_pattern coral_test name=Integration_ConnectionService_SQLiteFailover
+###apply_pattern coral_test name=Integration_ConnectionService_SQLiteConnection
+###apply_pattern coral_test name=Integration_ConnectionService_SessionSharing
+###apply_pattern coral_test name=Integration_ConnectionService_SwitchSchema
+###apply_pattern coral_test name=Integration_ConnectionService_TimerBasic
+apply_pattern coral_test name=Integration_DeleteCascade
+apply_pattern coral_test name=Integration_InputOutput
+apply_pattern coral_test name=Integration_InvalidReferences
+###apply_pattern coral_test name=Integration_LFCReplicaService
+apply_pattern coral_test name=Integration_LookupService
+apply_pattern coral_test name=Integration_MiscellaneousBugs
+apply_pattern coral_test name=Integration_Monitoring
+apply_pattern coral_test name=Integration_MonitoringService
+apply_pattern coral_test name=Integration_MultiThreading
+apply_pattern coral_test name=Integration_NetworkFailure
+apply_pattern coral_test name=Integration_ObjectConsistency
+apply_pattern coral_test name=Integration_PreFetching
+apply_pattern coral_test name=Integration_Quotes
+apply_pattern coral_test name=Integration_RandomCycler
+apply_pattern coral_test name=Integration_Sequence
+apply_pattern coral_test name=Integration_SpecificFrontier
+apply_pattern coral_test name=Integration_StoredProcedures
+apply_pattern coral_test name=Integration_StressTest
+apply_pattern coral_test name=Integration_UserTests
+apply_pattern coral_test name=Integration_WriteRead
+
+# Link some tests to plugin libraries
+#pattern linkToCoralLibrary macro_append test_<name>linkopts " -llcg_<libname> " target-winxp " lcg_<libname>.lib " 
+#apply_pattern linkToCoralLibrary name=Integration_ConnectionService libname=ConnectionService
+###apply_pattern linkToCoralLibrary name=Integration_ConnectionService_ConnectionPool libname=ConnectionService
+###apply_pattern linkToCoralLibrary name=Integration_ConnectionService_SessionSharing libname=ConnectionService
+###apply_pattern linkToCoralLibrary name=Integration_ConnectionService_TimerBasic libname=ConnectionService
+
+#----------------------------------------------------------------------------
+# System tests
+#----------------------------------------------------------------------------
+
+# Build fails for both (bug #73049)
+###apply_pattern coral_test name=RetryAndFailOver
+###apply_pattern coral_test name=System_SessionsInMultipleThreads
+
+#----------------------------------------------------------------------------
+# Utilities
+#----------------------------------------------------------------------------
+
+macro coral_stone_src "../Utilities/Stone/dummy.cpp" \
+  target-linux    "../Utilities/Stone/stone.c"
+application coral_stone -no_prototypes -group=utilities $(coral_stone_src)
+macro_append coral_stone_cflags "" \
+  target-linux " -DPTHREAD -DUNIX_DAEMON -DPRCTL -DSO_ORIGINAL_DST=80 -DUSE_EPOLL -w"
+macro_append coral_stonelinkopts "" \
+  target-linux " -lpthread"
+macro_append coral_stonelinkopts "" \
+  host-x86_64&target-i686 " -m32" \
+  host-darwin&target-i386 " -m32" \
+  host-i686&target-x86_64 " -m64" \
+  host-i386&target-x86_64 " -m64" 
+
+# This should include linkopts similar to lcg_tstexp_application (bug #91133)
+macro_append coral_stonelinkopts " $(gcov_linkopts) $(icc_linkopts) "
+

@@ -1,0 +1,49 @@
+package CoralStubs
+
+#============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+use CoralServerBase v* CORAL_SERVER
+use CoralMonitor v* CORAL_SERVER
+use RelationalAccess v*
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+apply_pattern include_dir_policy
+apply_pattern lcg_shared_library
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Headers
+#----------------------------------------------------------------------------
+
+# Do not install the header files 
+macro_remove constituents 'install_includes'
+
+#----------------------------------------------------------------------------
+# Tests
+#----------------------------------------------------------------------------
+
+use CppUnit v* LCG_Interfaces -no_auto_imports
+
+apply_pattern coral_unit_test tname=AllParts timport=UnitTests
+apply_pattern coral_unit_test tname=RequestHandler timport=UnitTests
+apply_pattern coral_unit_test tname=StreamBuffer timport=UnitTests
+
+#----------------------------------------------------------------------------
+# Utilities
+#----------------------------------------------------------------------------
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"
+
+#============================================================================

@@ -1,0 +1,156 @@
+# $Id: requirements,v 1.71 2011/09/27 22:24:53 avalassi Exp $
+#============================================================================
+
+package CORAL
+
+#============================================================================
+# Project components
+#============================================================================
+
+#----------------------------------------------------------------------------
+# The packages providing public API
+#----------------------------------------------------------------------------
+
+use CoralBase *
+use RelationalAccess *
+
+#----------------------------------------------------------------------------
+# The packages providing the developer-level interfaces
+#----------------------------------------------------------------------------
+
+use CoralKernel *
+use CoralCommon *
+use PyCoral     *
+
+#----------------------------------------------------------------------------
+# The packages providing the plugin libraries
+#----------------------------------------------------------------------------
+
+use ConnectionService *
+use RelationalService *
+use MonitoringService *
+use XMLAuthenticationService *
+use EnvironmentAuthenticationService *
+use XMLLookupService *
+
+# LFCReplicaSvc only on Linux (except SLC6, see bug #86877)
+macro select_lfcreplicaservice  "LFCReplicaService *" \
+      target-slc6 "" \
+      target-darwin "" \
+      target-winxp ""
+use $(select_lfcreplicaservice)
+
+use OracleAccess *
+use MySQLAccess *
+use SQLiteAccess *
+
+# Frontier on all platforms but windows
+macro select_frontieraccess "FrontierAccess *" \
+    target-winxp ""
+use $(select_frontieraccess) 
+
+#----------------------------------------------------------------------------
+# The CORAL_SERVER components (only on Linux SLC5/SLC6 and OSX)
+#----------------------------------------------------------------------------
+# [NB Could also use CORAL_SERVER directly: it no longer sets CORAL_AUTH_PATH]
+
+macro select_coralmonitor \
+  "CoralMonitor * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralserverbase \
+  "CoralServerBase * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralaccess \
+  "CoralAccess * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralserver \
+  "CoralServer * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralsockets \
+  "CoralSockets * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralstubs \
+  "CoralStubs * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralserverproxy \
+  "CoralServerProxy * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+macro select_coralauthenticationservice \
+  "CoralAuthenticationService * CORAL_SERVER" \
+  target-slc4 "" \
+  target-winxp ""
+
+use $(select_coralmonitor)
+use $(select_coralserverbase)
+use $(select_coralaccess)
+use $(select_coralserver)
+use $(select_coralsockets)
+use $(select_coralstubs)
+use $(select_coralserverproxy)
+use $(select_coralauthenticationservice)
+
+#----------------------------------------------------------------------------
+# The integration tests
+#----------------------------------------------------------------------------
+
+use Tests *
+
+#============================================================================
+# Private dependencies, build rules and runtime
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# CORAL plugin runtime
+#----------------------------------------------------------------------------
+
+use uuid v* LCG_Interfaces
+use XercesC v* LCG_Interfaces 
+
+use oracle v* LCG_Interfaces
+use mysql  v* LCG_Interfaces
+use sqlite v* LCG_Interfaces
+use Frontier_Client v* LCG_Interfaces
+
+# Workaround to set correctly oracle charset (to be put in LCG_Interfaces)
+set NLS_LANG american_america.WE8ISO8859P1
+
+#----------------------------------------------------------------------------
+# CORAL Grid runtime
+#----------------------------------------------------------------------------
+
+use lfc v* LCG_Interfaces
+
+# Add path to voms-proxy-init for LFCReplicaSvc tests
+###use vomsclients v* LCG_Interfaces
+
+#----------------------------------------------------------------------------
+# CORAL test runtime
+#----------------------------------------------------------------------------
+
+use CppUnit v* LCG_Interfaces
+
+use QMtest * LCG_Interfaces
+set QMTEST_CLASS_PATH "$(config_cmtpath)/config/qmtest" target-winxp "$(config_cmtpath)\config\qmtest"
+
+#----------------------------------------------------------------------------
+# Actions and build rules
+#----------------------------------------------------------------------------
+
+# Fake target for tests
+action tests "echo No tests in this package"
+macro_remove cmt_actions_constituents "tests"
+
+# Fake target for examples
+action examples "echo No examples in this package"
+macro_remove cmt_actions_constituents "examples"
+ 
+#============================================================================

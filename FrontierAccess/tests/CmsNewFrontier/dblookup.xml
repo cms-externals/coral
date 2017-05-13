@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<servicelist>
+  <logicalservice name="/coral/CoolFrontier">
+  <!--
+    <service name="frontier://(serverurl=http://atlasfrontier.cern.ch:8080/Frontier)/CORAL" accessMode="readonly" />
+    -->
+    <service name="frontier://atlasfrontier.cern.ch:8080/Frontier/CORAL" accessMode="readonly" />
+  </logicalservice>
+  <logicalservice name="/coral/cooldev">
+    <service name="oracle://cooldev/CORAL" accessMode="update" authentication="password" />
+  </logicalservice>
+  <logicalservice name="/dbdev/Frontier3D">
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDevZip/CMS_COND_ECAL"
+             accessMode="readonly" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDev/CMS_COND_ECAL"
+             accessMode="readonly" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/FrontierDev/CMS_COND_ECAL"
+             accessMode="readonly" />
+    <service name="frontier://cmsfrontier.cern.ch:8080/FrontierDev/CMS_COND_ECAL"
+             accessMode="readonly" />
+    <service name="oracle://devdb10/CMS_COND_ECAL"
+             accessMode="update"
+             authentication="password" />
+   </logicalservice>
+  <logicalservice name="/dbdev/Frontier3DRead">
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDevZip/CMS_COND_ECAL"
+             accessMode="readonly" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/CoralDev/CMS_COND_ECAL"
+             accessMode="readonly" />
+    <service name="frontier://cmsfrontier1.cern.ch:8080/FrontierDev/CMS_COND_ECAL"
+             accessMode="readonly"
+             authentication="password" />
+    <service name="frontier://cmsfrontier.cern.ch:8080/FrontierDev/CMS_COND_ECAL"
+             accessMode="readonly"
+             authentication="password" />
+  </logicalservice>
+</servicelist>

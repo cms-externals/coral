@@ -1,0 +1,474 @@
+Thu Oct 13 12:36:39.669782000 CEST 2011
+Kill any running instance of coralServer and sleep 1s
+Setup CMT environment using CMT_env.sh
+Configure CMT using AFS
+CMTCONFIG set to 'i686-slc5-gcc43-dbg'
+CMTROOT set to '/afs/cern.ch/sw/contrib/CMT/v1r20p20090520'
+CMTPATH set to ''
+CMTPROJECTPATH set to '/afs/cern.ch/sw/lcg/app/releases'
+CMTUSERCONTEXT set to '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/config/cmt/USERCONTEXT/trentad'
+CMTINSTALLAREA set to ''
+CMTSITE set to ''
+LD_LIBRARY_PATH set to ''
+COOLTESTDB: COOL-Oracle-lcgnight/COOLTEST
+Thu Oct 13 12:36:43.078930000 CEST 2011
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    61a
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_61a
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Starting CoralServer built on Oct 10 2011
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_MSGFORMAT = 'ATLAS'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_MSGLEVEL = '4'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_AUTH_PATH = '/afs/cern.ch/sw/lcg/app/pool/db'
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Using CORAL_DBLOOKUP_PATH = '/afs/cern.ch/sw/lcg/app/pool/db'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/ConnectionService2 component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/ConnectionService2 component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/ConnectionService2 factory from ConnectionService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection sharing is enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection pool cleanup period (default value) is 10 seconds
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Creating a ConnectionPool
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Create the server on 0.0.0.0:40007
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Create SocketServer on host 0.0.0.0 and port 40007
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Activate Monitoring ( period: 10s, log rotate: deactivated, filename: '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_18/src/logs/CORAL_SERVER/CoolRegression/server/coolServerLog_proxy.csv' )
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Start the server (timeout = -1s)
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Open listening  socket on host 0.0.0.0 and port 40007
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'listenOn: 0.0.0.0:40007'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} New client connection from ( 127.0.0.1, nnnnn )
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket constructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Disable connection sharing
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter recieve thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Enter handler thread 0xNNNNNNNN
+CORAL Server timings enabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} The connection pool automatic cleanup thread is currently explicitly disabled
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/RelationalService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/RelationalService factory from RelationalService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "coral" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "frontier" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "mysql" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "oracle" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Found plugin for RDBMS technology "sqlite" with native implementation
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "coral" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "frontier" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "mysql" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "oracle" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/RelationalService} Default implementation for RDBMS technology "sqlite" is native
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLLookupService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLLookupService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLLookupService factory from XMLLookupService library
+Data source lookup using /afs/cern.ch/sw/lcg/app/pool/db/dblookup.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/RelationalPlugins/oracle component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/RelationalPlugins/oracle factory from OracleAccess library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager creating CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager needs to load CORAL/Services/XMLAuthenticationService component
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {PluginManager} PluginManager loaded CORAL/Services/XMLAuthenticationService factory from XMLAuthenticationService library
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/XMLAuthenticationService} Authentication using /afs/cern.ch/sw/lcg/app/pool/db/authentication.xml file
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN has been connected
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/RelationalPlugins/oracle} CORAL_ORA_SKIP_TRANS_READONLY is not set: this session will use OCI serializable read-only transactions
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} New user session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN started on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN to service "lcg_cool_nightly" for user "lcg_cool_nightly" in read-only mode
+Sending reply to request #1 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #2 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #4 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #5 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #6 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #7 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #8 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #9 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #10 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #11 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #12 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #13 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #14 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #15 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #16 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #17 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #18 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #19 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #20 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #21 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #22 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #23 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #24 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #25 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #26 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #27 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #28 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #30 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #31 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #32 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #33 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #34 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #35 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #36 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #37 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #37 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #37 (segment #2) on socket thread 0xNNNNNNNN
+Sending reply to request #38 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #38 (segment #1) on socket thread 0xNNNNNNNN
+Sending reply to request #45 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #46 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #47 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #48 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #49 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #50 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #51 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #52 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #53 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #54 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #55 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #57 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #58 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #60 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #61 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #62 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #63 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #64 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #65 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #66 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #67 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #68 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #69 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #70 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #71 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #72 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #73 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #74 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #75 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #76 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #77 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #78 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #79 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #80 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #81 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #82 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #83 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #84 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #85 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #86 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #87 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #88 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #89 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #90 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #91 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #92 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #93 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #94 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #95 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #96 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #97 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #98 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #99 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #100 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #101 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #102 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #103 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #104 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #105 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #106 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #107 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #108 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #109 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #110 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #111 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #112 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #113 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #114 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #115 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #116 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #117 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #118 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #119 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #120 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #121 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #122 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #123 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #124 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #125 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #126 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #127 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #128 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #129 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #130 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #131 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #132 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #133 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #134 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #135 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #136 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #137 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #138 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #139 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #140 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #141 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #142 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #143 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #144 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #145 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #146 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #147 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #148 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #149 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #150 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #151 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #152 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #153 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #154 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #155 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #156 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #157 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #158 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #159 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #160 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #161 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #162 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #163 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #164 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #165 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #166 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #167 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #168 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #169 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #170 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #171 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #172 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #173 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #174 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #175 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #176 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #177 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #178 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #179 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #180 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #181 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #182 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #183 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #184 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #185 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #186 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #187 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #188 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #189 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #190 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #191 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #192 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #193 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #194 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #195 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #196 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #197 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #198 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #199 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #200 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #201 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #202 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #203 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #204 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #205 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #206 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #207 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #208 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #209 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #210 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #211 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #212 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #213 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #214 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #215 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #216 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #217 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #218 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #219 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #220 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #221 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #222 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #223 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #224 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #225 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #226 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #227 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #228 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #229 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #230 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #231 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #232 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #233 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #234 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #235 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #236 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #237 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #238 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #239 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #240 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #241 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #242 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #243 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #244 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #245 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #246 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #247 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #248 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #249 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #250 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #251 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #252 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #253 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #254 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #255 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #256 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #257 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #258 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #259 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #260 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #261 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #262 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #263 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #264 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #265 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #266 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #267 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #268 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #269 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #270 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #271 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #272 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #273 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #274 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #275 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #276 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #277 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #278 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #279 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #280 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #281 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #282 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #283 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #284 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #285 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #286 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #287 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #288 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #289 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #290 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #291 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #292 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #293 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #294 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #295 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #296 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #297 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #298 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #299 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #300 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #301 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #302 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #303 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #304 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #305 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #306 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #307 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #308 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #309 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #310 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #311 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #312 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #313 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #314 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #315 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #316 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #317 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #830 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #831 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #833 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #834 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #835 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #836 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #838 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #839 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #841 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #842 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #844 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #846 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #850 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #852 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #853 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #854 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #855 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #856 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #857 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #858 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #859 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #860 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #861 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #862 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #863 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #864 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #865 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #866 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #867 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #868 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #869 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #870 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #871 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #872 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #873 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #874 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #875 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #876 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #877 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #879 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #880 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #882 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #883 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #884 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #885 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #886 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #887 (segment #0) on socket thread 0xNNNNNNNN
+Sending reply to request #889 (segment #0) on socket thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} The connection 'accept from 127.0.0.1:nnnnn' has been closed. Stopping threads.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit handler thread 0xNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketThread} ( accept from 127.0.0.1:nnnnn ) Exit receive thread.
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Signal SIGTERM (#15) caught
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Stop the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Close the server socket
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Waiting for client connections to terminate:
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} All client connections are closed
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::SocketServer} Shutdown the server
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'listenOn: 0.0.0.0:40007'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'listenOn: 0.0.0.0:40007' rec: 0MB  send: 0MB 
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} The server has been stopped
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Delete the StatsCSVPlotter
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Delete the server
+Delete SocketServer
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::PacketSocket} PacketSocket 'accept from 127.0.0.1:nnnnn' rec : 355 packets send : 358 packets
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket destructor 'accept from 127.0.0.1:nnnnn'
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CoralSockets::TcpSocket} TcpSocket 'accept from 127.0.0.1:nnnnn' rec: 0.395793MB  send: 0.318739MB 
+YYYY-MMM-DD hh:mm:ss.nnn [WRN] {CoralServer::ObjectStoreMgr} Deleting unreleased object #1
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} User session with sessionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be ended on connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Connection to service "lcg_cool_nightly" with connectionID=NNNNNN-NNNN-NNNN-NNNN-NNNNNNNNNNNN will be disconnected
+YYYY-MMM-DD hh:mm:ss.nnn [ALL] {CoralServer} Exiting main
+YYYY-MMM-DD hh:mm:ss.nnn [INF] {CORAL/Services/ConnectionService2} Deleting the ConnectionPool
+=== TIMER (SERVER) 0.50user 0.18system 11.11elapsed 6%CPU
+*******************************************************************
+Thu Oct 13 12:36:59.418634000 CEST 2011

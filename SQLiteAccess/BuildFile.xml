@@ -1,0 +1,5 @@
+<use   name="LCG/CoralCommon"/>
+<use   name="sqlite"/>
+<export>
+  <lib   name="1"/>
+</export>

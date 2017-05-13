@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY Semantics SYSTEM "Semantics.xml">
+<!ENTITY Implementation SYSTEM "Implementation.xml">
+<!ENTITY ReferenceManual SYSTEM "ReferenceManual.xml">
+]>
+<article>
+ <articleinfo>
+	<title>CORAL Component documentation: CoralBase</title>
+  <author>
+   <firstname>Ioannis</firstname> <surname>Papadopoulos</surname>
+ 	 <affiliation><orgname>CERN</orgname></affiliation>
+   <address>
+    e-mail:<email>Ioannis.Papadopoulos@cern.ch</email>
+   </address>
+  </author>
+  <pubdate>October 2005</pubdate>
+ </articleinfo>
+
+  <sect2>
+   <title>Introduction</title>
+     <sect3><title>Purpose of the component</title>
+     <para>This component defines a few C++ types mapping to special
+           SQL types (Blob, Date, TimeStamp) and the AttributeList class, which is the
+           main data placeholder in the CORAL public API.</para>
+     </sect3>
+
+     <sect3><title>Known problems and restrictions</title>
+     <para>
+      <itemizedlist>
+        <listitem>The Blobs can hold binary data that fit entirely in the memory available by the operating system.</listitem>
+        <listitem>The AttributeList may hold variables of primitive
+        C++ types, std::string types and the coral::Blob, coral::Date
+        and coral::TimeStamp types.</listitem>
+      </itemizedlist>
+     </para>
+     </sect3>
+
+     <sect3><title>Repository of the component</title>
+     <para><emphasis>:pserver:anonymoys@coral.cvs.cern.ch:/cvs/coral</emphasis>/<emphasis role="bold">coral/CoralBase</emphasis></para>
+     </sect3>
+
+     <sect3><title>Glossary</title>
+     <para>
+      <itemizedlist>
+       <listitem><emphasis role="bold">BLOB</emphasis> The abbreviation for a Binary Large OBject</listitem>
+      </itemizedlist>
+     </para>
+     </sect3>
+  </sect2>
+
+&Semantics;
+
+&Implementation;
+
+&ReferenceManual;
+
+</article>

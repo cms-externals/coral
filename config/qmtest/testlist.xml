@@ -1,0 +1,386 @@
+<testlist>
+
+  <!--=====================================================================-->
+
+  <testtype name="integration">
+   
+    <test name="test_Integration_AliasesSynonyms">
+      <exclude backend="mysql"/>
+      <exclude backend="sqlite"/>
+      <exclude backend="frontier"/>
+    </test>
+
+    <test name="test_Integration_Basic">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #73037) -->
+    </test>
+
+    <test name="test_Integration_ChangeNotification">
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService">
+      <exclude platform=".*"/><!-- Build fails (bug #75313) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_CleanUpPool">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_ConnectionPool">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_ReplicaExcluding">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_ReplicaHandling">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_ReplicaSorting">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_SessionSharing">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_SimpleFailover">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_SQLiteConnection">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_SQLiteFailover">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_SwitchSchema">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_ConnectionService_TimerBasic">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76494) -->
+    </test>
+
+    <test name="test_Integration_DeleteCascade">
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_InputOutput">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #73046) -->
+      <exclude backend="coral"/><!-- Fails on oracle/coral (bug #73047) -->
+      <exclude backend="sqlite"/><!-- Fails on sqlite (bug #73048) -->
+    </test>
+    
+    <test name="test_Integration_InvalidReferences"/>
+
+    <test name="test_Integration_LFCReplicaService">
+      <exclude platform=".*"/><!-- Not built: useless? (bug #76496) -->
+    </test>
+
+    <test name="test_Integration_LookupService">
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_MiscellaneousBugs">
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_Monitoring">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #79848) -->
+      <exclude backend="sqlite"/><!-- Fails on sqlite (bug #73042) -->
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_MonitoringService">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #79848) -->
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_MultiThreading">
+      <exclude backend="sqlite"/><!-- No MT support on sqlite (bug #63806) -->
+      <exclude backend="frontier"/><!-- No MT support on Frontier -->
+    </test>
+
+    <test name="test_Integration_NetworkFailure">
+      <exclude backend="oracle"/><!-- Crashes on oracle (bug #72381) -->
+      <exclude backend="mysql"/><!-- Only oracle by design (hardcoded) -->
+      <exclude backend="sqlite"/><!-- Only oracle by design (hardcoded) -->
+      <exclude backend="frontier"/><!-- Only oracle by design (hardcoded) -->
+      <exclude backend="coral"/><!-- Only oracle by design (hardcoded) -->
+    </test>
+
+    <test name="test_Integration_ObjectConsistency">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #76501) -->
+      <exclude backend="coral"/><!-- Fails on coral (bug #76501) -->
+      <exclude backend="frontier"/><!-- Fails on frontier (bug #76501) -->
+      <exclude backend="sqlite"/><!-- Fails on sqlite (bug #76501) -->
+    </test>
+
+    <test name="test_Integration_PreFetching">
+      <exclude backend="oracle"/><!-- Fails on oracle (bug #76502) -->
+      <exclude backend="coral"/><!-- Fails on coral (bug #76502) -->
+      <exclude backend="frontier"/><!-- Fails on frontier (bug #76502) -->
+    </test>
+
+    <test name="test_Integration_Quotes"/>
+    
+    <test name="test_Integration_RandomCycler">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #76492) -->
+      <exclude backend="sqlite"/><!-- No MT support on sqlite (bug #63806) -->
+      <exclude backend="frontier"/><!-- No MT support on Frontier -->
+    </test>
+
+    <test name="test_Integration_Sequence">
+      <exclude backend="mysql"/><!-- NOT IMPLEMENTED -->
+      <exclude backend="sqlite"/><!-- NOT IMPLEMENTED -->	
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_SpecificFrontier">
+      <exclude backend="coral"/><!-- Does not involve coral (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_StoredProcedures">
+      <exclude backend="oracle"/><!-- Fails on oracle (bug #73064) -->
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #73065) -->
+      <exclude backend="sqlite"/><!-- Fails on mysql (bug #73065) -->
+    </test>
+
+    <test name="test_Integration_StressTest">
+      <exclude platform=".*"/><!-- To be reviewed (bug #76499) -->
+      <exclude backend="frontier"/><!-- Fails on frontier (bug #76503) -->
+    </test>
+
+    <test name="test_Integration_UserTests">
+      <exclude platform=".*"/><!-- To be reviewed (bug #76498) -->
+    </test>
+
+    <test name="test_Integration_WriteRead">
+      <exclude backend="mysql"/><!-- Fails on mysql (bug #76493) -->
+    </test>
+
+    <test name="test_System_RetryAndFailover">
+      <exclude platform=".*"/><!-- Build fails (bug #73049) -->
+    </test>
+
+    <test name="test_System_SessionsInMultipleThreads">
+      <exclude platform=".*"/><!-- Build fails (bug #73049) -->
+    </test>
+
+  </testtype>
+
+  <!--=====================================================================-->
+
+  <testtype name="unit">
+
+    <test name="test_unit_ConnectionService_Connection"/>
+
+    <test name="test_unit_CoralBase_AtLiFunctionality"/>
+    <test name="test_unit_CoralBase_AtLiSpecFunctionality"/>
+    <test name="test_unit_CoralBase_AttributeReadWrite"/>
+    <test name="test_unit_CoralBase_BlobReadWrite"/>
+    <test name="test_unit_CoralBase_CppUnitExample"/>
+    <test name="test_unit_CoralBase_DataTypeBug">
+      <exclude platform=".*" /><!-- Fails (bug #72991) -->
+    </test>
+    <test name="test_unit_CoralBase_Date"/>
+    <test name="test_unit_CoralBase_MessageStream"/>
+    <test name="test_unit_CoralBase_TimeStamp"/>
+
+    <test name="test_unit_CoralCommon_MonitoringEvent"/>
+    <test name="test_unit_CoralCommon_SimpleExpressionParser"/>
+    <test name="test_unit_CoralCommon_Timer">
+      <exclude platform="win" /><!-- Fails on Windows (bug #73643) -->
+    </test>
+    <test name="test_unit_CoralCommon_URIParser"/>
+
+    <test name="test_unit_CoralKernel_ExternalPluginManager"/>
+    <test name="test_unit_CoralKernel_PluginList"/>
+    <test name="test_unit_CoralKernel_PluginManager"/>
+    <test name="test_unit_CoralKernel_PropertyManager"/>
+
+    <test name="test_unit_EnvironmentAuthenticationService_LoadService"/>
+
+    <test name="test_unit_FrontierAccess_CmsNewFrontier">
+      <exclude platform=".*" /><!-- Fails (bug #72992) -->
+    </test>
+    <test name="test_unit_FrontierAccess_MultipleSchemas">
+      <exclude platform=".*" /><!-- Fails (bug #72993) -->
+    </test>
+    <test name="test_unit_FrontierAccess_MonitorController">
+      <exclude platform=".*" /><!-- Fails (bug #86648) -->
+    </test>
+    <test name="test_unit_FrontierAccess_Schema">
+      <exclude platform=".*" /><!-- Fails (bug #72994) -->
+    </test>
+    <test name="test_unit_FrontierAccess_SegFault">
+      <exclude platform=".*" /><!-- Fails (bug #72995) -->
+    </test>
+    <test name="test_unit_FrontierAccess_SimpleQueries">
+      <exclude platform=".*" /><!-- Fails (bug #72996) -->
+    </test>
+    <test name="test_unit_FrontierAccess_TestAlias">
+      <exclude platform=".*" /><!-- Fails (bug #72997) -->
+    </test>
+
+    <test name="test_unit_LFCReplicaService_FullService">
+      <exclude platform=".*" /><!-- Fails (bug #72998) -->
+    </test>
+
+    <test name="test_unit_MonitoringService_Report"/>
+
+    <test name="test_unit_MySQLAccess_BulkInserts">
+      <exclude platform=".*" /><!-- Fails (bug #72999) -->
+    </test>    
+    <test name="test_unit_MySQLAccess_Connection">
+      <exclude platform=".*" /><!-- Fails (bug #73000) -->
+    </test>
+    <test name="test_unit_MySQLAccess_DataEditor">
+      <exclude platform=".*" /><!-- Fails (bug #73001) -->
+    </test>
+    <test name="test_unit_MySQLAccess_MultipleSchemas">
+      <exclude platform=".*" /><!-- Fails (bug #73002) -->
+    </test>
+    <test name="test_unit_MySQLAccess_NIPP"/>
+    <test name="test_unit_MySQLAccess_Schema">
+      <exclude platform=".*" /><!-- Fails (bug #73003) -->
+    </test>
+    <test name="test_unit_MySQLAccess_SchemaCopy">
+      <exclude platform=".*" /><!-- Fails (bug #73004) -->
+    </test>
+    <test name="test_unit_MySQLAccess_SegFault">
+      <exclude platform=".*" /><!-- Fails (bug #73005) -->
+    </test>
+    <test name="test_unit_MySQLAccess_ShowCreateTableParser"/>
+    <test name="test_unit_MySQLAccess_SimpleQueries">
+      <exclude platform=".*" /><!-- Fails (bug #73012) -->
+    </test>
+    <test name="test_unit_MySQLAccess_Test40">
+      <exclude platform=".*" /><!-- Hangs (bug #73019) -->
+    </test>
+    <test name="test_unit_MySQLAccess_TestAlias">
+      <exclude platform=".*" /><!-- Fails (bug #73020) -->
+    </test>
+
+    <test name="test_unit_OracleAccess_BulkInserts"/>
+    <test name="test_unit_OracleAccess_Connection"/>
+    <test name="test_unit_OracleAccess_DataDictionary"/>
+    <test name="test_unit_OracleAccess_DataEditor"/>
+    <test name="test_unit_OracleAccess_DateAndTime"/>
+    <test name="test_unit_OracleAccess_Dual"/>
+    <test name="test_unit_OracleAccess_GroupBy"/>
+    <test name="test_unit_OracleAccess_MultipleSchemas"/>
+    <test name="test_unit_OracleAccess_MultipleSessions"/>
+    <test name="test_unit_OracleAccess_MultiThreading"/>
+    <test name="test_unit_OracleAccess_Schema"/>
+    <test name="test_unit_OracleAccess_SimpleQueries"/>
+    <test name="test_unit_OracleAccess_Views"/>
+
+    <test name="test_unit_RelationalAccess_TableDescription"/>
+
+    <test name="test_unit_RelationalService_LoadService"/>
+
+    <test name="test_unit_SQLiteAccess_BulkInserts"/>
+    <test name="test_unit_SQLiteAccess_BulkOperations"/>
+    <test name="test_unit_SQLiteAccess_CreateListDrop"/>
+    <test name="test_unit_SQLiteAccess_DataEditor"/>
+    <test name="test_unit_SQLiteAccess_DateAndTime"/>
+    <test name="test_unit_SQLiteAccess_DescribeTable"/>
+    <test name="test_unit_SQLiteAccess_ExpressionParser"/>
+    <test name="test_unit_SQLiteAccess_QueriesInSingleTable"/>
+    <test name="test_unit_SQLiteAccess_QueriesWithMultipleTables"/>
+    <test name="test_unit_SQLiteAccess_SchemaEditor"/>
+    <test name="test_unit_SQLiteAccess_uInt32Order"/>
+    <test name="test_unit_SQLiteAccess_Views"/>
+
+    <test name="test_unit_XMLAuthenticationService_LoadService">
+      <exclude platform=".*" /><!-- Fails (bug #73028) -->
+    </test>
+
+    <test name="test_unit_XMLLookupService_LoadService">
+      <exclude platform=".*" /><!-- Fails (bug #73029) -->
+    </test>
+
+  </testtype>
+
+  <!--=====================================================================-->
+
+  <testtype name="unit_coralserver">
+
+    <test name="test_unit_CoralAuthenticationService_OpenSSLCipher"/>
+    <test name="test_unit_CoralAuthenticationService_QueryMgr"/>
+
+    <test name="test_unit_CoralMonitor_CsvStatsReporter"/>
+    <test name="test_unit_CoralMonitor_MonitorService"/>
+    <test name="test_unit_CoralMonitor_ServiceOrder"/>
+    <test name="test_unit_CoralMonitor_StatsManager"/>
+    <test name="test_unit_CoralMonitor_StatsSet"/>
+    <test name="test_unit_CoralMonitor_StatsStatic"/>
+    <test name="test_unit_CoralMonitor_StopTimer">
+      <exclude platform=".*" /><!-- Fails intermittently (bug #73205) -->
+    </test>
+    <test name="test_unit_CoralMonitor_ThreadSafety"/>
+
+    <test name="test_unit_CoralServerBase_ByteBuffer"/>
+    <test name="test_unit_CoralServerBase_CALOpcode"/>
+    <test name="test_unit_CoralServerBase_CALPacket"/>
+    <test name="test_unit_CoralServerBase_CoralServerProxyException"/>
+    <test name="test_unit_CoralServerBase_CTLPacket"/>
+    <test name="test_unit_CoralServerBase_StopTimer">
+      <exclude platform=".*" /><!-- Build fails (bug #73030) -->
+    </test>
+
+    <test name="test_unit_CoralServerProxy_Packet"/>
+
+    <!--test name="test_unit_CoralSockets_Bug61478"/--><!--Not for release!-->
+    <test name="test_unit_CoralSockets_DummyRequestHandler"/>
+    <test name="test_unit_CoralSockets_PacketSocket"/>
+    <test name="test_unit_CoralSockets_Poll"/>
+    <test name="test_unit_CoralSockets_ReplyManager"/>
+    <test name="test_unit_CoralSockets_RequestIterator"/>
+    <test name="test_unit_CoralSockets_RingBufferSocket"/>
+    <test name="test_unit_CoralSockets_SocketContext"/>
+    <test name="test_unit_CoralSockets_SocketRequestHandler"/>
+    <test name="test_unit_CoralSockets_SocketThread"/>
+    <test name="test_unit_CoralSockets_SslSocket"/>
+    <test name="test_unit_CoralSockets_TcpSocket"/>
+    <test name="test_unit_CoralSockets_ThreadManager"/>
+
+    <test name="test_unit_CoralStubs_AllParts" timeout="600"/>
+    <test name="test_unit_CoralStubs_RequestHandler"/>
+    <test name="test_unit_CoralStubs_StreamBuffer"/>
+
+  </testtype>
+
+  <!--=====================================================================-->
+
+  <testtype name="pycoral">
+   
+    <test name="test_PyCoral_ImportPyCoral.py"/>
+    <test name="test_PyCoral_NetworkGlitch.py">
+      <exclude platform="mac,win,icc" /><!-- ssh tunnels on linux/gcc only -->
+    </test>
+
+  </testtype>
+
+  <!--=====================================================================-->
+
+  <testtype name="pycoral_integration">
+   
+    <test name="test_PyCoral_Basic.py"/>
+    <test name="test_PyCoral_MiscellaneousBugs.py">
+      <exclude backend="coral"/><!-- Only tests RW backends so far -->
+      <exclude backend="frontier"/><!-- Only tests RW backends so far -->
+    </test>
+
+  </testtype>
+
+  <!--=====================================================================-->
+
+</testlist>
+

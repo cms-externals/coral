@@ -1,0 +1,132 @@
+Fri Jan 13 11:01:08.020909000 CET 2012
+Kill any running instance of coralServerProxy and sleep 1s
+Setup CMT environment using CMT_env.sh
+Configure CMT using AFS
+CMTCONFIG set to 'i686-slc5-gcc43-dbg'
+CMTROOT set to '/afs/cern.ch/sw/contrib/CMT/v1r20p20090520'
+CMTPATH set to ''
+CMTPROJECTPATH set to '/afs/cern.ch/sw/lcg/app/releases'
+CMTUSERCONTEXT set to '/afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_17a/src/config/cmt/USERCONTEXT/avalassi'
+CMTINSTALLAREA set to ''
+CMTSITE set to ''
+LD_LIBRARY_PATH set to ''
+Fri Jan 13 11:01:10.384320000 CET 2012
+CMTCONFIG is i686-slc5-gcc43-dbg
+Using LCG:    60e
+Using LCGCMT: /afs/cern.ch/sw/lcg/app/releases/LCGCMT/LCGCMT_60e
+Using Boost:  /afs/cern.ch/sw/lcg/external/Boost/1.44.0_python2.6/i686-slc5-gcc43-opt
+Using CORAL:  /afs/cern.ch/sw/lcg/app/releases/CORAL/CORAL_2_3_17a/src
+Using ROOT:   
+Using COOL:   
+*******************************************************************
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Spawning the connection manager thread
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Setting up signal handlers
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Waiting for interrupts
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:5> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:5> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] TPCManager: new client connection <socket:7> from 127.0.0.1:nnnnn
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Packet::read <socket:7> - connection closed.
+YYYY-MMM-DD hh:mm:ss.nnn [INF] Received interrupt, exiting
+=== TIMER (SPROXY) 0.12user 0.67system 347.45elapsed 0%CPU
+*******************************************************************
+Fri Jan 13 11:07:02.599392000 CET 2012

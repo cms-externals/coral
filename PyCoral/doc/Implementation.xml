@@ -1,0 +1,479 @@
+<sect2>
+<title>Implementation specifics</title>
+
+<sect3><title>Choice of the Python/C++ binding mechanism</title>
+<para>
+The python <emphasis role="bold">coral</emphasis> module has been
+implemented with hardly any python code. Instead, it is a python
+extension, based entirelly on the Python C API and the CORAL public
+API. The python classes that are visible to the users are merely a
+wrapper of the corresponding CORAL ones, propagating the python calls to the
+underlying C++ objects.
+</para>
+<para>Apart from the direct C binding, two other technologies have
+been investigated: The Boost-Python package and the use of PyDict which is
+using ROOT/Reflex. Both techniques result into automatically generated
+C++ code which is based on the same Python C API, since they are wrappers to the Python/C API. These techniques
+have been successfully applied in several projects.</para>
+<para>We have decided on the use of the direct C-binding for the
+following main reasons:
+
+<itemizedlist>
+<listitem><emphasis>No external dependencies are required</emphasis> other than the
+python client libraries themselves, that would be anyway needed if
+any of the other techniques would be used.
+<para>There is no need for generation (even if it is automatic) of
+dictionaries for the C++ classes to be pythonized, and no maintenance
+of driver files. Moreover, the number of shared libraries that are
+absolutely required at run-time is kept to the minimum
+possible.</para>
+<para>The lack of extra external dependencies makes the release and
+deployment tasks much simpler, as re-builds of the package 
+required due to changes in the configuration of the external dependencies, will be required less often.</para>
+</listitem>
+
+<listitem><emphasis>The Python style and semantics</emphasis> in the representation
+and usage of the pythonized classes is easier (if not only possible)
+with the use of direct C-binding.
+<para>When using Python, one expects that classes with container semantics
+implement the native iterator protocol and access
+semantics. One also expects that the classes maintain the
+loosely-typed behaviour of Python, so that templated methods or
+classes, when pythonized, should not expose the requirement for
+specifying the type in any way, with the type neither encoded in the
+method or class name, nor specified in the argument list.</para>
+<para>For example, if one would loop over the Attributes of an
+AttributeList, printing the value of each Attribute, the respective
+code should look like this:
+<programlisting>
+for attribute in attributeList:
+    print attribute.data()
+</programlisting>
+</para>
+</listitem>
+
+<listitem><emphasis>Fine tuning of the semantics and the
+behaviour</emphasis> can be done in a straight-forward way. Examples
+include providing "private" or "protected" constructors for python
+objects and instrumenting proper reference counting given the
+semantical object hierarchy of the corresponding C++ classes.</listitem>
+
+<listitem><emphasis>A public API for other Python extensions written
+in C/C++</emphasis> can be easily provided without putting any
+constraint on the technology employed for the task.</listitem>
+</itemizedlist>
+</para>
+
+
+<para>Compared to the techniques relying on automatic code generation,
+opting for direct C-binding implies, having to write more, though
+straight-forward code. On the other hand, most of the code needs minimal maintenance
+effort, since a large fraction of it is simply for initializing the
+necessary structures of the Python C API. For a project which involves
+pythonizing only a few classes (the case of the CORAL public API) the
+gained advantages from the adoption of this technique far outweighs
+the requirements on the development and maintenance of the code.</para>
+
+</sect3>
+
+<sect3><title>Selection of the C++ classes and methods to be pythonized.</title>
+<para>
+Not all classes from the CORAL public C++ API packages (CoralBase and RelationalAccess) have been
+selected for pythonization. The two set of classes that have been excluded are:
+<orderedlist>
+<listitem><emphasis>Exceptions</emphasis>. None of the exceptions (and the corresponding hierarchy)
+defined in CORAL is propagated and exposed in the Python API. Instead, all of the C++ exceptions are
+caught in the methods of the wrapper Python classes and a <emphasis role="bold">coral.Exception</emphasis>
+is thrown.</listitem>
+<listitem><emphasis>Developer-level interfaces</emphasis>, such as the IRelationalService, ISession,
+IAuthenticationService, ILookupService, etc. The reason for this is that PyCoral aims at providing an
+end-user API.</listitem>
+</orderedlist>
+</para>
+<para>The classes that are selected for pythonization do not necessary have a 1-1 mapping for their
+methods from C++ to Python. The reason for this is, that such a strategy would violate the requirement for
+maintaining the Python style in the usage of the classes.</para>
+<para>For example, the templated methods are pythonized
+without the template argument in order to preserve the loosely-typed semantics of the Python language. In this
+particular case the type checking is performed internally in the corresponding methods of the wrapper Python classes.
+</para>
+<para>Another example is the <emphasis>size</emphasis> and <emphasis>toOutputStream</emphasis> methods found in some
+classes. Instead, the necessary protocols have been implemented in order to have the len() and str() built-in
+functions of Python working properly for these classes. The same applies to access and iteration-related methods for
+container type classes. Instead, the sequence, mapping or iterator protocols have been implemented in order to
+expose a Python-style behaviour.</para>
+<para>
+Another example is the <emphasis>BLOB</emphasis> support.
+Blob has been implemented using the buffer interface feature in python.
+It is implemented as a buffer with pickling support for writing and reading
+python objects directly into it without wasting memory, even temporarily. 
+</para>
+</sect3>
+
+<sect3><title>Deployment model</title>
+<para>
+As mentioned above, there has been a requirement to provide a C API for the classes that need to be exported in
+order to allow the development of other Python extensions based on C++ which originally use the CORAL C++ classes.
+For this reason some of the header files with the definition of the C structures corresponding to the Python classes
+and the forward declarations of the functions returning the Python Type objects for these classes, have been placed
+in the public include directory.</para>
+<para>
+Moreover, all the code is built in a shared library
+(liblcg_coral_PyCoral.so) that has a dual role. Being the actual
+extension module, and the library against which a client extension
+module using the public class definitions has to be linked.</para>
+<para>Due to the fact that Python internally calls dlopen without the RTLD_GLOBAL flag, using the module library
+directly would cause most of the dynamic casts used in the SEAL component model (on top of which CORAL is based)
+to fail. For this reason it is necessary to set the dlopen flags properly even before the module library is called.
+In order to achieve that a coral.py driver file sets the flags properly before loading the PyCoral shared library
+as a module and importing all its public symbols into the coral
+module. Moreover the python driver file takes care of the differences
+in the naming conventions of the shared libraries for the different
+platforms. This ensures that all clients will always import a
+"coral" module in the python code.</para>
+<para>The shared library is placed under the lib subdirectory of a
+CORAL distribution and the driver file under the python
+subdirectory. Therefore the PYTHONPATH should be including both directories.</para>
+</sect3>
+
+<sect3>
+<title>Code Specific HowTos</title>
+<para>
+Here is a brief summary of how we went about addressing the various issues, involved  in writing of the PyCoral module.
+</para>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>Module Naming and Initialization: </emphasis>The initialization function has been named initPyCoral(), where PyCoral is the name of the module, and should be the only non-static item defined in the module file:
+</para>
+<programlisting> 
+PyMODINIT_FUNC initPyCoral(void)
+{
+PyObject* this_module = Py_InitModule3( (char*)"PyCoral", 0, 
+(char*) "The Python Coral module" );
+}
+</programlisting> 
+<para>
+Note that PyMODINIT_FUNC declares the function as void return type, declares any special linkage declarations required by the platform, and for C++ declares the function as extern "C". 
+</para>
+<para>
+When the Python program imports module PyCoral for the first time, initPyCoral() is called. It calls Py_InitModule3(), which creates a ``module object'' (which is inserted in the dictionary sys.modules under the key "PyCoral"). Py_InitModule3() returns a pointer to the module object that it creates.
+</para>
+<para>
+This segment of the code has been placed in the .coral.cpp. file.
+</para>
+</listitem>
+<listitem><para><emphasis>Adding Class Objects: </emphasis>
+Adding a class object involves the following five steps:
+<para>
+1) Define its PyTypeObject structure
+</para>
+<para>
+2) Define methods of the class and place them in PyMethodDef structure
+</para>
+<para>
+3) Initialize and finalize the corresponding PyTypeObject
+</para>
+<para>
+4) Add class objects to the module
+</para>
+<para>
+5) Write method specific codes, in addition to the init and dealloc methods for all the class objects, and any other method defined in the PyTypeObject structure or other structures like the buffer structure, or mapping methods structure, all of which are explained in details later. 
+</para>
+<para>
+A PyTypeObject structure of the class object is defined by filling up various slots of the template structure. This structure is placed in the respective class related source file. For example the PyTypeObject structure of the ISchema class object is placed in ISchema.cpp file. For detailed documentation about the various slots in the structure kindly refer to the python manual.
+</para>
+<para>
+To add methods of the class in an interface, method names are added in respective python class object using the PyMethodDef structure. The structure is self explanatory, expect for the METH_X part. The METH_X part has been explained in the .adding methods. section. An example for Date class object is as follows:
+<programlisting>
+static PyMethodDef Date_Methods[] = {
+{ (char*) "year", (PyCFunction) Date_year, METH_NOARGS,
+(char*) "Returns the year of the date" },
+{ (char*) "month", (PyCFunction) Date_month, METH_NOARGS,
+(char*) "Returns the month of the date [1-12]" },
+{ (char*) "day", (PyCFunction) Date_day, METH_NOARGS,
+(char*) "Returns the day of the date [1-31]" },
+{0, 0, 0, 0}
+};
+</programlisting>
+</para>
+<para>
+Any type of  built-in class object, either "exposed" or "unexposed" has to be initialized and finalized by using the method PyType_Ready(). Only difference between the "exposed" and "unexposed" class objects from implementation point of view is that the "exposed" ones are explicitly added to the module object by using the  PyModule_AddObject() method call as described in the next para while the "unexposed" classes are only initialized and finalized and not added to the module explicitly. The class objects namely the "IConnectionServiceConfiguration", "AttributeSpecification", "Attribute", "AttributeListIterator", "ICursorIterator",  "ISessionProxy", "ISchema", "IQueryDefinition", "IOperationWithQuery", "IBulkOperation",  "IBulkOperationWithQuery", "ITable", "ITableDataEditor", "ITableSchemaEditor", "ITableDescription", "ITablePrivilegeManager", "ISessionProperties", "IPrimaryKey", "IForeignKey", "IUniqueConstraint", "IIndex", "IColumn", "ITransaction", "ITypeConverter", "IQuery", "IWebCacheControl", "IWebCacheInfo", "ICursor", "IView", "IViewFactory", and "IMonitoringReporter" are not directly exposed to the user and hence initialized and finalized without explicit addition to the module object. Following lines of code initialize and finalize the IMonitoringReporter class type object, as an example:
+<programlisting>
+if ( PyType_Ready( coral::PyCoral::IMonitoringReporter_Type() ) lt 0 ) return;
+</programlisting>
+</para>
+<para>
+The built-in class objects are inserted into the newly created module by the subsequent PyModule_AddObject() method calls. The class objects, namely the "Exception",  "Context",  "ConnectionService", "Date", "TimeStamp", "Blob", "AttributeList" and "TableDescription" are inserted into the module after proper initialization. Following lines of code adds the Attribute List class object to the module object as an example. Note that this can only be done after proper initialization and finalization of the AttributeList class type object, as done earlier for the "not to be exposed" classes:
+<programlisting>
+Py_INCREF( AttributeList_Type );
+PyModule_AddObject( this_module, (char*) "AttributeList",
+(PyObject*) AttributeList_Type );
+</programlisting>
+</para>
+
+</para></listitem>
+<listitem><para><emphasis>Adding or deleting  a new method of a class: </emphasis> From maintainence point of view this will be the most usually performed operation. The following text will explain the addition of the methods, which can be reversed for performing the delete operation. Kindly refer to .cpp file of any class for complete source code reference.
+<para>
+The first and foremost step in adding a method of a class is to add the method name into the PyMethodDef structure as explained above. Then, one must define the argument type for the method, which can be from any one of the following cases:
+</para>
+<para>
+1) Method with No argument: For such case the METH_X part of the PyMethodDef structure is written as METH_NOARGS. 
+</para>
+2) Method with variable arguments: For such case the METH_X part of the PyMethodDef structure is written as METH_VARARGS. 
+<para>
+3) Method with expression as argument: For such case the METH_X part of the PyMethodDef structure is written as METH_O. One more care, in the form of testing the object passed for its type i.e string, long, integer or other, before actually performing any operation on the object passed, has to be taken in this type of argument. 
+</para>
+<para>
+The next and the last step is to insert proper code into the method, so as to return the proper return type which can be one of the following:
+</para>
+1) Method returning none: The return statement should be Py_RETURN_NONE.
+<para>
+2) Method returning Boolean: The return statement should be Py_RETURN_FALSE or Py_RETURN_TRUE as the case may be.
+</para>
+<para>
+3) Method returning a vector of string: The argument of the return statement should be a pointer to the PyObject generated by the Py_BuildValue() method, after converting the vector to the tuple.
+</para>
+<para>
+4) Method returning object: The argument of the return statement should be a pointer to the PyObject generated by the Py_BuildValue() method.
+</para>
+</para></listitem>
+
+<listitem><para><emphasis>Adding Enumerations as integer constants: </emphasis>
+Enumerations as defined in the CORAL package have been implemented as Integer constants in the PyCoral python module. The following code snippet placed in the .coral.cpp. file allows to add the corresponding access mode enumeration type in the PyCoral package:
+<programlisting>
+// The Access mode constants: ReadOnly, Update
+PyModule_AddIntConstant(this_module,(char*)"access_ReadOnly",coral::ReadOnly);
+PyModule_AddIntConstant(this_module,(char*)"access_Update",coral::Update);
+</programlisting>
+</para></listitem>
+<listitem><para><emphasis>Exception Handling: </emphasis>
+All the C++ exceptions generated by the CORAL package are being propagated back thru the PyCoral package to python interpreter. The .Exception.cpp. file contains the relevant code for defining a new exception class object in PyCoral, it has been named as .coral.Exception.. So for every C++ exception caught in the methods of the PyCoral package a coral.Exception exception is thrown. The following lines of code generates a new PyCoral exception class object:
+<programlisting>
+static PyObject* coralException = PyErr_NewException( 
+(char*) "coral.Exception", 0, 0 );
+</programlisting>
+<para>
+The following lines of code in the .coral.cpp. ensures that the exception class object gets added up to the list of class objects of the PyCoral module object:
+<programlisting>
+//Initialize the exception
+PyObject* error = coral::PyCoral::Exception();
+Py_INCREF( error );
+PyModule_AddObject( this_module, (char*) "Exception", error );
+</programlisting>
+</para>
+<para>
+Note: There is no PyTypeObject corresponding to the Exception class, and thus no initialization and finalization code by PyTypeReady() method. Instead, a python Exception object is created by simply invoking the constructer of the Exception class as defined in the Exception.cpp file.
+</para>
+</para></listitem>
+<listitem><para><emphasis>Concept of Parent child relationship between objects: </emphasis>
+As explained earlier, there are basically two types of class objects that can be created by the user. Those, directly exposed to the user  can be directly instantiated by the user and the unexposed ones can only be instantiated by using the exposed class object, functions. To tackle with the problem arising out of keeping track of objects involved in the chain of indirect creations, so as to properly deallocate memory (to prevent memory leaks and segfaults) by properly executing the deallocation methods of each of the object in the reverse order, the concept of parent child relationship has been implemented. 
+<para>
+By using this technique, from any object it is very easy to determine the parent of the object in the chain and thereby implement its dealloc method so that the parent is also DECREed, indicating that the deallocated object does not require the parent now and hence it can also be freed by the python interpreter, if its reference count has reached zero.  
+</para>
+<para>
+As one can figure out all the python classes have a structure with two pointers, namely the .object. and the .parent.. The object pointer contains the address of the corresponding underlying C++ object, while the parent pointer contains the address of this object.s parent. Following piece of code incorporated in the corresponding .Attribute.h. file of the Attribute class is an example on how to implement it. The .populating init and the dealloc methods. section explains how it has been used to take care of memory leaking and hence segfaults.   
+</para>
+<programlisting>
+typedef struct {
+PyObject_HEAD
+coral::Attribute* object; // Object of Attribute class
+PyObject* parent;
+}Attribute;
+</programlisting>
+</para></listitem>
+<listitem><para><emphasis>Populating the "init" and the "dealloc" methods of the class objects: </emphasis>
+Proper implementation of the .init. and .dealloc. methods associated with all the classes is the key to writing quality python wrappers using the python C API technique. Key points to remember here are that all the elements of the python object structure are to be initialized in the .init. method and properly deallocated in the .dealloc. method. Since python works on the concept of reference counts, i.e if  the same object is to be created twice, then its reference count has to be INCREFed by one and similarly when the python object is deallocated then the reference count is to be DECREFed by one, and finally when the reference count of the object becomes zero then its dealloc routine is called and the physical memory is freed. One more thing worth noting is that, for every class one should take care of the references that are INCREFed in any function and these must be DECREFed in the dealloc method. That said, it is also worth mentioning that the singleton python objects like the Py_None, Py_True, Py_False are in anyway deallocated only when the python interpreter terminates, hence DECREFing of these objects is not necessary in the dealloc methods.
+<para>
+The above principles have been kept in mind while writing the .init. and the .dealloc. methods of the various  classes. The .init. and .dealloc. methods have been incorporated in the respective source files of the various classes.
+</para>
+</para></listitem>
+<listitem><para><emphasis>Implementing CORAL BLOB, in python style: </emphasis>
+Implementing the BLOB object in python style posed the following two challenges. For source code related to the Blob implementation kindly refer to the Blob.h and Blob.cpp source files.
+<para>
+1) Implementing buffer interface: This requires the addition of the code for the following extra tasks:
+<para>
+1.i) Adding four more methods namely the getReadBuffer(), getCharBuffer(), getWriteBuffer() and getSegCount()
+</para>
+<para>
+1.ii) Populating the PyBufferProcs structure with the name of the methods used for the above four methods
+</para>
+<para>
+1.iii) Populating the tp_as_buffer slot of the PyTypeObject for the Blob class object.
+</para>
+</para>
+<para>
+2) Implementing pickling support: This requires the addition of the code for the following extra tasks: 
+<para>
+2.i) Adding three method namely the write(), read() and readline() for adding support for writing to and reading from the buffer interface.
+</para>
+<para>
+2.ii) Adding a long return type, currentPosition field in the structure of the Blob class. This is used in the implementation of the read() method of the Blob class for returning the currentPosition of the pointer to the Blob object at any call to the read() method.
+</para>
+</para>
+</para></listitem>
+<listitem><para><emphasis>Implementing comparison in  python style: </emphasis>
+To implement cmp() method in python style, requires an additional method named compare() to be included in the list of other methods already existing in that class. The compare() method should return the result of the comparison of the two objects passed as its parameter in integer form, with 0 for euality, and -1 for anything else. For source code related to the implementation of the comparison concept in python style reader may refer to the code for the compare method in the source file AttributeList.cpp, which compares two objects of attributeList type.
+</para></listitem>
+<listitem><para><emphasis>String representation of  python objects: </emphasis>
+To implement str() method in python style, requires an additional method named str() to be included in the list of other methods already existing in that class. The str() method should return the string representation of the object passed as its parameter. For source code related to the implementation of the string representation concept in python style reader may refer to the code for the str() method in the source file AttributeList.cpp.
+</para></listitem>
+<listitem><para><emphasis>Mapping [] operator to indexed container element objects: </emphasis>
+To implement [] operator for supporting iteration of the container elements in a container, the mapping methods support of the python C API has to be utilized. This requires the addition of the code for carrying out the following tasks. For source code related to this concept, reader is requested to refer to the code for mapping method implementation in the source file AttributeList.cpp.
+</para></listitem>
+<listitem><para><emphasis>Implementing iterators for the python style "for in" loop: </emphasis>
+To implement iterator for containers so as to work in .for in. loop, coding has to done for performing the following additional tasks. The reader may refer to the AttributeList.h, AttributeList.cpp, AttributeListIterator.h and AttributeListIterator.cpp files for the source code related to the implementation of this concept.
+<para>
+1) Add one more method named iter() to the container class. This method should be implemented so as to create a new containerIterator object and pass on the container object in the tp_init() method of the Iterator object.
+</para>
+<para>
+2) A new class called the containerIterator needs to be created, which should contain the iter() and the next() methods. The next() method should generate the next element object in the container object and return it as result. The iter() method should simply return pointer to itself. 
+</para>
+</para></listitem>
+<listitem><para><emphasis>Implementing overloaded functions: </emphasis>
+For implementing overloaded functions, the only thing that needs to be taken care of is to check for the type of the argument being passed to the function and incorporating the relevant portion of the function code depending of the argument type check result, in an .if then else. control structure. For an example source code one can refer to the connect() method implementation of the ConnectionService class in the "ConnectionService.cpp" file. 
+</para></listitem>
+<listitem><para><emphasis>Implementing inheritance: </emphasis>
+Implementation of inheritance concept using the python/C API is not straight forward. Basically, it involves creation of python objects for all base and the inheriting class on a single call to the inheriting class and further addition of code for adjusting pointers to access the base and the inheriting class objects. 
+<para>
+1) Whenever a class inheriting from a base class is "init" ed, all the classes (base classes + inheriting) are initialized along with it.
+</para>
+<para>
+2) Whenever the inheriting class object goes out of scope its .dealloc. method, DECREFs all the base classes.
+</para>
+<para>
+3) The parent of the base classes have to be Py_NONE, to take care of the parent child implementation, which exists in all the classes. 
+</para>
+<para>
+To implement python wrappers for classes using the single inheritance concepts, extra coding for performing the following tasks has to be added. For actual source code  IQuery.h, IQuery.cpp, IQueryDefinition.h and IQueryDefinition can be referred to. IQueryDefinition is the base class and IQuery inherits IQueryDefinition. One important point worth noting is that the lines of code necessary for initializing and finalizing the PyTypeObject of the base class should appear before the initializing and finalizing code of the PyTypeObject of the inheriting class in the "coral.cpp" file. For example, the PyType_Ready() method for the "IQueryDefinition" class has been called before the PyType_Ready() method for the "IQuery" class, in the "coral.cpp" file. 
+</para>
+<para>
+The coding for the extra tasks is divided among the base class and inheriting class:
+</para>
+<para>
+Extra tasks to be performed in the Inheriting class:
+</para>
+<para>
+1) Add a pointer field in the structure of the python object for each of the base class in its header file for example "*base1" in IQuery.h for IQuery class with only one base class. The "*base1" field in the struct should be placed just after the "PyObject_HEAD" macro.
+</para>
+<para>
+2) Define baseClasses tuple in the source file for example in IQuery.cpp for IQuery class, by properly setting all the items of the tuple.
+</para>
+<para>
+3) Fill up the tp_bases slot with the proper baseClasses tuple reference.
+</para>
+<para>
+4) In the init method of the IQuery class, create the new python object of IQueryDefinition type and pass on the underlying C++ object after static casting the IQuery type C++ object to the IQueryDefinition type and then calling its init method by using tp_init method. 
+</para>
+<para>
+5) In the dealloc method the .base1. class object is also to be DECREFed, along with the parent of the inherited class.
+</para>
+<para>
+Note: When the base class is called  by the tp_init method, the parent to be passed is "None" and not the inheriting class for interface classes.
+</para>
+<para>
+Extra tasks to be performed in the base class:  
+</para>
+<para>
+1) In the tp_flags slot of the PyTypeObject structure of the base class add the Py_TPFLAGS_BASETYPE field along with the Py_TPFLAGS_DEFAULT field.
+</para>
+<para>
+2) Wherever there is any reference to IQueryDefinition class python object, it has to be properly type casted to the base  from the "self" object, for proper alignment of the base pointer on the object passed.
+</para>
+<para>
+3) To take care of the casting to the right base type, a function with the name cast_to_base has been created which has been defined in the cast_to_base.cpp file. The casting is to be done wherever the base type object is to be used and in the methods of the base class.
+</para>
+</para></listitem>
+<listitem><para><emphasis>Implementing multiple inheritance: </emphasis>
+Implementing python wrappers for classes using the multiple inheritance concept, is similar to the process of writing python wrappers for implementing single inheritance, except that the number of bases here is more than one. Hence in the baseClasses tuple one more base class type object has to be added. Further, necessary initialization and deallocation code has to be added in the init and dealloc methods. For finding out the actual source code to be included in such a case kindly refer to the TableDescription.h, TableDescription.cpp, ITableDescription.h, ITableDescription.cpp, ITableSchemaEditor.h, and ITableSchemaEditor.cpp file. In this example, TableDescription class inherits from two base class namely the ITableDescription class and the ITableSchemaEditor class. As has already been explained, the parent object to be passed on to the bases when calling the init method of the base class using the tp_init method has to be "None" for an interface class like the "IQuery" class and the actual inherited class for the implemented one, like the "TableDescription" class.
+</para></listitem>
+<listitem><para><emphasis>Passing underlying C++ Object as python objects between methods: </emphasis>
+At a number of places in the code there is a requirement to pass underlying C++ object between various methods, of different classes. At most places it is also required to pass the python object which is the parent of the .to be. created object. To address these issues following technique has been followed:
+<para>
+1) The method from which the underlying C++ object is to be passed, creates a CObject which is a Python data type - which stores a pointer (void *) to the C++ object. CObjects can only be created and accessed via their C API, but they can be passed around like any other Python object. The following code snippet - with self explanatory comments - from the newQuery() method in ITable.cpp file creates a CObject of  *IQuery type:
+<programlisting>
+coral::IQuery* theQuery = const_cast(coral::IQuery*)
+( py_this->object->newQuery() ); // The underlying C++ object is created
+coral::PyCoral::IQuery* ob = PyObject_New( 
+coral::PyCoral::IQuery, coral::PyCoral::IQuery_Type() );
+// A corresponding python object is created
+PyObject* c_object = PyCObject_FromVoidPtr( (void*)theQuery,0 ); 
+// A CObject is created, which is a python data type storing void *) pointer 
+</programlisting>
+</para>
+<para>
+2) Then another python object holding the parent object and the CObject is created and passed on to the other python object as follows:
+<programlisting>
+PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
+// Python object holding both parent and CObject is built
+bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+// The resulting python object is passed on to the init method of the IQuery 
+object
+Py_DECREF(temp); // DECREF the temp since it was INCREFed by Py_BuildValue() 
+statement above, and is no more required after tp_init() method call
+Py_DECREF( c_object ); // DECREF the CObject, since it is also not required 
+after tp_init() method call
+if (ok)
+return (PyObject*) ob; // Return the object as result of the newQuery method 
+else{
+PyErr_SetString( coral::PyCoral::Exception(),
+(char*) "Error when Initializing IQuery object" );
+PyObject_Del(ob); // Delete the IQuery object if tp_init() fails
+return 0;
+}
+</programlisting>
+</para>
+<para>
+3) The method in which the C++ object is required, extracts the CObject and the parent as follows. In this example the tp_init() method in .IQuery.cpp. file, requires the IQuery C++ object.
+<programlisting>
+PyObject* c_object =0; // Initialize a python object
+if ( !PyArg_ParseTuple( args, (char*)"OO",
+                       AMPERSAND(py_this->parent),
+                       AMPERSAND(c_object) ) ) return -1;
+                                                  // Parse the arguments of the 
+                                                   init() method of the IQuery 
+                                                   class, passed using 
+                                                   PyBuildValue, extract the 
+                                                   1st element of the tuple as 
+                                                   py_this->parent and the 2nd 
+                                                   element as the CObject 
+                                                   (c_object)
+ 	py_this->object = static_cast(coral::IQuery*)
+                         ( PyCObject_AsVoidPtr( c_object ) ); 
+// Extract the void* from the CObject and static cast it to IQuery*.
+if (py_this->parent) Py_INCREF(py_this->parent); // If parent is passed, 
+then INCREF it so that it exists for the entire duration of child existence.
+</programlisting>
+</para>
+</para></listitem>
+</itemizedlist>
+</para>
+
+</sect3>
+
+<sect3>
+<title>Testing HowTos</title>
+<para>
+PyCoral package have been tested to work in both LXPLUS environment and standalone SLC4 environment using python version 2.5 and 2.4. Following two techniques have been used for testing the module and the built in methods:
+</para>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>Reference Counting: </emphasis>To use this technique it is required that one uses python compiled in debug mode. Hence, a standalone SLC4 setup was used for fresh compilation of python 2.5 with debug mode enabled. In this technique python code using the various functions of the classes in the coral package is used to perform certain tasks and then this code is looped over for N number of times. The final reference count, after one iteration and N number of iterations is compared, if the reference counts are equal in both cases, then the functions implemented in the coral package can safely be assumed to be memory leak free. All the unit test and regression test codes under various subdirectories in the .tests. directory of the .PyCoral. package were looped over for N times and verified using this check.</para></listitem>
+<listitem><para><emphasis>Valgrind memcheck: </emphasis>This check has been applied to the "CoralBase" part of the module only. The "RelationalAccess" part was not passed thru this check since it involves a lot of SEAL dependency and it was impossible to get the check past the SEAL functions, which were necessary for connecting to the database. This check requires the standard gcc and python related valgrind suppression files. Some modifications are required in the python suppression file as indicated in the comments in the suppression file itself.  A complete python program named "all_coralBase_functions_test.py" located under the "AttributeListTest" subdirectory of "tests" under PyCoral package, has been written to perform this test for the "CoralBase" part of the CORAL package. The technique used is, that the python code using the coral classes and methods is looped for "N" times and the valgrind results are analysed for N=1 and N=X, where "X" can be any number greater than 1. If the valgrind messages are the same for both the cases, then it can be safely assumed that the methods used in the test program are not having any memory leaks.</para></listitem>
+</itemizedlist>
+</para>
+
+</sect3>
+
+</sect2>
+<sect2>
+<title>Related components</title>
+<para>
+<itemizedlist mark='opencircle'>
+<listitem><para><emphasis>RelationalAccess</emphasis>, is the package
+where the CORAL abstract interfaces are defined.</para></listitem>
+<listitem><para><emphasis>CoralCommon</emphasis>, is the package
+where some developer-level interfaces and some common implementation
+classes are defined.</para></listitem>
+</itemizedlist>
+</para>    
+</sect2>

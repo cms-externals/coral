@@ -1,0 +1,82 @@
+Loading Connection Service
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IRelationalService: CORAL/Services/RelationalService
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "frontier" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "mysql" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "oracle" with native implementation
+CORAL/Services/RelationalService     Info Found plugin for RDBMS technology "sqlite" with native implementation
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "frontier" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "mysql" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "oracle" is native
+CORAL/Services/RelationalService     Info Default implementation for RDBMS technology "sqlite" is native
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::IAuthenticationService: CORAL/Services/XMLAuthenticationService
+CORAL/Services/ConnectionService    Debug No valid connection for string "oracle://devdb10/ral_writer" found in the pool. Creating a new connection.
+CORAL/Services/ConnectionService    Debug Trying to get a new update session on "oracle://devdb10/ral_writer"
+CORAL/Services/ConnectionService    Debug Connection parameters are: Retry-Period=10sec, Retry-Timeout=60sec, Connection-Timeout=300sec.
+CORAL/Services/ConnectionService     Info  Connection to service "devdb10" established. Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService    Debug  A New connection to service "devdb10" has been added in the active list. Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "DROP TABLE LCG_CORAL_NIGHT."T_CONNECTION_SERVICE_TEST""
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "CREATE TABLE LCG_CORAL_NIGHT."T_CONNECTION_SERVICE_TEST" ( "N_X" NUMBER(10), "N_S" VARCHAR2(4000) )"
+CORAL/Services/ConnectionService    Debug Connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been moved to the idle list.
+Getting the first sessionProxy object 
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info Loading default plugin for coral::ILookupService: CORAL/Services/XMLLookupService
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService    Debug The idle connection Id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been moved to the active list.
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection CORAL-Oracle-lcgnight/service2 was ok.
+-------------------------(1)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:1
+CORAL/Services/ConnectionService    Debug Connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been moved to the idle list.
+--------------------------(2)
+[OVAL]Number of idle connection:1
+[OVAL]Number of active connection:0
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService    Debug The idle connection Id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been moved to the active list.
+--------------------------(3)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:1
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10"
+--------------------------(4)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:1
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10"
+--------------------------(5)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:1
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection CORAL-Oracle-lcgnight/service2 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has 2 session(s) opended.
+CORAL/Services/ConnectionService    Debug Looking up replicas for logical connection: "/dbdev/service1"
+CORAL/Services/ConnectionService     Info New session on connection to service "devdb10" started for user "LCG_CORAL_NIGHT". Connection Id=39a7959c-bd3e-11db-866c-000423d59c42
+CORAL/Services/ConnectionService    Debug New session open on active connection Id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10"
+--------------------------(6)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:1
+CORAL/RelationalPlugins/oracle    Debug Prepared statement : "SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER=:"owner""
+[OVAL]Connection CORAL-Oracle-lcgnight/service2 was ok.
+CORAL/Services/ConnectionService    Debug Connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has 2 session(s) opended.
+CORAL/Services/ConnectionService    Debug Connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has 1 session(s) opended.
+CORAL/Services/ConnectionService    Debug Connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has 0 session(s) opended.
+CORAL/Services/ConnectionService    Debug The active connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been removed from the active list.
+CORAL/Services/ConnectionService    Debug The valid active connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been moved to the idle list.
+--------------------------(7)
+[OVAL]Number of idle connection:1
+[OVAL]Number of active connection:0
+CORAL/Services/ConnectionService    Debug Checking idle pool for timed-out connections - Total=1, Expired=0
+CORAL/Services/ConnectionService    Debug Checking idle pool for timed-out connections - Total=1, Expired=1
+CORAL/Services/ConnectionService    Debug The timed-out idle connection id=39a7959c-bd3e-11db-866c-000423d59c42 to service "devdb10" has been removed from pool.
+--------------------------(7-bis)
+[OVAL]Number of idle connection:0
+[OVAL]Number of active connection:0
+[OVAL] Success

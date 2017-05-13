@@ -1,0 +1,19 @@
+<sect2><title>RelationalService Semantics</title>
+<para>
+The RelationalService component is responsible for managing the <emphasis>IRelationalDomain</emphasis>
+objects that are delivered to the user. Given a connection string corresponding to an actual database
+service, it extracts the technology name and returns the corresponding IRelationalDomain object. It
+also loads if necessary into its local context the plugin library that provides the implementation of the
+specific technology.</para>
+<para>By default, for a technology named <emphasis>rdbmsName</emphasis>,
+it will try to load a plugin labeled:<programlisting>CORAL/RelationalPlugins/rdbmsName</programlisting>
+which should correspond to an implementation based on the base (most commonly C) API of this RDBMS
+technology. In case no such plugin exists, it will try to load any plugin with a label of a format:
+<programlisting>CORAL/RelationalPlugins/rdbmsName/anImplementationName</programlisting>
+</para>
+<para>The user may chose to use a specific implementation, instead of the default or any other existing
+non-default implementation, either by giving a call to the
+<emphasis>setDefaultImplementationForDomain()</emphasis> method of the IRelationalService interface,
+or by setting accordingly the <emphasis role="bold">DefaultImplementations</emphasis> property of
+this component.</para>
+</sect2>

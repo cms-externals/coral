@@ -1,0 +1,6 @@
+#! /bin/csh -f
+test_unit_CoralServerBase_CTLPacket
+test_unit_CoralServerBase_CALPacket
+test_unit_CoralServerBase_ByteBuffer
+test_unit_CoralServerBase_CALOpcode
+test_unit_CoralServerBase_CoralServerProxyException

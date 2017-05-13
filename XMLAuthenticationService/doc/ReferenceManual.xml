@@ -1,0 +1,19 @@
+<sect2><title>XMLAuthenticationService Reference</title>
+<sect3>
+<title>Properties of the "CORAL/Services/XMLAuthenticationService" component</title>
+<itemizedlist>
+<listitem><emphasis role="bold">AuthenticationFile</emphasis> :
+defines the name of the XML input file. Default value is <emphasis role="bold">authentication.xml</emphasis></listitem>
+</itemizedlist>
+</sect3>
+
+<sect3>
+<title>Environment variables</title>
+<itemizedlist>
+<listitem><emphasis role="bold">CORAL_AUTH_PATH</emphasis> :
+a path environment variable, where the XML input file is searched
+for. The current working directory has always higher priority.</listitem>
+</itemizedlist>
+</sect3>
+
+</sect2>

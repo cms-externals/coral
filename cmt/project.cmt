@@ -1,0 +1,11 @@
+project CORAL
+
+build_strategy with_installarea
+setup_strategy no_root no_config
+
+# Use the configuration from one of the last installed releases
+# (default CMTPROJECTPATH is /afs/cern.ch/sw/lcg/app/releases).
+use LCGCMT LCGCMT_61c
+
+# Change the above tag to use the configuration from one of the nightly slots
+# (nightly CMTPROJECTPATH is /afs/cern.ch/sw/lcg/app/nightlies/<slot>/<day>).

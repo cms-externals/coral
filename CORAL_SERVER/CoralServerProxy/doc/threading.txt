@@ -1,0 +1,25 @@
+
+
+              Threading models for CoralServerProxy
+              
+
+- the proxy has be multi-threaded for efficient use of the multi-core CPUs
+
+- proxy could use different threading models depending on the expected 
+  number of clients/connections/cores/etc.
+
+- possible threading options:
+  - one thread per connecton (TPC)
+  - one thread per request (TPR)
+
+- thread pool can be an option for the TPR model (could be used for TPC
+  model too but may not be too useful)
+  
+- in TPR model request handling should probably be select-based with 
+  select running in a separate thread. Request-processing threads 
+  interact with the caching system which has to be synchronized
+  
+- in TPC model threads only read the data from their corresponding 
+  connections and send them into a queue. Queue is processed by the 
+  separate hread which also interacts with a cache. 
+

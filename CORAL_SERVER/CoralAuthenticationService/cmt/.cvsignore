@@ -1,0 +1,15 @@
+cleanup.*
+setup.*
+Makefile
+
+NMake
+constituents.nmake*
+*.makesav
+
+i686-slc*-*.make
+x86_64-slc*-*.make
+
+i386-mac*-*.make
+x86_64-mac*-*.make
+
+i686-winxp-*.nmake

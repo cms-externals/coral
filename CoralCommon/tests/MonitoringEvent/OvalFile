@@ -1,0 +1,41 @@
+=================================================
+================================================= 
+OvalFile: basic configuration file to run OVAL
+           validation and regression tool and/or:` 
+           CppUnit unit-test tool 
+           PyUnit unit-test tool 
+
+SPI project ->
+Software Development Infrastructure LCG project 
+=================================================
+=================================================
+
+
+=================================================
+ Error report concerning these tests will be send
+ to the following e-mail if -w option is used
+ Write here your e-mail and uncomment the line.
+=================================================
+<!watcher mail=name@cern.ch>
+
+=================================================
+ Standard OVAL environment to run test programs
+=================================================
+ For the diff command,define single lines to
+ compare, through a Perl regular expression. Oval
+ will find lines with "OVAL", but can be changed.
+<diffline expr="^\[OVAL">
+
+
+ Here we define a new environment
+<environment name=StandardOval-0>
+
+# This will run the pure Oval tests or Cppunit tests
+<executable name="unitTest_CoralCommon_MonitoringEvent"> Oval test</executable>
+
+# To run Valgrind 
+<!script name="ovalgrind" args="unitTest_CoralCommon_MonitoringEvent"></script>
+
+</environment>
+
+

@@ -1,0 +1,73 @@
+<sect2><title>OracleAccess Semantics</title>
+<sect3><title>The logical data hiererchy</title>
+<para>In order to connect to an Oracle database using CORAL one should
+specify a  connection string which typically has a format such as
+<programlisting>
+oracle://databaseServerName:port/schemaName/serviceName
+</programlisting>
+where the port number is optional.
+</para>
+<para>
+The schema name is in practice the user name of an oracle user.
+A user has access to the tables defined in the schema of another user
+for which all the relevant privileges have been granted.
+</para>
+<para>The database server name refers either to the logical name which should appear
+as an entry in the $(TNS_ADMIN)/tnsnames.ora file, or an actual server
+hosting the database.</para>
+</sect3>
+
+<sect3><title>Controlling Oracle-specific parameters</title>
+<sect4><title>Table spaces</title>
+<para>New tables, indices and LOBs are created in the default table space of
+the user. This may not always be the optimum behaviour for a user who
+may wish that indices especially are created in different table
+spaces. There are three ways which allow the user specify the table
+space for new tables and indices:
+<orderedlist>
+<listitem><para>By setting the environment variables
+<emphasis role="bold">CORAL_ORA_TS_TAB</emphasis>,
+<emphasis role="bold">CORAL_ORA_TS_IND</emphasis> and
+<emphasis role="bold">CORAL_ORA_TS_LOB</emphasis> to the name of the
+table space for new tables, indices and LOBs respectively.</para></listitem>
+<listitem><para>By setting the properties
+<emphasis role="bold">TableSpaceForTables</emphasis>,
+<emphasis role="bold">TableSpaceForIndices</emphasis> and
+<emphasis role="bold">TableSpaceForLobs</emphasis> of the
+IRelationalDomain component "CORAL/RelationalPlugins/oracle" to the
+name of the table space for new tables, indices and LOBsrespectively.</para></listitem>
+<listitem>By overriding the default values (empty string) in the
+relevant methods of the CORAL API with the actual ones. </listitem>
+</orderedlist>
+</para>
+</sect4>
+
+<sect4><title>LOB handling</title>
+<para>
+When reading back a LOB object from the database, this is done in
+chunks which have a default size of 1024 bytes (1 KB). This default
+value can changed by setting the property <emphasis role="bold">LobChunkSize</emphasis>
+or the environment variable <emphasis role="bold">CORAL_ORA_LOB_CHUNK_SIZE</emphasis>
+accordingly.
+</para>
+</sect4>
+
+<sect4><title>Enabling SQL TRACE</title>
+<para>
+A user can trigger the generation of a trace file in the database
+server, whenever he/she authenticates, by setting the environment variable
+<emphasis role="bold">CORAL_ORA_SQL_TRACE_ON</emphasis> to any value.
+</para>
+<para>In case the environment variable <emphasis role="bold">CORAL_ORA_CERN_TRACE_ON</emphasis>
+is set, it takes precedence over CORAL_ORA_SQL_TRACE_ON and executes
+the CERN_TRACE package in the server, which has to be already
+installed on the server by the system administrators. This also
+triggers the generation of the trace file, and whenever the user
+session is ended the trace file is sent by mail to the address stored
+in the environment variable CORAL_ORA_CERN_TRACE_ON.
+</para>
+</sect4>
+
+</sect3>
+
+</sect2>

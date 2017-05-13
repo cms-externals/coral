@@ -1,0 +1,13 @@
+<sect2><title>EnvironmentAuthenticationService Semantics</title>
+<para>
+The EnvironmentAuthenticationService component ("CORAL/Services/EnvironmentAuthenticationService")
+provides an implementation of the <emphasis>IAuthenticationService</emphasis> interface which is
+based on the use of two environment variables. In particular the
+database user name and password are retrieved from the environment
+variables <emphasis role="bold">CORAL_AUTH_USER</emphasis> and <emphasis role="bold">CORAL_AUTH_PASSWORD</emphasis> respectively,
+completely ignoring what the actual connection string is.
+</para>
+<para>This implementation is provided mainly to facilitate easy
+development of CORAL-based applications.</para>
+
+</sect2>

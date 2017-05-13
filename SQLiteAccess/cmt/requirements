@@ -1,0 +1,41 @@
+package SQLiteAccess
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v*
+use sqlite * LCG_Interfaces
+
+apply_pattern lcg_module_library
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+use CppUnit v* LCG_Interfaces -no_auto_imports
+
+# The unit tests
+apply_pattern coral_unit_test tname=BulkInserts
+apply_pattern coral_unit_test tname=BulkOperations
+apply_pattern coral_unit_test tname=CreateListDrop
+apply_pattern coral_unit_test tname=DataEditor
+apply_pattern coral_unit_test tname=DateAndTime
+apply_pattern coral_unit_test tname=DescribeTable
+apply_pattern coral_unit_test tname=QueriesInSingleTable
+apply_pattern coral_unit_test tname=QueriesWithMultipleTables
+apply_pattern coral_unit_test tname=SchemaEditor
+apply_pattern coral_unit_test tname=uInt32Order
+apply_pattern coral_unit_test tname=Views
+apply_pattern coral_unit_test tname=ExpressionParser timport=UnitTests
+macro_append test_unit_SQLiteAccess_ExpressionParserlinkopts ' -llcg_SQLiteAccess ' target-winxp ' lcg_SQLiteAccess.lib '
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

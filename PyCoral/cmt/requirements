@@ -1,0 +1,47 @@
+package PyCoral
+
+#============================================================================
+# Private dependencies and build rules
+#============================================================================
+
+private
+
+#----------------------------------------------------------------------------
+# Library
+#----------------------------------------------------------------------------
+
+use CoralCommon v*
+use Python * LCG_Interfaces
+
+# Fix bug #73789 on vc9: 'lcg_module_library' instead of 'lcg_shared_library'
+apply_pattern lcg_module_library
+
+# Fix bug #73789 on vc9: copy .dll as .pyd
+macro install_PyCoral_pyd_action "echo No pyd needed on this platform" \
+  target-winxp "copy /Y $(CMTINSTALLAREA)\$(tag)\lib\lcg_PyCoral.dll $(CMTINSTALLAREA)\$(tag)\lib\lcg_PyCoral.pyd"
+document cmt_action_runner install_PyCoral_pyd -group=all \
+  -target_tag action_value=$(install_PyCoral_pyd_action)
+macro_append install_PyCoral_pyd_dependencies lcg_PyCoral
+
+# Workaround for bug #52384: disable strict-aliasing warnings in opt builds
+# Added for gcc43, but applies to all newer gcc including gcc46 (bug #89768)
+# [NB: the warnings come from the Py_RETURN_TRUE/FALSE macros in Python.h and
+# cannot be removed: http://lists.samba.org/archive/distcc/2009q1/003857.html]
+macro_append cppflags "" target-gcc&target-opt " -Wstrict-aliasing=0"
+# Stronger workaround for bug #52384: disable strict-aliasing checks
+###macro_append cppflags "" target-gcc&target-opt " -fno-strict-aliasing"
+
+# Do not install the header files (task #15557)
+macro_remove constituents 'install_includes'
+
+#----------------------------------------------------------------------------
+# Tests and utilities
+#----------------------------------------------------------------------------
+
+# Fake target for tests
+action tests "echo No tests in this package"
+macro_remove cmt_actions_constituents "tests"
+
+# Fake target for utilities
+action utilities "echo No utilities in this package"
+macro_remove cmt_actions_constituents "utilities"

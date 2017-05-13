@@ -1,0 +1,21 @@
+<!-- $Id: Semantics.xml,v 1.1 2005/11/18 11:42:58 rado Exp $ -->
+<sect2> <title>MonitoringService Semantics</title>
+ <sect3> <title>The logical data hierarchy</title>
+  <para>
+  The monitoring service is not used directly by application code but
+  rather steered via user level IMonitoring interface. Only CORAL
+  plugins use this service directly to record any monitoring event
+  when it happens.
+  </para>
+ </sect3>
+ <sect3> <title>Controlling MonitoringService parameters</title>
+  <para>
+  The events recording may happen at different levels configurable via
+  coral::IMonitoring user level interface. The level determines the
+  granurality of the recored information from informational up to the
+  low level details about various steps performed by CORAL plugins to
+  be used mostly for debugging purposes.
+  <!-- FIXME - describe various levels -->
+  </para>
+ </sect3>
+</sect2>
