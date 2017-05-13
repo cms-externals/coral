@@ -162,7 +162,7 @@ coral::ISchema& coral::FrontierAccess::Session::schema( const std::string& schem
 
   coral::FrontierAccess::Statement query( *m_properties, "SELECT USERNAME FROM ALL_USERS WHERE USERNAME=:\"user\"" );
 
-  if( ! query.execute( inBuffer, false ) )
+  if( ! query.execute( inBuffer ) )
   {
     // FIXME - error reporting
     ;

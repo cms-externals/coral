@@ -104,12 +104,7 @@ coral::ICursor& coral::FrontierAccess::Query::execute()
     statement->setNumberOfPrefetchedRows( m_cacheSize );
   }
 
-  // Bind and execute.
-  //   const char* reloadEnv = ::getenv( "CORAL_FRONTIER_RELOAD" ); bool reload = false;
-  //   if( reloadEnv != 0 )
-  //     reload = true;
-
-  bool result = statement->execute( this->bindData(), this->reload() );
+  bool result = statement->execute( this->bindData(), this->timeToLive() );
 
   if ( ! result )
     throw coral::QueryException( this->sessionProperties().domainProperties().service()->name(), "Could not execute a query", "IQuery::execute" );

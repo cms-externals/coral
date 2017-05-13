@@ -21,33 +21,47 @@ coral::ConnectionService::WebCacheControl::~WebCacheControl(){
 /**
  * Instructs the RDBMS backend that all the tables within the schema specified
  * by the physical or logical connection should be refreshed, in case they are accessed.
+ * Deprecated.  Sets default timeToLive to 1 for tables not identified.
  */
 void
 coral::ConnectionService::WebCacheControl::refreshSchemaInfo( const std::string& connection ){
   std::map<std::string, WebCacheInfo >::iterator iter = m_webCacheConfiguration.find( connection );
   if( iter == m_webCacheConfiguration.end() ) {
     WebCacheInfo cacheInfo;
-    cacheInfo.setSchemaInfoRefresh( true );
+    cacheInfo.setDefaultTimeToLive( 1 );
     m_webCacheConfiguration.insert( std::make_pair( connection, cacheInfo ) );
   } else {
-    iter->second.setSchemaInfoRefresh( true );
+    iter->second.setDefaultTimeToLive( 1 );
   }
 }
 
 /**
  * Instructs the RDBMS backend that the specified table within the schema specified
  * by the physical or logical connection should be refreshed in case it is accessed.
+ * Deprecated: use instead setTableTimeToLive( connection, tableName, 1 )
  */
 void
 coral::ConnectionService::WebCacheControl::refreshTable( const std::string& connection,
                                                          const std::string& tableName ){
+  setTableTimeToLive( connection, tableName, 1 );
+}
+
+/**
+ * Instructs the RDBMS backend to cache queries that use the table specified by tableName
+ * within the schema specified by connection for the time length specified by timeToLive,
+ * 1=short, 2=long, 3=forever.  Default 2.
+ */
+void
+coral::ConnectionService::WebCacheControl::setTableTimeToLive( const std::string& connection,
+                                                               const std::string& tableName,
+                                                               int timeToLive ){
   std::map<std::string, WebCacheInfo >::iterator iter = m_webCacheConfiguration.find( connection );
   if( iter == m_webCacheConfiguration.end() ) {
     WebCacheInfo cacheInfo;
-    cacheInfo.setTableRefresh( tableName, true );
+    cacheInfo.setTableTimeToLive( tableName, timeToLive );
     m_webCacheConfiguration.insert( std::make_pair(connection,cacheInfo) );
   } else {
-    iter->second.setTableRefresh( tableName, true );
+    iter->second.setTableTimeToLive( tableName, timeToLive );
   }
 }
 
@@ -86,15 +100,15 @@ coral::ConnectionService::WebCacheControl::setProxyList( const std::vector<std::
 
 /// constructor
 coral::ConnectionService::WebCacheInfo::WebCacheInfo() :
-  m_schemaInfoRefresh(false),
-  m_toRefreshTables(){
+  m_defaultTimeToLive(2),
+  m_tablesTimeToLive(){
 }
 
 /// constructor
 coral::ConnectionService::WebCacheInfo::WebCacheInfo( const WebCacheInfo& rhs ) :
   IWebCacheInfo(),
-  m_schemaInfoRefresh( rhs.m_schemaInfoRefresh ),
-  m_toRefreshTables( rhs.m_toRefreshTables ){
+  m_defaultTimeToLive( rhs.m_defaultTimeToLive ),
+  m_tablesTimeToLive( rhs.m_tablesTimeToLive ){
 }
 
 /// destructor
@@ -104,46 +118,47 @@ coral::ConnectionService::WebCacheInfo::~WebCacheInfo(){
 /// assignment
 coral::ConnectionService::WebCacheInfo& coral::ConnectionService::WebCacheInfo::operator=( const WebCacheInfo& rhs ){
   if(this!=&rhs) {
-    m_schemaInfoRefresh = rhs.m_schemaInfoRefresh;
-    m_toRefreshTables = rhs.m_toRefreshTables;
+    m_defaultTimeToLive = rhs.m_defaultTimeToLive;
+    m_tablesTimeToLive = rhs.m_tablesTimeToLive;
   }
   return *this;
 }
 
 
-/// Checks if the schema info (data dictionary) is cached, i.e.it  does not need to be refreshed
+/// Checks if the schema info (data dictionary) is cached, i.e. it does not need to be refreshed
+/// Deprecated.  Returns true if the default timeToLive != 1
 bool
 coral::ConnectionService::WebCacheInfo::isSchemaInfoCached() const {
-  return !m_schemaInfoRefresh;
+  return m_defaultTimeToLive != 1;
 }
 
-/// Checks if a table in the schema is cached, i.e.it  does not need to be refreshed
+/// Checks if a table in the schema is cached, i.e. it  does not need to be refreshed
+/// Deprecated: use instead tableTimeToLive( tableName ) != 1
 bool
 coral::ConnectionService::WebCacheInfo::isTableCached( const std::string& tableName ) const {
-  bool ret = true;
-  if( m_schemaInfoRefresh ) {
-    ret = false;
-  } else {
-    std::set<std::string>::const_iterator iter = m_toRefreshTables.find( tableName );
-    if( iter != m_toRefreshTables.end() ) ret = false;
-  }
-  return ret;
+  return tableTimeToLive( tableName) != 1;
 }
 
-/// sets the caching of the schema info
-void
-coral::ConnectionService::WebCacheInfo::setSchemaInfoRefresh( bool flag ){
-  m_schemaInfoRefresh = flag;
+/// Returns timeToLive value (1=short, 2=long, 3=forever) for a table in the schema
+int
+coral::ConnectionService::WebCacheInfo::tableTimeToLive( const std::string& tableName ) const {
+  std::map<std::string, int>::const_iterator iter = m_tablesTimeToLive.find( tableName );
+  if( iter == m_tablesTimeToLive.end() ) {
+    // not found, return the default
+    return m_defaultTimeToLive;
+  }
+  return iter->second;
 }
 
 
-/// sets the caching of the specified table
+/// sets default timeToLive.   only used by deprecated function.
 void
-coral::ConnectionService::WebCacheInfo::setTableRefresh( const std::string& tableName, bool flag ){
-  if(flag)
-  {
-    m_toRefreshTables.insert( tableName );
-  } else {
-    m_toRefreshTables.erase( tableName );
-  }
+coral::ConnectionService::WebCacheInfo::setDefaultTimeToLive( int timeToLive ){
+  m_defaultTimeToLive = timeToLive;
+}
+
+/// sets the timeToLive of the specified table
+void
+coral::ConnectionService::WebCacheInfo::setTableTimeToLive( const std::string& tableName, int timeToLive ){
+  m_tablesTimeToLive[ tableName ] = timeToLive;
 }

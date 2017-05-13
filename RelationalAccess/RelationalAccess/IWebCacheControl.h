@@ -20,15 +20,26 @@ namespace coral {
     /**
        Instructs the RDBMS backend that all the tables within the schema specified
        by the physical or logical connection should be refreshed, in case they are accessed.
+       Deprecated.  Sets default timeToLive to 1 for tables not identified.
     */
     virtual void refreshSchemaInfo( const std::string& connection ) = 0;
 
     /**
        Instructs the RDBMS backend that the specified table within the schema specified
        by the physical or logical connection should be refreshed in case it is accessed.
+       Deprecated: use instead setTabletimeToLive( connection, tableName, 1 )
      */
     virtual void refreshTable( const std::string& connection,
                                const std::string& tableName ) = 0;
+
+      /**
+         Instructs the RDBMS backend to cache queries that use the table specified by tableName
+	 within the schema specified by connection for the time length specified by timeToLive,
+	 1=short, 2=long, 3=forever.  Default 2.
+      */
+      virtual void setTableTimeToLive( const std::string& connection,
+                                       const std::string& tableName,
+			               int timeToLive ) = 0;
 
     /**
        Returns the web cache information for a schema given the corresponding physical or

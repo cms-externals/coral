@@ -43,7 +43,7 @@ coral::FrontierAccess::QueryDefinition::QueryDefinition( const coral::FrontierAc
     m_rowOffset( 0 ),
     m_setQuery( 0, coral::IQueryDefinition::Union ),
     m_output(),
-    m_reload( false )
+    m_timeToLive( 2 )
 {
 }
 
@@ -63,7 +63,7 @@ coral::FrontierAccess::QueryDefinition::QueryDefinition( const coral::FrontierAc
     m_rowOffset( 0 ),
     m_setQuery( 0, coral::IQueryDefinition::Union ),
     m_output(),
-    m_reload( false )
+    m_timeToLive( 2 )
 {
   m_tableList.push_back( std::make_pair( tableName, tableName ) );
 }
@@ -250,26 +250,6 @@ void coral::FrontierAccess::QueryDefinition::process()
       expressionParser.addToTableList( dynamic_cast< const ::coral::FrontierAccess::View& >( m_properties.schema().viewHandle( tableName ) ).description() );
   }
 
-  // Check if the current schema is to be refreshed
-  try
-  {
-    const coral::IWebCacheControl& cachectrl = m_properties.cacheControl();
-    const coral::IWebCacheInfo&    cacheinfo = cachectrl.webCacheInfo( m_properties.connectionString() );
-
-    log << coral::Verbose << "Checking web cache control for connection " << m_properties.connectionString() << coral::MessageStream::endmsg;
-
-    if( ! cacheinfo.isSchemaInfoCached() )
-      this->setReload();
-    else
-      this->setReload( false );
-  }
-  catch( const std::exception& e )
-  {
-    //log << coral::Verbose << "Connection string: " << m_properties.connectionString() << coral::MessageStream::endmsg;
-    log << coral::Verbose << e.what() << coral::MessageStream::endmsg;
-    log << coral::Verbose << "Running query in cached mode..." << coral::MessageStream::endmsg;
-  }
-
   // Construct the query.
   std::ostringstream os;
   os << "SELECT ";
@@ -347,15 +327,8 @@ void coral::FrontierAccess::QueryDefinition::process()
     {
       const coral::IWebCacheControl& cachectrl = m_properties.cacheControl();
       const coral::IWebCacheInfo&    cacheinfo = cachectrl.webCacheInfo( m_properties.connectionString() );
-      if( ! cacheinfo.isTableCached( tableName ) )
-      {
-        log << coral::Verbose << "Table " << tableName << " is not cached: reload it" << coral::MessageStream::endmsg;
-        this->setReload( true );
-      }
-      else
-      {
-        log << coral::Verbose << "Table " << tableName << " is cached: do not reload it" << coral::MessageStream::endmsg;
-      }
+      this->setTimeToLive( cacheinfo.tableTimeToLive( tableName ) );
+      log << coral::Verbose << "TimeToLive for table " << tableName << " is " << this->timeToLive() << coral::MessageStream::endmsg;
     }
     catch( const std::exception& e )
     {

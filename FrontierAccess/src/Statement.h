@@ -81,7 +81,7 @@ namespace coral
        * Returns false in case of any error, true otherwise.
        *
        */
-      bool execute( const coral::AttributeList& rowBuffer, bool forceReload );
+      bool execute( const coral::AttributeList& rowBuffer, int timeToLive=2 );
 
       /**
        * Returns the number of rows processed.

@@ -236,7 +236,7 @@ namespace coral
       return true;
     }
 
-    bool Statement::execute( const coral::AttributeList& rowBuffer, bool forceReload )
+    bool Statement::execute( const coral::AttributeList& rowBuffer, int timeToLive )
     {
       try
       {
@@ -278,18 +278,12 @@ namespace coral
 
           try
           {
-            // Force cache update
-            if( forceReload )
-            {
-              mslog() << coral::Debug << "Refreshing data with query \"" << this->m_sqlStatement << "\"" << coral::MessageStream::endmsg;
-              m_properties.connection().setReload(1);
-            }
-            else
-            {
-              mslog() << coral::Verbose << "Executing query " << m_sqlStatement << coral::MessageStream::endmsg;
-              //mslog() << coral::Verbose << "Bind variables used to build the query: " << rowBuffer << coral::MessageStream::endmsg;
-              m_properties.connection().setReload(0);
-            }
+            // Set timeToLive value on the connection
+            m_properties.connection().setTimeToLive( timeToLive );
+            const char *ttlName = "";
+            if ( timeToLive == 1 ) ttlName = "short ";
+            else if ( timeToLive == 3 ) ttlName = "forever ";
+            mslog() << coral::Verbose << "Executing " << ttlName << "query " << m_sqlStatement << coral::MessageStream::endmsg;
 
             // Perform the execution
             m_session->getData( m_listOfRequests );

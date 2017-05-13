@@ -34,26 +34,30 @@ namespace coral
       /// assignment
       WebCacheInfo& operator=( const WebCacheInfo& rhs );
 
-      /// Checks if the schema info (data dictionary) is cached, i.e.it  does not need to be refreshed
+      /// Checks if the schema info (data dictionary) is cached, i.e. it does not need to be refreshed.
+      /// Deprecated.  Returns true if the default timeToLive != 1
       bool isSchemaInfoCached() const;
 
-      /// Checks if a table in the schema is cached, i.e.it  does not need to be refreshed
+      /// Checks if a table in the schema is cached, i.e. it does not need to be refreshed
+      /// Deprecated: use instead tableTimeToLive( tableName ) != 1
       bool isTableCached( const std::string& tableName ) const;
 
-      /// sets the caching of the schema info
-      void setSchemaInfoRefresh( bool flag );
+      /// Returns timeToLive value (1=short, 2=long, 3=forever) for a table in the schema
+      int tableTimeToLive( const std::string& tableName ) const;
 
-      /// sets the caching of the specified table
-      void setTableRefresh( const std::string& tableName, bool flag );
+      /// sets the default timeToLive. only used by deprecated function.
+      void setDefaultTimeToLive( int timeToLive );
+
+      /// sets the timeToLive of the specified table
+      void setTableTimeToLive( const std::string& tableName, int timeToLive );
 
     private:
 
-      /// flag to set the caching of the schema info
-      bool m_schemaInfoRefresh;
+      /// default timeToLive for tables not specified
+      int m_defaultTimeToLive;
 
-      /// list of tables cached
-      std::set<std::string> m_toRefreshTables;
-
+      /// associative array of tables to their timeToLive
+      std::map<std::string, int> m_tablesTimeToLive;
     };
 
 
@@ -72,15 +76,26 @@ namespace coral
       /**
          Instructs the RDBMS backend that all the tables within the schema specified
          by the physical or logical connection should be refreshed, in case they are accessed.
+	 Deprecated.  Sets default timeToLive to 1 for tables not identified.
       */
       void refreshSchemaInfo( const std::string& connection );
 
       /**
          Instructs the RDBMS backend that the specified table within the schema specified
          by the physical or logical connection should be refreshed in case it is accessed.
+	 Deprecated: use instead setTableTimeToLive( connection, tableName, 1 )
       */
       void refreshTable( const std::string& connection,
                          const std::string& tableName );
+
+      /**
+         Instructs the RDBMS backend to cache queries that use the table specified by tableName
+	 within the schema specified by connection for the time length specified by timeToLive,
+	 1=short, 2=long, 3=forever.  Default 2.
+      */
+      void setTableTimeToLive( const std::string& connection,
+                               const std::string& tableName,
+			       int timeToLive );
 
       /**
          Returns the web cache information for a schema given the corresponding physical or

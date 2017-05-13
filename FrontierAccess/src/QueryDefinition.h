@@ -97,19 +97,19 @@ namespace coral
 
     protected:
       /**
-       * Check if query should be executed with reload option enabled
+       * Return the timeToLive value for the current schema or table
        */
-      bool reload() const
+      int timeToLive() const
       {
-        return this->m_reload;
+        return m_timeToLive;
       }
 
       /**
-       * Set reload flag
+       * Set timeToLive value for the current schema or table
        */
-      void setReload( bool flag=true )
+      void setTimeToLive( int timeToLive )
       {
-        this->m_reload = flag;
+        m_timeToLive = timeToLive;
       }
 
     private:
@@ -163,8 +163,8 @@ namespace coral
       /// The final output list
       std::vector< std::string >                           m_output;
 
-      /// Reload flag, it is set if web cache control provides the positive hint about a schema or table to be reloaded
-      bool m_reload;
+      /// timeToLive value from web cache control for the current schema or table
+      int m_timeToLive;
     };
   }
 }

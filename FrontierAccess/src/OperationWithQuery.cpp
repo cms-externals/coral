@@ -25,15 +25,11 @@ long coral::FrontierAccess::OperationWithQuery::execute()
   if ( m_statement.empty() )
     return 0;
 
-  const char* reloadEnv = ::getenv( "CORAL_FRONTIER_RELOAD" ); bool reload = false;
-  if( reloadEnv != 0 )
-    reload = true;
-
   m_statement += " ( " + m_queryDefinition->sqlFragment() + " )";
 
   coral::FrontierAccess::Statement statement( m_queryDefinition->sessionProperties(), m_statement );
 
-  if ( ! statement.execute( m_queryDefinition->bindData(), reload ) )
+  if ( ! statement.execute( m_queryDefinition->bindData() ) )
     return 0;
 
   long result = statement.numberOfRowsProcessed();

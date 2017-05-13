@@ -81,7 +81,7 @@ void coral::FrontierAccess::TableDescriptionProxy::readColumnDescription()
   outputData.extend<int>        ( "CHAR_LENGTH"      ); //const int&         columnLength    = outputData["CHAR_LENGTH"   ].data<int>();
   outputData.extend<int>        ( "DATA_SCALE"       ); const int&         columnScale     = outputData["DATA_SCALE"    ].data<int>();
 
-  if ( ! statement.execute( inputData, false ) )
+  if ( ! statement.execute( inputData ) )
   {
     // FIXME - error reporting
     ;
@@ -236,7 +236,7 @@ void coral::FrontierAccess::TableDescriptionProxy::refreshConstraints() const
   (*bindData)[0].data<std::string>() = m_sessionProperties.schemaName();
   (*bindData)[1].data<std::string>() = m_description->name();
 
-  if ( ! statement.execute( *bindData, false ) )
+  if ( ! statement.execute( *bindData ) )
   {
     throw coral::SchemaException( m_sessionProperties.domainProperties().service()->name(), "Could not retrieve the unique constraints defined in a table", "TableDescriptionProxy::refreshConstraints" );
   }
@@ -307,7 +307,7 @@ void coral::FrontierAccess::TableDescriptionProxy::refreshPrimaryKeyInfo() const
   (*bindData)[0].data<std::string>() = m_sessionProperties.schemaName();
   (*bindData)[1].data<std::string>() = m_description->name();
 
-  if ( ! statement.execute( *bindData, false ) )
+  if ( ! statement.execute( *bindData ) )
   {
     throw coral::SchemaException( m_sessionProperties.domainProperties().service()->name(), "Could not retrieve the primary key information defined in a table", "TableDescriptionProxy::refreshPrimaryKeyInfo" );
   }
@@ -393,7 +393,7 @@ void coral::FrontierAccess::TableDescriptionProxy::refreshIndexInfo() const
   output.extend<std::string>( "TABLESPACE_NAME" ); const std::string& tableSpaceName = output["TABLESPACE_NAME"].data<std::string>();
   output.extend<std::string>( "COLUMN_NAME" )    ; const std::string& columnName     = output["COLUMN_NAME"    ].data<std::string>();
 
-  if ( ! statement.execute( bindData, false ) )
+  if ( ! statement.execute( bindData ) )
     throw coral::SchemaException( m_sessionProperties.domainProperties().service()->name(), "Could not retrieve the index information defined in a table", "TableDescriptionProxy::refreshPrimaryKeyInfo" );
 
   statement.defineOutput( output );
@@ -473,7 +473,7 @@ void coral::FrontierAccess::TableDescriptionProxy::refreshForeignKeyInfo() const
   output.extend<std::string>( "FK_COL"    ); const std::string& foreignKeyColumnName = output["FK_COL"   ].data<std::string>();
   output.extend<std::string>( "REF_COL"   ); const std::string& referencedColumnName = output["REF_COL"  ].data<std::string>();
 
-  if ( ! statement.execute( bindData, false ) )
+  if ( ! statement.execute( bindData ) )
   {
     throw coral::SchemaException( m_sessionProperties.domainProperties().service()->name(), "Could not retrieve the foreign key information defined in a table", "TableDescriptionProxy::refreshForeignKeyInfo" );
   }
@@ -514,7 +514,7 @@ std::string coral::FrontierAccess::TableDescriptionProxy::tableSpaceName() const
     bindData[0].data<std::string>() = m_sessionProperties.schemaName();
     bindData[1].data<std::string>() = m_description->name();
 
-    if ( ! statement.execute( bindData, false ) )
+    if ( ! statement.execute( bindData ) )
     {
       throw coral::SchemaException( m_sessionProperties.domainProperties().service()->name(), "Could not retrieve the tablespace for a table", "ITableDescription::tableSpaceName" );
     }

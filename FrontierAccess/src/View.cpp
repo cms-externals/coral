@@ -91,7 +91,7 @@ void coral::FrontierAccess::View::refreshDefinition()
 
   coral::FrontierAccess::Statement statement( m_sessionProperties, os.str() );
 
-  if ( ! statement.execute( coral::AttributeList(), false ) )
+  if ( ! statement.execute( coral::AttributeList() ) )
     throw coral::SchemaException( m_sessionProperties.domainProperties().service()->name(), "Could not read the definition of a view", "View::refreshDefinition" );
 
   coral::AttributeList* output = new coral::AttributeList;

@@ -79,7 +79,7 @@ void coral::FrontierAccess::Schema::readTableColumns(const std::string& tableNam
     bindData.extend<std::string>( "table" );
     bindData["table"].data<std::string>() = tableName;
   }
-  statement.execute( bindData, false );
+  statement.execute( bindData );
   coral::AttributeList outputData;
   outputData.extend<std::string>("TABLE_NAME");
   const std::string& tName = outputData["TABLE_NAME"].data<std::string>();
@@ -262,7 +262,7 @@ bool coral::FrontierAccess::Schema::existsView( const std::string& viewName ) co
       bindData.extend<std::string>( "view" );
       bindData["owner"].data<std::string>() = m_sessionProperties.schemaName();
       bindData["view"].data<std::string>() = viewName;
-      statement.execute( bindData, false );
+      statement.execute( bindData );
       coral::AttributeList output;
       output.extend<std::string>( "OBJECT_NAME" );
       const std::string& vName = output.begin()->data<std::string>();
@@ -366,7 +366,7 @@ void coral::FrontierAccess::Schema::readViewsFromDataDictionary() const
   coral::AttributeList bindData;
   bindData.extend<std::string>( "owner" );
   bindData.begin()->data<std::string>() = m_sessionProperties.schemaName();
-  statement.execute( bindData, false );
+  statement.execute( bindData );
   coral::AttributeList output;
   output.extend<std::string>( "VIEW_NAME" );
   const std::string& viewName = output.begin()->data<std::string>();

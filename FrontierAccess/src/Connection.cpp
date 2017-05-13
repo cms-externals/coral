@@ -191,7 +191,7 @@ bool coral::FrontierAccess::Connection::ping()
   //   // Use a statement to find the Oracle server version behind the Frontier app. server
   //   coral::AttributeList inBuffer;
   //   coral::FrontierAccess::Statement query( *m_properties, "SELECT 1 FROM DUAL" ); // FIXME !!!!
-  //   this->m_connected = query.execute( inBuffer, false /* rely on cache */ ); // We realy now on the Frontier client + caching to avoid Oracle server acess overhead
+  //   this->m_connected = query.execute( inBuffer );
 
   return available;
 }
