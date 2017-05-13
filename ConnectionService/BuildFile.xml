@@ -1,4 +1,4 @@
-<use   name="uuid"/>
+<use   name="libuuid"/>
 <use   name="LCG/CoralCommon"/>
 <use   name="LCG/RelationalAccess"/>
 <use   name="boost"/>
