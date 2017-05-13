@@ -85,7 +85,7 @@ PacketQueue::timed_push ( PacketPtr packet, unsigned timeoutSec )
   // wait unil we have an empty slot
   while ( m_queue.size() >= m_maxSize ) {
     boost::xtime xt;
-    boost::xtime_get ( &xt, boost::TIME_UTC ) ;
+    boost::xtime_get ( &xt, boost::TIME_UTC_ ) ;
     xt.sec += timeoutSec;
     if ( not m_condFull.timed_wait( qlock, xt ) ) {
       return false ;

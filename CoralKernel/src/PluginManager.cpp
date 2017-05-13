@@ -274,7 +274,7 @@ coral::PluginManager::loadLibrary( const std::string& libraryName )
     std::cout << "***** OracleAccess DEBUG: strace OCIEnvCreate calls (START) *****" << std::endl;
     system( cmd.str().c_str() );
     // Sleep 1 second (else dlopen may be executed before strace is attached)
-    boost::xtime tsleep; boost::xtime_get( &tsleep, boost::TIME_UTC ); tsleep.sec += 1;
+    boost::xtime tsleep; boost::xtime_get( &tsleep, boost::TIME_UTC_ ); tsleep.sec += 1;
     boost::thread::sleep( tsleep );
   }
 #endif

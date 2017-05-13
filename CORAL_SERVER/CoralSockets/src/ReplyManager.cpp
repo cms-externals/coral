@@ -75,7 +75,7 @@ boost::shared_ptr<ByteBuffer> ReplySlot::nextReply( bool& lastReply )
     // so better use a time out..
     // todo: handle errors (connection lost etc...)
     boost::xtime xt;
-    xtime_get(&xt, boost::TIME_UTC);
+    xtime_get(&xt, boost::TIME_UTC_);
     xt.sec += 20;
     if ( !m_cond.timed_wait(lock, xt) )
     {

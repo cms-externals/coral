@@ -428,7 +428,7 @@ coral::ConnectionService::ConnectionPool::waitForTimeout()
   //            << " seconds)" << std::endl;
   //}
   boost::xtime xt;
-  boost::xtime_get(&xt, boost::TIME_UTC);
+  boost::xtime_get(&xt, boost::TIME_UTC_);
   if( m_connectionServiceConfiguration.poolCleanUpPeriod() > 0 )
     xt.sec += m_connectionServiceConfiguration.poolCleanUpPeriod();
   else
