@@ -190,11 +190,15 @@ namespace coral
 
         mslog() << coral::Verbose << "*** statement#4 :" << m_sqlStatement << coral::MessageStream::endmsg;
 
-        std::string sql = m_sqlStatement;
 
-        sql += '\n';
+        std::string param;
+        {
+          std::string sql = m_sqlStatement;
 
-        std::string param = frontier::Request::encodeParam( sql );
+          sql += '\n';
+          boost::mutex::scoped_lock lock( m_properties.lock() );
+          param = frontier::Request::encodeParam( sql );
+        }
 
         frontier::Request* request = new frontier::Request( req_data , frontier::BLOB );
 
@@ -202,20 +206,20 @@ namespace coral
 
         m_listOfRequests.push_back( request );
 
-        // Locate the web cache control and set up the compression level for the request
-        try
-        {
-          coral::IWebCacheControl& cachectrl = const_cast<coral::IWebCacheControl&>( m_properties.cacheControl() );
-          request->setRetrieveZipLevel( cachectrl.compressionLevel() );
-          mslog() << coral::Debug << "Running with the compression level: " << cachectrl.compressionLevel() << coral::MessageStream::endmsg;
-        }
-        catch( const std::exception& )
-        {
-          mslog() << coral::Debug << "Running with the default compression level" << coral::MessageStream::endmsg;
-        }
-
         {
           boost::mutex::scoped_lock lock( m_properties.lock() );
+
+          // Locate the web cache control and set up the compression level for the request
+          try
+          {
+            coral::IWebCacheControl& cachectrl = const_cast<coral::IWebCacheControl&>( m_properties.cacheControl() );
+            request->setRetrieveZipLevel( cachectrl.compressionLevel() );
+            mslog() << coral::Debug << "Running with the compression level: " << cachectrl.compressionLevel() << coral::MessageStream::endmsg;
+          }
+          catch( const std::exception& )
+          {
+            mslog() << coral::Debug << "Running with the default compression level" << coral::MessageStream::endmsg;
+          }
 
           try
           {
