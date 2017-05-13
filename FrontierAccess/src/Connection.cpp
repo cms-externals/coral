@@ -20,6 +20,7 @@
 #include "ErrorHandler.h"
 #include "Session.h"
 #include "TypeConverter.h"
+boost::mutex coral::FrontierAccess::Connection::s_lock{};
 
 coral::FrontierAccess::Connection::Connection( const coral::FrontierAccess::DomainProperties& domainProperties, const std::string& connectionString )
   : m_connection(0)
@@ -28,7 +29,6 @@ coral::FrontierAccess::Connection::Connection( const coral::FrontierAccess::Doma
   , m_connected( false )
   , m_serverVersion( "" )
   , m_typeConverter( new coral::FrontierAccess::TypeConverter( m_domainProperties ) )
-  , m_lock()
 {
   if( this->m_typeConverter )
     this->m_typeConverter->reset( 10 );
@@ -103,7 +103,7 @@ void coral::FrontierAccess::Connection::connect()
   log << coral::Verbose << "Connecting to Frontier server using URL: " << this->m_connectionString << coral::MessageStream::endmsg;
 
   {
-    boost::mutex::scoped_lock lock( m_lock );
+    boost::mutex::scoped_lock lock( s_lock );
 
     // Attaching the server
     m_connection = new frontier::Connection( m_connectionString );
@@ -126,7 +126,7 @@ coral::FrontierAccess::Connection::newSession( const std::string& schemaName,
                                         m_domainProperties,
                                         m_connectionString,
                                         *m_connection,
-                                        m_lock,
+                                        s_lock,
                                         schemaName,
                                         *m_typeConverter );
   return session;

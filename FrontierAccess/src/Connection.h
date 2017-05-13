@@ -91,7 +91,7 @@ namespace coral
       /// The type converter
       TypeConverter*                                   m_typeConverter;
       /// The connection lock
-      mutable boost::mutex m_lock;
+      static boost::mutex s_lock;
     };
   } // FrontierAccess namespace
 } // coral namespace
