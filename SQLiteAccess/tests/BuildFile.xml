@@ -1,5 +1,4 @@
 <use   name="LCG/SQLiteAccess"/>
-<use   name="UnitTests"/>
 <use   name="cppunit"/>
 <include_path   path="$(LOCALTOP)/$(SCRAM_SOURCEDIR)/LCG/SQLiteAccess"/>
 <bin   name="unitTest_SQLiteAccess_BulkInserts" file="BulkInserts/*.cpp">
