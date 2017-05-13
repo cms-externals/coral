@@ -3,6 +3,12 @@
 #include "RelationalAccess/ITransaction.h"
 #include <sstream>
 
+// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
+// warnings caused by Py_RETURN_TRUE/FALSE.
+#if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
+  #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#endif
+
 // Forward declaration of the methods
 static int ITransaction_init( PyObject* self, PyObject* args, PyObject* kwds );
 static void ITransaction_dealloc( PyObject* self );
