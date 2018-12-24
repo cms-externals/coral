@@ -15,7 +15,7 @@ namespace coral
 {
 
   class IPluginManager;
-  class IPropertyManager;
+  struct IPropertyManager;
   class PluginManager;
 
   /// The context singleton class.
