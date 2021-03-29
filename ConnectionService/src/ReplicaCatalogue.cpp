@@ -79,7 +79,7 @@ coral::ConnectionService::ReplicaCatalogue::isConnectionExcluded( const std::str
   if(iConn!=m_excludedConnections.end()) {
     coral::MessageStream log( m_serviceConfiguration.serviceName() );
 
-    excluded = (( coral::TimeStamp::now(true).time().time_of_day().seconds()-iConn->second.time_of_day().seconds()) < m_serviceConfiguration.missingConnectionExclusionTime() );
+    excluded = (( coral::TimeStamp::now(true).time().time_of_day().total_seconds()-iConn->second.time_of_day().total_seconds()) < m_serviceConfiguration.missingConnectionExclusionTime() );
     if(!excluded) {
       m_excludedConnections.erase(iConn);
       log << coral::Debug << "Service " << serviceName << " (technology=\""<<technologyName<<"\") has been re-admitted in the list of replicas." << coral::MessageStream::endmsg;
