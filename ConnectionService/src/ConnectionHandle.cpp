@@ -170,7 +170,7 @@ coral::ConnectionService::ConnectionHandle::newSession( const std::string& schem
             log << coral::Warning << "Failure while attempting to start a session on connection to service " << m_info->m_serviceName << ": "<< exc.what() << coral::MessageStream::endmsg;
           }
           if( !started ) {
-            if ( (coral::TimeStamp::now(true).time()-startSessionAttempt.time()).seconds() < m_info->m_configuration.connectionRetrialTimeOut() ) {
+            if ( (coral::TimeStamp::now(true).time()-startSessionAttempt.time()).total_seconds() < m_info->m_configuration.connectionRetrialTimeOut() ) {
               log << coral::Warning << "Failed to connect to service " << m_info->m_serviceName << ": retry after "<< m_info->m_configuration.connectionRetrialPeriod() << " seconds" << coral::MessageStream::endmsg;
               coral::sleepSeconds(m_info->m_configuration.connectionRetrialPeriod());
             } else {
@@ -264,7 +264,7 @@ coral::ConnectionService::ConnectionHandle::isIdle() const
 bool
 coral::ConnectionService::ConnectionHandle::isExpired() const
 {
-  return ( coral::TimeStamp::now(true).time()-m_info->m_startIdle.time()).seconds() >= m_info->m_configuration.connectionTimeOut();
+  return ( coral::TimeStamp::now(true).time()-m_info->m_startIdle.time()).total_seconds() >= m_info->m_configuration.connectionTimeOut();
 }
 
 /// returns the specific time-out of the connection
