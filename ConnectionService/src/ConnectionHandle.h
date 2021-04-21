@@ -105,11 +105,8 @@ namespace coral
       // initialize the connection
       bool open();
 
-      /*
-      /// THIS IS NEVER CALLED! (AV 22.07.2010)
       /// finalize (and invalidate) the connection.
       bool close();
-      */
 
       /// returns true if the connection is in open state
       bool isOpen() const;

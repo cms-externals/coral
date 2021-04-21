@@ -103,8 +103,6 @@ coral::ConnectionService::ConnectionHandle::open()
   return m_info->m_open;
 }
 
-/*
-/// THIS IS NEVER CALLED! (AV 22.07.2010)
 /// finalize (and invalidate) the connection.
 bool
 coral::ConnectionService::ConnectionHandle::close()
@@ -115,7 +113,6 @@ coral::ConnectionService::ConnectionHandle::close()
   }
   return ret;
 }
-*/
 
  /// returns true if the connection is valid
 bool
