@@ -302,12 +302,19 @@ coral::ConnectionService::ConnectionPool::releaseConnection( ConnectionHandle& c
       // if time out is set>0, move the idle connection to idle pool
       if ( connection.specificTimeOut()>0 )
       {
-        m_idleConnections.add( connection );
-        log << coral::Debug
-            << "The valid active connection id=" << connection.connectionId()
-            << " to service \"" << connection.serviceName()
-            << "\" has been moved to the idle list."
-            << coral::MessageStream::endmsg;
+        if( m_idleConnections.size() < MAX_POOL_SIZE ){
+	  m_idleConnections.add( connection );
+	  log << coral::Debug
+	      << "The valid active connection id=" << connection.connectionId()
+	      << " to service \"" << connection.serviceName()
+	      << "\" has been moved to the idle list."
+	      << coral::MessageStream::endmsg;
+        } else {
+	  log << coral::Warning
+	      << "The Idle Connection Pool has reached the maximum size=200" 
+	      << coral::MessageStream::endmsg;         
+	  connection.close();
+	}
       }
     }
     else
@@ -391,6 +398,7 @@ coral::ConnectionService::ConnectionPool::cleanUpTimedOutConnections()
          vecIter++ )
     {
       log << coral::Debug << "The timed-out idle connection id="<<(*vecIter)->connectionId()<<" to service \""<<(*vecIter)->serviceName() << "\" has been removed from the pool." << coral::MessageStream::endmsg;
+      (*vecIter)->close();
       m_idleConnections.remove( *vecIter );
     }
   }

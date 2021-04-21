@@ -18,6 +18,9 @@ namespace coral {
     class ConnectionPool {
 
     public:
+      const static unsigned int MAX_POOL_SIZE = 200; 
+
+    public:
 
       /// constructor
       explicit ConnectionPool( const ConnectionServiceConfiguration& configuration );
