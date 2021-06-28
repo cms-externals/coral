@@ -1,4 +1,4 @@
-#include "PyCoral/cast_to_base.h"
+#include "cast_to_base.h"
 
 typedef union {
   PyObject* object;

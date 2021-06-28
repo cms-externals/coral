@@ -5,12 +5,17 @@
 #include "IIndex.h"
 #include "IForeignKey.h"
 #include "IUniqueConstraint.h"
-#include "PyCoral/cast_to_base.h"
+#include "cast_to_base.h"
 #include "RelationalAccess/ITableDescription.h"
 #include <sstream>
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+    #define PyString_AS_STRING PyUnicode_AsUTF8
+#endif
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -40,31 +45,31 @@ PyTypeObject*
 coral::PyCoral::ITableDescription_Type()
 {
   static PyMethodDef ITableDescription_Methods[] = {
-    { (char*) "name", (PyCFunction) ITableDescription_name, METH_NOARGS,
+    { (char*) "name", (PyCFunction)(void *) ITableDescription_name, METH_NOARGS,
       (char*) "Returns the name of the table." },
-    { (char*) "type", (PyCFunction) ITableDescription_type, METH_NOARGS,
+    { (char*) "type", (PyCFunction)(void *) ITableDescription_type, METH_NOARGS,
       (char*) "Returns the table type (RDBMS SPECIFIC)." },
-    { (char*) "tableSpaceName", (PyCFunction) ITableDescription_tableSpaceName, METH_NOARGS,
+    { (char*) "tableSpaceName", (PyCFunction)(void *) ITableDescription_tableSpaceName, METH_NOARGS,
       (char*) "Returns the name of the table space for this table." },
-    { (char*) "numberOfColumns", (PyCFunction) ITableDescription_numberOfColumns, METH_NOARGS,
+    { (char*) "numberOfColumns", (PyCFunction)(void *) ITableDescription_numberOfColumns, METH_NOARGS,
       (char*) "Returns the number of columns in the table." },
-    { (char*) "columnDescription", (PyCFunction) ITableDescription_columnDescription, METH_O,
+    { (char*) "columnDescription", (PyCFunction)(void *) ITableDescription_columnDescription, METH_O,
       (char*) "Returns the description of the column corresponding to the specified index specified name. If the index is out of range an InvalidColumnIndexException is thrown. If the specified column name is invalid an InvalidColumnNameException is thrown" },
-    { (char*) "hasPrimaryKey", (PyCFunction) ITableDescription_hasPrimaryKey, METH_NOARGS,
+    { (char*) "hasPrimaryKey", (PyCFunction)(void *) ITableDescription_hasPrimaryKey, METH_NOARGS,
       (char*) "Returns the existence of a primary key in the table." },
-    { (char*) "primaryKey", (PyCFunction) ITableDescription_primaryKey, METH_NOARGS,
+    { (char*) "primaryKey", (PyCFunction)(void *) ITableDescription_primaryKey, METH_NOARGS,
       (char*) "Returns the primary key for the table. If there is no primary key a NoPrimaryKeyException is thrown." },
-    { (char*) "numberOfIndices", (PyCFunction) ITableDescription_numberOfIndices, METH_NOARGS,
+    { (char*) "numberOfIndices", (PyCFunction)(void *) ITableDescription_numberOfIndices, METH_NOARGS,
       (char*) "Returns the number of indices defined in the table." },
-    { (char*) "index", (PyCFunction) ITableDescription_index, METH_O,
+    { (char*) "index", (PyCFunction)(void *) ITableDescription_index, METH_O,
       (char*) "Returns the index corresponding to the specified identitier. If the identifier is out of range an InvalidIndexIdentifierException is thrown." },
-    { (char*) "numberOfForeignKeys", (PyCFunction) ITableDescription_numberOfForeignKeys, METH_NOARGS,
+    { (char*) "numberOfForeignKeys", (PyCFunction)(void *) ITableDescription_numberOfForeignKeys, METH_NOARGS,
       (char*) "Returns the number of foreign key constraints defined in the table." },
-    { (char*) "foreignKey", (PyCFunction) ITableDescription_foreignKey, METH_O,
+    { (char*) "foreignKey", (PyCFunction)(void *) ITableDescription_foreignKey, METH_O,
       (char*) "Returns the foreign key corresponding to the specified identifier. In case the identifier is out of range an InvalidForeignKeyIdentifierException is thrown." },
-    { (char*) "numberOfUniqueConstraints", (PyCFunction) ITableDescription_numberOfUniqueConstraints, METH_NOARGS,
+    { (char*) "numberOfUniqueConstraints", (PyCFunction)(void *) ITableDescription_numberOfUniqueConstraints, METH_NOARGS,
       (char*) "Returns the number of unique constraints defined in the table." },
-    { (char*) "uniqueConstraint", (PyCFunction) ITableDescription_uniqueConstraint, METH_O,
+    { (char*) "uniqueConstraint", (PyCFunction)(void *) ITableDescription_uniqueConstraint, METH_O,
       (char*) "Returns the unique constraint for the specified identifier. If the identifier is out of range an InvalidUniqueConstraintIdentifierException is thrown." },
     {0, 0, 0, 0}
   };
@@ -72,57 +77,61 @@ coral::PyCoral::ITableDescription_Type()
   static char ITableDescription_doc[] = "Abstract interface for the description of a relational table.";
 
   static PyTypeObject ITableDescription_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ITableDescription", /*tp_name*/
-    sizeof(coral::PyCoral::ITableDescription), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ITableDescription_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE, /*tp_flags*/
-    ITableDescription_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    ITableDescription_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ITableDescription_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ITableDescription_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ITableDescription", // tp_name
+    sizeof(coral::PyCoral::ITableDescription), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ITableDescription_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE, // tp_flags
+    ITableDescription_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    ITableDescription_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ITableDescription_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ITableDescription_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ITableDescription_Type;
 }
@@ -143,7 +152,7 @@ ITableDescription_init( PyObject* self, PyObject* args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object )) return -1;
   py_this->object = static_cast<coral::ITableDescription*>
-    ( PyCObject_AsVoidPtr(c_object));
+    ( PyCapsule_GetPointer(c_object, "name"));
   if ( py_this->parent ) Py_INCREF( py_this->parent );
   return 0;
 }
@@ -307,10 +316,12 @@ ITableDescription_columnDescription( PyObject* self, PyObject* args )
       columnIndex = PyLong_AsLong(args);
       theColumn = const_cast<coral::IColumn*>(&( py_this->object->columnDescription( columnIndex )));
     }
-    else if (PyInt_Check(args)) {
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
+    else if (PyInt_Check( args) ) {
       columnIndex = PyInt_AS_LONG(args);
       theColumn = const_cast<coral::IColumn*>(&( py_this->object->columnDescription( columnIndex )));
     }
+    #endif
     else if (PyString_Check(args)) {
       columnName = PyString_AS_STRING(args);
       theColumn =  const_cast<coral::IColumn*>(&( py_this->object->columnDescription( std::string(columnName) )));
@@ -326,9 +337,9 @@ ITableDescription_columnDescription( PyObject* self, PyObject* args )
                        (char*) "Error when creating a Column Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theColumn,0 );
+    PyObject* c_object = PyCapsule_New( theColumn, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -405,9 +416,9 @@ ITableDescription_primaryKey( PyObject* self )
                        (char*) "Error when creating a Column Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( thePrimaryKey,0 );
+    PyObject* c_object = PyCapsule_New( thePrimaryKey, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -482,9 +493,11 @@ ITableDescription_index( PyObject* self, PyObject* args )
     if (PyLong_Check(args)) {
       indexId = PyLong_AsLong(args);
     }
-    else if (PyInt_Check(args)) {
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
+    else if (PyInt_Check( args )) {
       indexId = PyInt_AS_LONG(args);
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*) "Bad Argument Type" );
@@ -497,9 +510,9 @@ ITableDescription_index( PyObject* self, PyObject* args )
                        (char*) "Error when creating a Index Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theIndexId,0 );
+    PyObject* c_object = PyCapsule_New( theIndexId, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -604,9 +617,11 @@ ITableDescription_foreignKey( PyObject* self, PyObject* args )
     if (PyLong_Check(args)) {
       foreignKeyId = PyLong_AsLong(args);
     }
-    else if (PyInt_Check(args)) {
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
+    else if (PyInt_Check( args )) {
       foreignKeyId = PyInt_AS_LONG(args);
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*) "Bad Argument Type" );
@@ -619,9 +634,9 @@ ITableDescription_foreignKey( PyObject* self, PyObject* args )
                        (char*) "Error when creating a IForeignKey Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theForeignKey,0 );
+    PyObject* c_object = PyCapsule_New( theForeignKey, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -665,9 +680,11 @@ ITableDescription_uniqueConstraint( PyObject* self, PyObject* args )
     if (PyLong_Check(args)) {
       uniqueConstraintId = PyLong_AsLong(args);
     }
-    else if (PyInt_Check(args)) {
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
+    else if (PyInt_Check( args )) {
       uniqueConstraintId = PyInt_AS_LONG(args);
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*) "Bad Argument Type" );
@@ -682,9 +699,9 @@ ITableDescription_uniqueConstraint( PyObject* self, PyObject* args )
                        (char*) "Error when creating a IUniqueConstraint Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theUniqueConstraint, 0);
+    PyObject* c_object = PyCapsule_New( theUniqueConstraint, "name", 0);
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)

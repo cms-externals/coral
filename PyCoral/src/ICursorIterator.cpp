@@ -34,57 +34,61 @@ coral::PyCoral::ICursorIterator_Type()
   };
 
   static PyTypeObject ICursorIterator_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char *)"coral.ICursorIterator", /*tp_name*/
-    sizeof(coral::PyCoral::ICursorIterator), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ICursorIterator_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    0, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    ICursorIterator_iter, /*tp_iter*/
-    ICursorIterator_next, /*tp_iternext*/
-    ICursorIterator_Methods, /*tp_methods*/
-    ICursorIterator_Members, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ICursorIterator_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ICursorIterator_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char *)"coral.ICursorIterator", // tp_name
+    sizeof(coral::PyCoral::ICursorIterator), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ICursorIterator_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    0, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    ICursorIterator_iter, // tp_iter
+    ICursorIterator_next, // tp_iternext
+    ICursorIterator_Methods, // tp_methods
+    ICursorIterator_Members, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ICursorIterator_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ICursorIterator_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ICursorIterator_Type;
 }
@@ -146,9 +150,9 @@ ICursorIterator_next( PyObject* self )
                        (char*) "Error in Creating AttributeList object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( element,0 );
+    PyObject* c_object = PyCapsule_New( element, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)

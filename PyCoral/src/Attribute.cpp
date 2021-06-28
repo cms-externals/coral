@@ -1,4 +1,4 @@
-#include "Attribute.h"
+#include "PyCoral/Attribute.h"
 #include "CoralBase/Attribute.h"
 #include "AttributeSpecification.h"
 #include "CoralBase/AttributeSpecification.h"
@@ -11,8 +11,15 @@
 #include "Exception.h"
 #include <sstream>
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+    #define PyString_AS_STRING PyUnicode_AsUTF8
+    #define PyString_GET_SIZE PyUnicode_GET_SIZE
+#endif
+
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -35,17 +42,17 @@ PyTypeObject*
 coral::PyCoral::Attribute_Type()
 {
   static PyMethodDef Attribute_Methods[] = {
-    { (char*) "specification", (PyCFunction) Attribute_specification, METH_NOARGS,
+    { (char*) "specification", (PyCFunction)(void *) Attribute_specification, METH_NOARGS,
       (char*) "Returns the specification of the attribute" },
-    { (char*) "data", (PyCFunction) Attribute_data, METH_NOARGS,
+    { (char*) "data", (PyCFunction)(void *) Attribute_data, METH_NOARGS,
       (char*) "Retrieves the data" },
-    { (char*) "size", (PyCFunction) Attribute_size, METH_NOARGS,
+    { (char*) "size", (PyCFunction)(void *) Attribute_size, METH_NOARGS,
       (char*) "Retrieves the size in bytes of the data" },
-    { (char*) "setData", (PyCFunction) Attribute_setData, METH_O,
+    { (char*) "setData", (PyCFunction)(void *) Attribute_setData, METH_O,
       (char*) "Sets the value from external source" },
-    { (char*) "shareData", (PyCFunction) Attribute_shareData, METH_VARARGS,
+    { (char*) "shareData", (PyCFunction)(void *) Attribute_shareData, METH_VARARGS,
       (char*) "Shares data with another attribute." },
-    { (char*) "isNull", (PyCFunction) Attribute_isNull, METH_NOARGS,
+    { (char*) "isNull", (PyCFunction)(void *) Attribute_isNull, METH_NOARGS,
       (char*) "Retrieves the NULL-ness of the variable." },
     {0, 0, 0, 0}
   };
@@ -53,57 +60,61 @@ coral::PyCoral::Attribute_Type()
   static char Attribute_doc[] = "A class defining Attribute.";
 
   static PyTypeObject Attribute_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.Attribute", /*tp_name*/
-    sizeof(coral::PyCoral::Attribute), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    Attribute_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    Attribute_str, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    Attribute_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    Attribute_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    Attribute_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    Attribute_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (const char*) "coral.Attribute", // tp_name
+    sizeof(coral::PyCoral::Attribute), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    Attribute_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare (tp_as_async for python 3.6)
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    Attribute_str, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    Attribute_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    Attribute_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    Attribute_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+  #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+  #else 
+    PyObject_Del, // tp_free
+  #endif    
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    Attribute_dealloc, // tp_del
+    0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &Attribute_Type;
 }
@@ -112,7 +123,6 @@ int
 Attribute_init( PyObject* self, PyObject* args , PyObject* /* kwds */)
 {
   coral::PyCoral::Attribute* py_this = (coral::PyCoral::Attribute*) self;
-
   if ( !py_this ) {
     PyErr_SetString( coral::PyCoral::Exception(),
                      (char*) "Error: Self is NULL" );
@@ -128,7 +138,7 @@ Attribute_init( PyObject* self, PyObject* args , PyObject* /* kwds */)
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::Attribute*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object ,"name") );
 
   if ( py_this->parent ) Py_INCREF( py_this->parent );
 
@@ -171,9 +181,9 @@ PyObject* Attribute_specification( PyObject* self)
                        (char*) "Error in Creating AttributeSpecification object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theData, 0 );
+    PyObject* c_object = PyCapsule_New( theData,"name", 0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -274,9 +284,9 @@ Attribute_data( PyObject* self )
                          (char*) "Error in Creating Date object." );
         return 0;
       }
-      PyObject* c_object = PyCObject_FromVoidPtr( theData, 0 );
+      PyObject* c_object = PyCapsule_New( theData,"name", 0 );
       PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-      bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+      bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
       Py_DECREF(temp);
       Py_DECREF( c_object );
       if (ok)
@@ -298,9 +308,9 @@ Attribute_data( PyObject* self )
                          (char*) "Error in Creating TimeStamp object." );
         return 0;
       }
-      PyObject* c_object = PyCObject_FromVoidPtr( theData, 0 );
+      PyObject* c_object = PyCapsule_New( theData, "name", 0 );
       PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-      bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+      bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
       Py_DECREF(temp);
       Py_DECREF( c_object );
       if (ok)
@@ -328,9 +338,9 @@ Attribute_data( PyObject* self )
                          (char*) "Error in Creating Blob object." );
         return 0;
       }
-      PyObject* c_object = PyCObject_FromVoidPtr( theData, 0 );
+      PyObject* c_object = PyCapsule_New( theData, "name", 0 );
       PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-      bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+      bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
       Py_DECREF(temp);
       Py_DECREF( c_object );
       if (ok)
@@ -385,9 +395,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<char>( (char)PyLong_AsLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<char>( (char)PyInt_AsLong(args) );
       }
+#endif
       else if ( PyString_Check(args) && (PyString_GET_SIZE( args ) == 1) ) {
         coralAttributeDataObject->setValue<char>( *( PyString_AS_STRING( args ) ) );
       }
@@ -401,9 +413,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned char>( (unsigned char)PyLong_AsUnsignedLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned char>( (unsigned char)PyInt_AsUnsignedLongMask(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not an unsigned char!" );
@@ -414,9 +428,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<int>( PyLong_AsLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<int>( PyInt_AS_LONG(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not an integer!" );
@@ -427,9 +443,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned int>( PyLong_AsUnsignedLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned int>( PyInt_AsUnsignedLongMask(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not an unsigned integer!" );
@@ -440,9 +458,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<short>( (short)PyLong_AsLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<short>( (short)PyInt_AS_LONG(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not a short integer!" );
@@ -453,9 +473,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned short>( (unsigned short)PyLong_AsUnsignedLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned short>( (unsigned short)PyInt_AsUnsignedLongMask(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not an unsigned short integer!" );
@@ -466,9 +488,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<long>( PyLong_AsLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<long>( PyInt_AS_LONG(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not a Long integer!" );
@@ -479,9 +503,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned long>( PyLong_AsUnsignedLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned long>( PyInt_AsUnsignedLongMask(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not an unsigned long integer!" );
@@ -492,9 +518,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<long long>( PyLong_AsLongLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<long long>( PyInt_AsUnsignedLongLongMask(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not a long long integer!" );
@@ -505,9 +533,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned long long>( PyLong_AsUnsignedLongLong(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<unsigned long long>( PyInt_AsUnsignedLongLongMask(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not an unsigned long long integer!" );
@@ -521,9 +551,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       else if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<float>( (float)PyLong_AsDouble(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<float>( (float)PyInt_AS_LONG(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not a float!" );
@@ -537,9 +569,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       else if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<double>( PyLong_AsDouble(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<double>( PyInt_AS_LONG(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not double!" );
@@ -553,9 +587,11 @@ Attribute_setData( PyObject* self, PyObject* args )
       else if ( PyLong_Check( args ) ) {
         coralAttributeDataObject->setValue<long double>( PyLong_AsDouble(args) );
       }
+#if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       else if ( PyInt_Check( args ) ) {
         coralAttributeDataObject->setValue<long double>( PyInt_AS_LONG(args) );
       }
+#endif
       else {
         PyErr_SetString( coral::PyCoral::Exception(),
                          (char*)"Argument is not Long Double!" );

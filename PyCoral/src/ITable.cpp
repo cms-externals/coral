@@ -11,7 +11,7 @@
 #include "RelationalAccess/ITableSchemaEditor.h"
 #include "RelationalAccess/ITableDataEditor.h"
 #include "RelationalAccess/ITablePrivilegeManager.h"
-#include "PyCoral/cast_to_base.h"
+#include "cast_to_base.h"
 #include <sstream>
 
 // Forward declaration of the methods
@@ -30,15 +30,15 @@ PyTypeObject*
 coral::PyCoral::ITable_Type()
 {
   static PyMethodDef ITable_Methods[] = {
-    { (char*) "description", (PyCFunction) ITable_description, METH_NOARGS,
+    { (char*) "description", (PyCFunction)(void *) ITable_description, METH_NOARGS,
       (char*) "Returns the description of the table." },
-    { (char*) "schemaEditor", (PyCFunction) ITable_schemaEditor, METH_NOARGS,
+    { (char*) "schemaEditor", (PyCFunction)(void *) ITable_schemaEditor, METH_NOARGS,
       (char*) "Returns a reference to the schema editor for the table." },
-    { (char*) "dataEditor", (PyCFunction) ITable_dataEditor, METH_NOARGS,
+    { (char*) "dataEditor", (PyCFunction)(void *) ITable_dataEditor, METH_NOARGS,
       (char*) "Returns a reference to the ITableDataEditor object  for the table." },
-    { (char*) "privilegeManager", (PyCFunction) ITable_privilegeManager, METH_NOARGS,
+    { (char*) "privilegeManager", (PyCFunction)(void *) ITable_privilegeManager, METH_NOARGS,
       (char*) "Returns a reference to the privilege manager of the table." },
-    { (char*) "newQuery", (PyCFunction) ITable_newQuery, METH_NOARGS,
+    { (char*) "newQuery", (PyCFunction)(void *) ITable_newQuery, METH_NOARGS,
       (char*) "Returns a new query object for performing a query involving this table only." },
     {0, 0, 0, 0}
   };
@@ -46,57 +46,61 @@ coral::PyCoral::ITable_Type()
   static char ITable_doc[] = "Interface for accessing and manipulating the data and the description of a relational table.";
 
   static PyTypeObject ITable_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ITable", /*tp_name*/
-    sizeof(coral::PyCoral::ITable), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ITable_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    ITable_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    ITable_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ITable_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ITable_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ITable", // tp_name
+    sizeof(coral::PyCoral::ITable), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ITable_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    ITable_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    ITable_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ITable_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ITable_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ITable_Type;
 }
@@ -117,7 +121,7 @@ ITable_init( PyObject* self, PyObject* args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::ITable*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
   return 0;
 }
@@ -152,9 +156,9 @@ ITable_description( PyObject* self )
                        (char*) "Error when creating ITableDescription object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theDescription,0 );
+    PyObject* c_object = PyCapsule_New( theDescription, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -196,9 +200,9 @@ ITable_schemaEditor( PyObject* self )
                        (char*) "Error when creating ISchemaEditor object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theSchemaEditor,0 );
+    PyObject* c_object = PyCapsule_New( theSchemaEditor, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -240,9 +244,9 @@ ITable_dataEditor( PyObject* self )
                        (char*) "Error when creating table data Editor object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theDataEditor,0 );
+    PyObject* c_object = PyCapsule_New( theDataEditor, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -285,9 +289,9 @@ ITable_privilegeManager( PyObject* self )
                        (char*) "Error when creating table privilege manager object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( thePrivilegeManager,0 );
+    PyObject* c_object = PyCapsule_New( thePrivilegeManager, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -327,9 +331,9 @@ ITable_newQuery( PyObject* self )
                        (char*) "Error when creating query manager object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( (void*)theQuery,0 );
+    PyObject* c_object = PyCapsule_New( (void*)theQuery, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)

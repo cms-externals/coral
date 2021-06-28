@@ -1,6 +1,13 @@
 package PyCoral
 
 #============================================================================
+# Public dependencies and build rules
+#============================================================================
+
+# Define CMTINSTALLAREA correctly
+use LCG_Policy v*
+
+#============================================================================
 # Private dependencies and build rules
 #============================================================================
 
@@ -16,6 +23,9 @@ use Python * LCG_Interfaces
 # Fix bug #73789 on vc9: 'lcg_module_library' instead of 'lcg_shared_library'
 apply_pattern lcg_module_library
 
+# Create a symlink .dylib -> .so on mac (sr #141482 - also see bug #37371)
+apply_pattern lcg_dylib_symlink
+
 # Fix bug #73789 on vc9: copy .dll as .pyd
 macro install_PyCoral_pyd_action "echo No pyd needed on this platform" \
   target-winxp "copy /Y $(CMTINSTALLAREA)\$(tag)\lib\lcg_PyCoral.dll $(CMTINSTALLAREA)\$(tag)\lib\lcg_PyCoral.pyd"
@@ -27,9 +37,11 @@ macro_append install_PyCoral_pyd_dependencies lcg_PyCoral
 # Added for gcc43, but applies to all newer gcc including gcc46 (bug #89768)
 # [NB: the warnings come from the Py_RETURN_TRUE/FALSE macros in Python.h and
 # cannot be removed: http://lists.samba.org/archive/distcc/2009q1/003857.html]
-macro_append cppflags "" target-gcc&target-opt " -Wstrict-aliasing=0"
-# Stronger workaround for bug #52384: disable strict-aliasing checks
-###macro_append cppflags "" target-gcc&target-opt " -fno-strict-aliasing"
+# [OBSOLETE: warnings are now ignored via #pragmas in the code (CMS sr #141482)]
+###macro_append cppflags "" target-gcc&target-opt " -Wstrict-aliasing=0 "
+
+# Workaround for gcc48/gccmax/clang33 build warnings (bug #101273 aka SPI-272)
+macro_append cppflags "" target-gcc48 " -Wno-format " target-gccmax " -Wno-format " target-clang33 -Wno-ignored-attributes
 
 # Do not install the header files (task #15557)
 macro_remove constituents 'install_includes'
@@ -45,3 +57,16 @@ macro_remove cmt_actions_constituents "tests"
 # Fake target for utilities
 action utilities "echo No utilities in this package"
 macro_remove cmt_actions_constituents "utilities"
+
+# Fake target for examples
+action examples "echo No examples in this package"
+macro_remove cmt_actions_constituents "examples"
+
+#----------------------------------------------------------------------------
+# Workarounds for LCGCMT issues on MacOSX
+#----------------------------------------------------------------------------
+
+# === Workaround in both CoralTest and PyCoral ===
+# Workaround for SPI-787 in Python_home for clang on mac
+macro Python_home $(Python_home) target-mac "${LCG_external}/Python/$(Python_native_version)/$(LCG_system)"
+

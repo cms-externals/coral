@@ -5,8 +5,8 @@
 #include "RelationalAccess/ICursor.h"
 #include <sstream>
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -27,11 +27,11 @@ PyTypeObject*
 coral::PyCoral::ICursor_Type()
 {
   static PyMethodDef ICursor_Methods[] = {
-    { (char*) "next", (PyCFunction) ICursor_next, METH_NOARGS,
+    { (char*) "next", (PyCFunction)(void *) ICursor_next, METH_NOARGS,
       (char*) "Positions the cursor to the next available row in the result set. If there are no more rows in the result set false is returned." },
-    { (char*) "currentRow", (PyCFunction) ICursor_currentRow, METH_NOARGS,
+    { (char*) "currentRow", (PyCFunction)(void *) ICursor_currentRow, METH_NOARGS,
       (char*) "Returns a reference to output buffer holding the data of the last row fetched." },
-    { (char*) "close", (PyCFunction) ICursor_close, METH_NOARGS,
+    { (char*) "close", (PyCFunction)(void *) ICursor_close, METH_NOARGS,
       (char*) "Explicitly closes the cursor, releasing the resources on the server." },
     {0, 0, 0, 0}
   };
@@ -39,57 +39,61 @@ coral::PyCoral::ICursor_Type()
   static char ICursor_doc[] = "Interface for the iteration over the result set of a query.";
 
   static PyTypeObject ICursor_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ICursor", /*tp_name*/
-    sizeof(coral::PyCoral::ICursor), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ICursor_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    ICursor_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    ICursor_iter, /*tp_iter*/
-    0, /*tp_iternext*/
-    ICursor_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ICursor_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ICursor_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ICursor", // tp_name
+    sizeof(coral::PyCoral::ICursor), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ICursor_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    ICursor_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    ICursor_iter, // tp_iter
+    0, // tp_iternext
+    ICursor_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ICursor_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ICursor_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ICursor_Type;
 }
@@ -111,7 +115,7 @@ ICursor_init( PyObject* self, PyObject*  args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::ICursor*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
   return 0;
 }
@@ -178,9 +182,9 @@ ICursor_currentRow( PyObject* self )
                        (char*) "Error when creating AttributeList object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theAttrList,0 );
+    PyObject* c_object = PyCapsule_New( theAttrList, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -240,7 +244,7 @@ ICursor_iter( PyObject* self )
       return 0;
     }
     PyObject* temp = Py_BuildValue((char*)"O", self );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
 
     if (ok)

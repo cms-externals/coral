@@ -6,6 +6,10 @@
 #include "RelationalAccess/IViewFactory.h"
 #include <sstream>
 
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+#endif
 // Forward declaration of the methods
 static int IViewFactory_init( PyObject* self, PyObject* /* args */, PyObject* /* kwds */);
 static void IViewFactory_dealloc( PyObject* self );
@@ -29,9 +33,9 @@ PyTypeObject*
 coral::PyCoral::IViewFactory_Type()
 {
   static PyMethodDef IViewFactory_Methods[] = {
-    { (char*) "create", (PyCFunction) IViewFactory_create, METH_O,
+    { (char*) "create", (PyCFunction)(void *) IViewFactory_create, METH_O,
       (char*) "Creates a new view with the specified name and the current query definition." },
-    { (char*) "createOrReplace", (PyCFunction) IViewFactory_createOrReplace, METH_O,
+    { (char*) "createOrReplace", (PyCFunction)(void *) IViewFactory_createOrReplace, METH_O,
       (char*) "Creates or replaces in case it exists a view with the specified name and the current query definition." },
     {0, 0, 0, 0}
   };
@@ -41,57 +45,61 @@ coral::PyCoral::IViewFactory_Type()
   static PyObject* baseClasses = defineBaseClasses();
 
   static PyTypeObject IViewFactory_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.IViewFactory", /*tp_name*/
-    sizeof(coral::PyCoral::IViewFactory), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    IViewFactory_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    IViewFactory_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    IViewFactory_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    IViewFactory_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    baseClasses, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    IViewFactory_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.IViewFactory", // tp_name
+    sizeof(coral::PyCoral::IViewFactory), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    IViewFactory_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    IViewFactory_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    IViewFactory_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    IViewFactory_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    baseClasses, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    IViewFactory_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &IViewFactory_Type;
 }
@@ -119,9 +127,9 @@ IViewFactory_init( PyObject* self, PyObject* args, PyObject* /*kwds*/ )
   if ( ! PyArg_ParseTuple( args, (char*) "OO",
                            &(py_this->parent),
                            &c_object ) ) return -1;
-  py_this->object = static_cast<coral::IViewFactory*>( PyCObject_AsVoidPtr( c_object ) );
+  py_this->object = static_cast<coral::IViewFactory*>( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
-  PyObject* iQueryDefinition_c_object = PyCObject_FromVoidPtr(static_cast<coral::IQueryDefinition*>(py_this->object),0);
+  PyObject* iQueryDefinition_c_object = PyCapsule_New(static_cast<coral::IQueryDefinition*>(py_this->object), "name",0);
   Py_INCREF(Py_None);
   PyObject* temp = Py_BuildValue((char*)"OO", Py_None, iQueryDefinition_c_object );
 
@@ -186,9 +194,9 @@ IViewFactory_create( PyObject* self, PyObject* args)
                        (char*) "Error when creating a IView Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theCreate,0 );
+    PyObject* c_object = PyCapsule_New( theCreate, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -242,9 +250,9 @@ IViewFactory_createOrReplace( PyObject* self, PyObject* args)
                        (char*) "Error when creating a IView Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theCreateOrReplace,0 );
+    PyObject* c_object = PyCapsule_New( theCreateOrReplace, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)

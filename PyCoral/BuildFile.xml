@@ -1,5 +1,6 @@
 <use   name="LCG/RelationalAccess"/>
-<use   name="python"/>
+<use   name="python3"/>
 <export>
   <lib   name="1"/>
 </export>
+<flags CXXFLAGS="-fpermissive -Wno-unknown-pragmas"/>

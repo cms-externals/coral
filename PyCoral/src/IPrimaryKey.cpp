@@ -3,6 +3,13 @@
 #include "RelationalAccess/IPrimaryKey.h"
 #include <sstream>
 
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyBytes_Check
+    #define PyString_AS_STRING PyBytes_AS_STRING
+    #define PyString_AsString PyBytes_AsString
+    #define PyString_GET_SIZE PyBytes_GET_SIZE
+    #define PyString_FromString PyBytes_FromString
+#endif
 // Forward declaration of the methods
 static int IPrimaryKey_init( PyObject* self, PyObject* args, PyObject* kwds );
 static void IPrimaryKey_dealloc( PyObject* self );
@@ -16,9 +23,9 @@ PyTypeObject*
 coral::PyCoral::IPrimaryKey_Type()
 {
   static PyMethodDef IPrimaryKey_Methods[] = {
-    { (char*) "columnNames", (PyCFunction) IPrimaryKey_columnNames, METH_NOARGS,
+    { (char*) "columnNames", (PyCFunction)(void *) IPrimaryKey_columnNames, METH_NOARGS,
       (char*) "Returns the names of the columns which form the primary key." },
-    { (char*) "tableSpaceName", (PyCFunction) IPrimaryKey_tableSpaceName, METH_NOARGS,
+    { (char*) "tableSpaceName", (PyCFunction)(void *) IPrimaryKey_tableSpaceName, METH_NOARGS,
       (char*) "Returns the name of the table space where the corresponding index is created." },
     {0, 0, 0, 0}
   };
@@ -26,57 +33,61 @@ coral::PyCoral::IPrimaryKey_Type()
   static char IPrimaryKey_doc[] = "Interface for the description of a primary key in a table.";
 
   static PyTypeObject IPrimaryKey_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.IPrimaryKey", /*tp_name*/
-    sizeof(coral::PyCoral::IPrimaryKey), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    IPrimaryKey_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    IPrimaryKey_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    IPrimaryKey_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    IPrimaryKey_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    IPrimaryKey_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.IPrimaryKey", // tp_name
+    sizeof(coral::PyCoral::IPrimaryKey), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    IPrimaryKey_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    IPrimaryKey_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    IPrimaryKey_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    IPrimaryKey_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    IPrimaryKey_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &IPrimaryKey_Type;
 }
@@ -97,7 +108,7 @@ IPrimaryKey_init( PyObject* self, PyObject* args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::IPrimaryKey*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
   return 0;
 }

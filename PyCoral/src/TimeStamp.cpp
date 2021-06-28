@@ -7,6 +7,9 @@
 static int TimeStamp_init( PyObject* self, PyObject* args, PyObject* kwds );
 static void TimeStamp_dealloc( PyObject* self );
 static int TimeStamp_compare( PyObject* obj1, PyObject* obj2 );
+#if PY_MAJOR_VERSION >= 3
+static PyObject* TimeStamp_rich_compare( PyObject *o1, PyObject* o2, int op );
+#endif
 static PyObject* TimeStamp_str( PyObject* self );
 
 static PyObject* TimeStamp_year( PyObject* self );
@@ -22,19 +25,19 @@ PyTypeObject*
 coral::PyCoral::TimeStamp_Type()
 {
   static PyMethodDef TimeStamp_Methods[] = {
-    { (char*) "year", (PyCFunction) TimeStamp_year, METH_NOARGS,
+    { (char*) "year", (PyCFunction)(void *) TimeStamp_year, METH_NOARGS,
       (char*) "Returns the year of the timestamp" },
-    { (char*) "month", (PyCFunction) TimeStamp_month, METH_NOARGS,
+    { (char*) "month", (PyCFunction)(void *) TimeStamp_month, METH_NOARGS,
       (char*) "Returns the month of the timestamp" },
-    { (char*) "day", (PyCFunction) TimeStamp_day, METH_NOARGS,
+    { (char*) "day", (PyCFunction)(void *) TimeStamp_day, METH_NOARGS,
       (char*) "Returns the day of the timestamp" },
-    { (char*) "hour", (PyCFunction) TimeStamp_hour, METH_NOARGS,
+    { (char*) "hour", (PyCFunction)(void *) TimeStamp_hour, METH_NOARGS,
       (char*) "Returns the hour of the timestamp" },
-    { (char*) "minute", (PyCFunction) TimeStamp_minute, METH_NOARGS,
+    { (char*) "minute", (PyCFunction)(void *) TimeStamp_minute, METH_NOARGS,
       (char*) "Returns minute of the timestamp" },
-    { (char*) "second", (PyCFunction) TimeStamp_second, METH_NOARGS,
+    { (char*) "second", (PyCFunction)(void *) TimeStamp_second, METH_NOARGS,
       (char*) "Returns the second of the timestamp" },
-    { (char*) "nanosecond", (PyCFunction) TimeStamp_nanosecond, METH_NOARGS,
+    { (char*) "nanosecond", (PyCFunction)(void *) TimeStamp_nanosecond, METH_NOARGS,
       (char*) "Returns the nanosecond" },
     {0, 0, 0, 0}
   };
@@ -42,57 +45,69 @@ coral::PyCoral::TimeStamp_Type()
   static char TimeStamp_doc[] = "A class defining the ANSI DATE TIME type. The default constructor constructs the current date & time.";
 
   static PyTypeObject TimeStamp_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.TimeStamp", /*tp_name*/
-    sizeof(coral::PyCoral::TimeStamp), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    TimeStamp_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    TimeStamp_compare, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    TimeStamp_str, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    TimeStamp_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    TimeStamp_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    TimeStamp_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    TimeStamp_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.TimeStamp", // tp_name
+    sizeof(coral::PyCoral::TimeStamp), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    TimeStamp_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+       TimeStamp_compare, // tp_compare
+    #else
+    0, // tp_compare
+    #endif
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    TimeStamp_str, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    TimeStamp_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977       
+    0, // tp_richcompare
+    #else
+    (richcmpfunc)TimeStamp_rich_compare,
+    #endif
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    TimeStamp_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    TimeStamp_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    TimeStamp_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &TimeStamp_Type;
 }
@@ -125,7 +140,7 @@ TimeStamp_init( PyObject* self, PyObject* args, PyObject* kwds )
                                   &(py_this->parent),
                                   &c_object ) ) return -1;
           py_this->object = static_cast<coral::TimeStamp*>
-            ( PyCObject_AsVoidPtr( c_object ) );
+            ( PyCapsule_GetPointer( c_object , "name") );
           if ( py_this->parent ) Py_INCREF( py_this->parent );
           return 0;
         }
@@ -214,6 +229,19 @@ TimeStamp_compare( PyObject* obj1, PyObject* obj2 )
   }
   return 0;
 }
+
+#if PY_MAJOR_VERSION >= 3
+  PyObject* TimeStamp_rich_compare(PyObject *o1, PyObject* o2, int op){
+    if(o2==Py_None) Py_RETURN_FALSE;
+    switch(op){
+      case Py_EQ:{
+         if(TimeStamp_compare(o1,o2) == 0) Py_RETURN_TRUE;
+         Py_RETURN_FALSE;
+      }
+      default: Py_RETURN_NOTIMPLEMENTED;
+    }
+  }
+#endif
 
 
 PyObject*

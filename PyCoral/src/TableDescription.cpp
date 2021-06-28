@@ -1,18 +1,28 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wregister"
+#include "Python.h" // Include Python.h before system headers (fix bug #73166 aka SPI-209)
+#pragma clang diagnostic pop
+
+#include <memory>
+#include <sstream>
 #include "Exception.h"
-#include "PyCoral/TableDescription.h"
+#include "TableDescription.h"
+#include "IColumn.h"
+#include "IForeignKey.h"
+#include "IIndex.h"
+#include "IPrimaryKey.h"
 #include "ITableDescription.h"
 #include "ITableSchemaEditor.h"
-#include "IColumn.h"
-#include "IPrimaryKey.h"
-#include "IIndex.h"
-#include "IForeignKey.h"
 #include "IUniqueConstraint.h"
-#include "RelationalAccess/TableDescription.h"
 #include "RelationalAccess/ITableDescription.h"
 #include "RelationalAccess/ITableSchemaEditor.h"
-#include "PyCoral/cast_to_base.h"
-#include <sstream>
+#include "RelationalAccess/TableDescription.h"
+#include "cast_to_base.h"
 
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+#endif
 // Forward declaration of the methods
 static int TableDescription_init( PyObject* self, PyObject* args, PyObject* kwds );
 static void TableDescription_dealloc( PyObject* self );
@@ -42,11 +52,11 @@ PyTypeObject*
 coral::PyCoral::TableDescription_Type()
 {
   static PyMethodDef TableDescription_Methods[] = {
-    { (char*) "setName", (PyCFunction) TableDescription_setName, METH_O,
+    { (char*) "setName", (PyCFunction)(void *) TableDescription_setName, METH_O,
       (char*) "Sets the name of the table." },
-    { (char*) "setType", (PyCFunction) TableDescription_setType, METH_O,
+    { (char*) "setType", (PyCFunction)(void *) TableDescription_setType, METH_O,
       (char*) "Sets the type of the table." },
-    { (char*) "setTableSpaceName", (PyCFunction) TableDescription_setTableSpaceName, METH_O,
+    { (char*) "setTableSpaceName", (PyCFunction)(void *) TableDescription_setTableSpaceName, METH_O,
       (char*) "Sets the name of the table space." },
     {0, 0, 0, 0}
   };
@@ -56,57 +66,61 @@ coral::PyCoral::TableDescription_Type()
   static PyObject* baseClasses = defineBaseClasses();
 
   static PyTypeObject TableDescription_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.TableDescription", /*tp_name*/
-    sizeof(coral::PyCoral::TableDescription), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    TableDescription_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    TableDescription_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    TableDescription_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    TableDescription_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    baseClasses, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    TableDescription_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.TableDescription", // tp_name
+    sizeof(coral::PyCoral::TableDescription), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    TableDescription_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    TableDescription_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    TableDescription_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    TableDescription_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    baseClasses, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    TableDescription_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &TableDescription_Type;
 }
@@ -131,26 +145,26 @@ TableDescription_init( PyObject* self, PyObject*  args, PyObject* /*kwds*/ )
     return -1;
   }
   int numberOfArguments = PyTuple_GET_SIZE(args);
-  coral::TableDescription* tableDescription = 0;
+  std::unique_ptr<coral::TableDescription> tableDescription; // Fix Coverity RESOURCE_LEAK (bug #95668)
   coral::PyCoral::ITableDescription* iTableDesc = 0;
   switch (numberOfArguments) {
   default:
-    tableDescription = new coral::TableDescription;
+    tableDescription.reset( new coral::TableDescription );
     break;
   case 1:
     if ( PyString_Check(PyTuple_GET_ITEM(args,0)) ) {
-      tableDescription = new coral::TableDescription(std::string(PyString_AsString(PyTuple_GET_ITEM(args,0))));
+      tableDescription.reset( new coral::TableDescription(std::string(PyString_AsString(PyTuple_GET_ITEM(args,0)))) );
     } else {
       if ( ! PyArg_ParseTuple(args,(char*)"O!",coral::PyCoral::ITableDescription_Type(),&iTableDesc)) return 0;
       coral::ITableDescription& iTableDescription = *(static_cast<coral::ITableDescription*>(iTableDesc->object));
-      tableDescription = new coral::TableDescription(iTableDescription);
+      tableDescription.reset( new coral::TableDescription(iTableDescription) );
     }
     break;
   case 2:
     char* context = 0;
     if ( ! PyArg_ParseTuple(args,(char*)"O!s",coral::PyCoral::ITableDescription_Type(),&iTableDesc,&context)) return 0;
     coral::ITableDescription& iTableDescription = *(static_cast<coral::ITableDescription*>(iTableDesc->object));
-    tableDescription = new coral::TableDescription(iTableDescription, std::string(context));
+    tableDescription.reset( new coral::TableDescription(iTableDescription, std::string(context)) );
     break;
   }
   py_this->base2 = (PyObject*) PyObject_New( coral::PyCoral::ITableDescription,
@@ -161,11 +175,12 @@ TableDescription_init( PyObject* self, PyObject*  args, PyObject* /*kwds*/ )
     Py_DECREF( py_this->base1 );
     return -1;
   }
-  py_this->object = tableDescription;
-  coral::ITableSchemaEditor* editor = static_cast< coral::ITableSchemaEditor* >(  tableDescription);
-  coral::ITableDescription* description = static_cast< coral::ITableDescription* >(  tableDescription);
-  PyObject* editor_c_object = PyCObject_FromVoidPtr( editor, 0);
-  PyObject* description_c_object = PyCObject_FromVoidPtr( description, 0);
+  coral::TableDescription* pTableDescription = tableDescription.release(); // Fix Coverity RESOURCE_LEAK (bug #95668) and WRAPPER_ESCAPE
+  py_this->object = pTableDescription;
+  coral::ITableSchemaEditor* editor = static_cast< coral::ITableSchemaEditor* >( pTableDescription );
+  coral::ITableDescription* description = static_cast< coral::ITableDescription* >( pTableDescription );
+  PyObject* editor_c_object = PyCapsule_New( editor, "name", 0);
+  PyObject* description_c_object = PyCapsule_New( description, "name", 0);
   Py_INCREF(Py_None);
   PyObject* temp1 = Py_BuildValue((char*)"OO", Py_None, editor_c_object );
   Py_INCREF(Py_None);

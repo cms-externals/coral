@@ -1,14 +1,23 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wregister"
 #include "Python.h" // Include Python.h before system headers (fix bug #73166)
+#pragma clang diagnostic pop
+
+// Include files
 #include <iostream>
 #include <sstream>
-#include "CoralBase/VersionInfo.h" // Relevant for #ifdef CORAL240xx
-#include "PyCoral/cast_to_base.h"
+#include "cast_to_base.h"
 #include "RelationalAccess/ITableSchemaEditor.h"
 #include "Exception.h"
 #include "ITableSchemaEditor.h"
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+    #define PyString_AS_STRING PyUnicode_AsUTF8
+#endif
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -36,29 +45,29 @@ PyTypeObject*
 coral::PyCoral::ITableSchemaEditor_Type()
 {
   static PyMethodDef ITableSchemaEditor_Methods[] = {
-    { (char*) "insertColumn", (PyCFunction) ITableSchemaEditor_insertColumn, METH_VARARGS,
+    { (char*) "insertColumn", (PyCFunction)(void *) ITableSchemaEditor_insertColumn, METH_VARARGS,
       (char*) "Inserts a new column in the table. If the column name already exists or is invalid, an InvalidColumnNameException is thrown." },
-    { (char*) "dropColumn", (PyCFunction) ITableSchemaEditor_dropColumn, METH_O,
+    { (char*) "dropColumn", (PyCFunction)(void *) ITableSchemaEditor_dropColumn, METH_O,
       (char*) "Drops a column from the table. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown." },
-    { (char*) "renameColumn", (PyCFunction) ITableSchemaEditor_renameColumn, METH_VARARGS,
+    { (char*) "renameColumn", (PyCFunction)(void *) ITableSchemaEditor_renameColumn, METH_VARARGS,
       (char*) "Renames a column in the table. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown." },
-    { (char*) "changeColumnType", (PyCFunction) ITableSchemaEditor_changeColumnType, METH_VARARGS,
+    { (char*) "changeColumnType", (PyCFunction)(void *) ITableSchemaEditor_changeColumnType, METH_VARARGS,
       (char*) "Changes the C++ type of a column in the table. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown." },
-    { (char*) "setNotNullConstraint", (PyCFunction) ITableSchemaEditor_setNotNullConstraint, METH_VARARGS,
+    { (char*) "setNotNullConstraint", (PyCFunction)(void *) ITableSchemaEditor_setNotNullConstraint, METH_VARARGS,
       (char*) "Sets or removes a NOT NULL constraint on a column. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown." },
-    { (char*) "setUniqueConstraint", (PyCFunction) ITableSchemaEditor_setUniqueConstraint, METH_VARARGS,
+    { (char*) "setUniqueConstraint", (PyCFunction)(void *) ITableSchemaEditor_setUniqueConstraint, METH_VARARGS,
       (char*) "Adds or removes a unique constraint on a column. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown. If a unique constrain already exists for the specified column an UniqueConstraintAlreadyExistingException is thrown. If not unique constraint exists for the specified column in the case it is asked to be dropped, an InvalidUniqueConstraintIdentifierException is thrown ." },
-    { (char*) "setPrimaryKey", (PyCFunction) ITableSchemaEditor_setPrimaryKey, METH_VARARGS,
+    { (char*) "setPrimaryKey", (PyCFunction)(void *) ITableSchemaEditor_setPrimaryKey, METH_VARARGS,
       (char*) "Defines a primary key from a single column. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown. If a primary key has already been defined, an ExistingPrimaryKeyException is thrown." },
-    { (char*) "dropPrimaryKey", (PyCFunction) ITableSchemaEditor_dropPrimaryKey, METH_NOARGS,
+    { (char*) "dropPrimaryKey", (PyCFunction)(void *) ITableSchemaEditor_dropPrimaryKey, METH_NOARGS,
       (char*) "Drops the existing primary key. If there is no primary key defined a NoPrimaryKeyException is thrown." },
-    { (char*) "createIndex", (PyCFunction) ITableSchemaEditor_createIndex, METH_VARARGS,
+    { (char*) "createIndex", (PyCFunction)(void *) ITableSchemaEditor_createIndex, METH_VARARGS,
       (char*) "Creates an index on a column. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown. If an index has already been defined with that name an InvalidIndexIdentifierException is thrown." },
-    { (char*) "dropIndex", (PyCFunction) ITableSchemaEditor_dropIndex, METH_O,
+    { (char*) "dropIndex", (PyCFunction)(void *) ITableSchemaEditor_dropIndex, METH_O,
       (char*) "Drops an existing index. If the specified index name is not valid an InvalidIndexIdentifierException is thrown." },
-    { (char*) "createForeignKey", (PyCFunction) ITableSchemaEditor_createForeignKey, METH_VARARGS,
+    { (char*) "createForeignKey", (PyCFunction)(void *) ITableSchemaEditor_createForeignKey, METH_VARARGS,
       (char*) "Creates a foreign key constraint. If the column name does not exist or is invalid, an InvalidColumnNameException is thrown. If a foreign key has already been defined with that name an InvalidForeignKeyIdentifierException is thrown." },
-    { (char*) "dropForeignKey", (PyCFunction) ITableSchemaEditor_dropForeignKey, METH_O,
+    { (char*) "dropForeignKey", (PyCFunction)(void *) ITableSchemaEditor_dropForeignKey, METH_O,
       (char*) "Drops a foreign key. If the specified name is not valid an InvalidForeignKeyIdentifierException is thrown." },
     {0, 0, 0, 0}
   };
@@ -66,57 +75,61 @@ coral::PyCoral::ITableSchemaEditor_Type()
   static char ITableSchemaEditor_doc[] = "Interface for altering the schema of an existing table.";
 
   static PyTypeObject ITableSchemaEditor_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ITableSchemaEditor", /*tp_name*/
-    sizeof(coral::PyCoral::ITableSchemaEditor), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ITableSchemaEditor_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE, /*tp_flags*/
-    ITableSchemaEditor_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    ITableSchemaEditor_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ITableSchemaEditor_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ITableSchemaEditor_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ITableSchemaEditor", // tp_name
+    sizeof(coral::PyCoral::ITableSchemaEditor), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ITableSchemaEditor_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE, // tp_flags
+    ITableSchemaEditor_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    ITableSchemaEditor_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ITableSchemaEditor_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ITableSchemaEditor_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ITableSchemaEditor_Type;
 }
@@ -136,7 +149,7 @@ ITableSchemaEditor_init( PyObject* self, PyObject*  args, PyObject* /*kwds*/ )
   if ( !PyArg_ParseTuple( args, (char*)"OO",
                           &(py_this->parent),
                           &c_object ) ) return -1;
-  py_this->object = static_cast<coral::ITableSchemaEditor*>( PyCObject_AsVoidPtr( c_object ) );
+  py_this->object = static_cast<coral::ITableSchemaEditor*>( PyCapsule_GetPointer( c_object , "name") );
   if (py_this->parent) Py_INCREF(py_this->parent);
   return 0;
 }
@@ -701,16 +714,12 @@ ITableSchemaEditor_createForeignKey( PyObject* self, PyObject* args)
   try
   {
     int numberOfArguments = PyTuple_GET_SIZE( args );
-#ifdef CORAL240DC
-    if ( numberOfArguments < 5 )
-#else
-      if ( numberOfArguments < 4 )
-#endif
-      {
-        PyErr_SetString( coral::PyCoral::Exception(),
-                         (char*) "Error when creating ForeignKey, Lack of Argument" );
-        return 0;
-      }
+    if ( numberOfArguments < 4 )
+    {
+      PyErr_SetString( coral::PyCoral::Exception(),
+                       (char*) "Error when creating ForeignKey, Lack of Argument" );
+      return 0;
+    }
 
     char *name = 0;
     char *columnName = 0;
@@ -719,17 +728,10 @@ ITableSchemaEditor_createForeignKey( PyObject* self, PyObject* args)
     char *refTableName = 0;
     char *refColumnName = 0;
     PyObject* refColumnTuple = 0;
-#ifdef CORAL240DC
-    bool refOnDeleteCascade = 0;
-#endif
     PyObject* aRefColumn = 0;
     if (( PyTuple_Check(PyTuple_GET_ITEM(args,1)) ) && ( PyTuple_Check(PyTuple_GET_ITEM(args,3)) ) )
     {
-#ifdef CORAL240DC
-      if ( ! PyArg_ParseTuple(args, (char*) "sOsOb", &name, &columnTuple, &refTableName, &refColumnTuple, &refOnDeleteCascade) ) return 0;
-#else
       if ( ! PyArg_ParseTuple(args, (char*) "sOsO", &name, &columnTuple, &refTableName, &refColumnTuple) ) return 0;
-#endif
 
       std::cout << "schring" << std::endl;
 
@@ -779,29 +781,16 @@ ITableSchemaEditor_createForeignKey( PyObject* self, PyObject* args)
         ref_str_Vector.push_back( ref_strData );
       }
       //Py_DECREF( refColumnTuple );
-#ifdef CORAL240DC
-      py_this->object->createForeignKey( std::string(name),
-                                         str_Vector, std::string(refTableName ), ref_str_Vector, refOnDeleteCascade );
-#else
       py_this->object->createForeignKey( std::string(name),
                                          str_Vector, std::string(refTableName ), ref_str_Vector );
-#endif
 
     }
     else if (( PyString_Check(PyTuple_GET_ITEM(args,1))) && ( PyString_Check(PyTuple_GET_ITEM(args,3))))
     {
-#ifdef CORAL240DC
-      if ( ! PyArg_ParseTuple(args, (char*) "ssssb", &name, &columnName, &refTableName, &refColumnName, &refOnDeleteCascade) ) return 0;
-
-      py_this->object->createForeignKey(std::string(name),
-                                        std::string(columnName), std::string(refTableName), std::string(refColumnName), refOnDeleteCascade );
-#else
       if ( ! PyArg_ParseTuple(args, (char*) "ssss", &name, &columnName, &refTableName, &refColumnName) ) return 0;
 
       py_this->object->createForeignKey(std::string(name),
                                         std::string(columnName), std::string(refTableName), std::string(refColumnName) );
-#endif
-
 
     }
     else

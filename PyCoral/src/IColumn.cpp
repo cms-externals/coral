@@ -3,8 +3,8 @@
 #include "RelationalAccess/IColumn.h"
 #include <sstream>
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -28,21 +28,21 @@ PyTypeObject*
 coral::PyCoral::IColumn_Type()
 {
   static PyMethodDef IColumn_Methods[] = {
-    { (char*) "name", (PyCFunction) IColumn_name, METH_NOARGS,
+    { (char*) "name", (PyCFunction)(void *) IColumn_name, METH_NOARGS,
       (char*) "Returns the name of the column." },
-    { (char*) "type", (PyCFunction) IColumn_type, METH_NOARGS,
+    { (char*) "type", (PyCFunction)(void *) IColumn_type, METH_NOARGS,
       (char*) "Returns the C++ type of the column." },
-    { (char*) "indexInTable", (PyCFunction) IColumn_indexInTable, METH_NOARGS,
+    { (char*) "indexInTable", (PyCFunction)(void *) IColumn_indexInTable, METH_NOARGS,
       (char*) "Returns the column id in the table." },
-    { (char*) "isNotNull", (PyCFunction) IColumn_isNotNull, METH_NOARGS,
+    { (char*) "isNotNull", (PyCFunction)(void *) IColumn_isNotNull, METH_NOARGS,
       (char*) "Returns the NOT-NULL-ness of the column." },
-    { (char*) "isUnique", (PyCFunction) IColumn_isUnique, METH_NOARGS,
+    { (char*) "isUnique", (PyCFunction)(void *) IColumn_isUnique, METH_NOARGS,
       (char*) "Returns the uniqueness of the column." },
-    { (char*) "size", (PyCFunction) IColumn_size, METH_NOARGS,
+    { (char*) "size", (PyCFunction)(void *) IColumn_size, METH_NOARGS,
       (char*) "Returns the maximum size in bytes of the data object which can be held in this column." },
-    { (char*) "isSizeFixed", (PyCFunction) IColumn_isSizeFixed, METH_NOARGS,
+    { (char*) "isSizeFixed", (PyCFunction)(void *) IColumn_isSizeFixed, METH_NOARGS,
       (char*) "Informs whether the size of the object is fixed or it can be variable. This makes sense mostly for string types." },
-    { (char*) "tableSpaceName", (PyCFunction) IColumn_tableSpaceName, METH_NOARGS,
+    { (char*) "tableSpaceName", (PyCFunction)(void *) IColumn_tableSpaceName, METH_NOARGS,
       (char*) "Returns the name of table space for the data. This makes sence mainly for LOBs." },
     {0, 0, 0, 0}
   };
@@ -50,57 +50,61 @@ coral::PyCoral::IColumn_Type()
   static char IColumn_doc[] = "Interface for the description of a column in a table.";
 
   static PyTypeObject IColumn_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.IColumn", /*tp_name*/
-    sizeof(coral::PyCoral::IColumn), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    IColumn_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    IColumn_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    IColumn_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    IColumn_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    IColumn_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.IColumn", // tp_name
+    sizeof(coral::PyCoral::IColumn), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    IColumn_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    IColumn_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    IColumn_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    IColumn_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    IColumn_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &IColumn_Type;
 }
@@ -121,7 +125,7 @@ IColumn_init( PyObject* self, PyObject*  args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::IColumn*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
 
   return 0;

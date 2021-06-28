@@ -7,12 +7,17 @@
 #include "IViewFactory.h"
 #include "RelationalAccess/ISchema.h"
 #include "RelationalAccess/IViewFactory.h"
-#include "PyCoral/cast_to_base.h"
+#include "cast_to_base.h"
 #include "PyCoral/AttributeList.h"
 #include <sstream>
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+    #define PyString_FromString PyUnicode_FromString
+#endif
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -43,35 +48,35 @@ PyTypeObject*
 coral::PyCoral::ISchema_Type()
 {
   static PyMethodDef ISchema_Methods[] = {
-    { (char*) "listTables", (PyCFunction) ISchema_listTables, METH_NOARGS,
+    { (char*) "listTables", (PyCFunction)(void *) ISchema_listTables, METH_NOARGS,
       (char*) "Returns the names of all tables in the schema." },
-    { (char*) "existsTable", (PyCFunction) ISchema_existsTable, METH_O,
+    { (char*) "existsTable", (PyCFunction)(void *) ISchema_existsTable, METH_O,
       (char*) "Checks the existence of a table with the specified name." },
-    { (char*) "dropTable", (PyCFunction) ISchema_dropTable, METH_O,
+    { (char*) "dropTable", (PyCFunction)(void *) ISchema_dropTable, METH_O,
       (char*) "Drops the table with the specified name.If the table does not exist a TableNotExistingException is thrown." },
-    { (char*) "truncateTable", (PyCFunction) ISchema_truncateTable, METH_O,
+    { (char*) "truncateTable", (PyCFunction)(void *) ISchema_truncateTable, METH_O,
       (char*) "Truncates the table with the specified name.If the table does not exist a TableNotExistingException is thrown." },
-    { (char*) "dropIfExistsTable", (PyCFunction) ISchema_dropIfExistsTable, METH_O,
+    { (char*) "dropIfExistsTable", (PyCFunction)(void *) ISchema_dropIfExistsTable, METH_O,
       (char*) "Drops the table with the specified name in case it exists." },
-    { (char*) "callProcedure", (PyCFunction) ISchema_callProcedure, METH_VARARGS,
+    { (char*) "callProcedure", (PyCFunction)(void *) ISchema_callProcedure, METH_VARARGS,
       (char*) "Performs a call to a stored procedure with input parameters." },
-    { (char*) "createTable", (PyCFunction) ISchema_createTable, METH_VARARGS,
+    { (char*) "createTable", (PyCFunction)(void *) ISchema_createTable, METH_VARARGS,
       (char*) "Creates a new table with the specified description and returns the corresponding table handle. If a table with the same name already exists TableAlreadyExistingException is thrown." },
-    { (char*) "tableHandle", (PyCFunction) ISchema_tableHandle, METH_O,
+    { (char*) "tableHandle", (PyCFunction)(void *) ISchema_tableHandle, METH_O,
       (char*) "Returns a reference to an ITable object corresponding to the table with the specified name. In case no table with such a name exists, a TableNotExistingException is thrown." },
-    { (char*) "newQuery", (PyCFunction) ISchema_newQuery, METH_NOARGS,
+    { (char*) "newQuery", (PyCFunction)(void *) ISchema_newQuery, METH_NOARGS,
       (char*) "Returns a new query object." },
-    { (char*) "viewFactory", (PyCFunction) ISchema_viewFactory, METH_NOARGS,
+    { (char*) "viewFactory", (PyCFunction)(void *) ISchema_viewFactory, METH_NOARGS,
       (char*) "Returns a new view factory object in order to define and create a view." },
-    { (char*) "existsView", (PyCFunction) ISchema_existsView, METH_O,
+    { (char*) "existsView", (PyCFunction)(void *) ISchema_existsView, METH_O,
       (char*) "Checks the existence of a view with the specified name." },
-    { (char*) "dropView", (PyCFunction) ISchema_dropView, METH_O,
+    { (char*) "dropView", (PyCFunction)(void *) ISchema_dropView, METH_O,
       (char*) "Drops the view with the specified name. If the view does not exist a ViewNotExistingException is thrown." },
-    { (char*) "dropIfExistsView", (PyCFunction) ISchema_dropIfExistsView, METH_O,
+    { (char*) "dropIfExistsView", (PyCFunction)(void *) ISchema_dropIfExistsView, METH_O,
       (char*) "Drops the view with the specified name in case it exists." },
-    { (char*) "listViews", (PyCFunction) ISchema_listViews, METH_NOARGS,
+    { (char*) "listViews", (PyCFunction)(void *) ISchema_listViews, METH_NOARGS,
       (char*) "Returns the names of all views in the schema." },
-    { (char*) "viewHandle", (PyCFunction) ISchema_viewHandle, METH_O,
+    { (char*) "viewHandle", (PyCFunction)(void *) ISchema_viewHandle, METH_O,
       (char*) "Returns a reference to an IView object corresponding to the view with the specified name. In case no view with such a name exists, a ViewNotExistingException is thrown." },
     {0, 0, 0, 0}
   };
@@ -79,57 +84,61 @@ coral::PyCoral::ISchema_Type()
   static char ISchema_doc[] = "Abstract interface to manage a schema in a relational database. Any operation requires that a transaction has been started, otherwise a TransactionNotActiveException is thrown..";
 
   static PyTypeObject ISchema_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ISchema", /*tp_name*/
-    sizeof(coral::PyCoral::ISchema), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ISchema_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    ISchema_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    ISchema_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ISchema_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ISchema_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ISchema", // tp_name
+    sizeof(coral::PyCoral::ISchema), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ISchema_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    ISchema_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    ISchema_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ISchema_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ISchema_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ISchema_Type;
 }
@@ -150,7 +159,7 @@ ISchema_init( PyObject* self, PyObject* args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::ISchema*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
   return 0;
 }
@@ -401,9 +410,9 @@ ISchema_createTable( PyObject* self, PyObject* args)
                        (char*) "Error in Creating a ITable object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theHandle,0 );
+    PyObject* c_object = PyCapsule_New( theHandle, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -456,9 +465,9 @@ ISchema_tableHandle( PyObject* self, PyObject* args)
       PyErr_SetString( coral::PyCoral::Exception(), (char*) "Error in Creating ITable Object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theHandle,0 );
+    PyObject* c_object = PyCapsule_New( theHandle, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -503,9 +512,9 @@ ISchema_newQuery( PyObject* self )
                        (char*) "Error when creating query manager object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theQuery,0 );
+    PyObject* c_object = PyCapsule_New( theQuery, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -550,9 +559,9 @@ ISchema_viewFactory( PyObject* self )
                        (char*) "Error when creating IViewFactory object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theViewFactory,0 );
+    PyObject* c_object = PyCapsule_New( theViewFactory, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -746,9 +755,9 @@ ISchema_viewHandle( PyObject* self, PyObject* args)
                        (char*) "Error in Creating Iview object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theHandle,0 );
+    PyObject* c_object = PyCapsule_New( theHandle, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)

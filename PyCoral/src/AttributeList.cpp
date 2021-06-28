@@ -1,7 +1,7 @@
 #include "Exception.h"
 #include "PyCoral/AttributeList.h"
 #include "AttributeListIterator.h"
-#include "Attribute.h"
+#include "PyCoral/Attribute.h"
 #include "AttributeSpecification.h"
 #include "CoralBase/Attribute.h"
 #include "CoralBase/AttributeList.h"
@@ -9,25 +9,30 @@
 #include <sstream>
 #include <typeinfo>
 
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+    #define PyString_AS_STRING PyUnicode_AsUTF8
+#endif
 
 // Forward declaration of the methods
 static int AttributeList_init( PyObject* self, PyObject* args, PyObject* kwds );
 static void AttributeList_dealloc( PyObject* self );
 static int AttributeList_compare( PyObject* obj1, PyObject* obj2 );
+#if PY_MAJOR_VERSION >= 3
+static PyObject* AttributeList_rich_compare(PyObject *o1, PyObject* o2, int op);
+#endif
 static PyObject* AttributeList_str( PyObject* self );
 static PyObject* AttributeList_iter( PyObject* self );
 static PyObject* AttributeList_attributeByIndex( PyObject* self, int index );
 static PyObject* AttributeList_attributeByName( PyObject* self, PyObject* args );
-static int AttributeList_length( PyObject* self );
-
-
 
 static PyObject* AttributeList_extend( PyObject* self, PyObject* args );
 static PyObject* AttributeList_size( PyObject* self );
 static PyObject* AttributeList_copyData( PyObject* self, PyObject* args );
 static PyObject* AttributeList_fastCopyData( PyObject* self, PyObject* args );
 static PyObject* AttributeList_merge( PyObject* self, PyObject* args );
-static int AttributeList_length( PyObject* self );
+static long int AttributeList_length( PyObject* self );
 
 
 // Type definition
@@ -35,26 +40,26 @@ PyTypeObject*
 coral::PyCoral::AttributeList_Type()
 {
   static PyMethodDef AttributeList_Methods[] = {
-    { (char*) "extend", (PyCFunction) AttributeList_extend, METH_VARARGS,
+    { (char*) "extend", (PyCFunction)(void *) AttributeList_extend, METH_VARARGS,
       (char*) "Extends the attribute list by one attribute, given the specification" },
-    { (char*) "copyData", (PyCFunction) AttributeList_copyData, METH_VARARGS,
+    { (char*) "copyData", (PyCFunction)(void *) AttributeList_copyData, METH_VARARGS,
       (char*) "Copies the data of an  attribute list to another, performs typechecking, rhs can have longer specification, the first attributes are used" },
-    { (char*) "fastCopyData", (PyCFunction) AttributeList_fastCopyData, METH_VARARGS,
+    { (char*) "fastCopyData", (PyCFunction)(void *) AttributeList_fastCopyData, METH_VARARGS,
       (char*) "Copies the data of an  attribute list to another, does not perform typechecking, rhs can have longer specification, the first attributes are used" },
-    { (char*) "merge", (PyCFunction) AttributeList_merge, METH_VARARGS,
+    { (char*) "merge", (PyCFunction)(void *) AttributeList_merge, METH_VARARGS,
       (char*) "Merges into and shares the contents of another attribute list" },
-    { (char*) "size", (PyCFunction) AttributeList_size, METH_NOARGS,
+    { (char*) "size", (PyCFunction)(void *) AttributeList_size, METH_NOARGS,
       (char*) "Returns the size of attribute list" },
     {0, 0, 0, 0}
   };
 
   static PyMappingMethods AttributeList_MappingMethods = {
 #if PY_VERSION_HEX >= 0x02050000
-    (lenfunc) AttributeList_length, /* length */
+    (lenfunc) AttributeList_length, //  length
 #else
-    AttributeList_length, /* length */
+    AttributeList_length, //  length
 #endif
-    AttributeList_attributeByName, /* get attribute */
+    AttributeList_attributeByName, //  get attribute
     0
   };
 
@@ -62,57 +67,69 @@ coral::PyCoral::AttributeList_Type()
   static char AttributeList_doc[] = "A simple container of attributes.";
 
   static PyTypeObject AttributeList_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.AttributeList", /*tp_name*/
-    sizeof(coral::PyCoral::AttributeList), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    AttributeList_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    AttributeList_compare, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    &AttributeList_MappingMethods, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    AttributeList_str, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    AttributeList_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    AttributeList_iter, /*tp_iter*/
-    0, /*tp_iternext*/
-    AttributeList_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    AttributeList_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    AttributeList_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.AttributeList", // tp_name
+    sizeof(coral::PyCoral::AttributeList), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    AttributeList_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    AttributeList_compare, // tp_compare
+    #else
+    0, // tp_compare
+    #endif
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    &AttributeList_MappingMethods, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    AttributeList_str, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    AttributeList_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977       
+    0, // tp_richcompare
+    #else
+    (richcmpfunc)AttributeList_rich_compare,
+    #endif
+    0, // tp_weaklistoffset
+    AttributeList_iter, // tp_iter
+    0, // tp_iternext
+    AttributeList_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    AttributeList_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    AttributeList_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &AttributeList_Type;
 }
@@ -141,7 +158,7 @@ AttributeList_init( PyObject* self, PyObject*  args , PyObject* /* kwds */ )
                               &(py_this->parent),
                               &c_object ) ) return -1;
       py_this->object = static_cast<coral::AttributeList*>
-        ( PyCObject_AsVoidPtr( c_object ) );
+        ( PyCapsule_GetPointer( c_object , "name") );
       if ( py_this->parent ) Py_INCREF( py_this->parent );
     }
   }
@@ -201,6 +218,18 @@ AttributeList_compare( PyObject* obj1, PyObject* obj2 )
   return 0;
 }
 
+#if PY_MAJOR_VERSION >= 3
+  PyObject* AttributeList_rich_compare(PyObject *o1, PyObject* o2, int op){
+    if(o2==Py_None) Py_RETURN_FALSE;
+    switch(op){
+      case Py_EQ:{
+         if(AttributeList_compare(o1,o2) == 0) Py_RETURN_TRUE;
+         Py_RETURN_FALSE;
+      }
+      default: Py_RETURN_NOTIMPLEMENTED;
+    }
+  }
+#endif
 
 PyObject*
 AttributeList_str( PyObject* self )
@@ -404,7 +433,7 @@ AttributeList_iter( PyObject* self )
     coral::PyCoral::AttributeListIterator* ob = PyObject_New( coral::PyCoral::AttributeListIterator,
                                                               coral::PyCoral::AttributeListIterator_Type() );
     PyObject* temp = Py_BuildValue((char*)"O", self);
-    bool ok = (ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = (Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     if (ok)
       return (PyObject*) ob;
@@ -464,9 +493,9 @@ AttributeList_attributeByName( PyObject* self, PyObject* args )
                          (char*) "Error in Creating Attribute object." );
         return 0;
       }
-      PyObject* c_object = PyCObject_FromVoidPtr( theAttribute, 0 );
+      PyObject* c_object = PyCapsule_New( theAttribute, "name", 0 );
       PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-      bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+      bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
       Py_DECREF(temp);
       Py_DECREF( c_object );
       if (ok)
@@ -520,9 +549,9 @@ AttributeList_attributeByIndex( PyObject* self, int index )
                        (char*) "Error in Creating Attribute object." );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theAttribute, 0 );
+    PyObject* c_object = PyCapsule_New( theAttribute, "name", 0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -547,7 +576,7 @@ AttributeList_attributeByIndex( PyObject* self, int index )
 }
 
 
-int
+long int
 AttributeList_length( PyObject* self )
 {
   coral::PyCoral::AttributeList* py_this = (coral::PyCoral::AttributeList*) self;

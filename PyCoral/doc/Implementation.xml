@@ -186,11 +186,11 @@ A PyTypeObject structure of the class object is defined by filling up various sl
 To add methods of the class in an interface, method names are added in respective python class object using the PyMethodDef structure. The structure is self explanatory, expect for the METH_X part. The METH_X part has been explained in the .adding methods. section. An example for Date class object is as follows:
 <programlisting>
 static PyMethodDef Date_Methods[] = {
-{ (char*) "year", (PyCFunction) Date_year, METH_NOARGS,
+{ (char*) "year", (PyCFunction)(void *) Date_year, METH_NOARGS,
 (char*) "Returns the year of the date" },
-{ (char*) "month", (PyCFunction) Date_month, METH_NOARGS,
+{ (char*) "month", (PyCFunction)(void *) Date_month, METH_NOARGS,
 (char*) "Returns the month of the date [1-12]" },
-{ (char*) "day", (PyCFunction) Date_day, METH_NOARGS,
+{ (char*) "day", (PyCFunction)(void *) Date_day, METH_NOARGS,
 (char*) "Returns the day of the date [1-31]" },
 {0, 0, 0, 0}
 };

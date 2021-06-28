@@ -3,10 +3,16 @@
 
 #ifdef _DEBUG
 #undef _DEBUG
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wregister"
 #include "Python.h"
+#pragma clang diagnostic pop
 #define _DEBUG
 #else
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wregister"
 #include "Python.h"
+#pragma clang diagnostic pop
 #endif
 
 namespace coral {
@@ -21,6 +27,9 @@ namespace coral {
       coral::Blob* object; // The underlying C++ type
       PyObject* parent;
       long currentPosition;
+      #if PY_MAJOR_VERSION >= 3
+      int ob_exports;      /* How many buffer exports */
+      #endif
     } Blob;
 
 

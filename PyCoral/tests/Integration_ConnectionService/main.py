@@ -21,7 +21,7 @@ try:
  mysqlTest = MySqlSchema.MySqlSchema(proxy1)
  mysqlTest.listTables("test")
 
- #connection exists and will be recycled */
+ #connection exists and will be recycled *///
  proxy_update = svc.connect("my_test",coral.access_Update)
  mysqlTest_update = MySqlSchema.MySqlSchema(proxy_update)
  mysqlTest_update.listTables("RADO_POOL")

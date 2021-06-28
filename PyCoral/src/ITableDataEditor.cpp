@@ -31,23 +31,23 @@ PyTypeObject*
 coral::PyCoral::ITableDataEditor_Type()
 {
   static PyMethodDef ITableDataEditor_Methods[] = {
-    { (char*) "rowBuffer", (PyCFunction) ITableDataEditor_rowBuffer, METH_VARARGS,
+    { (char*) "rowBuffer", (PyCFunction)(void *) ITableDataEditor_rowBuffer, METH_VARARGS,
       (char*) "Constructs a buffer corresponding to a full a table row." },
-    { (char*) "insertRow", (PyCFunction) ITableDataEditor_insertRow, METH_VARARGS,
+    { (char*) "insertRow", (PyCFunction)(void *) ITableDataEditor_insertRow, METH_VARARGS,
       (char*) "Inserts a new row in the table." },
-    { (char*) "insertWithQuery", (PyCFunction) ITableDataEditor_insertWithQuery, METH_NOARGS,
+    { (char*) "insertWithQuery", (PyCFunction)(void *) ITableDataEditor_insertWithQuery, METH_NOARGS,
       (char*) "Returns a new IOperationWithQuery object for performing an INSERT/SELECT operation." },
-    { (char*) "bulkInsert", (PyCFunction) ITableDataEditor_bulkInsert, METH_VARARGS,
+    { (char*) "bulkInsert", (PyCFunction)(void *) ITableDataEditor_bulkInsert, METH_VARARGS,
       (char*) "Returns a new IBulkOperation object for performing a bulk insert operation specifying the input data buffer and the number of rows that should be cached on the client." },
-    { (char*) "bulkInsertWithQuery", (PyCFunction) ITableDataEditor_bulkInsertWithQuery, METH_O,
+    { (char*) "bulkInsertWithQuery", (PyCFunction)(void *) ITableDataEditor_bulkInsertWithQuery, METH_O,
       (char*) "Returns a new IBulkOperationWithQuery object for performing an INSERT/SELECT operation specifying the number of iterations that should be cached on the client." },
-    { (char*) "updateRows", (PyCFunction) ITableDataEditor_updateRows, METH_VARARGS,
+    { (char*) "updateRows", (PyCFunction)(void *) ITableDataEditor_updateRows, METH_VARARGS,
       (char*) "Updates rows in the table. Returns the number of affected rows." },
-    { (char*) "bulkUpdateRows", (PyCFunction) ITableDataEditor_bulkUpdateRows, METH_VARARGS,
+    { (char*) "bulkUpdateRows", (PyCFunction)(void *) ITableDataEditor_bulkUpdateRows, METH_VARARGS,
       (char*) "Returns a new IBulkOperation object for performing a bulk update operation." },
-    { (char*) "deleteRows", (PyCFunction) ITableDataEditor_deleteRows, METH_VARARGS,
+    { (char*) "deleteRows", (PyCFunction)(void *) ITableDataEditor_deleteRows, METH_VARARGS,
       (char*) "Deletes the rows in the table fulfilling the specified condition. It returns the number of rows deleted." },
-    { (char*) "bulkDeleteRows", (PyCFunction) ITableDataEditor_bulkDeleteRows, METH_VARARGS,
+    { (char*) "bulkDeleteRows", (PyCFunction)(void *) ITableDataEditor_bulkDeleteRows, METH_VARARGS,
       (char*) "Returns a new IBulkOperation for peforming a bulk delete operation." },
     {0, 0, 0, 0}
   };
@@ -55,57 +55,61 @@ coral::PyCoral::ITableDataEditor_Type()
   static char ITableDataEditor_doc[] = "Interface for the DML operations on a table.";
 
   static PyTypeObject ITableDataEditor_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ITableDataEditor", /*tp_name*/
-    sizeof(coral::PyCoral::ITableDataEditor), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ITableDataEditor_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    ITableDataEditor_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    ITableDataEditor_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ITableDataEditor_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ITableDataEditor_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ITableDataEditor", // tp_name
+    sizeof(coral::PyCoral::ITableDataEditor), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ITableDataEditor_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    ITableDataEditor_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    ITableDataEditor_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ITableDataEditor_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ITableDataEditor_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ITableDataEditor_Type;
 }
@@ -126,7 +130,7 @@ ITableDataEditor_init( PyObject* self, PyObject* args, PyObject* /*kwds*/ )
                           &(py_this->parent),
                           &c_object ) ) return -1;
   py_this->object = static_cast<coral::ITableDataEditor*>
-    ( PyCObject_AsVoidPtr( c_object ) );
+    ( PyCapsule_GetPointer( c_object , "name") );
   if (py_this->parent) Py_INCREF (py_this->parent);
   return 0;
 }
@@ -222,9 +226,9 @@ ITableDataEditor_insertWithQuery( PyObject* self)
                        (char*) "Error when creating a IOperationWithQuery Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theInsertQuery,0 );
+    PyObject* c_object = PyCapsule_New( theInsertQuery, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -271,9 +275,9 @@ ITableDataEditor_bulkInsert( PyObject* self, PyObject* args )
                        (char*) "Error when creating a IBulkOperation Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theBulkInsert,0 );
+    PyObject* c_object = PyCapsule_New( theBulkInsert, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -312,9 +316,11 @@ ITableDataEditor_bulkInsertWithQuery( PyObject* self, PyObject* args )
     if (PyLong_Check( args ) ) {
       dataCacheSize = PyLong_AsLong(args);
     }
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
     else if ( PyInt_Check( args ) ) {
       dataCacheSize = PyInt_AS_LONG(args);
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*)"Argument is not a Long integer!" );
@@ -328,9 +334,9 @@ ITableDataEditor_bulkInsertWithQuery( PyObject* self, PyObject* args )
                        (char*) "Error when creating a IBulkOperationWithQuery Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theBulkInsert,0 );
+    PyObject* c_object = PyCapsule_New( theBulkInsert, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -411,9 +417,9 @@ ITableDataEditor_bulkUpdateRows( PyObject* self, PyObject* args)
                        (char*) "Error when creating an IBulkOperation Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theBulkUpdate,0 );
+    PyObject* c_object = PyCapsule_New( theBulkUpdate, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -493,9 +499,9 @@ ITableDataEditor_bulkDeleteRows( PyObject* self, PyObject* args)
                        (char*) "Error when creating an IBulkOperation Object " );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theBulkDelete,0 );
+    PyObject* c_object = PyCapsule_New( theBulkDelete, "name",0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)

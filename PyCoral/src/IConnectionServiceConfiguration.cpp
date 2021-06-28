@@ -3,8 +3,12 @@
 #include "Exception.h"
 #include <exception>
 
-// Get rid of 'dereferencing type-punned pointer will break strict-aliasing rules'
-// warnings caused by Py_RETURN_TRUE/FALSE.
+#if PY_MAJOR_VERSION >= 3
+    #define PyString_Check PyUnicode_Check
+    #define PyString_AsString PyUnicode_AsUTF8
+#endif
+// Ignore 'dereferencing type-punned pointer' warnings caused by
+// Py_RETURN_TRUE/FALSE (CMS patch for sr #141482 and bug #89768)
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
@@ -45,57 +49,57 @@ PyTypeObject*
 coral::PyCoral::IConnectionServiceConfiguration_Type()
 {
   static PyMethodDef IConnectionServiceConfiguration_Methods[] = {
-    { (char*) "enableReplicaFailOver", (PyCFunction) IConnectionServiceConfiguration_enableReplicaFailOver, METH_NOARGS,
+    { (char*) "enableReplicaFailOver", (PyCFunction)(void *) IConnectionServiceConfiguration_enableReplicaFailOver, METH_NOARGS,
       (char*) "Enables the failing over to the next available replica in case the current one is not available, otherwise the ConnectionService gives up." },
-    { (char*) "disableReplicaFailOver", (PyCFunction) IConnectionServiceConfiguration_disableReplicaFailOver, METH_NOARGS,
+    { (char*) "disableReplicaFailOver", (PyCFunction)(void *) IConnectionServiceConfiguration_disableReplicaFailOver, METH_NOARGS,
       (char*) "Disables the failing over to the next available replica in case the current one is not available." },
-    { (char*) "isReplicaFailOverEnabled", (PyCFunction) IConnectionServiceConfiguration_isReplicaFailOverEnabled, METH_NOARGS,
+    { (char*) "isReplicaFailOverEnabled", (PyCFunction)(void *) IConnectionServiceConfiguration_isReplicaFailOverEnabled, METH_NOARGS,
       (char*) "Returns the failover mode." },
-    { (char*) "enableConnectionSharing", (PyCFunction) IConnectionServiceConfiguration_enableConnectionSharing, METH_NOARGS,
+    { (char*) "enableConnectionSharing", (PyCFunction)(void *) IConnectionServiceConfiguration_enableConnectionSharing, METH_NOARGS,
       (char*) "Enables the sharing of the same physical connection among more clients." },
-    { (char*) "disableConnectionSharing", (PyCFunction) IConnectionServiceConfiguration_disableConnectionSharing, METH_NOARGS,
+    { (char*) "disableConnectionSharing", (PyCFunction)(void *) IConnectionServiceConfiguration_disableConnectionSharing, METH_NOARGS,
       (char*) "Disnables the sharing of the same physical connection among more clients." },
-    { (char*) "isConnectionSharingEnabled", (PyCFunction) IConnectionServiceConfiguration_isConnectionSharingEnabled, METH_NOARGS,
+    { (char*) "isConnectionSharingEnabled", (PyCFunction)(void *) IConnectionServiceConfiguration_isConnectionSharingEnabled, METH_NOARGS,
       (char*) "Returns the connection sharing mode." },
-    { (char*) "enableReadOnlySessionOnUpdateConnections", (PyCFunction) IConnectionServiceConfiguration_enableReadOnlySessionOnUpdateConnections, METH_NOARGS,
+    { (char*) "enableReadOnlySessionOnUpdateConnections", (PyCFunction)(void *) IConnectionServiceConfiguration_enableReadOnlySessionOnUpdateConnections, METH_NOARGS,
       (char*) "Enables the re-use of Update connections for Read-Only sessions." },
-    { (char*) "disableReadOnlySessionOnUpdateConnections", (PyCFunction) IConnectionServiceConfiguration_disableReadOnlySessionOnUpdateConnections, METH_NOARGS,
+    { (char*) "disableReadOnlySessionOnUpdateConnections", (PyCFunction)(void *) IConnectionServiceConfiguration_disableReadOnlySessionOnUpdateConnections, METH_NOARGS,
       (char*) "Disables the re-use of Update connections for Read-Only sessions." },
-    { (char*) "isReadOnlySessionOnUpdateConnectionsEnabled", (PyCFunction) IConnectionServiceConfiguration_isReadOnlySessionOnUpdateConnectionsEnabled, METH_NOARGS,
+    { (char*) "isReadOnlySessionOnUpdateConnectionsEnabled", (PyCFunction)(void *) IConnectionServiceConfiguration_isReadOnlySessionOnUpdateConnectionsEnabled, METH_NOARGS,
       (char*) "Returns true if the  re-use of Update connections for Read-Only sessions is enabled; false otherwise." },
-    { (char*) "setConnectionRetrialPeriod", (PyCFunction) IConnectionServiceConfiguration_setConnectionRetrialPeriod, METH_O,
+    { (char*) "setConnectionRetrialPeriod", (PyCFunction)(void *) IConnectionServiceConfiguration_setConnectionRetrialPeriod, METH_O,
       (char*) "Sets the period of connection retrials (time interval between two retrials)." },
-    { (char*) "connectionRetrialPeriod", (PyCFunction) IConnectionServiceConfiguration_connectionRetrialPeriod, METH_NOARGS,
+    { (char*) "connectionRetrialPeriod", (PyCFunction)(void *) IConnectionServiceConfiguration_connectionRetrialPeriod, METH_NOARGS,
       (char*) "Returns the rate of connection retrials (time interval between two retrials)." },
-    { (char*) "setConnectionRetrialTimeOut", (PyCFunction) IConnectionServiceConfiguration_setConnectionRetrialTimeOut, METH_O,
+    { (char*) "setConnectionRetrialTimeOut", (PyCFunction)(void *) IConnectionServiceConfiguration_setConnectionRetrialTimeOut, METH_O,
       (char*) "Sets the time out for the connection retrials before the connection service fails over to the next available replica or quits." },
-    { (char*) "connectionRetrialTimeOut", (PyCFunction) IConnectionServiceConfiguration_connectionRetrialTimeOut, METH_NOARGS,
+    { (char*) "connectionRetrialTimeOut", (PyCFunction)(void *) IConnectionServiceConfiguration_connectionRetrialTimeOut, METH_NOARGS,
       (char*) "Returns the time out for the connection retrials before the connection service fails over to the next available replica or quits." },
-    { (char*) "setConnectionTimeOut", (PyCFunction) IConnectionServiceConfiguration_setConnectionTimeOut, METH_O,
+    { (char*) "setConnectionTimeOut", (PyCFunction)(void *) IConnectionServiceConfiguration_setConnectionTimeOut, METH_O,
       (char*) "Sets the connection time out in seconds." },
-    { (char*) "connectionTimeOut", (PyCFunction) IConnectionServiceConfiguration_connectionTimeOut, METH_NOARGS,
+    { (char*) "connectionTimeOut", (PyCFunction)(void *) IConnectionServiceConfiguration_connectionTimeOut, METH_NOARGS,
       (char*) "Retrieves the connection time out in seconds." },
-    { (char*) "setMissingConnectionExclusionTime", (PyCFunction) IConnectionServiceConfiguration_setMissingConnectionExclusionTime, METH_O,
+    { (char*) "setMissingConnectionExclusionTime", (PyCFunction)(void *) IConnectionServiceConfiguration_setMissingConnectionExclusionTime, METH_O,
       (char*) "Sets the time duration of exclusion from failover list for a connection not available." },
-    { (char*) "missingConnectionExclusionTime", (PyCFunction) IConnectionServiceConfiguration_missingConnectionExclusionTime, METH_NOARGS,
+    { (char*) "missingConnectionExclusionTime", (PyCFunction)(void *) IConnectionServiceConfiguration_missingConnectionExclusionTime, METH_NOARGS,
       (char*) "Retrieves the time duration of exclusion from failover list for a connection not available." },
-    { (char*) "enablePoolAutomaticCleanUp", (PyCFunction) IConnectionServiceConfiguration_enablePoolAutomaticCleanUp, METH_NOARGS,
+    { (char*) "enablePoolAutomaticCleanUp", (PyCFunction)(void *) IConnectionServiceConfiguration_enablePoolAutomaticCleanUp, METH_NOARGS,
       (char*) "Activate the parallel thread for idle pool cleaning up." },
-    { (char*) "disablePoolAutomaticCleanUp", (PyCFunction) IConnectionServiceConfiguration_disablePoolAutomaticCleanUp, METH_NOARGS,
+    { (char*) "disablePoolAutomaticCleanUp", (PyCFunction)(void *) IConnectionServiceConfiguration_disablePoolAutomaticCleanUp, METH_NOARGS,
       (char*) "Disable the parallel thread for idle pool cleaning up." },
-    { (char*) "isPoolAutomaticCleanUpEnabled", (PyCFunction) IConnectionServiceConfiguration_isPoolAutomaticCleanUpEnabled, METH_NOARGS,
+    { (char*) "isPoolAutomaticCleanUpEnabled", (PyCFunction)(void *) IConnectionServiceConfiguration_isPoolAutomaticCleanUpEnabled, METH_NOARGS,
       (char*) "Returns true if the parallel thread for idle pool cleaning up is enabled." },
-    { (char*) "setDefaultAuthenticationService", (PyCFunction) IConnectionServiceConfiguration_setDefaultAuthenticationService, METH_O,
+    { (char*) "setDefaultAuthenticationService", (PyCFunction)(void *) IConnectionServiceConfiguration_setDefaultAuthenticationService, METH_O,
       (char*) "Sets the default authentication service implementation." },
-    { (char*) "setDefaultLookupService", (PyCFunction) IConnectionServiceConfiguration_setDefaultLookupService, METH_O,
+    { (char*) "setDefaultLookupService", (PyCFunction)(void *) IConnectionServiceConfiguration_setDefaultLookupService, METH_O,
       (char*) "Sets the default lookup service implementation." },
-    { (char*) "setDefaultRelationalService", (PyCFunction) IConnectionServiceConfiguration_setDefaultRelationalService, METH_O,
+    { (char*) "setDefaultRelationalService", (PyCFunction)(void *) IConnectionServiceConfiguration_setDefaultRelationalService, METH_O,
       (char*) "Sets the default relational service implementation." },
-    { (char*) "setDefaultMonitoringService", (PyCFunction) IConnectionServiceConfiguration_setDefaultMonitoringService, METH_O,
+    { (char*) "setDefaultMonitoringService", (PyCFunction)(void *) IConnectionServiceConfiguration_setDefaultMonitoringService, METH_O,
       (char*) "Sets the default monitoring service implementation." },
-    { (char*) "setMonitoringLevel", (PyCFunction) IConnectionServiceConfiguration_setMonitoringLevel, METH_O,
+    { (char*) "setMonitoringLevel", (PyCFunction)(void *) IConnectionServiceConfiguration_setMonitoringLevel, METH_O,
       (char*) "Sets the monitoring level for subsequent connections." },
-    { (char*) "monitoringLevel", (PyCFunction) IConnectionServiceConfiguration_monitoringLevel, METH_NOARGS,
+    { (char*) "monitoringLevel", (PyCFunction)(void *) IConnectionServiceConfiguration_monitoringLevel, METH_NOARGS,
       (char*) "Retrieves the monitoring level." },
     {0, 0, 0, 0}
   };
@@ -103,57 +107,61 @@ coral::PyCoral::IConnectionServiceConfiguration_Type()
   static char IConnectionServiceConfiguration_doc[] = "Interface for configuring the connection service.";
 
   static PyTypeObject IConnectionServiceConfiguration_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.IConnectionServiceConfiguration", /*tp_name*/
-    sizeof(coral::PyCoral::IConnectionServiceConfiguration), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    IConnectionServiceConfiguration_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    IConnectionServiceConfiguration_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    IConnectionServiceConfiguration_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    IConnectionServiceConfiguration_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    IConnectionServiceConfiguration_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.IConnectionServiceConfiguration", // tp_name
+    sizeof(coral::PyCoral::IConnectionServiceConfiguration), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    IConnectionServiceConfiguration_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    IConnectionServiceConfiguration_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    IConnectionServiceConfiguration_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    IConnectionServiceConfiguration_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    IConnectionServiceConfiguration_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &IConnectionServiceConfiguration_Type;
 }
@@ -174,7 +182,7 @@ IConnectionServiceConfiguration_init( PyObject* self, PyObject* args , PyObject*
   if ( !PyArg_ParseTuple( args, (char*)"OO",
                           &(py_this->parent),
                           &c_object ) ) return -1;
-  py_this->object = static_cast<coral::IConnectionServiceConfiguration*>( PyCObject_AsVoidPtr( c_object ) );
+  py_this->object = static_cast<coral::IConnectionServiceConfiguration*>( PyCapsule_GetPointer( c_object , "name") );
   if ( py_this->parent ) Py_INCREF( py_this->parent );
   return 0;
 }
@@ -432,9 +440,11 @@ IConnectionServiceConfiguration_setConnectionRetrialPeriod( PyObject* self, PyOb
     if (PyLong_Check( args ) ) {
       py_this->object->setConnectionRetrialPeriod( PyLong_AsLong(args) );
     }
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
     else if ( PyInt_Check( args ) ) {
       py_this->object->setConnectionRetrialPeriod( PyInt_AS_LONG(args) );
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*)"Argument is not an Long integer!" );
@@ -494,9 +504,11 @@ IConnectionServiceConfiguration_setConnectionRetrialTimeOut( PyObject* self, PyO
     if (PyLong_Check( args ) ) {
       py_this->object->setConnectionRetrialTimeOut( PyLong_AsLong(args) );
     }
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
     else if ( PyInt_Check( args ) ) {
       py_this->object->setConnectionRetrialTimeOut( PyInt_AS_LONG(args) );
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*)"Argument is not an Long integer!" );
@@ -556,9 +568,11 @@ IConnectionServiceConfiguration_setConnectionTimeOut( PyObject* self, PyObject* 
     if (PyLong_Check( args ) ) {
       py_this->object->setConnectionTimeOut( PyLong_AsLong(args) );
     }
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
     else if ( PyInt_Check( args ) ) {
       py_this->object->setConnectionTimeOut( PyInt_AS_LONG(args) );
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*)"Argument is not an Long integer!" );
@@ -618,9 +632,11 @@ IConnectionServiceConfiguration_setMissingConnectionExclusionTime( PyObject* sel
     if (PyLong_Check( args ) ) {
       py_this->object->setMissingConnectionExclusionTime( PyLong_AsLong(args) );
     }
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
     else if ( PyInt_Check( args ) ) {
       py_this->object->setMissingConnectionExclusionTime( PyInt_AS_LONG(args) );
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*)"Argument is not an Long integer!" );
@@ -890,9 +906,11 @@ IConnectionServiceConfiguration_setMonitoringLevel( PyObject* self, PyObject* ar
     if (PyLong_Check( args ) ) {
       py_this->object->setMonitoringLevel( static_cast<coral::monitor::Level>( PyLong_AsLong(args) ) );
     }
+    #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
     else if ( PyInt_Check( args ) ) {
       py_this->object->setMonitoringLevel( static_cast<coral::monitor::Level>( PyInt_AS_LONG(args) ) );
     }
+    #endif
     else {
       PyErr_SetString( coral::PyCoral::Exception(),
                        (char*)"Argument is not an integer!" );

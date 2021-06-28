@@ -1,4 +1,4 @@
-#include "PyCoral/ConnectionService.h"
+#include "ConnectionService.h"
 #include "RelationalAccess/IConnectionService.h"
 #include "RelationalAccess/ISessionProxy.h"
 #include "IConnectionServiceConfiguration.h"
@@ -24,15 +24,15 @@ PyTypeObject*
 coral::PyCoral::ConnectionService_Type()
 {
   static PyMethodDef ConnectionService_Methods[] = {
-    { (char*) "purgeConnectionPool", (PyCFunction) ConnectionService_purgeConnectionPool, METH_NOARGS,
+    { (char*) "purgeConnectionPool", (PyCFunction)(void *) ConnectionService_purgeConnectionPool, METH_NOARGS,
       (char*) "Purges the idle connections from the pool." },
-    { (char*) "configuration", (PyCFunction) ConnectionService_configuration, METH_NOARGS,
+    { (char*) "configuration", (PyCFunction)(void *) ConnectionService_configuration, METH_NOARGS,
       (char*) "Returns the configuration object for the service." },
-    { (char*) "connect", (PyCFunction) ConnectionService_connect, METH_VARARGS | METH_KEYWORDS,
+    { (char*) "connect", (PyCFunction)(void *) ConnectionService_connect, METH_VARARGS | METH_KEYWORDS,
       (char*) "Returns a session proxy object for the specified connectionName, role and accessMode." },
-    { (char*) "webCacheControl", (PyCFunction) ConnectionService_webCacheControl, METH_NOARGS,
+    { (char*) "webCacheControl", (PyCFunction)(void *) ConnectionService_webCacheControl, METH_NOARGS,
       (char*) "Returns the object which controls the web cache." },
-    { (char*) "monitoringReporter", (PyCFunction) ConnectionService_monitoringReporter, METH_NOARGS,
+    { (char*) "monitoringReporter", (PyCFunction)(void *) ConnectionService_monitoringReporter, METH_NOARGS,
       (char*) "Returns the monitoring reporter." },
     {0, 0, 0, 0}
   };
@@ -40,57 +40,61 @@ coral::PyCoral::ConnectionService_Type()
   static char ConnectionService_doc[] = "A Connection Service class.\nIt loads the CORAL/Services/ConnectionService component into the parent or local context.\nIt is responsible for providing Session objects to the user.";
 
   static PyTypeObject ConnectionService_Type = {
-    PyObject_HEAD_INIT(0)
-    0, /*ob_size*/
-    (char*) "coral.ConnectionService", /*tp_name*/
-    sizeof(coral::PyCoral::ConnectionService), /*tp_basicsize*/
-    0, /*tp_itemsize*/
-       /* methods */
-    ConnectionService_dealloc, /*tp_dealloc*/
-    0, /*tp_print*/
-    0, /*tp_getattr*/
-    0, /*tp_setattr*/
-    0, /*tp_compare*/
-    0, /*tp_repr*/
-    0, /*tp_as_number*/
-    0, /*tp_as_sequence*/
-    0, /*tp_as_mapping*/
-    0, /*tp_hash*/
-    0, /*tp_call*/
-    0, /*tp_str*/
-    PyObject_GenericGetAttr, /*tp_getattro*/
-    PyObject_GenericSetAttr, /*tp_setattro*/
-    0, /*tp_as_buffer*/
-    Py_TPFLAGS_DEFAULT, /*tp_flags*/
-    ConnectionService_doc, /*tp_doc*/
-    0, /*tp_traverse*/
-    0, /*tp_clear*/
-    0, /*tp_richcompare*/
-    0, /*tp_weaklistoffset*/
-    0, /*tp_iter*/
-    0, /*tp_iternext*/
-    ConnectionService_Methods, /*tp_methods*/
-    0, /*tp_members*/
-    0, /*tp_getset*/
-    0, /*tp_base*/
-    0, /*tp_dict*/
-    0, /*tp_descr_get*/
-    0, /*tp_descr_set*/
-    0, /*tp_dictoffset*/
-    ConnectionService_init, /*tp_init*/
-    PyType_GenericAlloc, /*tp_alloc*/
-    PyType_GenericNew, /*tp_new*/
-    _PyObject_Del, /*tp_free*/
-    0, /*tp_is_gc*/
-    0, /*tp_bases*/
-    0, /*tp_mro*/
-    0, /*tp_cache*/
-    0, /*tp_subclasses*/
-    0, /*tp_weaklist*/
-    ConnectionService_dealloc /*tp_del*/
-#if PY_VERSION_HEX >= 0x02060000
-    ,0 /*tp_version_tag*/
-#endif
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char*) "coral.ConnectionService", // tp_name
+    sizeof(coral::PyCoral::ConnectionService), // tp_basicsize
+    0, // tp_itemsize
+       //  methods
+    ConnectionService_dealloc, // tp_dealloc
+    0, // tp_print
+    0, // tp_getattr
+    0, // tp_setattr
+    0, // tp_compare
+    0, // tp_repr
+    0, // tp_as_number
+    0, // tp_as_sequence
+    0, // tp_as_mapping
+    0, // tp_hash
+    0, // tp_call
+    0, // tp_str
+    PyObject_GenericGetAttr, // tp_getattro
+    PyObject_GenericSetAttr, // tp_setattro
+    0, // tp_as_buffer
+    Py_TPFLAGS_DEFAULT, // tp_flags
+    ConnectionService_doc, // tp_doc
+    0, // tp_traverse
+    0, // tp_clear
+    0, // tp_richcompare
+    0, // tp_weaklistoffset
+    0, // tp_iter
+    0, // tp_iternext
+    ConnectionService_Methods, // tp_methods
+    0, // tp_members
+    0, // tp_getset
+    0, // tp_base
+    0, // tp_dict
+    0, // tp_descr_get
+    0, // tp_descr_set
+    0, // tp_dictoffset
+    ConnectionService_init, // tp_init
+    PyType_GenericAlloc, // tp_alloc
+    PyType_GenericNew, // tp_new
+    #if PY_VERSION_HEX <= 0x03000000 //CORALCOOL-2977
+    _PyObject_Del, // tp_free
+    #else
+    PyObject_Del, // tp_free
+    #endif
+    0, // tp_is_gc
+    0, // tp_bases
+    0, // tp_mro
+    0, // tp_cache
+    0, // tp_subclasses
+    0, // tp_weaklist
+    ConnectionService_dealloc // tp_del
+    ,0 // tp_version_tag
+    #if PY_MAJOR_VERSION >= 3
+    ,0 //tp_finalize
+    #endif
   };
   return &ConnectionService_Type;
 }
@@ -102,7 +106,7 @@ namespace coral {
     static coral::IConnectionService* loadConnectionService( seal::Context* context );
   }
 }
-*/
+*///
 
 
 int
@@ -136,7 +140,7 @@ ConnectionService_init( PyObject* self, PyObject* /*args*/, PyObject* /* kwds */
     }
     Py_INCREF( py_this->context );
   }
-  */
+  *///
 
   // Load the Connection Service into the context
 
@@ -168,7 +172,7 @@ ConnectionService_init( PyObject* self, PyObject* /*args*/, PyObject* /* kwds */
     py_this->context = 0;
     return -1;
   }
-  */
+  *///
 
   return 0;
 }
@@ -177,7 +181,7 @@ void
 ConnectionService_dealloc( PyObject* self )
 {
   coral::PyCoral::ConnectionService* py_this = (coral::PyCoral::ConnectionService*) self;
-
+  delete py_this->object; // fix memory leak bug #100573
   py_this->object = 0;
   //  if ( py_this->context ) Py_DECREF( py_this->context );
   self->ob_type->tp_free( self );
@@ -206,7 +210,7 @@ coral::PyCoral::loadConnectionService( seal::Context* context )
   return &( *( v_svc.front() ) );
 }
 
-*/
+*///
 
 PyObject*
 ConnectionService_purgeConnectionPool( PyObject* self )
@@ -251,9 +255,9 @@ ConnectionService_configuration( PyObject* self )
                        (char*) "Error when creating a configuration object" );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theConfiguration, 0 );
+    PyObject* c_object = PyCapsule_New( theConfiguration, "name", 0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if ( ok )
@@ -296,9 +300,9 @@ ConnectionService_webCacheControl( PyObject* self )
                        (char*) "Error when creating a webCacheControl object" );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theWebCacheControl, 0 );
+    PyObject* c_object = PyCapsule_New( theWebCacheControl, "name", 0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -340,9 +344,9 @@ ConnectionService_monitoringReporter( PyObject* self )
                        (char*) "Error when creating a Monitoring Reporter object" );
       return 0;
     }
-    PyObject* c_object = PyCObject_FromVoidPtr( theMonitoringReporter, 0 );
+    PyObject* c_object = PyCapsule_New( theMonitoringReporter, "name", 0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
@@ -405,7 +409,13 @@ ConnectionService_connect( PyObject* self, PyObject* args, PyObject* kwds )
     else if (  numberOfArguments == 2 ) {
       PyObject* secondItem = PyTuple_GET_ITEM( args, 1 );
       //Py_INCREF( secondItem );
+      
+      #if PY_VERSION_HEX <= 0x03000000  //CORALCOOL-2977
       bool isInteger = ( PyInt_Check( secondItem ) ? true : false );
+      #else
+      bool isInteger = ( PyLong_Check( secondItem ) ? true : false );
+      #endif
+
       //Py_DECREF( secondItem );
       if ( isInteger ) {
         char* localkeywords[] = { (char*) "connectionName", (char*) "accessMode", (char*) "role", 0 };
@@ -446,9 +456,9 @@ ConnectionService_connect( PyObject* self, PyObject* args, PyObject* kwds )
       return 0;
     }
 
-    PyObject* c_object = PyCObject_FromVoidPtr( theSessionProxy, 0 );
+    PyObject* c_object = PyCapsule_New( theSessionProxy, "name", 0 );
     PyObject* temp = Py_BuildValue((char*)"OO", py_this, c_object );
-    bool ok = ( ob->ob_type->tp_init( (PyObject*) ob,temp,0)==0);
+    bool ok = ( Py_TYPE(ob)->tp_init( (PyObject*) ob,temp,0)==0);
     Py_DECREF(temp);
     Py_DECREF( c_object );
     if (ok)
