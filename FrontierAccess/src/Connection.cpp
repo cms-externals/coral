@@ -158,6 +158,8 @@ bool coral::FrontierAccess::Connection::isConnected( bool probePhysicalConnectio
 
 void coral::FrontierAccess::Connection::disconnect()
 {
+  boost::mutex::scoped_lock lock( s_lock );
+
   if( ! m_connected )
     return;
 

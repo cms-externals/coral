@@ -83,6 +83,8 @@ class CallbackForLobChunkSize
 
 */
 
+boost::mutex coral::FrontierAccess::Domain::s_lock{};
+
 coral::FrontierAccess::Domain::Domain( const std::string& componentName )
   : coral::Service( componentName )
   , m_flavorName( "frontier" )
@@ -157,6 +159,7 @@ coral::FrontierAccess::Domain::newConnection( const std::string& uriString ) con
 {
   try
   {
+    boost::mutex::scoped_lock lock( s_lock );
     // Mandatory Frontier client API initialization
     frontier::init();
   }

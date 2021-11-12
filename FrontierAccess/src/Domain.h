@@ -88,6 +88,9 @@ namespace coral
 
       /// The domain properties
       DomainProperties* m_properties;
+
+      /// The class global lock
+      static boost::mutex s_lock;
     };
 
   }
