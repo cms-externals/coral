@@ -62,6 +62,9 @@ namespace coral
       /// Access to Web cache control
       const coral::IWebCacheControl& cacheControl() const;
 
+      /// Access to the global lock
+      static boost::mutex& lock();
+
     protected:
       coral::IHandle<coral::IConnectionService> connectionService() const;
 
@@ -80,10 +83,20 @@ namespace coral
 
       /// The chunk size in bytes for a LOB retrieval
       int m_lobChunkSize;
+
+      /// The class global lock
+      static boost::mutex s_lock;
+
     };
 
   }
 
 }
+
+inline boost::mutex& coral::FrontierAccess::DomainProperties::lock()
+{
+  return s_lock;
+}
+
 
 #endif
