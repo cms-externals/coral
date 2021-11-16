@@ -8,6 +8,8 @@
 
 #include "CoralKernel/Context.h"
 
+boost::mutex coral::FrontierAccess::DomainProperties::s_lock{};
+
 coral::FrontierAccess::DomainProperties::DomainProperties( coral::FrontierAccess::Domain* service ) :
   m_service( service ),
   m_tableSpaceForTables(""),

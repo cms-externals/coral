@@ -88,6 +88,7 @@ namespace coral
 
       /// The domain properties
       DomainProperties* m_properties;
+
     };
 
   }

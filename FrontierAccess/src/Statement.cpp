@@ -349,6 +349,8 @@ namespace coral
 
     void Statement::reset()
     {
+      
+      boost::mutex::scoped_lock lock( m_properties.lock() );
       m_currentRow = 0;
       m_boundInputData  = 0;
       m_boundOutputData  = 0;
@@ -356,8 +358,10 @@ namespace coral
       for( std::vector<const frontier::Request*>::size_type i = 0; i < m_listOfRequests.size(); i++ )
         delete m_listOfRequests[i];
 
-      if( m_session != 0 )
+      if( m_session != 0 ){
         delete m_session;
+	m_session = 0;
+      }
 
       m_listOfRequests.clear();
       m_metaData.clear();

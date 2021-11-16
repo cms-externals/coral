@@ -157,6 +157,7 @@ coral::FrontierAccess::Domain::newConnection( const std::string& uriString ) con
 {
   try
   {
+    boost::mutex::scoped_lock lock( m_properties->lock() );
     // Mandatory Frontier client API initialization
     frontier::init();
   }

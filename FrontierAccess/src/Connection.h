@@ -90,8 +90,6 @@ namespace coral
       std::string m_serverVersion;
       /// The type converter
       TypeConverter*                                   m_typeConverter;
-      /// The connection lock
-      static boost::mutex s_lock;
     };
   } // FrontierAccess namespace
 } // coral namespace
