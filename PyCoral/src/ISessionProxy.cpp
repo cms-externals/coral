@@ -239,7 +239,7 @@ ISessionProxy_schema( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* schemaName;
+    const char* schemaName;
     if (PyString_Check(args))
       schemaName = PyString_AsString(args);
     else{

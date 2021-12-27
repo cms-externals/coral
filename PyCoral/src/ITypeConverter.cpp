@@ -226,7 +226,7 @@ ITypeConverter_defaultCppTypeForSqlType( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* defaultCpp;
+    const char* defaultCpp;
     std::string theDefaultCpp;
     if (PyString_Check(args))
       defaultCpp = PyString_AsString(args);
@@ -260,7 +260,7 @@ ITypeConverter_cppTypeForSqlType( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* cpp;
+    const char* cpp;
     std::string theCpp;
     if (PyString_Check(args))
       cpp = PyString_AsString(args);
@@ -321,7 +321,7 @@ ITypeConverter_defaultSqlTypeForCppType( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* defaultSql;
+    const char* defaultSql;
     std::string theDefaultSql;
     if (PyString_Check(args))
       defaultSql = PyString_AsString(args);
@@ -356,7 +356,7 @@ ITypeConverter_sqlTypeForCppType( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* sql;
+    const char* sql;
     std::string theSql;
     if (PyString_Check(args))
       sql = PyString_AsString(args);

@@ -225,7 +225,7 @@ ISchema_existsTable( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableName;
+    const char* tableName;
     if (PyString_Check(args))
       tableName = PyString_AsString(args);
     else{
@@ -258,7 +258,7 @@ ISchema_dropTable( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableName;
+    const char* tableName;
     if (PyString_Check(args))
       tableName = PyString_AsString(args);
     else{
@@ -291,7 +291,7 @@ ISchema_truncateTable( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableName;
+    const char* tableName;
     if (PyString_Check(args))
       tableName = PyString_AsString(args);
     else{
@@ -354,7 +354,7 @@ ISchema_dropIfExistsTable( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableName;
+    const char* tableName;
     if (PyString_Check(args))
       tableName = PyString_AsString(args);
     else{
@@ -445,7 +445,7 @@ ISchema_tableHandle( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableName = 0;
+    const char* tableName = 0;
     if (PyString_Check(args))
       tableName = PyString_AsString(args);
     else{
@@ -595,7 +595,7 @@ ISchema_existsView( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* viewName;
+    const char* viewName;
     if (PyString_Check(args))
       viewName = PyString_AsString(args);
     else{
@@ -628,7 +628,7 @@ ISchema_dropView( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* viewName;
+    const char* viewName;
     if (PyString_Check(args))
       viewName = PyString_AsString(args);
     else{
@@ -661,7 +661,7 @@ ISchema_dropIfExistsView( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* viewName;
+    const char* viewName;
     if (PyString_Check(args))
       viewName = PyString_AsString(args);
     else{
@@ -733,7 +733,7 @@ ISchema_viewHandle( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tViewName;
+    const char* tViewName;
     if (PyString_Check(args))
       tViewName = PyString_AsString(args);
     else{

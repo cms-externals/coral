@@ -233,7 +233,7 @@ TableDescription_setName( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableName;
+    const char* tableName;
     if (PyString_Check(args))
       tableName = PyString_AsString(args);
     else{
@@ -266,7 +266,7 @@ TableDescription_setType( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableType;
+    const char* tableType;
     if (PyString_Check(args))
       tableType = PyString_AsString(args);
     else{
@@ -298,7 +298,7 @@ TableDescription_setTableSpaceName( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tableSpaceName;
+    const char* tableSpaceName;
     if (PyString_Check(args))
       tableSpaceName = PyString_AsString(args);
     else{

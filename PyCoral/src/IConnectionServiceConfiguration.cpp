@@ -768,7 +768,7 @@ IConnectionServiceConfiguration_setDefaultAuthenticationService( PyObject* self,
   }
 
   try {
-    char* serviceName;
+    const char* serviceName;
     if ( PyString_Check(args) ) serviceName = PyString_AsString(args);
     else{
       PyErr_SetString( coral::PyCoral::Exception(),
@@ -802,7 +802,7 @@ IConnectionServiceConfiguration_setDefaultLookupService( PyObject* self, PyObjec
   }
 
   try {
-    char* serviceName;
+    const char* serviceName;
     if ( PyString_Check(args) ) serviceName = PyString_AsString(args);
     else{
       PyErr_SetString( coral::PyCoral::Exception(),
@@ -836,7 +836,7 @@ IConnectionServiceConfiguration_setDefaultRelationalService( PyObject* self, PyO
   }
 
   try {
-    char* serviceName;
+    const char* serviceName;
     if ( PyString_Check(args) ) serviceName = PyString_AsString(args);
     else{
       PyErr_SetString( coral::PyCoral::Exception(),
@@ -870,7 +870,7 @@ IConnectionServiceConfiguration_setDefaultMonitoringService( PyObject* self, PyO
   }
 
   try {
-    char* serviceName;
+    const char* serviceName;
     if ( PyString_Check(args) ) serviceName = PyString_AsString(args);
     else{
       PyErr_SetString( coral::PyCoral::Exception(),

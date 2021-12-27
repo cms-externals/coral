@@ -233,7 +233,7 @@ ITableSchemaEditor_dropColumn( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char *tableSchemaName;
+    const char *tableSchemaName;
     if (PyString_Check(args))
       tableSchemaName = PyString_AsString(args);
     else{
@@ -673,7 +673,7 @@ ITableSchemaEditor_dropIndex( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char *indexName;
+    const char *indexName;
     if (PyString_Check(args))
       indexName = PyString_AsString(args);
     else{
@@ -828,7 +828,7 @@ ITableSchemaEditor_dropForeignKey( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char *name;
+    const char *name;
     if (PyString_Check(args))
       name = PyString_AsString(args);
     else{
