@@ -3,7 +3,7 @@
 #include "CoralBase/MessageStream.h"
 #include "RelationalAccess/AuthenticationServiceException.h"
 #include "RelationalAccess/IAuthenticationCredentials.h"
-#include "RelationalAccess/../src/ICertificateAuthenticationService.h"
+#include "RelationalAccess/ICertificateAuthenticationService.h"
 #include "RelationalAccess/IRelationalDomain.h"
 #include "RelationalAccess/IRelationalService.h"
 
