@@ -51,7 +51,7 @@ void QueriesApp::fillData()
 {
   try
   {
-    std::auto_ptr<coral::ISessionProxy> session( connectionService()->connect( m_connectionString1 ) );
+    std::unique_ptr<coral::ISessionProxy> session( connectionService()->connect( m_connectionString1 ) );
 
     session->transaction().start();
 
@@ -156,7 +156,7 @@ void QueriesApp::readData()
 {
   try
   {
-    std::auto_ptr<coral::ISessionProxy> session( connectionService()->connect( m_connectionString2, coral::ReadOnly ) );
+    std::unique_ptr<coral::ISessionProxy> session( connectionService()->connect( m_connectionString2, coral::ReadOnly ) );
 
     session->transaction().start( true );
 

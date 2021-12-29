@@ -33,7 +33,7 @@ int main( int, char** )
     // 1. Write sample data
     std::cout << "_TEST Write sample data" << std::endl;
     coral::AccessMode accessModeW = coral::Update;
-    std::auto_ptr<coral::ISessionProxy>
+    std::unique_ptr<coral::ISessionProxy>
       sessionW( connSvc->connect( connectW, accessModeW ) );
     sessionW->transaction().start( false );
     sessionW->transaction().commit();
@@ -41,10 +41,10 @@ int main( int, char** )
     // 2. Read sample data
     std::cout << "_TEST Read sample data" << std::endl;
     coral::AccessMode accessModeR = coral::ReadOnly;
-    std::auto_ptr<coral::ISessionProxy>
+    std::unique_ptr<coral::ISessionProxy>
       sessionR( connSvc->connect( connectR, accessModeR ) );
     sessionR->transaction().start( true );
-    std::auto_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
+    std::unique_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
     query->addToTableList( "DUAL" );
     query->addToOutputList( "1" );
     std::cout << "_TEST Execute the query" << std::endl;

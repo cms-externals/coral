@@ -137,7 +137,7 @@ DummyFacade::fetchRows( Token /*sessionID*/,
     for ( size_t j = 1; j < maxcby256; ++j ) std::memcpy( p0+j*256, p0, 256 );
     std::cout << "Done" << std::endl;
   }
-  return std::auto_ptr<IRowIterator>(tall);
+  return std::unique_ptr<IRowIterator>(tall);
 }
 
 //-----------------------------------------------------------------------------
@@ -189,7 +189,7 @@ DummyFacade::fetchAllRows( Token /*sessionID*/,
     for ( size_t j = 1; j < maxcby256; ++j ) std::memcpy( p0+j*256, p0, 256 );
     std::cout << "Done" << std::endl;
   }
-  return std::auto_ptr<IRowIterator>(tall);
+  return std::unique_ptr<IRowIterator>(tall);
 }
 
 //-----------------------------------------------------------------------------

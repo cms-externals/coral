@@ -34,7 +34,7 @@ TopThread::operator()()
 
       //      std::ostringstream osServiceName;
       //      osServiceName << "/system/service_" << m_id;
-      std::auto_ptr<coral::ISessionProxy> session( m_connectionService.connect( m_env->getServiceName( m_id ) ) );
+      std::unique_ptr<coral::ISessionProxy> session( m_connectionService.connect( m_env->getServiceName( m_id ) ) );
       session->transaction().start();
 
       coral::ISchema& schema = session->nominalSchema();
@@ -57,7 +57,7 @@ TopThread::operator()()
     // Create three tables
     //    std::ostringstream osServiceName;
     //    osServiceName << "/system/service_" << m_id;
-    std::auto_ptr<coral::ISessionProxy> session( m_connectionService.connect( m_env->getServiceName( m_id ) ) );
+    std::unique_ptr<coral::ISessionProxy> session( m_connectionService.connect( m_env->getServiceName( m_id ) ) );
     session->transaction().start();
 
     coral::ISchema& schema = session->nominalSchema();
@@ -88,7 +88,7 @@ TopThread::operator()()
       int& id = rowBuffer[0].data<int>();
       int& data = rowBuffer[1].data<int>();
 
-      std::auto_ptr<coral::IBulkOperation> operation( table.dataEditor().bulkInsert( rowBuffer, 100 ) );
+      std::unique_ptr<coral::IBulkOperation> operation( table.dataEditor().bulkInsert( rowBuffer, 100 ) );
 
       for ( id = 0; id < 1000; ++id ) {
         data = id + 1000 * i + 10000 * m_id;

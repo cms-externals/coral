@@ -22,11 +22,11 @@
 #include <iostream>
 #include <sstream>
 
-void readWithAlias( std::auto_ptr<coral::ISessionProxy>& sessionR, const std::string& alias )
+void readWithAlias( std::unique_ptr<coral::ISessionProxy>& sessionR, const std::string& alias )
 {
   std::cout << "__TEST Read with table alias '" << alias << "'" << std::endl;
   try {
-    std::auto_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
+    std::unique_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
 
     if( alias.empty() )
     {
@@ -58,13 +58,13 @@ void readWithAlias( std::auto_ptr<coral::ISessionProxy>& sessionR, const std::st
   }
 }
 
-void readCmsAlias( std::auto_ptr<coral::ISessionProxy>& sessionR, const std::string& alias )
+void readCmsAlias( std::unique_ptr<coral::ISessionProxy>& sessionR, const std::string& alias )
 {
   std::cout << "__TEST Read with table alias '" << alias << "'" << std::endl;
   try
   {
     std::string treetablename = alias;
-    std::auto_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
+    std::unique_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
 
     query->addToTableList( treetablename, "p1" );
     query->addToTableList( treetablename, "p2" );
@@ -145,7 +145,7 @@ int main( int argc, char* argv[] )
       // COOL bug report due to an table alias error
       std::cout << "_TEST Write sample data" << std::endl;
       coral::AccessMode accessModeW = coral::Update;
-      std::auto_ptr<coral::ISessionProxy>
+      std::unique_ptr<coral::ISessionProxy>
         sessionW( connSvc->connect( connectW, accessModeW ) );
       sessionW->transaction().start( false );
       coral::ISchema& schema = sessionW->nominalSchema();
@@ -249,7 +249,7 @@ int main( int argc, char* argv[] )
     std::cout << "_TEST Read sample data" << std::endl;
 
     coral::AccessMode accessModeR = coral::ReadOnly;
-    std::auto_ptr<coral::ISessionProxy> sessionR( connSvc->connect( connectR, accessModeR ) );
+    std::unique_ptr<coral::ISessionProxy> sessionR( connSvc->connect( connectR, accessModeR ) );
 
     sessionR->transaction().start( true );
     readWithAlias( sessionR, "" );

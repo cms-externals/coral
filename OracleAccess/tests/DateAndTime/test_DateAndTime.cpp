@@ -42,7 +42,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
 
       session->transaction().start();
 
@@ -111,13 +111,13 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
 
       session->transaction().start( true );
 
       coral::ISchema& schema = session->nominalSchema();
 
-      std::auto_ptr<coral::IQuery> query( schema.tableHandle(T1).newQuery() );
+      std::unique_ptr<coral::IQuery> query( schema.tableHandle(T1).newQuery() );
 
       query->setRowCacheSize( 20 );
       coral::ICursor& cursor = query->execute();
@@ -144,7 +144,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
 
       session->transaction().start();
 

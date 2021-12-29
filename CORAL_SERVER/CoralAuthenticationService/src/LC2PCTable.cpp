@@ -199,7 +199,7 @@ bool LC2PCTable::LC2PCExists( bool wildcards,
   coral::AttributeList rowBuffer;
   m_table.dataEditor().rowBuffer( rowBuffer );
 
-  std::auto_ptr<IQuery> query( m_schema.newQuery() );
+  std::unique_ptr<IQuery> query( m_schema.newQuery() );
 
   query->defineOutput( rowBuffer );
   query->addToTableList( defaultTableName(), "" );
@@ -241,7 +241,7 @@ DatabaseServiceSet* LC2PCTable::lookup( const std::string& logicalName, AccessMo
   coral::AttributeList whereData;
   std::string whereString="";
 
-  std::auto_ptr<IQuery> query( m_schema.newQuery() );
+  std::unique_ptr<IQuery> query( m_schema.newQuery() );
 
   query->addToTableList( defaultTableName(), "" );
 
@@ -286,7 +286,7 @@ unsigned int LC2PCTable::getNextOrderNo( const std::string& logConStr)
   coral::AttributeList whereData;
   std::string whereString="";
 
-  std::auto_ptr<IQuery> query( m_schema.newQuery() );
+  std::unique_ptr<IQuery> query( m_schema.newQuery() );
 
   query->addToTableList( defaultTableName(), "" );
 

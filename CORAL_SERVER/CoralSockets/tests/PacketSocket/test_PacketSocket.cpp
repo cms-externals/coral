@@ -21,7 +21,7 @@ using namespace coral::CoralSockets;
 // port used for testing
 const int testPort = 50007;
 
-std::auto_ptr<RingBufferPipes> pipes;
+std::unique_ptr<RingBufferPipes> pipes;
 
 namespace coral
 {
@@ -59,7 +59,7 @@ namespace coral
     void createSockets( ISocketPtr &src, ISocketPtr &dst)
     {
 #if 0
-      pipes = std::auto_ptr<RingBufferPipes>(
+      pipes = std::unique_ptr<RingBufferPipes>(
                                              new RingBufferPipes( 10000, "test pipes") );
 
       src=pipes->getSrc();
@@ -762,7 +762,7 @@ namespace coral
         PacketSocket dSocket( dst );
         PacketSocket sSocket( src );
 
-        std::auto_ptr<ByteBuffer> buffer( new ByteBuffer(1024*1024*17) );
+        std::unique_ptr<ByteBuffer> buffer( new ByteBuffer(1024*1024*17) );
         //for (unsigned int i=0; i<buffer.maxSize(); i++)
         //  *(buffer.data()+i)=(unsigned char)(i&0xff);
         buffer->setUsedSize( buffer->maxSize() );

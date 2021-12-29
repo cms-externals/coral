@@ -104,7 +104,7 @@ namespace coral
     /// Is the point in time UTC or a local time?
     bool                                    m_isLocal;
     /// In case a Timestamp is flagged as local time we initialize this one too
-    std::auto_ptr<boost::posix_time::ptime> m_localTime;
+    std::unique_ptr<boost::posix_time::ptime> m_localTime;
   };
 
   /// The epoch constant timestamp used to calculate the total number of nanoseconds since the epoch time UTC

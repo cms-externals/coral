@@ -18,7 +18,7 @@ void TableQueryThread::operator()()
     os2 << "TableCreateAndQueryThread no " << m_tableNumber << " about to perform a query";
     //m_reporter.reportToSTDOUT( os2.str() );
 
-    std::auto_ptr<coral::IQuery> query( m_schema.tableHandle( tableName ).newQuery() );
+    std::unique_ptr<coral::IQuery> query( m_schema.tableHandle( tableName ).newQuery() );
 
     coral::AttributeList outputBuffer;
     outputBuffer.extend<double>( "RES" );

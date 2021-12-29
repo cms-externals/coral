@@ -62,7 +62,7 @@ namespace coral {
       int m_requestID;
 
       /// storage for the waiting requests
-      std::auto_ptr<ReplyManager> m_rplMngr;
+      std::unique_ptr<ReplyManager> m_rplMngr;
 
       // Forward declaration
       class receiveThread; // thread for receiving packets
@@ -71,7 +71,7 @@ namespace coral {
       receiveThread *m_receiveThread;
 
       /// thread manager to handle receive thread
-      std::auto_ptr<ThreadManager> m_thrManager;
+      std::unique_ptr<ThreadManager> m_thrManager;
     };
 
   }

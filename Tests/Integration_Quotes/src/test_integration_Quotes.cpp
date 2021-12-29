@@ -38,7 +38,7 @@ public:
   {
     std::string T1 = BuildUniqueTableName( "QUOTES_T1" );
     // create the session
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     coral::TableDescription desc01;
     desc01.insertColumn( "ID", "string", 255, false );
@@ -78,7 +78,7 @@ public:
   {
     std::string T2 = BuildUniqueTableName( "QUOTES_T2" );
     // create the session
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     coral::TableDescription desc02;
     desc02.insertColumn( "ID", "string", 255, false );
@@ -120,11 +120,11 @@ public:
     std::string T1 = BuildUniqueTableName( "QUOTES_T1" );
     std::string T2 = BuildUniqueTableName( "QUOTES_T2" );
     // create the session
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRO(), coral::ReadOnly ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRO(), coral::ReadOnly ) );
 
     session->transaction().start(true);
     // create the query
-    std::auto_ptr<coral::IQuery> query( session->nominalSchema().newQuery() );
+    std::unique_ptr<coral::IQuery> query( session->nominalSchema().newQuery() );
 
     unsigned int nExpRows = 3;
 

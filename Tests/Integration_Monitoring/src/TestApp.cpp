@@ -80,11 +80,11 @@ void TestApp::writeData()
   std::pair<std::string,std::string> cs = sw.getDomain( connectionString ).decodeUserConnectionString( connectionString );
   //create a new connection
   std::cout << "Create connection to database='" << cs.first << "'" << std::endl;
-  std::auto_ptr<coral::IConnection> connection( sw.getDomain( connectionString ).newConnection( cs.first ) );
+  std::unique_ptr<coral::IConnection> connection( sw.getDomain( connectionString ).newConnection( cs.first ) );
   connection->connect();
   //create a new session
   std::cout << "Create session for schema='" << cs.second << "'" << std::endl;
-  std::auto_ptr<coral::ISession> session( connection->newSession( cs.second, coral::Update ) );
+  std::unique_ptr<coral::ISession> session( connection->newSession( cs.second, coral::Update ) );
   //start monitoring
   std::cout << "Start monitoring for the session" << std::endl;
   session->monitoring().start( coral::monitor::Trace );
@@ -217,11 +217,11 @@ TestApp::readData()
   //get the domain
   std::pair<std::string,std::string> cs = sw.getDomain( connectionString ).decodeUserConnectionString( connectionString );
 
-  std::auto_ptr<coral::IConnection> connection( sw.getDomain( connectionString ).newConnection( cs.first ) );
+  std::unique_ptr<coral::IConnection> connection( sw.getDomain( connectionString ).newConnection( cs.first ) );
 
   connection->connect();
 
-  std::auto_ptr<coral::ISession> session( connection->newSession( cs.second, coral::ReadOnly ) );
+  std::unique_ptr<coral::ISession> session( connection->newSession( cs.second, coral::ReadOnly ) );
 
   session->monitoring().start( coral::monitor::Trace );
 

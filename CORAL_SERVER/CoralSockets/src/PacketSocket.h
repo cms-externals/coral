@@ -20,7 +20,7 @@ namespace coral
 
       /// constructor for receiving
       PacketSLAC( CTLPacketHeader & header,
-                  std::auto_ptr<ByteBuffer> payload)
+                  std::unique_ptr<ByteBuffer> payload)
         : m_payload( payload )
         , m_payloadRef( *m_payload)
         , m_header( header)
@@ -79,7 +79,7 @@ namespace coral
         return m_payloadRef;
       }
 
-      std::auto_ptr<ByteBuffer>& getPayloadPointer()
+      std::unique_ptr<ByteBuffer>& getPayloadPointer()
       {
         return m_payload;
       }
@@ -87,7 +87,7 @@ namespace coral
     private:
 
       /// payload buffer (only when owned by PacketSLAC)
-      std::auto_ptr<ByteBuffer> m_payload;
+      std::unique_ptr<ByteBuffer> m_payload;
 
       /// payload reference
       const ByteBuffer& m_payloadRef;

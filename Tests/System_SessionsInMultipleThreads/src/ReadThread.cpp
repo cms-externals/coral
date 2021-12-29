@@ -27,7 +27,7 @@ ReadThread::operator()()
     m_env->addTablePrefix(tableName, osTableName.str() );
     coral::ITable& table = m_schema.tableHandle( tableName );
 
-    std::auto_ptr<coral::IQuery> query( table.newQuery() );
+    std::unique_ptr<coral::IQuery> query( table.newQuery() );
 
     coral::AttributeList rowBuffer;
     rowBuffer.extend<int>( "DATA" );

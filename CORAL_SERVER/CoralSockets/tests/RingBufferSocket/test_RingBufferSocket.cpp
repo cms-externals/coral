@@ -276,8 +276,8 @@ namespace coral
         ISocketPtr connect=pipes.getSrc();
         ISocketPtr accept=pipes.getDst();;
         senderClass sender( connect );
-        std::auto_ptr<boost::thread> sendThread =
-          std::auto_ptr<boost::thread>( new boost::thread( sender ));
+        std::unique_ptr<boost::thread> sendThread =
+          std::unique_ptr<boost::thread>( new boost::thread( sender ));
         int *recbuf= new int[ largePacketLen ];
         memset( (unsigned char*)recbuf, 0,
                 largePacketLen * sizeof( recbuf[0] ) );

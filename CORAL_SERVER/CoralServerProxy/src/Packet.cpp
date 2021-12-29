@@ -369,7 +369,7 @@ Packet::write ( NetSocket& socket, const CTLPacketHeader& ctlh  )
 
     // make buffer big enough
 #ifdef __APPLE__
-    std::auto_ptr<unsigned char> aBuf( new unsigned char[psize] );
+    std::unique_ptr<unsigned char> aBuf( new unsigned char[psize] );
     unsigned char* buf = aBuf.get();
 #else
     unsigned char buf[psize] ;

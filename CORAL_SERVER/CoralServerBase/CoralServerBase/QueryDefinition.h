@@ -162,8 +162,8 @@ namespace coral
     AttributeList m_conditionData;
     std::string m_groupBy;
     std::vector< std::string > m_orderList;
-    std::auto_ptr< std::pair<int,int> > m_rowLimitAndOffset;
-    std::auto_ptr< std::pair<SetOperation,QueryDefinition> > m_setOperation;
+    std::unique_ptr< std::pair<int,int> > m_rowLimitAndOffset;
+    std::unique_ptr< std::pair<SetOperation,QueryDefinition> > m_setOperation;
 
   };
 

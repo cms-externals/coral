@@ -129,7 +129,7 @@ namespace coral
              << "requestID : " << ctlHeader.requestID() );
 
       // read the payload
-      std::auto_ptr<ByteBuffer> payload( new ByteBuffer(
+      std::unique_ptr<ByteBuffer> payload( new ByteBuffer(
                                                         ctlHeader.packetSize()-CTLPACKET_HEADER_SIZE ) );
 
       size_t read = 0;

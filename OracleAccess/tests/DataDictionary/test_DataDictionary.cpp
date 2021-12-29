@@ -63,7 +63,7 @@ namespace coral
     {
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
 
       session->transaction().start();
 
@@ -148,7 +148,7 @@ namespace coral
     {
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
 
       session->transaction().start();
       coral::ISchema& schema = session->nominalSchema();
@@ -165,7 +165,7 @@ namespace coral
     {
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
 
       session->transaction().start();
 
@@ -222,7 +222,7 @@ namespace coral
     {
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
 
       session->transaction().start();
 
@@ -295,7 +295,7 @@ namespace coral
     {
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( connectionString ) );
 
       session->transaction().start();
 

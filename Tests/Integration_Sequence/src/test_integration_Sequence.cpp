@@ -50,7 +50,7 @@ public:
 #ifdef CORAL240SQ
     std::string T1 = BuildUniqueTableName( "SEQUENCE_T1" );
 
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     LOG(" **** TestSequence: TEST01...start **** ");
     // This part tests all create and drop methods
@@ -110,7 +110,7 @@ public:
 #ifdef CORAL240SQ
     std::string T1 = BuildUniqueTableName( "SEQUENCE_T1" );
 
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     LOG(" **** TestSequence: TEST02...start **** ");
 
@@ -180,7 +180,7 @@ public:
 #ifdef CORAL240SQ
     std::string T1 = BuildUniqueTableName( "SEQUENCE_T1" );
 
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     LOG(" **** TestSequence: SETUP...start **** ");
     // This setup garanties there is no sequence registered

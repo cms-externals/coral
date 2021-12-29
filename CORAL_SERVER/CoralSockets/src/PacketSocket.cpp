@@ -157,7 +157,7 @@ PacketPtr PacketSocket::receivePacket( )
       throw GenericSocketException("PANIC! packet size ==0?!",
                                    "PacketSocket::receivePacket()");
     // receive the payload
-    std::auto_ptr<ByteBuffer> payload( new ByteBuffer(
+    std::unique_ptr<ByteBuffer> payload( new ByteBuffer(
                                                       ctlHeader.packetSize()-CTLPACKET_HEADER_SIZE ) );
     DEBUG("reading payload" << std::endl);
     m_socket->readAll( payload->data(), payload->freeSize() );

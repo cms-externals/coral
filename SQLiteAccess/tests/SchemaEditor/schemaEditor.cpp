@@ -211,7 +211,7 @@ int main( int, char** )
     session->transaction().start( false ); // read-write
     try {
       {
-        std::auto_ptr<coral::IQuery> query
+        std::unique_ptr<coral::IQuery> query
           ( session->nominalSchema().newQuery() );
         query->addToTableList( "coral_sqlite_fk" );
         std::cout << std::endl;
@@ -226,7 +226,7 @@ int main( int, char** )
       session->nominalSchema().dropIfExistsTable( empDesc.name() );
       session->nominalSchema().dropIfExistsTable( depDesc.name() );
       {
-        std::auto_ptr<coral::IQuery> query
+        std::unique_ptr<coral::IQuery> query
           ( session->nominalSchema().newQuery() );
         query->addToTableList( "coral_sqlite_fk" );
         std::cout << std::endl;

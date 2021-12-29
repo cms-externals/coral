@@ -83,7 +83,7 @@ void TestApp::run()
 
 void TestApp::writeData(coral::IConnectionService& connservice)
 {
-  std::auto_ptr<coral::ISessionProxy> session( connservice.connect( getServiceName(0) ) );
+  std::unique_ptr<coral::ISessionProxy> session( connservice.connect( getServiceName(0) ) );
 
   session->transaction().start();
 
@@ -202,7 +202,7 @@ void TestApp::writeData(coral::IConnectionService& connservice)
 
 void TestApp::readData(coral::IConnectionService& connservice)
 {
-  std::auto_ptr<coral::ISessionProxy> session( connservice.connect( getServiceName(0) ) );
+  std::unique_ptr<coral::ISessionProxy> session( connservice.connect( getServiceName(0) ) );
 
   session->transaction().start( /* read-only is */ true );
 

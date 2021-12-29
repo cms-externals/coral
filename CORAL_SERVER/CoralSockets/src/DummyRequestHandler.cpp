@@ -151,7 +151,7 @@ DummyRequestHandler::replyToRequest( const ByteBuffer& request )
       num=10;
 
     unsigned int count=0;
-    std::auto_ptr<SimpleReplyIterator> iterator;
+    std::unique_ptr<SimpleReplyIterator> iterator;
     do {
       std::stringstream stream;
       stream <<"Thank you for your request " << count << " '";
@@ -165,7 +165,7 @@ DummyRequestHandler::replyToRequest( const ByteBuffer& request )
 
       count++;
       if ( iterator.get() == 0 )
-        iterator = std::auto_ptr<SimpleReplyIterator>(
+        iterator = std::unique_ptr<SimpleReplyIterator>(
                                                       new SimpleReplyIterator( reply, false ) );
       else
         iterator->addBuffer( reply, count>=num );

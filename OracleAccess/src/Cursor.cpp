@@ -6,9 +6,9 @@
 #include "Cursor.h"
 #include "OracleStatement.h"
 
-coral::OracleAccess::Cursor::Cursor( std::auto_ptr<OracleStatement> statement,
+coral::OracleAccess::Cursor::Cursor( std::unique_ptr<OracleStatement> statement,
                                      const coral::AttributeList& rowBuffer )
-  : m_statement( statement )
+  : m_statement( std::move(statement) )
   , m_rowBuffer( rowBuffer )
 {
   //std::cout << "Create Cursor " << this << std::endl; // debug bug #73334

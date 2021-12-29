@@ -188,7 +188,7 @@ namespace coral { namespace CoralStubs {
 
     RowIteratorFetch* tfetch = new RowIteratorFetch(m_requestHandler, cursorID, cacheSize, pRowBuffer);
     //return the iterator packed into a smart pointer
-    return std::auto_ptr<IRowIterator>(tfetch);
+    return std::unique_ptr<IRowIterator>(tfetch);
   }
 
   IRowIteratorPtr
@@ -215,7 +215,7 @@ namespace coral { namespace CoralStubs {
 
     RowIteratorFetch* tfetch = new RowIteratorFetch(m_requestHandler, cursorID, cacheSize, NULL);
     //return the iterator packed into a smart pointer
-    return std::auto_ptr<IRowIterator>(tfetch);
+    return std::unique_ptr<IRowIterator>(tfetch);
   }
 
   IRowIteratorPtr
@@ -251,7 +251,7 @@ namespace coral { namespace CoralStubs {
 
     RowIteratorAll* tall = new RowIteratorAll( reply.release(), rowBuffer, coral::CALOpcodes::FetchAllRows );
 
-    return std::auto_ptr<IRowIterator>(tall);
+    return std::unique_ptr<IRowIterator>(tall);
   }
 
   IRowIteratorPtr
@@ -269,7 +269,7 @@ namespace coral { namespace CoralStubs {
 
     RowIteratorAll* tall = new RowIteratorAll( reply.release(), NULL, coral::CALOpcodes::FetchAllRowsOT );
 
-    return std::auto_ptr<IRowIterator>(tall);
+    return std::unique_ptr<IRowIterator>(tall);
   }
 
   const std::set<std::string>

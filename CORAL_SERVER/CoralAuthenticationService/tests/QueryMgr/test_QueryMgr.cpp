@@ -205,7 +205,7 @@ namespace coral
         CPPUNIT_FAIL("test logical 2 connection not added");
 
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -221,7 +221,7 @@ namespace coral
       if ( !mgr.m_pcTable.physConExists( "roTestPhysConStr" ) )
         CPPUNIT_FAIL("test connection 3 not added");
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -230,7 +230,7 @@ namespace coral
                                       set->replica(1).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 3, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -248,7 +248,7 @@ namespace coral
       if ( !mgr.m_pcTable.physConExists( "roTestPhysConStr2" ) )
         CPPUNIT_FAIL("test connection 4 not added");
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -257,7 +257,7 @@ namespace coral
                                       set->replica(1).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 4, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -303,7 +303,7 @@ namespace coral
         CPPUNIT_FAIL("test logical connection not deleted");
 
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 0, set->numberOfReplicas() );
       }
@@ -331,7 +331,7 @@ namespace coral
         CPPUNIT_FAIL("test logical 2 connection not added");
 
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -347,7 +347,7 @@ namespace coral
       if ( !mgr.m_pcTable.physConExists( "roTestPhysConStr" ) )
         CPPUNIT_FAIL("test connection 3 not added");
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -356,7 +356,7 @@ namespace coral
                                       set->replica(1).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 3, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -375,7 +375,7 @@ namespace coral
         CPPUNIT_FAIL("test connection 4 not added");
 
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -384,7 +384,7 @@ namespace coral
                                       set->replica(1).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 4, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr"),
@@ -401,14 +401,14 @@ namespace coral
       mgr.delConnection("testLogConStr" /* lcString*/, "testPhysConStr" /*pcString*/,
                         "" /*user*/, "" /*role*/ );
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 1, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 2 ", std::string("testPhysConStr2"),
                                       set->replica(0).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 3, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 2 ", std::string("testPhysConStr2"),
@@ -423,14 +423,14 @@ namespace coral
       mgr.delConnection("testLogConStr" /* lcString*/, "roTestPhysConStr2" /*pcString*/,
                         "" /*user*/, "" /*role*/ );
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 1, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 2 ", std::string("testPhysConStr2"),
                                       set->replica(0).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 2, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 2 ", std::string("testPhysConStr2"),
@@ -442,14 +442,14 @@ namespace coral
       mgr.delConnection("testLogConStr" /* lcString*/, "roTestPhysConStr" /*pcString*/,
                         "" /*user*/, "" /*role*/ );
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 1, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 2 ", std::string("testPhysConStr2"),
                                       set->replica(0).connectionString() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 1, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 2 ", std::string("testPhysConStr2"),
@@ -459,12 +459,12 @@ namespace coral
       mgr.delConnection("testLogConStr" /* lcString*/, "testPhysConStr2" /*pcString*/,
                         "" /*user*/, "" /*role*/ );
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 0, set->numberOfReplicas() );
       }
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("testLogConStr", ReadOnly, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 0, set->numberOfReplicas() );
       }
@@ -582,7 +582,7 @@ namespace coral
         CPPUNIT_FAIL("test logical connection not added");
 
       {
-        std::auto_ptr<DatabaseServiceSet> set( mgr.lookup("alias1", Update, "") );
+        std::unique_ptr<DatabaseServiceSet> set( mgr.lookup("alias1", Update, "") );
 
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "number of replicas", 1, set->numberOfReplicas() );
         CPPUNIT_ASSERT_EQUAL_MESSAGE( "replica 1 ", std::string("testPhysConStr25"),

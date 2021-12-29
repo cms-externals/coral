@@ -55,7 +55,7 @@ namespace
     {
       //std::cout << "Entering thread no " << m_threadID << std::endl;
       // Write data
-      std::auto_ptr<coral::ISessionProxy> session( m_connscv.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( m_connscv.connect( "CORAL-Oracle-lcgnight/admin" ) );
       session->transaction().start();
       coral::ISchema& schema = session->nominalSchema();
       std::ostringstream osTableName;
@@ -88,7 +88,7 @@ namespace
       coral::sleepSeconds(1);
       // Read back data
       session->transaction().start( true );
-      std::auto_ptr<coral::IQuery> query( schema.tableHandle( tableName ).newQuery() );
+      std::unique_ptr<coral::IQuery> query( schema.tableHandle( tableName ).newQuery() );
       coral::AttributeList outputBuffer;
       outputBuffer.extend<double>( "RES" );
       query->addToOutputList( "F+D", "RES" );
@@ -158,7 +158,7 @@ namespace coral
       // Workaround for bug #81005 on MacOSX (related to lazy symbol binding)
       // Load the OracleAccess plugin in the main thread so that its symbols
       // are available to all threads (loading it in a thread causes BPT trap)
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
       session->transaction().start();
       session->transaction().commit();
 #endif

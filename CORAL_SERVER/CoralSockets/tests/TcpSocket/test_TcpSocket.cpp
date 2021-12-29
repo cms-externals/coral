@@ -462,7 +462,7 @@ namespace coral
       {
 
         senderClass sender;
-        std::auto_ptr<boost::thread> sendThread = std::auto_ptr<boost::thread>(
+        std::unique_ptr<boost::thread> sendThread = std::unique_ptr<boost::thread>(
                                                                                new boost::thread( sender ));
 
         listen->poll(TcpSocket::P_READ, -1); // wait until the thread has connected

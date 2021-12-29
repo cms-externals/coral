@@ -27,7 +27,7 @@ MultipleSchemasApp::~MultipleSchemasApp()
 
 void MultipleSchemasApp::run()
 {
-  std::auto_ptr< coral::ISession> session( this->connect( m_connectionString, m_userName, m_password, m_accessMode ) );
+  std::unique_ptr< coral::ISession> session( this->connect( m_connectionString, m_userName, m_password, m_accessMode ) );
 
   if ( ! session->isUserSessionActive() )
   {

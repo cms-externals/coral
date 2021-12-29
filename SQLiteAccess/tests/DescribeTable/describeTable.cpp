@@ -57,7 +57,7 @@ public:
     std::string T2 = BuildUniqueTableName( "SQL_UT_DT_T2" );
     std::string T3 = BuildUniqueTableName( "SQL_UT_DT_T3" );
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
     coral::ISchema& schema = session->nominalSchema();
     //
     // create test table x1
@@ -169,7 +169,7 @@ public:
 
     // re-check #tables for coral_sqlite_fk in another session (bug #82563)
     {
-      std::auto_ptr<coral::ISessionProxy> session2( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session2( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
       std::cout << "Rechecking #tables, was: " << ntables << std::endl;
       session2->transaction().start(true);
       int ntables2 = session2->nominalSchema().listTables().size();

@@ -24,8 +24,6 @@ namespace coral
       struct Record
       {
         Record( coral::monitor::Event::ID id, coral::TimeStamp ts, coral::monitor::Source s, coral::monitor::Type t, const std::string& d, Payload* data );
-        Record( const Record& right );
-        Record& operator=( const Record& right );
         bool hasData() const;
 
         unsigned long m_id; // Automatic unique ID
@@ -33,7 +31,7 @@ namespace coral
         Source m_source; // Origin of the event
         Type m_type; // Type of the event
         std::string m_description; // Event description
-        std::auto_ptr<Payload> m_data; // Actual data related to an event, 0 if data irrelevant
+        std::unique_ptr<Payload> m_data; // Actual data related to an event, 0 if data irrelevant
 
         static ID id();
       };

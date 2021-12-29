@@ -144,7 +144,7 @@ ConnectionService_init( PyObject* self, PyObject* /*args*/, PyObject* /* kwds */
 
   // Load the Connection Service into the context
 
-  //  std::auto_ptr<coral::ConnectionService> connectionService( new coral::ConnectionService() );
+  //  std::unique_ptr<coral::ConnectionService> connectionService( new coral::ConnectionService() );
 
   py_this->object = new coral::ConnectionService();
 

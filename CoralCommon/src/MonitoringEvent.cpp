@@ -22,31 +22,6 @@ namespace coral
       {
       }
 
-      Record::Record( const Record& right )
-      {
-        m_id          = right.m_id;
-        m_time        = right.m_time;
-        m_source      = right.m_source;
-        m_type        = right.m_type;
-        m_description = right.m_description;
-        m_data        = const_cast<std::auto_ptr<Payload>&>(right.m_data); // Needed to avoid double delete
-      }
-
-      Record& Record::operator=( const Record& right )
-      {
-        if( this != &right )
-        {
-          m_id          = right.m_id;
-          m_time        = right.m_time;
-          m_source      = right.m_source;
-          m_type        = right.m_type;
-          m_description = right.m_description;
-          m_data        = const_cast<std::auto_ptr<Payload>&>(right.m_data); // Needed to avoid double delete
-        }
-
-        return *this;
-      }
-
       bool Record::hasData() const
       {
         return( m_data.get() != 0 );

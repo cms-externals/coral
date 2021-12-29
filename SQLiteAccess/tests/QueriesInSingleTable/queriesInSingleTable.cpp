@@ -50,7 +50,7 @@ public:
     std::string T1 = BuildUniqueTableName( "SQL_UT_ST_T1" );
 
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
     session->transaction().start(false);
     coral::ISchema& schema = session->nominalSchema();
@@ -119,7 +119,7 @@ public:
     std::string T1 = BuildUniqueTableName( "SQL_UT_ST_T1" );
 
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
     coral::ISchema& schema = session->nominalSchema();
 
@@ -235,7 +235,7 @@ public:
     std::string T1 = BuildUniqueTableName( "SQL_UT_ST_T1" );
 
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
     coral::ISchema& schema = session->nominalSchema();
 

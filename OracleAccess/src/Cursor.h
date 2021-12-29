@@ -16,7 +16,7 @@ namespace coral
     public:
 
       /// Constructor
-      Cursor( std::auto_ptr<OracleStatement> statement,
+      Cursor( std::unique_ptr<OracleStatement> statement,
               const coral::AttributeList& rowBuffer );
 
       /// Destructor
@@ -42,7 +42,7 @@ namespace coral
     private:
 
       /// The statement handler
-      std::auto_ptr<OracleStatement> m_statement; // fix memory leak bug #90898
+      std::unique_ptr<OracleStatement> m_statement; // fix memory leak bug #90898
 
       /// The row buffer
       const coral::AttributeList& m_rowBuffer;
