@@ -267,7 +267,7 @@ IQueryDefinition_defineSubQuery( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* alias = 0;
+    const char* alias = 0;
     if (PyString_Check(args))
       alias = PyString_AsString(args);
     else{
@@ -360,7 +360,7 @@ IQueryDefinition_groupBy( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* expression = 0;
+    const char* expression = 0;
     if (PyString_Check(args))
       expression = PyString_AsString(args);
     else{
@@ -398,7 +398,7 @@ IQueryDefinition_addToOrderList( PyObject* self, PyObject* args )
     return 0;
   }
   try {
-    char* expression = 0;
+    const char* expression = 0;
     if (PyString_Check(args))
       expression = PyString_AsString(args);
     else{

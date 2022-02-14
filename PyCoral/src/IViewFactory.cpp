@@ -173,7 +173,7 @@ IViewFactory_create( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tViewName;
+    const char* tViewName;
     if (PyString_Check(args))
       tViewName = PyString_AsString(args);
     else{
@@ -229,7 +229,7 @@ IViewFactory_createOrReplace( PyObject* self, PyObject* args)
     return 0;
   }
   try {
-    char* tViewName;
+    const char* tViewName;
     if (PyString_Check(args))
       tViewName = PyString_AsString(args);
     else{
