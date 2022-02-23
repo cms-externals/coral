@@ -24,7 +24,7 @@ namespace coral
 
     //-------------------------------------------------------------------------
 
-    typedef std::auto_ptr<ByteBuffer> ByteBufferPtr;
+    typedef std::unique_ptr<ByteBuffer> ByteBufferPtr;
 
     //-------------------------------------------------------------------------
 

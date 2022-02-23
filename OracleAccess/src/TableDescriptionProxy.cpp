@@ -595,7 +595,7 @@ coral::OracleAccess::TableDescriptionProxy::refreshForeignKeyInfo() const
   bindData[0].data<std::string>() = m_schemaName;
   bindData[1].data<std::string>() = m_description->name();
 
-  std::auto_ptr<coral::OracleAccess::OracleStatement> pStatement;
+  std::unique_ptr<coral::OracleAccess::OracleStatement> pStatement;
 
   // Task #10775 (performance optimization for data dictionary queries)
   // Second optimization (requires read access to sys tables)

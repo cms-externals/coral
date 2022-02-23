@@ -92,7 +92,7 @@ bool PhysConTable::physConExists( const std::string& physConStr )
   coral::AttributeList rowBuffer;
   m_table.dataEditor().rowBuffer( rowBuffer );
 
-  std::auto_ptr<IQuery> query( m_schema.newQuery() );
+  std::unique_ptr<IQuery> query( m_schema.newQuery() );
 
   query->defineOutput( rowBuffer );
   query->addToTableList( defaultTableName(), "" );

@@ -20,7 +20,7 @@ namespace coral
   typedef unsigned int Token;
 
   /// Row iterator pointer.
-  typedef std::auto_ptr<IRowIterator> IRowIteratorPtr;
+  typedef std::unique_ptr<IRowIterator> IRowIteratorPtr;
 
   /** @class ICoralFacade
    *

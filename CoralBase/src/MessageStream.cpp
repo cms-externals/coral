@@ -17,7 +17,7 @@
 #include "MsgReporter2.h"
 
 // Preset default message reporter to None
-static std::auto_ptr<coral::IMsgReporter> s_msgReporter( new coral::CoralBase::MsgReporter2 );
+static std::unique_ptr<coral::IMsgReporter> s_msgReporter( new coral::CoralBase::MsgReporter2 );
 
 /// Install new message reporter object
 void coral::MessageStream::installMsgReporter( IMsgReporter* reporter )
@@ -29,11 +29,11 @@ void coral::MessageStream::installMsgReporter( IMsgReporter* reporter )
       s_msgReporter->release();
       s_msgReporter.release();
     }
-    s_msgReporter = std::auto_ptr<coral::IMsgReporter>(reporter);
+    s_msgReporter = std::unique_ptr<coral::IMsgReporter>(reporter);
     return;
   }
 
-  s_msgReporter = std::auto_ptr<coral::IMsgReporter>(new coral::MsgReporter);
+  s_msgReporter = std::unique_ptr<coral::IMsgReporter>(new coral::MsgReporter);
 }
 
 /// Set the verbosity of the default message reporter.

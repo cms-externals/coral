@@ -153,7 +153,7 @@ namespace coral {
       mutable boost::mutex m_sslMutex;
 
       /// the remote certificate data
-      std::auto_ptr<CertificateData> m_certificateData;
+      std::unique_ptr<CertificateData> m_certificateData;
     };
 
     class SslHandshakeException : public Exception

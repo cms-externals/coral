@@ -90,7 +90,7 @@ namespace coral
       };
 
       // ----- Create the Session -----
-      std::auto_ptr<ISessionProxy> session( connSvc().connect( UrlRO(), ReadOnly ) );
+      std::unique_ptr<ISessionProxy> session( connSvc().connect( UrlRO(), ReadOnly ) );
 
       // ----- Start the transaction -----
       session->transaction().start(true);

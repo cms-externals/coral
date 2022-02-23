@@ -69,7 +69,7 @@ public:
 
     coral::ConnectionService connSvc;
 
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
     session->transaction().start(false) ;
 

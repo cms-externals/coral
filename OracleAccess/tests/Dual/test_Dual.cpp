@@ -97,7 +97,7 @@ namespace coral
     {
       std::string T1 = BuildUniqueTableName( "ORA01466" );
       coral::ConnectionService connSvc;
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
       session->transaction().start( false );
       session->nominalSchema().dropIfExistsTable( T1 );
       coral::TableDescription description;
@@ -109,7 +109,7 @@ namespace coral
       try
       {
         session->transaction().start( true );
-        std::auto_ptr<coral::IQuery> query( session->nominalSchema().tableHandle(T1).newQuery() );
+        std::unique_ptr<coral::IQuery> query( session->nominalSchema().tableHandle(T1).newQuery() );
         query->execute(); // This may (probably will) fail with ORA-01466
         session->transaction().commit();
       }
@@ -119,7 +119,7 @@ namespace coral
       }
       coral::sleepSeconds(1);
       session->transaction().start( true );
-      std::auto_ptr<coral::IQuery> query( session->nominalSchema().tableHandle(T1).newQuery() );
+      std::unique_ptr<coral::IQuery> query( session->nominalSchema().tableHandle(T1).newQuery() );
       query->execute(); // This should no longer fail with ORA-01466
       session->transaction().commit();
     }

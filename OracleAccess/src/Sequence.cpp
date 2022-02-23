@@ -43,7 +43,7 @@ Sequence::~Sequence()
 unsigned long long
 Sequence::nextValue()
 {
-  std::auto_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "SELECT " + m_description.name() + ".nextval AS new_id FROM dual" ) );
+  std::unique_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "SELECT " + m_description.name() + ".nextval AS new_id FROM dual" ) );
   /* empty bind data here */
   coral::AttributeList binddata;
   if( statement->execute( binddata ) )
@@ -82,7 +82,7 @@ Sequence::scan( boost::shared_ptr<const SessionProperties> sessionProperties,
   /*
     SELECT sequence_name, last_number FROM all_sequences;
   */
-  std::auto_ptr<OracleStatement> statement( new OracleStatement( sessionProperties, schemaName, "SELECT sequence_name, last_number FROM all_sequences" ) );
+  std::unique_ptr<OracleStatement> statement( new OracleStatement( sessionProperties, schemaName, "SELECT sequence_name, last_number FROM all_sequences" ) );
   /* empty bind data here */
   coral::AttributeList binddata;
   if( statement->execute( binddata ) )
@@ -133,7 +133,7 @@ Sequence::checkIfExists( boost::shared_ptr<const SessionProperties> sessionPrope
   std::stringstream query;
   query << "SELECT ORDER_FLAG FROM all_sequences WHERE SEQUENCE_NAME = '" << name << "'";
 
-  std::auto_ptr<OracleStatement> statement( new OracleStatement( sessionProperties, schemaName, query.str() ) );
+  std::unique_ptr<OracleStatement> statement( new OracleStatement( sessionProperties, schemaName, query.str() ) );
   /* empty bind data here */
   coral::AttributeList binddata;
   if( statement->execute( binddata ) )
@@ -174,7 +174,7 @@ Sequence::checkIfStillExists( boost::shared_ptr<const SessionProperties> session
   std::stringstream query;
   query << "SELECT ORDER_FLAG FROM all_sequences WHERE SEQUENCE_NAME = '" << name << "'";
 
-  std::auto_ptr<OracleStatement> statement( new OracleStatement( sessionProperties, schemaName, query.str() ) );
+  std::unique_ptr<OracleStatement> statement( new OracleStatement( sessionProperties, schemaName, query.str() ) );
   /* empty bind data here */
   coral::AttributeList binddata;
   if( statement->execute( binddata ) )

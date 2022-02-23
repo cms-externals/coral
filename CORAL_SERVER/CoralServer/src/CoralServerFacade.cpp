@@ -336,7 +336,7 @@ CoralServerFacade::fetchAllRows( coral::Token sessionID,
   IQuery* query = QueryMgr::newQuery( pOutputBuffer, *session, qd );
   return IRowIteratorPtr( new CursorIterator( *query ) );
   /*
-  std::auto_ptr<IQuery> query( QueryMgr::newQuery( pOutputBuffer, *session, qd ) );
+  std::unique_ptr<IQuery> query( QueryMgr::newQuery( pOutputBuffer, *session, qd ) );
   ICursor& cursor = query->execute();
   std::vector<AttributeList> rows;
   while ( cursor.next() ) rows.push_back( cursor.currentRow() );
@@ -372,7 +372,7 @@ CoralServerFacade::fetchAllRows( coral::Token sessionID,
   IQuery* query = QueryMgr::newQuery( outputTypes, *session, qd );
   return IRowIteratorPtr( new CursorIterator( *query ) );
   /*
-  std::auto_ptr<IQuery> query( QueryMgr::newQuery( outputTypes, *session, qd ) );
+  std::unique_ptr<IQuery> query( QueryMgr::newQuery( outputTypes, *session, qd ) );
   ICursor& cursor = query->execute();
   std::vector<AttributeList> rows;
   while ( cursor.next() ) rows.push_back( cursor.currentRow() );

@@ -13,7 +13,7 @@ namespace coral
   class ICertificateData;
 
   /// Buffer iterator pointer.
-  typedef std::auto_ptr<IByteBufferIterator> IByteBufferIteratorPtr;
+  typedef std::unique_ptr<IByteBufferIterator> IByteBufferIteratorPtr;
 
   /** @class IRequestHandler
    *

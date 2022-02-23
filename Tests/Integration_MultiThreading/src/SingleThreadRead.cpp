@@ -30,7 +30,7 @@ SingleThreadRead::operator()()
   osTableName << T2 << "_" << m_tableno;
   const std::string tableName = osTableName.str();
 
-  std::auto_ptr<coral::IQuery> query( schema.tableHandle( tableName ).newQuery() );
+  std::unique_ptr<coral::IQuery> query( schema.tableHandle( tableName ).newQuery() );
 
   coral::AttributeList outputBuffer;
   outputBuffer.extend<double>( "RES" );

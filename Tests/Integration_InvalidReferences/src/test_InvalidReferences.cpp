@@ -84,13 +84,13 @@ namespace coral
       {
         // Readonly
         std::cout << "*** Connect RO to " << UrlRO() << std::endl;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         std::cout << "*** Connected; create and execute query1" << std::endl;
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -99,7 +99,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -161,13 +161,13 @@ namespace coral
       {
         // Readonly
         std::cout << "*** Connect RO to " << UrlRO() << std::endl;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         std::cout << "*** Connected; create and execute query1" << std::endl;
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -176,7 +176,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 done; create/execute query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         coral::ICursor& cursor = query->execute();
@@ -237,13 +237,13 @@ namespace coral
       {
         // Readonly
         std::cout << "*** Connect RO to " << UrlRO() << std::endl;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         std::cout << "*** Connected; create and execute query1" << std::endl;
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -252,7 +252,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Execute query2 without fetching rows" << std::endl;
@@ -324,7 +324,7 @@ namespace coral
       // Then increase verbosity to keep track of connecting and disconnecting
       coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
       coral::MessageStream::setMsgVerbosity( coral::Info );
-      std::auto_ptr<boost::thread> pThread;
+      std::unique_ptr<boost::thread> pThread;
       try
       {
         // Readonly
@@ -335,7 +335,7 @@ namespace coral
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -344,7 +344,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -430,7 +430,7 @@ namespace coral
       // Then increase verbosity to keep track of connecting and disconnecting
       coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
       coral::MessageStream::setMsgVerbosity( coral::Info );
-      std::auto_ptr<boost::thread> pThread;
+      std::unique_ptr<boost::thread> pThread;
       try
       {
         // Readonly
@@ -441,7 +441,7 @@ namespace coral
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -450,7 +450,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -519,7 +519,7 @@ namespace coral
       // Then increase verbosity to keep track of connecting and disconnecting
       coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
       coral::MessageStream::setMsgVerbosity( coral::Info );
-      std::auto_ptr<boost::thread> pThread;
+      std::unique_ptr<boost::thread> pThread;
       try
       {
         // Readonly
@@ -530,7 +530,7 @@ namespace coral
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -539,7 +539,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -623,7 +623,7 @@ namespace coral
       // Then increase verbosity to keep track of connecting and disconnecting
       coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
       coral::MessageStream::setMsgVerbosity( coral::Info );
-      std::auto_ptr<boost::thread> pThread;
+      std::unique_ptr<boost::thread> pThread;
       try
       {
         // Readonly
@@ -634,7 +634,7 @@ namespace coral
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -643,7 +643,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -726,7 +726,7 @@ namespace coral
       // Then increase verbosity to keep track of connecting and disconnecting
       coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
       coral::MessageStream::setMsgVerbosity( coral::Info );
-      std::auto_ptr<boost::thread> pThread;
+      std::unique_ptr<boost::thread> pThread;
       try
       {
         // Readonly
@@ -737,7 +737,7 @@ namespace coral
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -746,7 +746,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -829,7 +829,7 @@ namespace coral
       // Then increase verbosity to keep track of connecting and disconnecting
       coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
       coral::MessageStream::setMsgVerbosity( coral::Info );
-      std::auto_ptr<boost::thread> pThread;
+      std::unique_ptr<boost::thread> pThread;
       try
       {
         std::string schemaName;
@@ -852,7 +852,7 @@ namespace coral
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->schema( schemaName ).newQuery() ); // schema1
           query->addToTableList( tableName );
           coral::ICursor& cursor = query->execute();
@@ -861,7 +861,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->schema( schemaName ).newQuery() ); // schema1
         query->addToTableList( tableName );
         std::cout << "*** Disconnect RO" << std::endl;
@@ -962,7 +962,7 @@ namespace coral
           const std::string connectString = UrlRW();
           coral::AccessMode accessMode = coral::Update;
           std::cout << "*** Connect RW to " << connectString << std::endl;
-          std::auto_ptr<coral::ISessionProxy>
+          std::unique_ptr<coral::ISessionProxy>
             session( connSvc.connect( connectString, accessMode ) );
           std::cout << "*** Connected, now disconnect" << std::endl;
           session.reset();
@@ -977,7 +977,7 @@ namespace coral
         // --- CREATE THE RELEVANT TEST TABLES ---
         std::cout << "*** Create the test tables" << std::endl;
         //std::cout << "*** Connect RW" << std::endl;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRW( connSvc.connect( UrlRW(), coral::Update ) );
         //std::cout << "*** Connected; create tables" << std::endl;
         std::string tableName1 = testTableName();
@@ -1017,7 +1017,7 @@ namespace coral
         std::cout << "*** Drop the test tables" << std::endl;
         //std::cout << "*** Connect RW" << std::endl;
         coral::ConnectionService connSvc;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRW( connSvc.connect( UrlRW(), coral::Update ) );
         //std::cout << "*** Connected; drop tables" << std::endl;
         std::string tableName1 = testTableName();

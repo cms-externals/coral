@@ -18,11 +18,11 @@
 #include <sstream>
 #include <memory>
 
-void readWithAlias( std::auto_ptr<coral::ISessionProxy>& sessionR, const std::string& alias )
+void readWithAlias( std::unique_ptr<coral::ISessionProxy>& sessionR, const std::string& alias )
 {
   std::cout << "__TEST Read with table alias '" << alias << "'" << std::endl;
   try {
-    std::auto_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
+    std::unique_ptr<coral::IQuery> query( sessionR->nominalSchema().newQuery() );
     query->addToTableList( "TEST", alias );
 
     if( alias.empty() )
@@ -81,7 +81,7 @@ int main( int argc, char* argv[] )
     if ( ! skipWrite ) {
       std::cout << "_TEST Write sample data" << std::endl;
       coral::AccessMode accessModeW = coral::Update;
-      std::auto_ptr<coral::ISessionProxy>
+      std::unique_ptr<coral::ISessionProxy>
         sessionW( connSvc.connect( connectW, accessModeW ) );
       sessionW->transaction().start( false );
       coral::ISchema& schema = sessionW->nominalSchema();
@@ -113,7 +113,7 @@ int main( int argc, char* argv[] )
 
     std::cout << "_TEST Read sample data" << std::endl;
     coral::AccessMode accessModeR = coral::ReadOnly;
-    std::auto_ptr<coral::ISessionProxy>
+    std::unique_ptr<coral::ISessionProxy>
       sessionR( connSvc.connect( connectR, accessModeR ) );
     sessionR->transaction().start( true );
     readWithAlias( sessionR, "" );

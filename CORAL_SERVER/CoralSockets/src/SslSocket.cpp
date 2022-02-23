@@ -550,7 +550,7 @@ SslSocketPtr SslSocket::acceptOn( int fd, const std::string& desc )
     throw GenericSocketException( str.str(), "SslSocket::accept" );
   }
 
-  sslSocket->m_certificateData = std::auto_ptr<CertificateData>( new CertificateData() );
+  sslSocket->m_certificateData = std::unique_ptr<CertificateData>( new CertificateData() );
   sslSocket->m_certificateData->setDistinguishedName( "FIXME");
 
   volist = vd->data;

@@ -180,7 +180,7 @@ namespace coral
       long long start = coral::TimeStamp::now(true).total_nanoseconds();
       try
       {
-        std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/expired" ) );
+        std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/expired" ) );
       }
       catch( coral::ConnectionNotAvailableException& e )
       {

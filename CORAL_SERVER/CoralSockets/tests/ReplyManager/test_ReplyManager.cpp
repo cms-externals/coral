@@ -37,7 +37,7 @@ namespace coral
     void tearDown() {
     }
 
-    typedef std::auto_ptr<ByteBuffer> BufferPtr;
+    typedef std::unique_ptr<ByteBuffer> BufferPtr;
     typedef boost::shared_ptr<ByteBuffer> BufferSPtr;
 
     static BufferPtr createBuffer( int num ) {
@@ -61,7 +61,7 @@ namespace coral
       ReplySlot slot;
 
       // can't append messages befor taking the slot
-      std::auto_ptr<ByteBuffer> buffer( new ByteBuffer(10) );
+      std::unique_ptr<ByteBuffer> buffer( new ByteBuffer(10) );
       CPPUNIT_ASSERT_THROW( slot.appendReply( buffer, 0, false ),
                             GenericSocketException );
 

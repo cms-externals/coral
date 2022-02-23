@@ -46,7 +46,7 @@ public:
   {
     std::string T1 = BuildUniqueTableName( "SQL_UT_DE_T1" );
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
     coral::ISchema& schema = session->nominalSchema();
     session->transaction().start();
     schema.dropIfExistsTable( T1 );
@@ -77,7 +77,7 @@ public:
   {
     std::string T1 = BuildUniqueTableName( "SQL_UT_DE_T1" );
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
     coral::ISchema& schema = session->nominalSchema();
     // common variables
     coral::AttributeList emptybinddata;
@@ -140,7 +140,7 @@ public:
     {
       session->transaction().start();
       coral::ITable& table = schema.tableHandle(T1);
-      std::auto_ptr<coral::IQuery> query( table.newQuery() );
+      std::unique_ptr<coral::IQuery> query( table.newQuery() );
       query->addToOutputList( "a" );
       coral::AttributeList outBuffer;
       outBuffer.extend( "a",typeid(std::string)  );
@@ -209,7 +209,7 @@ public:
     {
       session->transaction().start();
       coral::ITable& table = schema.tableHandle(T1);
-      std::auto_ptr<coral::IQuery> query2( table.newQuery() );
+      std::unique_ptr<coral::IQuery> query2( table.newQuery() );
       query2->addToOutputList( "id" );
       coral::AttributeList output;
       output.extend( "id",typeid(unsigned int)  );
@@ -250,7 +250,7 @@ public:
     {
       session->transaction().start();
       coral::ITable& table = schema.tableHandle(T1);
-      std::auto_ptr<coral::IQuery> query3( table.newQuery() );
+      std::unique_ptr<coral::IQuery> query3( table.newQuery() );
       query3->addToOutputList( "id" );
       coral::AttributeList output3;
       output3.extend( "id",typeid(unsigned int)  );
@@ -289,7 +289,7 @@ public:
     {
       session->transaction().start();
       coral::ITable& table = schema.tableHandle(T1);
-      std::auto_ptr<coral::IQuery> queryc( table.newQuery() );
+      std::unique_ptr<coral::IQuery> queryc( table.newQuery() );
       queryc->addToOutputList( "c" );
       coral::AttributeList qoutput;
       qoutput.extend( "c",typeid(std::string)  );
@@ -327,7 +327,7 @@ public:
   {
     std::string T1 = BuildUniqueTableName( "SQL_UT_DE_T1" );
     coral::ConnectionService connSvc;
-    std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
     coral::ISchema& schema = session->nominalSchema();
     session->transaction().start();
     schema.dropTable( T1 );

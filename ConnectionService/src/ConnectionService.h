@@ -1,7 +1,7 @@
 #ifndef CONNECTIONSERVICE_CONNECTIONSERVICE_H
 #define CONNECTIONSERVICE_CONNECTIONSERVICE_H
 
-#include "RelationalAccess/../src/ICertificateConnectionService.h"
+#include "RelationalAccess/ICertificateConnectionService.h"
 #include "RelationalAccess/AccessMode.h"
 
 #include "CoralKernel/Service.h"

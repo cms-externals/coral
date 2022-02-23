@@ -78,13 +78,13 @@ namespace coral
       // Readonly
       {
         std::cout << "*** Connect RO to " << UrlRO() << std::endl;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         std::cout << "*** Connected; create and execute query1" << std::endl;
         sessionRO->transaction().start(true);
         std::string tableName = testTableName();
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName );
           query->addToOutputList( "ID" );
@@ -97,7 +97,7 @@ namespace coral
           CPPUNIT_ASSERT_EQUAL_MESSAGE( "No Row3", false, cursor.next() );
           std::cout << "*** Query1 executed; create query2" << std::endl;
         }
-        std::auto_ptr<coral::IQuery>
+        std::unique_ptr<coral::IQuery>
           query( sessionRO->nominalSchema().newQuery() );
         query->addToTableList( tableName );
         query->addToOutputList( "ID" );
@@ -137,14 +137,14 @@ namespace coral
       coral::ConnectionService connSvc;
       // Readonly
       {
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         sessionRO->transaction().start(true);
         std::string tableName1 = testTableName(1);
         std::string tableName2 = testTableName(2);
         std::string tableName3 = testTableName(3);
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName1 );
           query->addToTableList( tableName2 );
@@ -166,7 +166,7 @@ namespace coral
           }
         }
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName1 );
           query->addToTableList( tableName3 );
@@ -200,14 +200,14 @@ namespace coral
       coral::ConnectionService connSvc;
       // Readonly
       {
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         sessionRO->transaction().start(true);
         std::string tableName1 = testTableName(1);
         coral::MsgLevel oldLvl = coral::MessageStream::msgVerbosity();
         coral::MessageStream::setMsgVerbosity( coral::Verbose );
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName1 );
           query->addToOutputList( "ID" );
@@ -261,7 +261,7 @@ namespace coral
       coral::AttributeList rowBuffer;
       // Update
       {
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRW( connSvc.connect( UrlRW(), coral::Update ) );
         sessionRW->transaction().start(false);
         sessionRW->nominalSchema().dropIfExistsTable(tableName0);
@@ -285,11 +285,11 @@ namespace coral
       }
       // Readonly
       {
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRO( connSvc.connect( UrlRO(), coral::ReadOnly ) );
         sessionRO->transaction().start(true);
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName0 );
           query->addToOutputList( "ID" );
@@ -315,7 +315,7 @@ namespace coral
           coral::MessageStream::setMsgVerbosity( oldLvl );
         }
         {
-          std::auto_ptr<coral::IQuery>
+          std::unique_ptr<coral::IQuery>
             query( sessionRO->nominalSchema().newQuery() );
           query->addToTableList( tableName0, "T" );
           query->addToOutputList( "T.ID" );
@@ -373,7 +373,7 @@ namespace coral
         // --- DROP THE RELEVANT TEST TABLES ---
         std::cout << "*** Drop the test tables" << std::endl;
         coral::ConnectionService connSvc;
-        std::auto_ptr<coral::ISessionProxy>
+        std::unique_ptr<coral::ISessionProxy>
           sessionRW( connSvc.connect( UrlRW(), coral::Update ) );
         std::string tableName1 = testTableName(1);
         std::string tableName2 = testTableName(2);
@@ -410,7 +410,7 @@ namespace coral
       coral::ConnectionService connSvc;
       // --- CREATE THE RELEVANT TEST TABLES ---
       std::cout << "*** Create " << nTables << " test tables" << std::endl;
-      std::auto_ptr<coral::ISessionProxy>
+      std::unique_ptr<coral::ISessionProxy>
         sessionRW( connSvc.connect( UrlRW(), coral::Update ) );
       std::string tableName1 = testTableName(1);
       std::string tableName2 = testTableName(2);

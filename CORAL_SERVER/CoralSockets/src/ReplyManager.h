@@ -45,7 +45,7 @@ namespace coral {
 
 
       /// appends a byte buffer to the replies
-      void appendReply( std::auto_ptr<ByteBuffer> reply, int segmentNr,
+      void appendReply( std::unique_ptr<ByteBuffer> reply, int segmentNr,
                         bool lastReply );
 
       /// returns next reply and removes it from the list

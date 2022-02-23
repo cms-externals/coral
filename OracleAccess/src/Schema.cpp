@@ -1013,7 +1013,7 @@ coral::OracleAccess::Schema::readTablesFromDataDictionary() const
   bindData.extend<std::string>( "OWNER" );
   bindData.begin()->data<std::string>() = m_schemaName;
 
-  std::auto_ptr<coral::OracleAccess::OracleStatement> pStatement;
+  std::unique_ptr<coral::OracleAccess::OracleStatement> pStatement;
 
   // Task #10775 (performance optimization for data dictionary queries)
   // Optimization (requires read access to sys tables)
@@ -1271,7 +1271,7 @@ coral::OracleAccess::Schema::createSequence( const coral::ISequenceDescription& 
 
   // Create the sequence via an SQL statement
   {
-    std::auto_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, stmstream.str() ) );
+    std::unique_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, stmstream.str() ) );
     if ( !( statement->execute( coral::AttributeList() ) ) )
       throw coral::SchemaException( m_sessionProperties->domainServiceName(), "Can't create sequence in the database " + description.name(), "Schema::createSequence" );
   }
@@ -1352,7 +1352,7 @@ coral::OracleAccess::Schema::dropSequence( const std::string& sequenceName )
     }
     // Drop the sequence
     // First create the sql statement
-    std::auto_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "DROP SEQUENCE " + i->second->description().name() ) );
+    std::unique_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "DROP SEQUENCE " + i->second->description().name() ) );
     // Execute
     if( !( statement->execute( coral::AttributeList() ) ) )
     {
@@ -1389,7 +1389,7 @@ coral::OracleAccess::Schema::dropIfExistsSequence( const std::string& sequenceNa
     std::map< std::string, coral::OracleAccess::Sequence* >::iterator i = m_sequences.find( sequenceName );
     // Drop the sequence
     // First create the sql statement
-    std::auto_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "DROP SEQUENCE " + i->second->description().name() ) );
+    std::unique_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "DROP SEQUENCE " + i->second->description().name() ) );
     // Execute
     if( !( statement->execute( coral::AttributeList() ) ) )
     {
@@ -1421,7 +1421,7 @@ coral::OracleAccess::Schema::listSequences() const
   /*
     SELECT sequence_name FROM all_sequences;
   */
-  std::auto_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "SELECT sequence_name FROM all_sequences" ) );
+  std::unique_ptr<OracleStatement> statement( new OracleStatement( m_sessionProperties, m_schemaName, "SELECT sequence_name FROM all_sequences" ) );
   /* empty bind data here */
   coral::AttributeList binddata;
   if( statement->execute( binddata ) )

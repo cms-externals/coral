@@ -164,7 +164,7 @@ void coral::MySQLAccess::Transaction::commit()
 
   if ( ! m_isReadOnly )
   {
-    std::auto_ptr<coral::MySQLAccess::Committer>
+    std::unique_ptr<coral::MySQLAccess::Committer>
       committer( coral::MySQLAccess::CommitterFactory::getCommitter( m_sessionProperties ) );
 
     if ( ! committer->commit() )
@@ -210,7 +210,7 @@ void coral::MySQLAccess::Transaction::rollback()
 
   if ( ! m_isReadOnly )
   {
-    std::auto_ptr<coral::MySQLAccess::Committer>
+    std::unique_ptr<coral::MySQLAccess::Committer>
       committer( coral::MySQLAccess::CommitterFactory::getCommitter( m_sessionProperties ) );
 
     if ( ! committer->rollback() )

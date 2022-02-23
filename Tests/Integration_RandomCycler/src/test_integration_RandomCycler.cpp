@@ -41,7 +41,7 @@ public:
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  void test_r01(std::auto_ptr<coral::ISessionProxy>& session)
+  void test_r01(std::unique_ptr<coral::ISessionProxy>& session)
   {
     std::string T1 = BuildUniqueTableName( "RANDOM_T1" );
     // open a read only transaction
@@ -49,7 +49,7 @@ public:
 
     coral::ISchema& schema = session->nominalSchema();
     coral::ITable& table = schema.tableHandle(T1);
-    std::auto_ptr<coral::IQuery> query( table.newQuery() );
+    std::unique_ptr<coral::IQuery> query( table.newQuery() );
 
     query->addToOrderList( "id" );
 
@@ -83,7 +83,7 @@ public:
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  void test_r02(std::auto_ptr<coral::ISessionProxy>& session)
+  void test_r02(std::unique_ptr<coral::ISessionProxy>& session)
   {
     std::string T1 = BuildUniqueTableName( "RANDOM_T1" );
     // open a read only transaction
@@ -91,7 +91,7 @@ public:
 
     coral::ISchema& schema = session->nominalSchema();
     coral::ITable& table = schema.tableHandle(T1);
-    std::auto_ptr<coral::IQuery> query( table.newQuery() );
+    std::unique_ptr<coral::IQuery> query( table.newQuery() );
 
     query->addToOrderList( "id" );
 
@@ -125,17 +125,17 @@ public:
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  void test_r03(std::auto_ptr<coral::ISessionProxy>& session)
+  void test_r03(std::unique_ptr<coral::ISessionProxy>& session)
   {
     std::string T2 = BuildUniqueTableName( "RANDOM_T2" );
 
-    //std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRO(), coral::ReadOnly ) );
+    //std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRO(), coral::ReadOnly ) );
     // open a read only transaction
     session->transaction().start(true);
 
     coral::ISchema& schema = session->nominalSchema();
     coral::ITable& table = schema.tableHandle(T2);
-    std::auto_ptr<coral::IQuery> query( table.newQuery() );
+    std::unique_ptr<coral::IQuery> query( table.newQuery() );
 
     //  coral::MsgLevel oldLevel = coral::MessageStream::msgVerbosity();
     // coral::MessageStream::setMsgVerbosity( coral::Verbose );
@@ -175,7 +175,7 @@ public:
 
   void operator()()
   {
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRO(), coral::ReadOnly ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRO(), coral::ReadOnly ) );
 
     for( size_t i = 0; i < 10; ++i )
     {
@@ -245,7 +245,7 @@ public:
 
     std::string T1 = BuildUniqueTableName( "RANDOM_T1" );
     // create the session
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     // open an update transaction
     session->transaction().start(false);
@@ -298,7 +298,7 @@ public:
 
     std::string T2 = BuildUniqueTableName( "RANDOM_T2" );
     // create the session
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
 
     // open an update transaction
     session->transaction().start(false);

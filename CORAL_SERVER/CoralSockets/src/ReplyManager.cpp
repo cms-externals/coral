@@ -26,7 +26,7 @@ static coral::StatsTypeTimer myStatsTypeTimerFindSlot("CSocket_FindSlot", "find 
 
 //-----------------------------------------------------------------------------
 
-void ReplySlot::appendReply( std::auto_ptr<ByteBuffer> reply,
+void ReplySlot::appendReply( std::unique_ptr<ByteBuffer> reply,
                              int segmentNr,
                              bool lastReply )
 {

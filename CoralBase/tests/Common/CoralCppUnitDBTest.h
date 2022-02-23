@@ -176,15 +176,15 @@ namespace coral
       return s_urlRO;
     }
 
-    static std::auto_ptr<ISessionProxy>& SessRW()
+    static std::unique_ptr<ISessionProxy>& SessRW()
     {
-      static std::auto_ptr<ISessionProxy> s_sessRW;
+      static std::unique_ptr<ISessionProxy> s_sessRW;
       return s_sessRW;
     }
 
-    static std::auto_ptr<ISessionProxy>& SessRO()
+    static std::unique_ptr<ISessionProxy>& SessRO()
     {
-      static std::auto_ptr<ISessionProxy> s_sessRO;
+      static std::unique_ptr<ISessionProxy> s_sessRO;
       return s_sessRO;
     }
 

@@ -93,7 +93,7 @@ namespace coral
       SocketThread();
 
       /// the request handler for this socket
-      std::auto_ptr<coral::IRequestHandler> m_handler;
+      std::unique_ptr<coral::IRequestHandler> m_handler;
 
       PacketSocketPtr m_cSocket;
 

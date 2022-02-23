@@ -387,7 +387,7 @@ namespace coral
                 << referenceTableDescription().name() << std::endl;
       coral::IConnectionService& connSvc = connectionService();
       coral::AccessMode accessMode = coral::Update;
-      std::auto_ptr<coral::ISessionProxy>
+      std::unique_ptr<coral::ISessionProxy>
         session( connSvc.connect( connectString, accessMode ) );
       session->transaction().start( false ); // read-write
       // ** START ** write reference data
@@ -502,7 +502,7 @@ namespace coral
       std::cout << "Read from reference table..." << std::endl;
       coral::IConnectionService& connSvc = connectionService();
       coral::AccessMode accessMode = coral::ReadOnly;
-      std::auto_ptr<coral::ISessionProxy>
+      std::unique_ptr<coral::ISessionProxy>
         session( connSvc.connect( connectString, accessMode ) );
       session->transaction().start( true ); // read-only
       // Dump the supported C++ and SQL types for this backend
@@ -535,7 +535,7 @@ namespace coral
       }
       // ** START ** read reference data
       coral::ISchema& schema = session->nominalSchema();
-      std::auto_ptr<coral::IQuery> query( schema.newQuery() );
+      std::unique_ptr<coral::IQuery> query( schema.newQuery() );
       query->addToTableList( referenceTableDescription().name() );
       query->addToOrderList( "ID" );
       coral::AttributeList dataBuffer;

@@ -556,7 +556,7 @@ public:
 
     std::string T1 = BuildUniqueTableName( "OBJCONSIST_T1" );
     // create the session
-    std::auto_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
+    std::unique_ptr<coral::ISessionProxy> session( connSvc().connect( UrlRW(), coral::Update ) );
     // open an update transaction
     session->transaction().start(false);
     // drop the table if it already exists

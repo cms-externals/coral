@@ -89,7 +89,7 @@ namespace
 
       std::cout << "TableCreateAndQueryThread no " << m_threadID << " about to perform a query" << std::endl;
 
-      std::auto_ptr<coral::IQuery> query( table.newQuery() );
+      std::unique_ptr<coral::IQuery> query( table.newQuery() );
 
       coral::AttributeList outputBuffer;
       outputBuffer.extend<double>( "RES" );
@@ -155,7 +155,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-Oracle-lcgnight/admin" ) );
 
       session->transaction().start();
 

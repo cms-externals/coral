@@ -178,8 +178,8 @@ void QueryMgr::addPermission( const std::string& lcString, const std::string& pc
   {
     // we have to resolve a logical connection string
 
-    //std::auto_ptr<IOperationWithQuery> operation( m_permTable.dataEditor().insertWithQuery() );
-    std::auto_ptr<IOperationWithQuery> operation( m_schema.tableHandle(PermissionsTable::defaultTableName()).dataEditor().insertWithQuery() );
+    //std::unique_ptr<IOperationWithQuery> operation( m_permTable.dataEditor().insertWithQuery() );
+    std::unique_ptr<IOperationWithQuery> operation( m_schema.tableHandle(PermissionsTable::defaultTableName()).dataEditor().insertWithQuery() );
 
     IQueryDefinition *query( &operation->query() );
     coral::AttributeList outputBuffer;
@@ -451,7 +451,7 @@ void QueryMgr::queryConnections(
                                 const std::string& user, const std::string& dbRole )
 {
 
-  std::auto_ptr<IQuery> query( m_schema.newQuery() );
+  std::unique_ptr<IQuery> query( m_schema.newQuery() );
 
   // main query is on credentials table
   query->addToTableList( m_crTable.defaultTableName(), "cr" );
@@ -642,7 +642,7 @@ const AuthenticationCredentials QueryMgr::getCredentials( const std::string& phy
   if ( cert == 0 )
     return m_crTable.getCredentials( physConStr, dbRole );
 
-  std::auto_ptr<IQuery> query( m_schema.newQuery() );
+  std::unique_ptr<IQuery> query( m_schema.newQuery() );
 
   query->addToTableList( m_crTable.defaultTableName(), "cr" );
   query->addToTableList( m_permTable.defaultTableName(), "perm" );

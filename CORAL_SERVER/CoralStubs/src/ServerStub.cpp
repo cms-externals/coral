@@ -947,7 +947,7 @@ namespace coral { namespace CoralStubs {
 
       prepareCoralException( swi, e );
 
-      return std::auto_ptr<IByteBufferIterator>( swi );
+      return std::unique_ptr<IByteBufferIterator>( swi );
     }
     //get the opcode
     CALOpcode opcode = sri.opcode();
@@ -963,7 +963,7 @@ namespace coral { namespace CoralStubs {
 
       swi->exception(0x00, 0x10, s.str(), "ServerStub::replyToRequest", "");
 
-      return std::auto_ptr<IByteBufferIterator>( swi );
+      return std::unique_ptr<IByteBufferIterator>( swi );
     }
     //execute the facade implementation
     try
@@ -977,7 +977,7 @@ namespace coral { namespace CoralStubs {
       execTimer.stop();
       mon->add(execTimer.getUserTime(),execTimer.getSystemTime(),execTimer.getRealTime());
 
-      return std::auto_ptr<IByteBufferIterator>( iter );
+      return std::unique_ptr<IByteBufferIterator>( iter );
     }
     catch ( coral::Exception& e )
     {
@@ -991,7 +991,7 @@ namespace coral { namespace CoralStubs {
 
       prepareCoralException( swi, e );
 
-      return std::auto_ptr<IByteBufferIterator>( swi );
+      return std::unique_ptr<IByteBufferIterator>( swi );
     }
     catch ( std::exception& e )
     {
@@ -1004,7 +1004,7 @@ namespace coral { namespace CoralStubs {
 
       swi->exception(0x00, 0x01, e.what(), "ServerStub::replyToRequest", "");
 
-      return std::auto_ptr<IByteBufferIterator>( swi );
+      return std::unique_ptr<IByteBufferIterator>( swi );
     }
     catch (...)
     {
@@ -1018,7 +1018,7 @@ namespace coral { namespace CoralStubs {
 
       swi->exception(0x00, 0x00, "Unkown exception caught", "ServerStub::replyToRequest", "");
 
-      return std::auto_ptr<IByteBufferIterator>( swi );
+      return std::unique_ptr<IByteBufferIterator>( swi );
     }
   }
 

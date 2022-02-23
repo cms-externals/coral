@@ -67,7 +67,7 @@ namespace coral {
       int m_nHandlerThreadsPerSocket;
 
       /// a thread manager
-      std::auto_ptr<ThreadManager> m_thrManager;
+      std::unique_ptr<ThreadManager> m_thrManager;
 
     };
 

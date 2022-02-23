@@ -119,7 +119,7 @@ coral::OracleAccess::Query::execute()
   // Lock for update
   if ( m_forUpdate ) sqlStatement += " FOR UPDATE";
   // Prepare the statement.
-  std::auto_ptr<OracleStatement> statement( new coral::OracleAccess::OracleStatement( this->sessionProperties(), m_schemaName, sqlStatement ) );
+  std::unique_ptr<OracleStatement> statement( new coral::OracleAccess::OracleStatement( this->sessionProperties(), m_schemaName, sqlStatement ) );
   // Set the prefetch-caches for rows and memory
   //std::cout << "Query::execute calling setCacheSize" << std::endl; // debug bug #54968
   statement->setCacheSize( m_memoryCache );
@@ -169,6 +169,6 @@ coral::OracleAccess::Query::execute()
   }
   statement->defineOutput( *m_outputBuffer );
   // Return the cursor
-  m_cursor = new coral::OracleAccess::Cursor( statement, *m_outputBuffer );
+  m_cursor = new coral::OracleAccess::Cursor( std::move(statement), *m_outputBuffer );
   return *m_cursor;
 }

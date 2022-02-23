@@ -57,7 +57,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
       session->transaction().start(false) ;
 
@@ -99,7 +99,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
       session->transaction().start(false) ;
 
@@ -199,7 +199,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
       session->transaction().start(true) ;
 
@@ -288,7 +288,7 @@ namespace coral
 
       coral::ConnectionService connSvc;
 
-      std::auto_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
+      std::unique_ptr<coral::ISessionProxy> session( connSvc.connect( "CORAL-SQLite-lcgnight/admin" ) );
 
       session->transaction().start(false) ;
 

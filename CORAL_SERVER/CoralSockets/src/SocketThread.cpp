@@ -95,7 +95,7 @@ void SocketThread::HandlerThread::operator()()
              << " clientID " << clientID );
       StopTimer replyTimer;
       replyTimer.start();
-      std::auto_ptr<IByteBufferIterator>
+      std::unique_ptr<IByteBufferIterator>
         replyIt( handler->replyToRequest( request ) );
       uint32_t segmentID=0;
       while ( replyIt->next() )

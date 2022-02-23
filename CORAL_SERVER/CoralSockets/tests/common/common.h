@@ -4,7 +4,7 @@
 
 namespace coral
 {
-  typedef std::auto_ptr<ByteBuffer> ByteBufferPtr;
+  typedef std::unique_ptr<ByteBuffer> ByteBufferPtr;
 
   namespace CoralSockets
   {
@@ -13,7 +13,7 @@ namespace coral
     int testPort = 50007;
 
 #if 0
-    std::auto_ptr<RingBufferPipes> pipes;
+    std::unique_ptr<RingBufferPipes> pipes;
 #endif
 
     // ---------------------------------------------------
@@ -23,7 +23,7 @@ namespace coral
     {
       TcpSocketPtr listenSocket = TcpSocketPtr( (TcpSocket*)0);
 #if 0
-      pipes = std::auto_ptr<RingBufferPipes>( new RingBufferPipes( 10000, "test pipes") );
+      pipes = std::unique_ptr<RingBufferPipes>( new RingBufferPipes( 10000, "test pipes") );
       src=pipes->getSrc();
       dst=pipes->getDst();
 #else

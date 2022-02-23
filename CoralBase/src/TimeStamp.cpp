@@ -16,7 +16,7 @@ const boost::posix_time::ptime& coral::TimeStamp::Epoch = coral::getTimeStampEpo
 coral::TimeStamp::TimeStamp()
   : m_time( boost::posix_time::microsec_clock::universal_time() )
   , m_isLocal(false)
-  , m_localTime( 0 )
+  , m_localTime( nullptr )
 {
 }
 
@@ -26,20 +26,20 @@ coral::TimeStamp::TimeStamp( int year, int month,  int day, int hour, int minute
   , m_isLocal( isLocalTime )
 {
   if( m_isLocal )
-    m_localTime = std::auto_ptr<boost::posix_time::ptime>(
+    m_localTime = std::unique_ptr<boost::posix_time::ptime>(
                                                           new boost::posix_time::ptime( coral::time::local_adj::utc_to_local( m_time ) ) );
 }
 
 coral::TimeStamp::TimeStamp( const boost::posix_time::ptime& pT, bool isLocalTime )
-  : m_time( pT ), m_isLocal(isLocalTime), m_localTime( 0 )
+  : m_time( pT ), m_isLocal(isLocalTime), m_localTime( nullptr )
 {
   if( m_isLocal )
-    m_localTime = std::auto_ptr<boost::posix_time::ptime>(
+    m_localTime = std::unique_ptr<boost::posix_time::ptime>(
                                                           new boost::posix_time::ptime( coral::time::local_adj::utc_to_local( m_time ) ) );
 }
 
 coral::TimeStamp::TimeStamp( coral::TimeStamp::ValueType& nsecs )
-  : m_time(), m_isLocal( false ), m_localTime( 0 )
+  : m_time(), m_isLocal( false ), m_localTime( nullptr )
 {
   // This contructs the timestamp only assuming UTC
   coral::TimeStamp::ValueType lSecs  = nsecs/1000000000; // extract seconds     part
@@ -110,7 +110,7 @@ coral::TimeStamp::TimeStamp( const coral::TimeStamp& rhs ) :
 {
   if( m_isLocal )
   {
-    m_localTime = std::auto_ptr<boost::posix_time::ptime>(
+    m_localTime = std::unique_ptr<boost::posix_time::ptime>(
                                                           new boost::posix_time::ptime( coral::time::local_adj::utc_to_local( m_time ) ) );
   }
 }
@@ -125,7 +125,7 @@ coral::TimeStamp::operator=( const coral::TimeStamp& rhs )
 
     if( m_isLocal )
     {
-      m_localTime = std::auto_ptr<boost::posix_time::ptime>(
+      m_localTime = std::unique_ptr<boost::posix_time::ptime>(
                                                             new boost::posix_time::ptime( coral::time::local_adj::utc_to_local( m_time ) ) );
     }
   }
