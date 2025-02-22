@@ -176,7 +176,7 @@ void
 coral::SQLiteAccess::Connection::verifyFileName( const std::string& inFileName ) const
 {
   const boost::filesystem::path fileNameFirstGuess( inFileName );
-  if( fileNameFirstGuess.is_complete() )
+  if( fileNameFirstGuess.is_absolute() )
   {
     //m_inFileName=fileNameFirstGuess;
     m_properties->setFileName(fileNameFirstGuess.string());

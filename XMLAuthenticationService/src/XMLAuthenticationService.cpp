@@ -288,7 +288,7 @@ coral::XMLAuthenticationService::XMLAuthenticationService::verifyFileName() cons
   // If the file name is not a fully qualified file name (absolute path),
   // try to find it first in each of the paths in CORAL_AUTH_PATH
   const char* thePathVariable = ::getenv( "CORAL_AUTH_PATH" );
-  if ( ! boost::filesystem::path( m_inputFileName ).is_complete() &&
+  if ( ! boost::filesystem::path( m_inputFileName ).is_absolute() &&
        thePathVariable )
   {
     coral::SearchPath path( thePathVariable );
